@@ -1,0 +1,22 @@
+{
+  "artifact_type": "conference_layout_preview",
+  "checked_at_utc": "2026-05-15T06:48:18+00:00",
+  "clean_for_preview": true,
+  "failures": [],
+  "is_experiment_evidence": false,
+  "is_official_venue_template": false,
+  "note": "This preview is for two-column layout review only. Use the target conference's official style files before submission.",
+  "pdf_bytes": 471142,
+  "pdf_pages": 11,
+  "preview_pdf": "/home/nlp-07/sqe_experiment/paper/main_conference_preview.pdf",
+  "preview_tex": "/home/nlp-07/sqe_experiment/paper/main_conference_preview.tex",
+  "returncode": 0,
+  "source_tex": "/home/nlp-07/sqe_experiment/paper/main.tex",
+  "tectonic": "/home/nlp-07/.local/bin/tectonic-musl",
+  "warnings": [
+    "warning: main_conference_preview.tex:115: Underfull \\hbox (badness 1394) in paragraph at lines 111--115",
+    "warning: main_conference_preview.bbl:31: Underfull \\hbox (badness 1708) in paragraph at lines 25--31",
+    "warning: main_conference_preview.bbl:31: Underfull \\hbox (badness 1708) in paragraph at lines 25--31",
+    "warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details."
+  ]
+}

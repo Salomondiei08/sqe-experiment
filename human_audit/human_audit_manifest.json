@@ -1,0 +1,10 @@
+{
+  "source_eval_path": "/home/nlp-07/sqe_experiment/data_500_memory_seed42/eval_pairs.jsonl",
+  "n_source_queries": 500,
+  "n_audit_queries": 100,
+  "seed": 42,
+  "excerpt_chars": 700,
+  "jsonl_path": "/home/nlp-07/sqe_experiment/human_audit/human_audit_queries.jsonl",
+  "csv_path": "/home/nlp-07/sqe_experiment/human_audit/human_audit_queries.csv",
+  "note": "Reviewer fields are intentionally blank; no human labels have been added."
+}

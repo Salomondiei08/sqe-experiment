@@ -1,0 +1,26 @@
+{
+  "artifact_type": "human_audit_reviewer_packets",
+  "assignment_mode": "full",
+  "is_experiment_evidence": false,
+  "note": "Reviewer packets are unlabeled handoff files. They do not satisfy the human-audit evidence requirement.",
+  "required_final_outputs": [
+    "labeled_human_audit_queries.csv",
+    "human_audit_labeling_manifest.json",
+    "human_audit_summary.json"
+  ],
+  "reviewer_packets": [
+    {
+      "contains_labels": false,
+      "n_rows": 100,
+      "path": "reviewer_packets/reviewer_a.csv",
+      "reviewer": "reviewer_a"
+    },
+    {
+      "contains_labels": false,
+      "n_rows": 100,
+      "path": "reviewer_packets/reviewer_b.csv",
+      "reviewer": "reviewer_b"
+    }
+  ],
+  "source_csv": "human_audit_queries.csv"
+}

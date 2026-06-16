@@ -1,0 +1,408 @@
+{
+  "paper": "/home/nlp-07/sqe_experiment/paper/main.tex",
+  "figures": [
+    {
+      "index": 1,
+      "labels": [
+        "fig:method-overview"
+      ],
+      "captions": [
+        "SQE retrieval flow. The method changes only the query side at retrieval time; the memory store and index are left unchanged."
+      ],
+      "descriptions": [
+        "Flow diagram showing dense retrieval, a confidence gate, query-side trace and paraphrase expansion for low-confidence queries, parallel retrieval, and Reciprocal Rank Fusion."
+      ],
+      "has_caption": true,
+      "has_description": true,
+      "has_label": true,
+      "reference_counts": {
+        "fig:method-overview": 1
+      }
+    },
+    {
+      "index": 2,
+      "labels": [
+        "fig:recall"
+      ],
+      "captions": [
+        "Recall@5 comparison across completed retrieval methods for seed 42. SQE is highlighted; the other bars are baselines or ablations."
+      ],
+      "descriptions": [
+        "Bar chart comparing seed-42 Recall at 5 for dense retrieval, BM25, Hybrid-RRF, paraphrases, HyDE traces, always-expand, random-gated expansion, and SQE."
+      ],
+      "has_caption": true,
+      "has_description": true,
+      "has_label": true,
+      "reference_counts": {
+        "fig:recall": 1
+      }
+    },
+    {
+      "index": 3,
+      "labels": [
+        "fig:gate-diagnostic"
+      ],
+      "captions": [
+        "Diagnostic relationship between dense top-1 score bins and final SQE Recall@5. The bins do not separate easy and hard cases cleanly enough for a strong gate claim."
+      ],
+      "descriptions": [
+        "Line and bar diagnostic showing that dense top-1 score bins do not provide a clean monotonic separation between higher and lower Recall at 5 outcomes."
+      ],
+      "has_caption": true,
+      "has_description": true,
+      "has_label": true,
+      "reference_counts": {
+        "fig:gate-diagnostic": 1
+      }
+    },
+    {
+      "index": 4,
+      "labels": [
+        "fig:threshold"
+      ],
+      "captions": [
+        "Post-hoc Recall@5 under different expansion thresholds for seed 42. The figure is diagnostic because the threshold is evaluated on completed result rows."
+      ],
+      "descriptions": [
+        "Threshold sweep chart showing post-hoc Recall at 5 as the expansion threshold changes for seed 42, with the fixed operating threshold marked for comparison."
+      ],
+      "has_caption": true,
+      "has_description": true,
+      "has_label": true,
+      "reference_counts": {
+        "fig:threshold": 1
+      }
+    }
+  ],
+  "tables": [
+    {
+      "index": 1,
+      "labels": [
+        "tab:setup"
+      ],
+      "captions": [
+        "Experiment configuration and release placeholders."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:setup": 1
+      }
+    },
+    {
+      "index": 2,
+      "labels": [
+        "tab:seed42"
+      ],
+      "captions": [
+        "Seed-42 retrieval results used as the detailed audit anchor."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:seed42": 1
+      }
+    },
+    {
+      "index": 3,
+      "labels": [
+        "tab:multiseed"
+      ],
+      "captions": [
+        "Aggregate retrieval results over independent memory-index seeds."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:multiseed": 1
+      }
+    },
+    {
+      "index": 4,
+      "labels": [
+        "tab:paired-multiseed"
+      ],
+      "captions": [
+        "Paired bootstrap tests over all independent memory-index seeds."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:paired-multiseed": 1
+      }
+    },
+    {
+      "index": 5,
+      "labels": [
+        "tab:win-loss"
+      ],
+      "captions": [
+        "Query-level top-5 wins and losses for SQE against Dense-Only."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:win-loss": 1
+      }
+    },
+    {
+      "index": 6,
+      "labels": [
+        "tab:cases"
+      ],
+      "captions": [
+        "Seed-42 examples where SQE and Dense-Only differ at top-5."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:cases": 1
+      }
+    },
+    {
+      "index": 7,
+      "labels": [
+        "tab:cost"
+      ],
+      "captions": [
+        "Estimated expansion cost for each retrieval method."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:cost": 1
+      }
+    },
+    {
+      "index": 8,
+      "labels": [
+        "tab:tokens"
+      ],
+      "captions": [
+        "Provider-reported token usage for measured-token reruns."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:tokens": 1
+      }
+    },
+    {
+      "index": 9,
+      "labels": [
+        "tab:paired-seed42"
+      ],
+      "captions": [
+        "Seed-42 paired bootstrap uncertainty."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:paired-seed42": 1
+      }
+    },
+    {
+      "index": 10,
+      "labels": [
+        "tab:gate"
+      ],
+      "captions": [
+        "Seed-42 gate diagnostic split by expansion decision."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:gate": 1
+      }
+    },
+    {
+      "index": 11,
+      "labels": [
+        "tab:threshold-sweep"
+      ],
+      "captions": [
+        "Seed-42 post-hoc threshold sweep."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:threshold-sweep": 1
+      }
+    },
+    {
+      "index": 12,
+      "labels": [
+        "tab:validation-threshold"
+      ],
+      "captions": [
+        "Seed-42 split validation check for threshold selection."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:validation-threshold": 1
+      }
+    },
+    {
+      "index": 13,
+      "labels": [
+        "tab:multiseed-gate"
+      ],
+      "captions": [
+        "Held-out gate validation over independent memory-index seeds."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:multiseed-gate": 1
+      }
+    },
+    {
+      "index": 14,
+      "labels": [
+        "tab:gate-paired"
+      ],
+      "captions": [
+        "Paired uncertainty for held-out gate validation."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:gate-paired": 1
+      }
+    },
+    {
+      "index": 15,
+      "labels": [
+        "tab:cross-seed-gate"
+      ],
+      "captions": [
+        "Leave-one-seed-out top-1 gate validation."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:cross-seed-gate": 1
+      }
+    },
+    {
+      "index": 16,
+      "labels": [
+        "tab:gate-variants"
+      ],
+      "captions": [
+        "Held-out BM25-agreement gate variants."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:gate-variants": 1
+      }
+    },
+    {
+      "index": 17,
+      "labels": [
+        "tab:gate-headroom"
+      ],
+      "captions": [
+        "Held-out oracle headroom for a perfect expansion gate."
+      ],
+      "descriptions": [],
+      "has_caption": true,
+      "has_description": false,
+      "has_label": true,
+      "reference_counts": {
+        "tab:gate-headroom": 1
+      }
+    }
+  ],
+  "n_figures": 4,
+  "n_tables": 17,
+  "manual_bold_count": 0,
+  "em_dash_count": 0,
+  "forbidden_unicode_punctuation_counts": {},
+  "guarded_phrases": [
+    "groundbreaking",
+    "revolutionary",
+    "game-changing",
+    "state-of-the-art",
+    "cutting-edge",
+    "significant improvement",
+    "robust",
+    "in this work",
+    "seamless",
+    "delve",
+    "intricate",
+    "realm",
+    "tapestry",
+    "landscape",
+    "unlock",
+    "unleash",
+    "pivotal",
+    "underscore",
+    "utilize",
+    "leverage",
+    "moreover",
+    "furthermore",
+    "notably",
+    "it is worth noting",
+    "comprehensive",
+    "extense",
+    "extensive",
+    "extensively",
+    "novel"
+  ],
+  "hype_or_vague_phrase_hits": [],
+  "required_layout_controls": [
+    "\\captionsetup{font=small,labelfont=bf,skip=6pt}",
+    "\\captionsetup[table]{position=top,aboveskip=7pt,belowskip=9pt}",
+    "\\captionsetup[figure]{position=bottom,aboveskip=7pt,belowskip=9pt}",
+    "\\setlength{\\textfloatsep}{20pt plus 3pt minus 2pt}",
+    "\\setlength{\\floatsep}{18pt plus 3pt minus 2pt}",
+    "\\setlength{\\intextsep}{18pt plus 3pt minus 2pt}",
+    "\\setlength{\\tabcolsep}{5pt}",
+    "\\renewcommand{\\arraystretch}{1.08}",
+    "\\emergencystretch=1em"
+  ],
+  "missing_layout_controls": [],
+  "allowed_todos": [
+    "TODO: add GitHub URL",
+    "TODO: add Hugging Face dataset URL"
+  ],
+  "unexpected_todos": [],
+  "warnings": [],
+  "failures": [],
+  "clean": true
+}

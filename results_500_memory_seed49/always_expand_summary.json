@@ -1,0 +1,22 @@
+{
+  "method": "Always-Expand",
+  "recall@1": 0.388,
+  "recall@10": 0.718,
+  "expansion_trigger_rate": 1.0,
+  "n_expanded": 500,
+  "n_queries": 500,
+  "avg_latency_seconds_per_query": 3.1493950399653987,
+  "avg_estimated_llm_calls_per_query": 3.0,
+  "avg_actual_llm_calls_per_query": 1.548,
+  "avg_prompt_tokens_per_query": 235.67,
+  "avg_completion_tokens_per_query": 230.798,
+  "avg_total_tokens_per_query": 466.468,
+  "config": {
+    "confidence_threshold": 0.65,
+    "n_hypothetical_traces": 2,
+    "n_paraphrases": 2,
+    "mode": "always_expand",
+    "random_expand_rate": 0.0,
+    "seed": 49
+  }
+}

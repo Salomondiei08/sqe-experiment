@@ -1,0 +1,22 @@
+{
+  "method": "Selective-QE",
+  "recall@1": 0.438,
+  "recall@10": 0.77,
+  "expansion_trigger_rate": 0.478,
+  "n_expanded": 239,
+  "n_queries": 500,
+  "avg_latency_seconds_per_query": 2.2980630659786985,
+  "avg_estimated_llm_calls_per_query": 1.434,
+  "avg_actual_llm_calls_per_query": 1.434,
+  "avg_prompt_tokens_per_query": 217.64,
+  "avg_completion_tokens_per_query": 197.346,
+  "avg_total_tokens_per_query": 414.986,
+  "config": {
+    "confidence_threshold": 0.65,
+    "n_hypothetical_traces": 2,
+    "n_paraphrases": 2,
+    "mode": "selective",
+    "random_expand_rate": 0.0,
+    "seed": 45
+  }
+}

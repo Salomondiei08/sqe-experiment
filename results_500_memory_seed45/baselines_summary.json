@@ -1,0 +1,20 @@
+[
+  {
+    "method": "Dense-Only",
+    "recall@1": 0.464,
+    "recall@10": 0.756,
+    "n_queries": 500
+  },
+  {
+    "method": "BM25-Only",
+    "recall@1": 0.172,
+    "recall@10": 0.346,
+    "n_queries": 500
+  },
+  {
+    "method": "Hybrid-RRF",
+    "recall@1": 0.306,
+    "recall@10": 0.73,
+    "n_queries": 500
+  }
+]

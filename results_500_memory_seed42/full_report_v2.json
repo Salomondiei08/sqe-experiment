@@ -1,0 +1,634 @@
+{
+  "summaries": [
+    {
+      "method": "Dense-Only",
+      "recall@1": 0.49,
+      "recall@10": 0.754,
+      "n_queries": 500,
+      "recall@5": 0.698,
+      "mrr": 0.574109523809524,
+      "max_retrieved_depth": 10,
+      "avg_estimated_llm_calls_per_query": 0.0,
+      "avg_actual_llm_calls_per_query": 0.0,
+      "avg_prompt_tokens_per_query": 0.0,
+      "avg_completion_tokens_per_query": 0.0,
+      "avg_total_tokens_per_query": 0.0,
+      "recall@5_ci95": [
+        0.658,
+        0.738
+      ]
+    },
+    {
+      "method": "BM25-Only",
+      "recall@1": 0.176,
+      "recall@10": 0.358,
+      "n_queries": 500,
+      "recall@5": 0.314,
+      "mrr": 0.23262301587301587,
+      "max_retrieved_depth": 10,
+      "avg_estimated_llm_calls_per_query": 0.0,
+      "avg_actual_llm_calls_per_query": 0.0,
+      "avg_prompt_tokens_per_query": 0.0,
+      "avg_completion_tokens_per_query": 0.0,
+      "avg_total_tokens_per_query": 0.0,
+      "recall@5_ci95": [
+        0.272,
+        0.356
+      ]
+    },
+    {
+      "method": "Hybrid-RRF",
+      "recall@1": 0.354,
+      "recall@10": 0.732,
+      "n_queries": 500,
+      "recall@5": 0.64,
+      "mrr": 0.4737007936507937,
+      "max_retrieved_depth": 10,
+      "avg_estimated_llm_calls_per_query": 0.0,
+      "avg_actual_llm_calls_per_query": 0.0,
+      "avg_prompt_tokens_per_query": 0.0,
+      "avg_completion_tokens_per_query": 0.0,
+      "avg_total_tokens_per_query": 0.0,
+      "recall@5_ci95": [
+        0.6,
+        0.68
+      ]
+    },
+    {
+      "method": "Always-Expand",
+      "recall@1": 0.422,
+      "recall@10": 0.756,
+      "expansion_trigger_rate": 1.0,
+      "n_expanded": 500,
+      "n_queries": 500,
+      "avg_latency_seconds_per_query": 5.8029215983450415,
+      "avg_estimated_llm_calls_per_query": 3.0,
+      "config": {
+        "confidence_threshold": 0.65,
+        "n_hypothetical_traces": 2,
+        "n_paraphrases": 2,
+        "mode": "always_expand",
+        "random_expand_rate": 0.0,
+        "seed": 42
+      },
+      "_summary_file": "always_expand_summary.json",
+      "recall@5": 0.68,
+      "mrr": 0.5316214285714285,
+      "max_retrieved_depth": 10,
+      "avg_actual_llm_calls_per_query": 0.0,
+      "avg_prompt_tokens_per_query": 0.0,
+      "avg_completion_tokens_per_query": 0.0,
+      "avg_total_tokens_per_query": 0.0,
+      "recall@5_ci95": [
+        0.642,
+        0.722
+      ]
+    },
+    {
+      "method": "Paraphrases-Only",
+      "recall@1": 0.47,
+      "recall@10": 0.75,
+      "expansion_trigger_rate": 1.0,
+      "n_expanded": 500,
+      "n_queries": 500,
+      "avg_latency_seconds_per_query": 0.8142618010900915,
+      "avg_estimated_llm_calls_per_query": 1.0,
+      "config": {
+        "confidence_threshold": 0.65,
+        "n_hypothetical_traces": 2,
+        "n_paraphrases": 2,
+        "mode": "paraphrases_only",
+        "random_expand_rate": 0.0,
+        "seed": 42
+      },
+      "_summary_file": "paraphrases_only_summary.json",
+      "recall@5": 0.682,
+      "mrr": 0.5597595238095238,
+      "max_retrieved_depth": 10,
+      "avg_actual_llm_calls_per_query": 0.0,
+      "avg_prompt_tokens_per_query": 0.0,
+      "avg_completion_tokens_per_query": 0.0,
+      "avg_total_tokens_per_query": 0.0,
+      "recall@5_ci95": [
+        0.642,
+        0.722
+      ]
+    },
+    {
+      "method": "Selective-QE",
+      "recall@1": 0.472,
+      "recall@10": 0.754,
+      "expansion_trigger_rate": 0.46,
+      "n_expanded": 230,
+      "n_queries": 500,
+      "avg_latency_seconds_per_query": 1.0947779508652165,
+      "avg_estimated_llm_calls_per_query": 1.38,
+      "config": {
+        "confidence_threshold": 0.65,
+        "n_hypothetical_traces": 2,
+        "n_paraphrases": 2,
+        "mode": "selective",
+        "random_expand_rate": 0.0,
+        "seed": 42
+      },
+      "_summary_file": "proposed_summary.json",
+      "recall@5": 0.694,
+      "mrr": 0.5642880952380951,
+      "max_retrieved_depth": 10,
+      "avg_actual_llm_calls_per_query": 0.0,
+      "avg_prompt_tokens_per_query": 0.0,
+      "avg_completion_tokens_per_query": 0.0,
+      "avg_total_tokens_per_query": 0.0,
+      "recall@5_ci95": [
+        0.654,
+        0.734
+      ]
+    },
+    {
+      "method": "Random-Gated-Expansion",
+      "recall@1": 0.46,
+      "recall@10": 0.758,
+      "expansion_trigger_rate": 0.47,
+      "n_expanded": 235,
+      "n_queries": 500,
+      "avg_latency_seconds_per_query": 1.0718041639169678,
+      "avg_estimated_llm_calls_per_query": 1.41,
+      "config": {
+        "confidence_threshold": 0.65,
+        "n_hypothetical_traces": 2,
+        "n_paraphrases": 2,
+        "mode": "random_budget",
+        "random_expand_rate": 0.46,
+        "seed": 42
+      },
+      "_summary_file": "random_budget_summary.json",
+      "recall@5": 0.69,
+      "mrr": 0.553377777777778,
+      "max_retrieved_depth": 10,
+      "avg_actual_llm_calls_per_query": 0.0,
+      "avg_prompt_tokens_per_query": 0.0,
+      "avg_completion_tokens_per_query": 0.0,
+      "avg_total_tokens_per_query": 0.0,
+      "recall@5_ci95": [
+        0.65,
+        0.73
+      ]
+    },
+    {
+      "method": "HyDE-Traces-Only",
+      "recall@1": 0.362,
+      "recall@10": 0.704,
+      "expansion_trigger_rate": 1.0,
+      "n_expanded": 500,
+      "n_queries": 500,
+      "avg_latency_seconds_per_query": 1.348397321027238,
+      "avg_estimated_llm_calls_per_query": 2.0,
+      "config": {
+        "confidence_threshold": 0.65,
+        "n_hypothetical_traces": 2,
+        "n_paraphrases": 2,
+        "mode": "traces_only",
+        "random_expand_rate": 0.0,
+        "seed": 42
+      },
+      "_summary_file": "traces_only_summary.json",
+      "recall@5": 0.64,
+      "mrr": 0.4790468253968252,
+      "max_retrieved_depth": 10,
+      "avg_actual_llm_calls_per_query": 0.0,
+      "avg_prompt_tokens_per_query": 0.0,
+      "avg_completion_tokens_per_query": 0.0,
+      "avg_total_tokens_per_query": 0.0,
+      "recall@5_ci95": [
+        0.598,
+        0.682
+      ]
+    }
+  ],
+  "error_analysis": {
+    "total_queries": 500,
+    "expanded": {
+      "count": 230,
+      "hits": 142,
+      "misses": 88,
+      "recall": 0.6173913043478261
+    },
+    "not_expanded": {
+      "count": 270,
+      "hits": 205,
+      "misses": 65,
+      "recall": 0.7592592592592593
+    }
+  },
+  "threshold_sweep": [
+    {
+      "threshold": 0.45,
+      "expanded": 0,
+      "n": 500,
+      "recall@1": 0.49,
+      "recall@5": 0.698,
+      "recall@10": 0.754
+    },
+    {
+      "threshold": 0.5,
+      "expanded": 1,
+      "n": 500,
+      "recall@1": 0.49,
+      "recall@5": 0.7,
+      "recall@10": 0.756
+    },
+    {
+      "threshold": 0.55,
+      "expanded": 17,
+      "n": 500,
+      "recall@1": 0.492,
+      "recall@5": 0.7,
+      "recall@10": 0.756
+    },
+    {
+      "threshold": 0.6,
+      "expanded": 76,
+      "n": 500,
+      "recall@1": 0.492,
+      "recall@5": 0.7,
+      "recall@10": 0.758
+    },
+    {
+      "threshold": 0.62,
+      "expanded": 130,
+      "n": 500,
+      "recall@1": 0.494,
+      "recall@5": 0.702,
+      "recall@10": 0.762
+    },
+    {
+      "threshold": 0.64,
+      "expanded": 191,
+      "n": 500,
+      "recall@1": 0.486,
+      "recall@5": 0.696,
+      "recall@10": 0.754
+    },
+    {
+      "threshold": 0.65,
+      "expanded": 230,
+      "n": 500,
+      "recall@1": 0.472,
+      "recall@5": 0.694,
+      "recall@10": 0.754
+    },
+    {
+      "threshold": 0.66,
+      "expanded": 275,
+      "n": 500,
+      "recall@1": 0.466,
+      "recall@5": 0.698,
+      "recall@10": 0.758
+    },
+    {
+      "threshold": 0.68,
+      "expanded": 340,
+      "n": 500,
+      "recall@1": 0.454,
+      "recall@5": 0.69,
+      "recall@10": 0.758
+    },
+    {
+      "threshold": 0.7,
+      "expanded": 393,
+      "n": 500,
+      "recall@1": 0.442,
+      "recall@5": 0.692,
+      "recall@10": 0.758
+    },
+    {
+      "threshold": 0.75,
+      "expanded": 478,
+      "n": 500,
+      "recall@1": 0.428,
+      "recall@5": 0.68,
+      "recall@10": 0.756
+    },
+    {
+      "threshold": 0.8,
+      "expanded": 500,
+      "n": 500,
+      "recall@1": 0.422,
+      "recall@5": 0.68,
+      "recall@10": 0.756
+    }
+  ],
+  "validation_threshold_check": {
+    "validation_n": 250,
+    "test_n": 250,
+    "selected_threshold": 0.5,
+    "validation_selected": {
+      "threshold": 0.5,
+      "expanded": 1,
+      "n": 250,
+      "recall@1": 0.472,
+      "recall@5": 0.696,
+      "recall@10": 0.76
+    },
+    "test_dense_proxy": {
+      "threshold": 0.45,
+      "expanded": 0,
+      "n": 250,
+      "recall@1": 0.508,
+      "recall@5": 0.704,
+      "recall@10": 0.752
+    },
+    "test_fixed_0_65": {
+      "threshold": 0.65,
+      "expanded": 115,
+      "n": 250,
+      "recall@1": 0.496,
+      "recall@5": 0.712,
+      "recall@10": 0.776
+    },
+    "test_selected": {
+      "threshold": 0.5,
+      "expanded": 0,
+      "n": 250,
+      "recall@1": 0.508,
+      "recall@5": 0.704,
+      "recall@10": 0.752
+    },
+    "validation_rows": [
+      {
+        "threshold": 0.45,
+        "expanded": 0,
+        "n": 250,
+        "recall@1": 0.472,
+        "recall@5": 0.692,
+        "recall@10": 0.756
+      },
+      {
+        "threshold": 0.5,
+        "expanded": 1,
+        "n": 250,
+        "recall@1": 0.472,
+        "recall@5": 0.696,
+        "recall@10": 0.76
+      },
+      {
+        "threshold": 0.55,
+        "expanded": 10,
+        "n": 250,
+        "recall@1": 0.48,
+        "recall@5": 0.696,
+        "recall@10": 0.756
+      },
+      {
+        "threshold": 0.6,
+        "expanded": 39,
+        "n": 250,
+        "recall@1": 0.48,
+        "recall@5": 0.692,
+        "recall@10": 0.748
+      },
+      {
+        "threshold": 0.62,
+        "expanded": 67,
+        "n": 250,
+        "recall@1": 0.476,
+        "recall@5": 0.68,
+        "recall@10": 0.744
+      },
+      {
+        "threshold": 0.64,
+        "expanded": 92,
+        "n": 250,
+        "recall@1": 0.464,
+        "recall@5": 0.68,
+        "recall@10": 0.732
+      },
+      {
+        "threshold": 0.65,
+        "expanded": 115,
+        "n": 250,
+        "recall@1": 0.448,
+        "recall@5": 0.676,
+        "recall@10": 0.732
+      },
+      {
+        "threshold": 0.66,
+        "expanded": 140,
+        "n": 250,
+        "recall@1": 0.436,
+        "recall@5": 0.68,
+        "recall@10": 0.732
+      },
+      {
+        "threshold": 0.68,
+        "expanded": 175,
+        "n": 250,
+        "recall@1": 0.42,
+        "recall@5": 0.664,
+        "recall@10": 0.732
+      },
+      {
+        "threshold": 0.7,
+        "expanded": 203,
+        "n": 250,
+        "recall@1": 0.408,
+        "recall@5": 0.668,
+        "recall@10": 0.732
+      },
+      {
+        "threshold": 0.75,
+        "expanded": 244,
+        "n": 250,
+        "recall@1": 0.388,
+        "recall@5": 0.66,
+        "recall@10": 0.732
+      },
+      {
+        "threshold": 0.8,
+        "expanded": 250,
+        "n": 250,
+        "recall@1": 0.388,
+        "recall@5": 0.66,
+        "recall@10": 0.732
+      }
+    ]
+  },
+  "measured_token_runs": [
+    {
+      "method": "Always-Expand (always_expand_tokenmeasured500)",
+      "recall@1": 0.436,
+      "recall@10": 0.774,
+      "expansion_trigger_rate": 1.0,
+      "n_expanded": 500,
+      "n_queries": 500,
+      "avg_latency_seconds_per_query": 5.373794164918829,
+      "avg_estimated_llm_calls_per_query": 3.0,
+      "avg_actual_llm_calls_per_query": 2.994,
+      "avg_prompt_tokens_per_query": 455.474,
+      "avg_completion_tokens_per_query": 443.78,
+      "avg_total_tokens_per_query": 899.254,
+      "config": {
+        "confidence_threshold": 0.65,
+        "n_hypothetical_traces": 2,
+        "n_paraphrases": 2,
+        "mode": "always_expand",
+        "random_expand_rate": 0.0,
+        "seed": 42
+      },
+      "_summary_file": "/home/nlp-07/sqe_experiment/results_tokenmeasured_500_seed42/always_expand_tokenmeasured500_summary.json"
+    },
+    {
+      "method": "Paraphrases-Only (paraphrases_only_tokenmeasured500)",
+      "recall@1": 0.474,
+      "recall@10": 0.746,
+      "expansion_trigger_rate": 1.0,
+      "n_expanded": 500,
+      "n_queries": 500,
+      "avg_latency_seconds_per_query": 1.0187324356571772,
+      "avg_estimated_llm_calls_per_query": 1.0,
+      "avg_actual_llm_calls_per_query": 0.998,
+      "avg_prompt_tokens_per_query": 88.458,
+      "avg_completion_tokens_per_query": 43.182,
+      "avg_total_tokens_per_query": 131.64,
+      "config": {
+        "confidence_threshold": 0.65,
+        "n_hypothetical_traces": 2,
+        "n_paraphrases": 2,
+        "mode": "paraphrases_only",
+        "random_expand_rate": 0.0,
+        "seed": 42
+      },
+      "_summary_file": "/home/nlp-07/sqe_experiment/results_tokenmeasured_500_seed42/paraphrases_only_tokenmeasured500_summary.json"
+    },
+    {
+      "method": "Random-Gated-Expansion (random_budget_tokenmeasured500)",
+      "recall@1": 0.462,
+      "recall@10": 0.76,
+      "expansion_trigger_rate": 0.47,
+      "n_expanded": 235,
+      "n_queries": 500,
+      "avg_latency_seconds_per_query": 2.3954991693580525,
+      "avg_estimated_llm_calls_per_query": 1.41,
+      "avg_actual_llm_calls_per_query": 1.41,
+      "avg_prompt_tokens_per_query": 214.552,
+      "avg_completion_tokens_per_query": 209.33,
+      "avg_total_tokens_per_query": 423.882,
+      "config": {
+        "confidence_threshold": 0.65,
+        "n_hypothetical_traces": 2,
+        "n_paraphrases": 2,
+        "mode": "random_budget",
+        "random_expand_rate": 0.46,
+        "seed": 42
+      },
+      "_summary_file": "/home/nlp-07/sqe_experiment/results_tokenmeasured_500_seed42/random_budget_tokenmeasured500_summary.json"
+    },
+    {
+      "method": "Selective-QE (selective_tokenmeasured500)",
+      "recall@1": 0.474,
+      "recall@10": 0.758,
+      "expansion_trigger_rate": 0.46,
+      "n_expanded": 230,
+      "n_queries": 500,
+      "avg_latency_seconds_per_query": 2.765849279318936,
+      "avg_estimated_llm_calls_per_query": 1.38,
+      "avg_actual_llm_calls_per_query": 1.38,
+      "avg_prompt_tokens_per_query": 209.166,
+      "avg_completion_tokens_per_query": 195.924,
+      "avg_total_tokens_per_query": 405.09,
+      "config": {
+        "confidence_threshold": 0.65,
+        "n_hypothetical_traces": 2,
+        "n_paraphrases": 2,
+        "mode": "selective",
+        "random_expand_rate": 0.0,
+        "seed": 42
+      },
+      "_summary_file": "/home/nlp-07/sqe_experiment/results_tokenmeasured_500_seed42/selective_tokenmeasured500_summary.json"
+    },
+    {
+      "method": "HyDE-Traces-Only (traces_only_tokenmeasured500)",
+      "recall@1": 0.378,
+      "recall@10": 0.728,
+      "expansion_trigger_rate": 1.0,
+      "n_expanded": 500,
+      "n_queries": 500,
+      "avg_latency_seconds_per_query": 3.9914277877495623,
+      "avg_estimated_llm_calls_per_query": 2.0,
+      "avg_actual_llm_calls_per_query": 1.996,
+      "avg_prompt_tokens_per_query": 367.016,
+      "avg_completion_tokens_per_query": 391.184,
+      "avg_total_tokens_per_query": 758.2,
+      "config": {
+        "confidence_threshold": 0.65,
+        "n_hypothetical_traces": 2,
+        "n_paraphrases": 2,
+        "mode": "traces_only",
+        "random_expand_rate": 0.0,
+        "seed": 42
+      },
+      "_summary_file": "/home/nlp-07/sqe_experiment/results_tokenmeasured_500_seed42/traces_only_tokenmeasured500_summary.json"
+    }
+  ],
+  "paired_bootstrap_recall5": {
+    "Dense-Only": {
+      "delta": -0.004,
+      "ci95": [
+        -0.026,
+        0.018
+      ],
+      "p_bootstrap": 0.7768,
+      "n": 500
+    },
+    "Hybrid-RRF": {
+      "delta": 0.054,
+      "ci95": [
+        0.022,
+        0.086
+      ],
+      "p_bootstrap": 0.0016,
+      "n": 500
+    },
+    "Always-Expand": {
+      "delta": 0.014,
+      "ci95": [
+        -0.004,
+        0.032
+      ],
+      "p_bootstrap": 0.1508,
+      "n": 500
+    },
+    "Random-Gated-Expansion": {
+      "delta": 0.004,
+      "ci95": [
+        -0.016,
+        0.024
+      ],
+      "p_bootstrap": 0.738,
+      "n": 500
+    },
+    "Paraphrases-Only": {
+      "delta": 0.012,
+      "ci95": [
+        -0.01,
+        0.034
+      ],
+      "p_bootstrap": 0.314,
+      "n": 500
+    },
+    "HyDE-Traces-Only": {
+      "delta": 0.054,
+      "ci95": [
+        0.026,
+        0.082
+      ],
+      "p_bootstrap": 0.0004,
+      "n": 500
+    }
+  },
+  "caveats": [
+    "Current run has 500 generated queries from one seed.",
+    "Pass@1 has not been measured.",
+    "The top-1 score gate requires calibration on larger data."
+  ]
+}

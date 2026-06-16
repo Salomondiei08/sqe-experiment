@@ -1,0 +1,201 @@
+{
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "seed_family": "independent_memory",
+  "metric": "Recall@5",
+  "procedure": "For each seed, select the best top-1-score threshold on the first half of sorted query IDs, then evaluate on the second half using executed dense-only rows when score >= threshold and executed always-expand rows when score < threshold.",
+  "seed_reports": [
+    {
+      "seed": 42,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed42",
+      "n_train": 250,
+      "n_test": 250,
+      "threshold": 0.5,
+      "train_recall": 0.696,
+      "test_recall": 0.704,
+      "dense_test_recall": 0.704,
+      "test_delta_vs_dense": 0.0,
+      "test_expansion_rate": 0.0,
+      "threshold_grid": [
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8
+      ]
+    },
+    {
+      "seed": 43,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed43",
+      "n_train": 250,
+      "n_test": 250,
+      "threshold": 0.6,
+      "train_recall": 0.7,
+      "test_recall": 0.64,
+      "dense_test_recall": 0.636,
+      "test_delta_vs_dense": 0.0040000000000000036,
+      "test_expansion_rate": 0.172,
+      "threshold_grid": [
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8
+      ]
+    },
+    {
+      "seed": 44,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed44",
+      "n_train": 250,
+      "n_test": 250,
+      "threshold": 0.75,
+      "train_recall": 0.768,
+      "test_recall": 0.72,
+      "dense_test_recall": 0.692,
+      "test_delta_vs_dense": 0.028000000000000025,
+      "test_expansion_rate": 0.964,
+      "threshold_grid": [
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8
+      ]
+    },
+    {
+      "seed": 45,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed45",
+      "n_train": 250,
+      "n_test": 250,
+      "threshold": 0.75,
+      "train_recall": 0.712,
+      "test_recall": 0.736,
+      "dense_test_recall": 0.696,
+      "test_delta_vs_dense": 0.040000000000000036,
+      "test_expansion_rate": 0.976,
+      "threshold_grid": [
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8
+      ]
+    },
+    {
+      "seed": 46,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed46",
+      "n_train": 250,
+      "n_test": 250,
+      "threshold": 0.65,
+      "train_recall": 0.744,
+      "test_recall": 0.72,
+      "dense_test_recall": 0.712,
+      "test_delta_vs_dense": 0.008000000000000007,
+      "test_expansion_rate": 0.516,
+      "threshold_grid": [
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8
+      ]
+    },
+    {
+      "seed": 47,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed47",
+      "n_train": 250,
+      "n_test": 250,
+      "threshold": 0.45,
+      "train_recall": 0.656,
+      "test_recall": 0.684,
+      "dense_test_recall": 0.684,
+      "test_delta_vs_dense": 0.0,
+      "test_expansion_rate": 0.0,
+      "threshold_grid": [
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8
+      ]
+    },
+    {
+      "seed": 48,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed48",
+      "n_train": 250,
+      "n_test": 250,
+      "threshold": 0.7,
+      "train_recall": 0.68,
+      "test_recall": 0.692,
+      "dense_test_recall": 0.692,
+      "test_delta_vs_dense": 0.0,
+      "test_expansion_rate": 0.828,
+      "threshold_grid": [
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8
+      ]
+    },
+    {
+      "seed": 49,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed49",
+      "n_train": 250,
+      "n_test": 250,
+      "threshold": 0.6,
+      "train_recall": 0.684,
+      "test_recall": 0.644,
+      "dense_test_recall": 0.636,
+      "test_delta_vs_dense": 0.008000000000000007,
+      "test_expansion_rate": 0.196,
+      "threshold_grid": [
+        0.45,
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8
+      ]
+    }
+  ],
+  "aggregate": {
+    "n_seeds": 8,
+    "train_recall_mean": 0.705,
+    "test_recall_mean": 0.6925,
+    "dense_test_recall_mean": 0.6815,
+    "test_delta_vs_dense_mean": 0.01100000000000001,
+    "test_expansion_rate_mean": 0.4565
+  }
+}

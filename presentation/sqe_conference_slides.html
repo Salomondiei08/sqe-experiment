@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Selective Query-Side Expansion for Agent Memory Retrieval</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5b6472;
+      --blue: #2e6f9e;
+      --blue-soft: #e8f2f8;
+      --orange: #cf7f3f;
+      --orange-soft: #fff3e8;
+      --green: #3f8f67;
+      --green-soft: #eaf7f0;
+      --line: #c9d3de;
+      --gray: #eef2f6;
+      --red: #b42318;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: #dfe5eb;
+    }
+
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      padding: 5.2vh 5.4vw 4.8vh;
+      background: var(--white);
+      position: absolute;
+      inset: 0;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5.4vw, 70px);
+      line-height: 1.02;
+      margin: 0;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: clamp(28px, 3.1vw, 42px);
+      line-height: 1.08;
+      margin: 0 0 2.4vh;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    h3 {
+      margin: 0 0 1.2vh;
+      font-size: clamp(18px, 1.7vw, 25px);
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: clamp(18px, 1.55vw, 25px);
+      line-height: 1.32;
+      margin: 0;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      max-width: 980px;
+      margin-top: 2.5vh;
+      font-size: clamp(21px, 2vw, 31px);
+      line-height: 1.25;
+    }
+
+    .author {
+      margin-top: auto;
+      padding-bottom: 2vh;
+      color: var(--muted);
+      font-size: clamp(16px, 1.3vw, 22px);
+      line-height: 1.35;
+    }
+
+    .accent-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1.1vw;
+      background: var(--blue);
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--line);
+      margin-bottom: 3.2vh;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2vw;
+      flex: 1;
+      align-items: center;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3vw;
+      flex: 1;
+      align-items: center;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 3vh 2vw;
+      min-height: 28vh;
+      background: var(--white);
+      position: relative;
+    }
+
+    .card.blue { background: var(--blue-soft); border-left: 8px solid var(--blue); }
+    .card.orange { background: var(--orange-soft); border-left: 8px solid var(--orange); }
+    .card.green { background: var(--green-soft); border-left: 8px solid var(--green); }
+    .card.gray { background: var(--gray); border-left: 8px solid var(--blue); }
+
+    .card p, li {
+      color: var(--muted);
+      font-size: clamp(17px, 1.35vw, 22px);
+      line-height: 1.34;
+    }
+
+    ul {
+      margin: 1.3vh 0 0;
+      padding-left: 1.35em;
+    }
+
+    li { margin: 0.65vh 0; }
+
+    .big-number {
+      display: block;
+      font-size: clamp(42px, 5vw, 76px);
+      line-height: 1;
+      color: var(--blue);
+      font-weight: 700;
+      margin-bottom: 1vh;
+    }
+
+    .orange-number { color: var(--orange); }
+    .green-number { color: var(--green); }
+
+    .center {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .statement {
+      max-width: 1050px;
+      font-size: clamp(31px, 3.7vw, 58px);
+      line-height: 1.12;
+      font-weight: 700;
+    }
+
+    .figure {
+      width: 100%;
+      max-height: 67vh;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 1vh;
+    }
+
+    .figure-row {
+      display: grid;
+      grid-template-columns: 1.65fr 1fr;
+      gap: 2.8vw;
+      align-items: center;
+      flex: 1;
+    }
+
+    .caption {
+      color: var(--muted);
+      text-align: center;
+      font-size: clamp(14px, 1.1vw, 18px);
+      margin-top: 1vh;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5vw;
+      margin-top: 3vh;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--gray);
+      padding: 2.2vh 1.2vw;
+      text-align: center;
+      min-height: 15vh;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--blue);
+      font-size: clamp(31px, 3.4vw, 52px);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 1.1vh;
+    }
+
+    .metric p {
+      font-size: clamp(14px, 1.15vw, 19px);
+      color: var(--muted);
+    }
+
+    .claim-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.4vw;
+      flex: 1;
+      align-items: stretch;
+    }
+
+    .steps {
+      display: grid;
+      gap: 2.1vh;
+      margin-top: 2vh;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 1.2vw;
+      align-items: start;
+    }
+
+    .step-num {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      font-weight: 700;
+    }
+
+    .step h3 { margin-bottom: 0.4vh; }
+    .step p { color: var(--muted); font-size: clamp(17px, 1.35vw, 22px); }
+
+    .footer {
+      position: absolute;
+      left: 5.4vw;
+      right: 5.4vw;
+      bottom: 2.2vh;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .nav {
+      position: fixed;
+      right: 18px;
+      bottom: 14px;
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .nav button {
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .progress {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      height: 4px;
+      background: var(--blue);
+      width: 0;
+      z-index: 20;
+    }
+
+    @media print {
+      body { background: white; }
+      .deck { height: auto; overflow: visible; }
+      .slide {
+        display: flex !important;
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        page-break-after: always;
+      }
+      .nav, .progress { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck" aria-live="polite">
+    <section class="slide active">
+      <div class="accent-bar"></div>
+      <div class="center" style="justify-content:flex-start;text-align:left">
+        <div>
+          <h1>Selective Query-Side Expansion<br>for Agent Memory Retrieval</h1>
+          <p class="subtitle">A practical way to recover useful memories when agent logs and user questions use different language.</p>
+        </div>
+      </div>
+      <p class="author">Salomon DIEI<br>School of Computer Science and Engineering, KOREATECH</p>
+    </section>
+
+    <section class="slide">
+      <h2>The talk in one minute</h2><div class="rule"></div>
+      <div class="grid-3">
+        <div class="card blue"><h3>Problem</h3><p>Useful past memories exist, but retrieval misses them because logs and questions use different words.</p></div>
+        <div class="card orange"><h3>Idea</h3><p>When retrieval is uncertain, ask again using execution-style traces and paraphrased queries.</p></div>
+        <div class="card green"><h3>Result</h3><p>SQE is competitive with dense retrieval and above Hybrid-RRF, but end-to-end Pass@1 is still pending.</p></div>
+      </div>
+      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>2</span></div>
+    </section>
+
+    <section class="slide">
+      <h2>Why agent memory retrieval fails</h2><div class="rule"></div>
+      <div class="grid-2">
+        <div class="card gray"><h3>What is stored</h3><ul><li>Terminal outputs</li><li>Stack traces</li><li>Test failures</li><li>Patch diffs</li></ul></div>
+        <div class="card orange"><h3>What is asked later</h3><ul><li>Natural-language questions</li><li>High-level bug descriptions</li><li>Short reminders</li><li>Issue summaries</li></ul></div>
+      </div>
+      <div class="center" style="flex:0.45"><p class="statement">The memory may be present, but the query does not look like the memory.</p></div>
+      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>3</span></div>
+    </section>
+
+    <section class="slide">
+      <h2>The simple intuition</h2><div class="rule"></div>
+      <div class="center" style="flex:0.45"><p class="statement">Ask the memory index in the language the memory was written in.</p></div>
+      <div class="grid-3">
+        <div class="card blue"><h3>1. Try normal retrieval</h3><p>Use the original question first. If confidence is high, avoid extra compute.</p></div>
+        <div class="card orange"><h3>2. Expand only if needed</h3><p>Generate execution-style traces and paraphrases for low-confidence queries.</p></div>
+        <div class="card green"><h3>3. Fuse the results</h3><p>Retrieve each variant and combine rankings with Reciprocal Rank Fusion.</p></div>
+      </div>
+      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>4</span></div>
+    </section>
+
+    <section class="slide">
+      <h2>How SQE works</h2><div class="rule"></div>
+      <img class="figure" src="../paper/figures/method_overview.png" alt="Flow diagram of SQE retrieval">
+      <p class="caption">The memory store is unchanged. Only the query is expanded when the first retrieval result looks uncertain.</p>
+      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>5</span></div>
+    </section>
+
+    <section class="slide">
+      <h2>Evaluation design</h2><div class="rule"></div>
+      <div class="metric-row">
+        <div class="metric"><span>5,000</span><p>memory episodes per seed</p></div>
+        <div class="metric"><span>500</span><p>query-memory pairs per seed</p></div>
+        <div class="metric"><span>8</span><p>independent memory-index seeds</p></div>
+        <div class="metric"><span>4,000</span><p>paired query rows in aggregate</p></div>
+      </div>
+      <div class="grid-2" style="margin-top:4vh">
+        <div class="card blue"><h3>Metric used today</h3><p>Recall@5: does the target memory appear in the top five retrieved memories?</p></div>
+        <div class="card orange"><h3>Important boundary</h3><p>This is a retrieval study. Agent Pass@1 task success has not been measured yet.</p></div>
+      </div>
+      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>6</span></div>
+    </section>
+
+    <section class="slide">
+      <h2>Main retrieval result</h2><div class="rule"></div>
+      <div class="grid-3">
+        <div class="card blue"><h3>Dense retrieval</h3><span class="big-number">69.8%</span><p>Strong baseline, seed-42 audit run.</p></div>
+        <div class="card orange"><h3>SQE</h3><span class="big-number orange-number">69.4%</span><p>Selective expansion, seed-42 audit run.</p></div>
+        <div class="card green"><h3>Hybrid-RRF</h3><span class="big-number green-number">64.0%</span><p>Sparse+dense fusion baseline, seed-42 audit run.</p></div>
+      </div>
+      <p class="caption">Interpretation: SQE is competitive with dense retrieval and above Hybrid-RRF, but it does not beat the strongest baseline in this seed.</p>
+      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>7</span></div>
+    </section>
+
+    <section class="slide">
+      <h2>Method comparison</h2><div class="rule"></div>
+      <img class="figure" src="../paper/figures/recall_at_5.png" alt="Recall at 5 comparison across methods">
+      <p class="caption">The key comparison is retrieval quality, not final software-task success.</p>
+      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>8</span></div>
+    </section>
+
+    <section class="slide">
+      <h2>Across independent memory seeds</h2><div class="rule"></div>
+      <div class="grid-3">
+        <div class="card green"><h3>Mean Recall@5</h3><ul><li>SQE: 69.4%</li><li>Dense: 68.5%</li><li>Always-expand: 69.2%</li><li>Random-gated: 68.9%</li></ul></div>
+        <div class="card blue"><h3>Paired effect</h3><p>SQE vs Dense: +0.9 points<br>95% interval: [0.1, 1.7]</p></div>
+        <div class="card orange"><h3>Budget control</h3><p>SQE vs Random-gated: +0.5 points<br>The interval crosses zero.</p></div>
+      </div>
+      <div class="center" style="flex:0.35"><p class="statement" style="font-size:clamp(24px,2.7vw,42px)">Current evidence supports a small retrieval-only difference, not a strong end-to-end performance claim.</p></div>
+      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>9</span></div>
+    </section>
+
+    <section class="slide">
+      <h2>What did not work yet: the confidence gate</h2><div class="rule"></div>
+      <div class="figure-row">
+        <div><img class="figure" src="../paper/figures/gate_diagnostic.png" alt="Gate diagnostic chart"></div>
+        <div>
+          <div class="card orange" style="margin-bottom:3vh"><h3>Finding</h3><p>The dense top-1 score does not separate easy and hard retrieval cases cleanly.</p></div>
+          <div class="card gray"><h3>Implication</h3><p>The method idea is plausible, but the gate needs stronger calibration before a top-tier claim.</p></div>
+        </div>
+      </div>
+      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>10</span></div>
+    </section>
+
+    <section class="slide">
+      <h2>What I can claim today</h2><div class="rule"></div>
+      <div class="claim-grid">
+        <div class="card green"><h3>Supported by the current data</h3><ul><li>SQE can be added at retrieval time.</li><li>It leaves memory writing unchanged.</li><li>It reduces expansion calls relative to always-expand.</li><li>It gives a small Recall@5 gain over dense retrieval across seeds.</li></ul></div>
+        <div class="card orange"><h3>Not claimed yet</h3><ul><li>No Pass@1 agent-success result yet.</li><li>No human-audited query-label result yet.</li><li>No clear advantage over the random-gated budget control.</li><li>The gate is not solved.</li></ul></div>
+      </div>
+      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>11</span></div>
+    </section>
+
+    <section class="slide">
+      <h2>Next steps before submission</h2><div class="rule"></div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div><h3>Run downstream Pass@1</h3><p>Measure whether retrieved memories actually help solve software tasks.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div><h3>Collect human labels</h3><p>Audit whether generated queries match realistic user or agent questions.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div><h3>Improve the gate</h3><p>Validate a selector using score margin, dense-sparse agreement, and query features.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div><h3>Release artifacts</h3><p>Publish code and dataset package with GitHub and Hugging Face links.</p></div></div>
+      </div>
+      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>12</span></div>
+    </section>
+
+    <section class="slide">
+      <div class="center">
+        <div>
+          <h1>Thank you</h1>
+          <p class="subtitle" style="margin-left:auto;margin-right:auto;text-align:center">Salomon DIEI | salomon@koreatech.ac.kr</p>
+          <p class="subtitle" style="margin-left:auto;margin-right:auto;text-align:center;color:var(--blue)">Takeaway: SQE is a practical retrieval-time idea with a modest retrieval signal and clear next experiments.</p>
+        </div>
+      </div>
+      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>13</span></div>
+    </section>
+  </main>
+
+  <div class="progress" id="progress"></div>
+  <div class="nav" aria-label="Slide navigation">
+    <button type="button" onclick="prevSlide()">Back</button>
+    <button type="button" onclick="nextSlide()">Next</button>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let index = 0;
+
+    function showSlide(i) {
+      index = Math.max(0, Math.min(slides.length - 1, i));
+      slides.forEach((slide, n) => slide.classList.toggle('active', n === index));
+      document.getElementById('progress').style.width = `${((index + 1) / slides.length) * 100}%`;
+      location.hash = String(index + 1);
+    }
+
+    function nextSlide() { showSlide(index + 1); }
+    function prevSlide() { showSlide(index - 1); }
+
+    document.addEventListener('keydown', (event) => {
+      if (['ArrowRight', 'PageDown', ' '].includes(event.key)) nextSlide();
+      if (['ArrowLeft', 'PageUp', 'Backspace'].includes(event.key)) prevSlide();
+      if (event.key === 'Home') showSlide(0);
+      if (event.key === 'End') showSlide(slides.length - 1);
+    });
+
+    const start = Number(location.hash.replace('#', ''));
+    if (start >= 1 && start <= slides.length) showSlide(start - 1);
+    else showSlide(0);
+  </script>
+</body>
+</html>

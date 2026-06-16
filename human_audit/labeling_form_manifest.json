@@ -1,0 +1,8 @@
+{
+  "artifact_type": "human_audit_labeling_form",
+  "is_evidence": false,
+  "n_rows": 100,
+  "note": "Reviewer convenience artifact only. This is not a labeled dataset and not paper evidence.",
+  "output": "/home/nlp-07/sqe_experiment/human_audit/labeling_form.html",
+  "source": "/home/nlp-07/sqe_experiment/human_audit/human_audit_queries.jsonl"
+}

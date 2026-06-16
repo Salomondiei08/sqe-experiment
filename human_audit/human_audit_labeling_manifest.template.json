@@ -1,0 +1,25 @@
+{
+  "note": "Template only. Rename to human_audit_labeling_manifest.json only after real human labels have been collected.",
+  "reviewers": [
+    "TODO: reviewer A name or ID",
+    "TODO: reviewer B name or ID"
+  ],
+  "label_set": [
+    "no",
+    "uncertain",
+    "yes"
+  ],
+  "labeling_date": "TODO: YYYY-MM-DD",
+  "n_labeled_rows": "TODO: integer",
+  "source_csv": "human_audit_queries.csv",
+  "labeled_csv": "labeled_human_audit_queries.csv",
+  "protocol_notes": [
+    "Reviewers must not edit query_id, query, target_episode_id, or target_excerpt.",
+    "Use yes/no/uncertain only for the three required label fields.",
+    "Use uncertain instead of guessing.",
+    "Follow human_audit/LABELING_PROTOCOL.md."
+  ],
+  "adjudication_notes": [
+    "TODO: describe how reviewer disagreements were reconciled before producing the final labeled CSV."
+  ]
+}

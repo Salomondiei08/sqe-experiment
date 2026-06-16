@@ -1,0 +1,24 @@
+{
+  "root": "/home/nlp-07/sqe_experiment",
+  "paper_dir": "/home/nlp-07/sqe_experiment/paper",
+  "tex": "/home/nlp-07/sqe_experiment/paper/main.tex",
+  "tectonic": "/home/nlp-07/.local/bin/tectonic-musl",
+  "checked_at_utc": "2026-05-15T06:50:19.556321+00:00",
+  "returncode": 0,
+  "warning_patterns": [
+    "\\bwarning:",
+    "Overfull \\\\hbox",
+    "Underfull \\\\hbox",
+    "LaTeX Warning:",
+    "Package .* Warning:",
+    "undefined references",
+    "Rerun to get"
+  ],
+  "warnings": [],
+  "failures": [],
+  "log_tail": "note: Running TeX ...\nnote: Running BibTeX on main.aux ...\nnote: Rerunning TeX because bibtex was run ...\nnote: Rerunning TeX because \"main.aux\" changed ...\nnote: Running xdvipdfmx ...\nnote: Writing `main.pdf` (461.953125 KiB)\nnote: Skipped writing 3 intermediate files (use --keep-intermediates to keep them)\n",
+  "pdf": "/home/nlp-07/sqe_experiment/paper/main.pdf",
+  "pdf_bytes": 473040,
+  "pdf_pages": 11,
+  "clean_build": true
+}

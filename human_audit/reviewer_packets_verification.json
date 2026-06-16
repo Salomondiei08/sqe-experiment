@@ -1,0 +1,21 @@
+{
+  "audit_dir": "/home/nlp-07/sqe_experiment/human_audit",
+  "failures": [],
+  "is_experiment_evidence": false,
+  "manifest": "/home/nlp-07/sqe_experiment/human_audit/reviewer_packets/assignment_manifest.json",
+  "packet_dir": "/home/nlp-07/sqe_experiment/human_audit/reviewer_packets",
+  "packet_reports": [
+    {
+      "contains_filled_labels": false,
+      "n_rows": 100,
+      "path": "/home/nlp-07/sqe_experiment/human_audit/reviewer_packets/reviewer_a.csv"
+    },
+    {
+      "contains_filled_labels": false,
+      "n_rows": 100,
+      "path": "/home/nlp-07/sqe_experiment/human_audit/reviewer_packets/reviewer_b.csv"
+    }
+  ],
+  "source_csv": "/home/nlp-07/sqe_experiment/human_audit/human_audit_queries.csv",
+  "warnings": []
+}

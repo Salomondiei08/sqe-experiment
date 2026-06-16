@@ -1,0 +1,12 @@
+name: codex
+command: codex
+
+# Uses the account/config already installed for the local Codex CLI.
+# Set model/profile here only if the benchmark should override ~/.codex/config.toml.
+# model: gpt-5.4
+# profile: default
+
+sandbox: danger-full-access
+ask_for_approval: never
+bypass_approvals_and_sandbox: false
+

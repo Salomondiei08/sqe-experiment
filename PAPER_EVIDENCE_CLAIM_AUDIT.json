@@ -1,0 +1,18 @@
+{
+  "artifact_type": "paper_evidence_claim_audit",
+  "blocking_count": 2,
+  "clean": true,
+  "created_at_utc": "2026-05-15T06:48:22.240104+00:00",
+  "failures": [],
+  "matches": [],
+  "missing_required_limitations": [],
+  "paper": "/home/nlp-07/sqe_experiment/paper/main.tex",
+  "readiness": "/home/nlp-07/sqe_experiment/SUBMISSION_READINESS.json",
+  "required_limitation_phrases": [
+    "Downstream Pass@1 evaluation and human-audited query labels remain",
+    "Pass@1 has not yet been measured",
+    "A stronger paper requires human-audited query labels"
+  ],
+  "strong_submission_ready": false,
+  "warnings": []
+}

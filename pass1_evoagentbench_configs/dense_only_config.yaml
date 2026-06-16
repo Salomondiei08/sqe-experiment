@@ -1,0 +1,15 @@
+agent_configs:
+  codex: /home/nlp-07/sqe_experiment/pass1_evoagentbench_configs/codex_agent.yaml
+
+agent: codex
+
+domain:
+  name: software_engineering
+  config: /home/nlp-07/sqe_experiment/pass1_evoagentbench_configs/dense_only_software_engineering.yaml
+
+job_dir: /home/nlp-07/evermemos/EverOS/benchmarks/EvoAgentBench/jobs
+trials: 1
+parallel: 1
+max_retries: 0
+live: false
+

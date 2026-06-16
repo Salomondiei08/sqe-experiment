@@ -1,0 +1,67 @@
+{
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "seed_family": "independent_memory",
+  "metric": "Recall@5",
+  "method": "Selective-QE",
+  "bootstrap_samples": 5000,
+  "bootstrap_seed": 42,
+  "rows": [
+    {
+      "baseline": "Dense-Only",
+      "n_queries": 4000,
+      "delta": 0.00875,
+      "ci_low": 0.001,
+      "ci_high": 0.0165,
+      "p_value": 0.0154
+    },
+    {
+      "baseline": "Hybrid-RRF",
+      "n_queries": 4000,
+      "delta": 0.0585,
+      "ci_low": 0.0475,
+      "ci_high": 0.06975,
+      "p_value": 0.0
+    },
+    {
+      "baseline": "Always-Expand",
+      "n_queries": 4000,
+      "delta": 0.0015,
+      "ci_low": -0.00425,
+      "ci_high": 0.00725,
+      "p_value": 0.3148
+    },
+    {
+      "baseline": "Random-Gated-Expansion",
+      "n_queries": 4000,
+      "delta": 0.00475,
+      "ci_low": -0.00175,
+      "ci_high": 0.0115,
+      "p_value": 0.085
+    },
+    {
+      "baseline": "Paraphrases-Only",
+      "n_queries": 4000,
+      "delta": 0.01125,
+      "ci_low": 0.003,
+      "ci_high": 0.0195,
+      "p_value": 0.0052
+    },
+    {
+      "baseline": "HyDE-Traces-Only",
+      "n_queries": 4000,
+      "delta": 0.05625,
+      "ci_low": 0.04674375,
+      "ci_high": 0.066,
+      "p_value": 0.0
+    }
+  ]
+}

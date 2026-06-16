@@ -1,0 +1,1320 @@
+{
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "seed_family": "independent_memory",
+  "metric": "Recall@5",
+  "bm25_agreement_k": 10,
+  "procedure": "For each independent memory seed, select a policy and threshold on the first half of sorted query IDs, then evaluate on the second half by recombining executed dense-only rows with executed always-expand rows. BM25 agreement is computed from executed BM25-only rows.",
+  "policies": [
+    "score_only",
+    "score_and_no_bm25_agreement",
+    "score_or_no_bm25_agreement"
+  ],
+  "threshold_grid": [
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8
+  ],
+  "seed_reports": [
+    {
+      "seed": 42,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed42",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "score_and_no_bm25_agreement",
+      "threshold": 0.5,
+      "train_recall": 0.696,
+      "train_expansion_rate": 0.004,
+      "test_recall": 0.704,
+      "dense_test_recall": 0.704,
+      "test_delta_vs_dense": 0.0,
+      "test_expansion_rate": 0.0,
+      "candidate_grid": [
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.004
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.5,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.004
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.036
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.55,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.04
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.14
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.45,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.6,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.156
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.36
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.65,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.46
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.592
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.648
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.652
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.652
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.652
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.656
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.668
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.7,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.812
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.872
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.752
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.75,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.976
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.98
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.8,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed43",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "score_or_no_bm25_agreement",
+      "threshold": 0.65,
+      "train_recall": 0.704,
+      "train_expansion_rate": 0.772,
+      "test_recall": 0.64,
+      "dense_test_recall": 0.636,
+      "test_delta_vs_dense": 0.0040000000000000036,
+      "test_expansion_rate": 0.796,
+      "candidate_grid": [
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.704,
+          "train_expansion_rate": 0.772
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.6,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.184
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.696
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.904
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.124
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.65,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.508
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.636
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.636
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.636
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.64
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.648
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.75,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.98
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.98
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.8,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.45,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.5,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.004
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.04
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.55,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.052
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.7,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.816
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.688,
+          "train_expansion_rate": 0.372
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.688,
+          "train_expansion_rate": 0.548
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed44",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "score_only",
+      "threshold": 0.75,
+      "train_recall": 0.768,
+      "train_expansion_rate": 0.96,
+      "test_recall": 0.72,
+      "dense_test_recall": 0.692,
+      "test_delta_vs_dense": 0.028000000000000025,
+      "test_expansion_rate": 0.964,
+      "candidate_grid": [
+        {
+          "policy": "score_only",
+          "threshold": 0.75,
+          "train_recall": 0.768,
+          "train_expansion_rate": 0.96
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.544
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.612
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.7,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.764
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.976
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.8,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.628
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.628
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.628
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.636
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.848
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.756,
+          "train_expansion_rate": 0.644
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.756,
+          "train_expansion_rate": 0.728
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.752,
+          "train_expansion_rate": 0.132
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.752,
+          "train_expansion_rate": 0.34
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.45,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.5,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.012
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.55,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.02
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.6,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.148
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.65,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.44
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed45",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "score_or_no_bm25_agreement",
+      "threshold": 0.7,
+      "train_recall": 0.712,
+      "train_expansion_rate": 0.86,
+      "test_recall": 0.736,
+      "dense_test_recall": 0.696,
+      "test_delta_vs_dense": 0.040000000000000036,
+      "test_expansion_rate": 0.904,
+      "candidate_grid": [
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.86
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.75,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.948
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.968
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.8,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.7,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.764
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.668
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.764
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.612
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.632
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.632
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.632
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.65,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.464
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.536
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.64
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.688,
+          "train_expansion_rate": 0.332
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.45,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.5,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.68,
+          "train_expansion_rate": 0.04
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.6,
+          "train_recall": 0.68,
+          "train_expansion_rate": 0.18
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.55,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.048
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.144
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed46",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "score_only",
+      "threshold": 0.65,
+      "train_recall": 0.744,
+      "train_expansion_rate": 0.472,
+      "test_recall": 0.72,
+      "dense_test_recall": 0.712,
+      "test_delta_vs_dense": 0.008000000000000007,
+      "test_expansion_rate": 0.516,
+      "candidate_grid": [
+        {
+          "policy": "score_only",
+          "threshold": 0.65,
+          "train_recall": 0.744,
+          "train_expansion_rate": 0.472
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.736,
+          "train_expansion_rate": 0.368
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.736,
+          "train_expansion_rate": 0.764
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.45,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.5,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.876
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.75,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.96
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.976
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.8,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.032
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.55,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.048
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.136
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.6,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.16
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.644
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.66
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.66
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.66
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.676
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.684
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.7,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.78
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.724,
+          "train_expansion_rate": 0.564
+        }
+      ]
+    },
+    {
+      "seed": 47,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed47",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "score_and_no_bm25_agreement",
+      "threshold": 0.45,
+      "train_recall": 0.656,
+      "train_expansion_rate": 0.0,
+      "test_recall": 0.684,
+      "dense_test_recall": 0.684,
+      "test_delta_vs_dense": 0.0,
+      "test_expansion_rate": 0.0,
+      "candidate_grid": [
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.45,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.004
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.5,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.004
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.028
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.55,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.028
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.6,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.16
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.652,
+          "train_expansion_rate": 0.132
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.648,
+          "train_expansion_rate": 0.4
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.65,
+          "train_recall": 0.644,
+          "train_expansion_rate": 0.516
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.644,
+          "train_expansion_rate": 0.584
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.644,
+          "train_expansion_rate": 0.648
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.644,
+          "train_expansion_rate": 0.692
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.664
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.664
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.664
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.664
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.7,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.836
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.636,
+          "train_expansion_rate": 0.78
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.636,
+          "train_expansion_rate": 0.916
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.75,
+          "train_recall": 0.636,
+          "train_expansion_rate": 0.956
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.972
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.8,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.996
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.996
+        }
+      ]
+    },
+    {
+      "seed": 48,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed48",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "score_and_no_bm25_agreement",
+      "threshold": 0.7,
+      "train_recall": 0.688,
+      "train_expansion_rate": 0.528,
+      "test_recall": 0.688,
+      "dense_test_recall": 0.692,
+      "test_delta_vs_dense": -0.0040000000000000036,
+      "test_expansion_rate": 0.556,
+      "candidate_grid": [
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.688,
+          "train_expansion_rate": 0.528
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.624
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.632
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.632
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.636
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.644
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.676
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.68,
+          "train_expansion_rate": 0.756
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.7,
+          "train_recall": 0.68,
+          "train_expansion_rate": 0.808
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.396
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.912
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.65,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.52
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.75,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.972
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.98
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.8,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.128
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.6,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.172
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.644,
+          "train_expansion_rate": 0.036
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.55,
+          "train_recall": 0.644,
+          "train_expansion_rate": 0.048
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.45,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.5,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.004
+        }
+      ]
+    },
+    {
+      "seed": 49,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed49",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "score_only",
+      "threshold": 0.6,
+      "train_recall": 0.684,
+      "train_expansion_rate": 0.196,
+      "test_recall": 0.644,
+      "dense_test_recall": 0.636,
+      "test_delta_vs_dense": 0.008000000000000007,
+      "test_expansion_rate": 0.196,
+      "candidate_grid": [
+        {
+          "policy": "score_only",
+          "threshold": 0.6,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.196
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.55,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.064
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.168
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.056
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.65,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.468
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.7,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.836
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.45,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.004
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.5,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.008
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.344
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.724
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.912
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.75,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.972
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.98
+        },
+        {
+          "policy": "score_only",
+          "threshold": 0.8,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.62
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.704
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.82
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.688
+        },
+        {
+          "policy": "score_and_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.696
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.696
+        },
+        {
+          "policy": "score_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.7
+        }
+      ]
+    }
+  ],
+  "aggregate": {
+    "n_seeds": 8,
+    "test_recall_mean": 0.692,
+    "dense_test_recall_mean": 0.6815,
+    "test_delta_vs_dense_mean": 0.01050000000000001,
+    "test_expansion_rate_mean": 0.4915
+  }
+}

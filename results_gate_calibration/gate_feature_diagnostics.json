@@ -1,0 +1,3920 @@
+{
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "seed_family": "independent_memory",
+  "metric": "Recall@5",
+  "procedure": "For each independent memory seed, compute dense top-k score features from the saved FAISS index and BM25 agreement from the saved BM25 index. Select a gate on the first half of sorted query IDs, then evaluate on the second half by recombining executed Dense-Only and Always-Expand result rows.",
+  "policies": [
+    "top1_low",
+    "margin_low",
+    "concentration_low",
+    "top1_low_or_no_bm25_agreement",
+    "margin_low_or_no_bm25_agreement"
+  ],
+  "max_expansion_rate": 0.55,
+  "seed_reports": [
+    {
+      "seed": 42,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed42",
+      "index_dir": "/home/nlp-07/sqe_experiment/index_500_seed42",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "top1_low",
+      "threshold": 0.5,
+      "train_recall": 0.696,
+      "train_expansion_rate": 0.004,
+      "test_recall": 0.704,
+      "dense_test_recall": 0.704,
+      "test_delta_vs_dense": 0.0,
+      "test_expansion_rate": 0.0,
+      "candidate_grid": [
+        {
+          "policy": "top1_low",
+          "threshold": 0.45,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.0,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.5,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.004,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.55,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.04,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.6,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.156,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.65,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.46,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.7,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.812,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.75,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.976,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.8,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.005,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.232,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.01,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.392,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.015,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.476,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.02,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.56,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.025,
+          "train_recall": 0.68,
+          "train_expansion_rate": 0.624,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.03,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.7,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.035,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.748,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.04,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.776,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.045,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.796,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.05,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.824,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.055,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.868,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.06,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.884,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.065,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.9,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.07,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.916,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.075,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.924,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.08,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.932,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.085,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.936,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.09,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.944,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.095,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.96,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.1,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.976,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.2,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.25,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.3,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.35,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.4,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.45,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.5,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.55,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.6,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.65,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.7,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.652,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.652,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.656,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.668,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.752,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.872,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.98,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.66,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.005,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.68,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.01,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.724,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.015,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.744,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.02,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.788,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.025,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.796,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.03,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.832,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.035,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.848,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.04,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.872,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.045,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.88,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.05,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.896,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.055,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.928,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.06,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.932,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.065,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.94,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.07,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.944,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.075,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.952,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.08,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.956,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.085,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.96,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.09,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.964,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.095,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.972,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.1,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.98,
+          "within_budget": false
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed43",
+      "index_dir": "/home/nlp-07/sqe_experiment/index_500_seed43",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "margin_low",
+      "threshold": 0.015,
+      "train_recall": 0.704,
+      "train_expansion_rate": 0.464,
+      "test_recall": 0.656,
+      "dense_test_recall": 0.636,
+      "test_delta_vs_dense": 0.020000000000000018,
+      "test_expansion_rate": 0.508,
+      "candidate_grid": [
+        {
+          "policy": "top1_low",
+          "threshold": 0.45,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.0,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.5,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.004,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.55,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.052,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.6,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.184,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.65,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.508,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.7,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.816,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.75,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.98,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.8,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.005,
+          "train_recall": 0.688,
+          "train_expansion_rate": 0.208,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.01,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.376,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.015,
+          "train_recall": 0.704,
+          "train_expansion_rate": 0.464,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.02,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.572,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.025,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.648,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.03,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.684,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.035,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.736,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.04,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.76,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.045,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.808,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.05,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.836,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.055,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.876,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.06,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.892,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.065,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.908,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.07,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.928,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.075,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.94,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.08,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.956,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.085,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.96,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.09,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.964,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.095,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.964,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.1,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.968,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.2,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.25,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.3,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.35,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.4,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.45,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.5,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.55,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.6,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.65,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.7,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.636,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.64,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.648,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.696,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.704,
+          "train_expansion_rate": 0.772,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.904,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.98,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.696,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.005,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.668,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.01,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.692,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.015,
+          "train_recall": 0.704,
+          "train_expansion_rate": 0.716,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.02,
+          "train_recall": 0.704,
+          "train_expansion_rate": 0.74,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.025,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.764,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.03,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.792,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.035,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.824,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.04,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.84,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.045,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.868,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.05,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.884,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.055,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.912,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.06,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.92,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.065,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.924,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.07,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.936,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.075,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.944,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.08,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.96,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.085,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.964,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.09,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.968,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.095,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.968,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.1,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.968,
+          "within_budget": false
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed44",
+      "index_dir": "/home/nlp-07/sqe_experiment/index_500_seed44",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "top1_low",
+      "threshold": 0.45,
+      "train_recall": 0.748,
+      "train_expansion_rate": 0.0,
+      "test_recall": 0.692,
+      "dense_test_recall": 0.692,
+      "test_delta_vs_dense": 0.0,
+      "test_expansion_rate": 0.0,
+      "candidate_grid": [
+        {
+          "policy": "top1_low",
+          "threshold": 0.45,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.0,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.5,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.0,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.55,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.02,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.6,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.148,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.65,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.44,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.7,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.764,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.75,
+          "train_recall": 0.768,
+          "train_expansion_rate": 0.96,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.8,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.005,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.204,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.01,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.316,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.015,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.416,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.02,
+          "train_recall": 0.748,
+          "train_expansion_rate": 0.504,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.025,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.564,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.03,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.624,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.035,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.664,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.04,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.716,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.045,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.764,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.05,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.772,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.055,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.788,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.06,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.812,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.065,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.856,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.07,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.872,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.075,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.892,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.08,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.9,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.085,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.92,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.09,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.928,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.095,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.94,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.1,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.952,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.2,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.25,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.3,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.35,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.4,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.45,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.5,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.55,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.6,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.65,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.7,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.628,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.628,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.636,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.756,
+          "train_expansion_rate": 0.644,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.756,
+          "train_expansion_rate": 0.728,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.848,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.976,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.764,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.005,
+          "train_recall": 0.756,
+          "train_expansion_rate": 0.656,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.01,
+          "train_recall": 0.756,
+          "train_expansion_rate": 0.68,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.015,
+          "train_recall": 0.756,
+          "train_expansion_rate": 0.7,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.02,
+          "train_recall": 0.756,
+          "train_expansion_rate": 0.724,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.025,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.748,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.03,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.784,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.035,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.796,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.04,
+          "train_recall": 0.76,
+          "train_expansion_rate": 0.82,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.045,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.84,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.05,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.844,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.055,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.848,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.06,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.872,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.065,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.892,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.07,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.9,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.075,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.912,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.08,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.92,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.085,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.928,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.09,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.932,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.095,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.94,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.1,
+          "train_recall": 0.764,
+          "train_expansion_rate": 0.952,
+          "within_budget": false
+        }
+      ]
+    },
+    {
+      "seed": 45,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed45",
+      "index_dir": "/home/nlp-07/sqe_experiment/index_500_seed45",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "margin_low",
+      "threshold": 0.015,
+      "train_recall": 0.7,
+      "train_expansion_rate": 0.472,
+      "test_recall": 0.712,
+      "dense_test_recall": 0.696,
+      "test_delta_vs_dense": 0.016000000000000014,
+      "test_expansion_rate": 0.472,
+      "candidate_grid": [
+        {
+          "policy": "top1_low",
+          "threshold": 0.45,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.0,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.5,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.0,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.55,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.048,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.6,
+          "train_recall": 0.68,
+          "train_expansion_rate": 0.18,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.65,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.464,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.7,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.764,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.75,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.948,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.8,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.005,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.216,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.01,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.376,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.015,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.472,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.02,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.524,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.025,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.572,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.03,
+          "train_recall": 0.704,
+          "train_expansion_rate": 0.636,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.035,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.672,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.04,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.712,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.045,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.744,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.05,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.764,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.055,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.812,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.06,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.84,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.065,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.856,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.07,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.872,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.075,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.888,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.08,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.9,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.085,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.92,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.09,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.932,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.095,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.936,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.1,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.948,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.2,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.25,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.3,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.35,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.4,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.45,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.5,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.55,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.6,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.65,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.7,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.632,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.632,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.692,
+          "train_expansion_rate": 0.64,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.668,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.7,
+          "train_expansion_rate": 0.764,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.86,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.968,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.712,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.005,
+          "train_recall": 0.696,
+          "train_expansion_rate": 0.676,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.01,
+          "train_recall": 0.704,
+          "train_expansion_rate": 0.708,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.015,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.752,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.02,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.764,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.025,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.776,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.03,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.796,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.035,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.8,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.04,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.824,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.045,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.848,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.05,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.856,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.055,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.88,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.06,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.896,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.065,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.904,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.07,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.916,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.075,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.928,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.08,
+          "train_recall": 0.708,
+          "train_expansion_rate": 0.94,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.085,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.948,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.09,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.956,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.095,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.96,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.1,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.964,
+          "within_budget": false
+        }
+      ]
+    },
+    {
+      "seed": 46,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed46",
+      "index_dir": "/home/nlp-07/sqe_experiment/index_500_seed46",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "top1_low",
+      "threshold": 0.65,
+      "train_recall": 0.744,
+      "train_expansion_rate": 0.472,
+      "test_recall": 0.72,
+      "dense_test_recall": 0.712,
+      "test_delta_vs_dense": 0.008000000000000007,
+      "test_expansion_rate": 0.516,
+      "candidate_grid": [
+        {
+          "policy": "top1_low",
+          "threshold": 0.45,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.0,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.5,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.0,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.55,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.048,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.6,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.16,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.65,
+          "train_recall": 0.744,
+          "train_expansion_rate": 0.472,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.7,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.78,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.75,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.96,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.8,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.005,
+          "train_recall": 0.72,
+          "train_expansion_rate": 0.176,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.01,
+          "train_recall": 0.712,
+          "train_expansion_rate": 0.3,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.015,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.416,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.02,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.492,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.025,
+          "train_recall": 0.74,
+          "train_expansion_rate": 0.58,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.03,
+          "train_recall": 0.736,
+          "train_expansion_rate": 0.644,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.035,
+          "train_recall": 0.736,
+          "train_expansion_rate": 0.688,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.04,
+          "train_recall": 0.736,
+          "train_expansion_rate": 0.732,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.045,
+          "train_recall": 0.736,
+          "train_expansion_rate": 0.764,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.05,
+          "train_recall": 0.736,
+          "train_expansion_rate": 0.796,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.055,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.824,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.06,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.844,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.065,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.876,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.07,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.892,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.075,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.912,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.08,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.924,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.085,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.936,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.09,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.94,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.095,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.944,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.1,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.944,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.2,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.25,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.3,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.35,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.4,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.45,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.5,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.55,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.6,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.65,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.7,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.66,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.66,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.676,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.684,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.736,
+          "train_expansion_rate": 0.764,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.876,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.976,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.732,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.005,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.688,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.01,
+          "train_recall": 0.728,
+          "train_expansion_rate": 0.716,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.015,
+          "train_recall": 0.736,
+          "train_expansion_rate": 0.736,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.02,
+          "train_recall": 0.736,
+          "train_expansion_rate": 0.744,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.025,
+          "train_recall": 0.736,
+          "train_expansion_rate": 0.78,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.03,
+          "train_recall": 0.736,
+          "train_expansion_rate": 0.808,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.035,
+          "train_recall": 0.736,
+          "train_expansion_rate": 0.832,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.04,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.852,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.045,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.872,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.05,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.892,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.055,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.9,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.06,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.908,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.065,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.924,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.07,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.932,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.075,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.94,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.08,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.944,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.085,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.948,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.09,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.952,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.095,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.956,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.1,
+          "train_recall": 0.732,
+          "train_expansion_rate": 0.956,
+          "within_budget": false
+        }
+      ]
+    },
+    {
+      "seed": 47,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed47",
+      "index_dir": "/home/nlp-07/sqe_experiment/index_500_seed47",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "margin_low",
+      "threshold": 0.005,
+      "train_recall": 0.664,
+      "train_expansion_rate": 0.22,
+      "test_recall": 0.7,
+      "dense_test_recall": 0.684,
+      "test_delta_vs_dense": 0.015999999999999903,
+      "test_expansion_rate": 0.192,
+      "candidate_grid": [
+        {
+          "policy": "top1_low",
+          "threshold": 0.45,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.0,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.5,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.004,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.55,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.028,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.6,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.16,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.65,
+          "train_recall": 0.644,
+          "train_expansion_rate": 0.516,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.7,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.836,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.75,
+          "train_recall": 0.636,
+          "train_expansion_rate": 0.956,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.8,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.996,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.005,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.22,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.01,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.356,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.015,
+          "train_recall": 0.652,
+          "train_expansion_rate": 0.464,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.02,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.568,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.025,
+          "train_recall": 0.648,
+          "train_expansion_rate": 0.62,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.03,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.668,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.035,
+          "train_recall": 0.628,
+          "train_expansion_rate": 0.708,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.04,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.744,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.045,
+          "train_recall": 0.628,
+          "train_expansion_rate": 0.792,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.05,
+          "train_recall": 0.628,
+          "train_expansion_rate": 0.82,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.055,
+          "train_recall": 0.628,
+          "train_expansion_rate": 0.844,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.06,
+          "train_recall": 0.628,
+          "train_expansion_rate": 0.856,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.065,
+          "train_recall": 0.628,
+          "train_expansion_rate": 0.872,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.07,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.896,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.075,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.9,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.08,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.908,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.085,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.944,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.09,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.956,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.095,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.968,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.1,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.976,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.2,
+          "train_recall": 0.632,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.25,
+          "train_recall": 0.632,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.3,
+          "train_recall": 0.632,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.35,
+          "train_recall": 0.632,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.4,
+          "train_recall": 0.632,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.45,
+          "train_recall": 0.632,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.5,
+          "train_recall": 0.632,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.55,
+          "train_recall": 0.632,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.6,
+          "train_recall": 0.632,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.65,
+          "train_recall": 0.632,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.7,
+          "train_recall": 0.632,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.664,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.664,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.664,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.644,
+          "train_expansion_rate": 0.692,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.636,
+          "train_expansion_rate": 0.78,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.636,
+          "train_expansion_rate": 0.916,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.972,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.996,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.005,
+          "train_recall": 0.644,
+          "train_expansion_rate": 0.7,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.01,
+          "train_recall": 0.636,
+          "train_expansion_rate": 0.728,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.015,
+          "train_recall": 0.628,
+          "train_expansion_rate": 0.764,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.02,
+          "train_recall": 0.624,
+          "train_expansion_rate": 0.8,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.025,
+          "train_recall": 0.628,
+          "train_expansion_rate": 0.816,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.03,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.832,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.035,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.848,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.04,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.86,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.045,
+          "train_recall": 0.628,
+          "train_expansion_rate": 0.888,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.05,
+          "train_recall": 0.628,
+          "train_expansion_rate": 0.892,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.055,
+          "train_recall": 0.628,
+          "train_expansion_rate": 0.908,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.06,
+          "train_recall": 0.628,
+          "train_expansion_rate": 0.916,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.065,
+          "train_recall": 0.628,
+          "train_expansion_rate": 0.924,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.07,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.928,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.075,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.932,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.08,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.94,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.085,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.964,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.09,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.968,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.095,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.98,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.1,
+          "train_recall": 0.632,
+          "train_expansion_rate": 0.98,
+          "within_budget": false
+        }
+      ]
+    },
+    {
+      "seed": 48,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed48",
+      "index_dir": "/home/nlp-07/sqe_experiment/index_500_seed48",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "top1_low",
+      "threshold": 0.65,
+      "train_recall": 0.672,
+      "train_expansion_rate": 0.52,
+      "test_recall": 0.704,
+      "dense_test_recall": 0.692,
+      "test_delta_vs_dense": 0.01200000000000001,
+      "test_expansion_rate": 0.504,
+      "candidate_grid": [
+        {
+          "policy": "top1_low",
+          "threshold": 0.45,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.0,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.5,
+          "train_recall": 0.64,
+          "train_expansion_rate": 0.004,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.55,
+          "train_recall": 0.644,
+          "train_expansion_rate": 0.048,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.6,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.172,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.65,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.52,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.7,
+          "train_recall": 0.68,
+          "train_expansion_rate": 0.808,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.75,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.972,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.8,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.005,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.228,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.01,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.46,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.015,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.6,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.02,
+          "train_recall": 0.68,
+          "train_expansion_rate": 0.66,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.025,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.72,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.03,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.752,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.035,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.796,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.04,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.82,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.045,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.844,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.05,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.872,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.055,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.884,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.06,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.896,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.065,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.912,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.07,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.924,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.075,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.94,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.08,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.94,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.085,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.948,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.09,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.96,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.095,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.964,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.1,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.972,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.2,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.25,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.3,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.35,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.4,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.45,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.5,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.55,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.6,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.65,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.7,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.632,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.636,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.644,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.676,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.68,
+          "train_expansion_rate": 0.756,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.912,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.98,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.672,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.005,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.708,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.01,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.756,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.015,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.792,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.02,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.808,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.025,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.836,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.03,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.856,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.035,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.888,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.04,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.9,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.045,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.904,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.05,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.928,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.055,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.932,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.06,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.94,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.065,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.952,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.07,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.956,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.075,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.96,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.08,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.96,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.085,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.964,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.09,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.972,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.095,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.976,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.1,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.98,
+          "within_budget": false
+        }
+      ]
+    },
+    {
+      "seed": 49,
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed49",
+      "index_dir": "/home/nlp-07/sqe_experiment/index_500_seed49",
+      "n_train": 250,
+      "n_test": 250,
+      "policy": "top1_low",
+      "threshold": 0.6,
+      "train_recall": 0.684,
+      "train_expansion_rate": 0.196,
+      "test_recall": 0.644,
+      "dense_test_recall": 0.636,
+      "test_delta_vs_dense": 0.008000000000000007,
+      "test_expansion_rate": 0.196,
+      "candidate_grid": [
+        {
+          "policy": "top1_low",
+          "threshold": 0.45,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.0,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.5,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.008,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.55,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.064,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.6,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.196,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.65,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.468,
+          "within_budget": true
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.7,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.836,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.75,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.972,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low",
+          "threshold": 0.8,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.005,
+          "train_recall": 0.672,
+          "train_expansion_rate": 0.264,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.01,
+          "train_recall": 0.676,
+          "train_expansion_rate": 0.352,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.015,
+          "train_recall": 0.684,
+          "train_expansion_rate": 0.452,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.02,
+          "train_recall": 0.68,
+          "train_expansion_rate": 0.54,
+          "within_budget": true
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.025,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.608,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.03,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.652,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.035,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.704,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.04,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.728,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.045,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.772,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.05,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.808,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.055,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.836,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.06,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.852,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.065,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.884,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.07,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.904,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.075,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.92,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.08,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.94,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.085,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.948,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.09,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.96,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.095,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.968,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low",
+          "threshold": 0.1,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.976,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.2,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.25,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.3,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.35,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.4,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.45,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.5,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.55,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.6,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.65,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "concentration_low",
+          "threshold": 0.7,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.45,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.696,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.5,
+          "train_recall": 0.656,
+          "train_expansion_rate": 0.7,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.55,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.704,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.6,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.724,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.65,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.82,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.7,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.912,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.75,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.98,
+          "within_budget": false
+        },
+        {
+          "policy": "top1_low_or_no_bm25_agreement",
+          "threshold": 0.8,
+          "train_recall": 0.664,
+          "train_expansion_rate": 1.0,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.005,
+          "train_recall": 0.66,
+          "train_expansion_rate": 0.756,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.01,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.772,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.015,
+          "train_recall": 0.668,
+          "train_expansion_rate": 0.792,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.02,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.82,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.025,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.828,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.03,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.852,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.035,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.872,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.04,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.876,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.045,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.884,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.05,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.896,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.055,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.908,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.06,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.916,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.065,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.932,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.07,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.944,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.075,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.952,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.08,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.964,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.085,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.968,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.09,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.976,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.095,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.98,
+          "within_budget": false
+        },
+        {
+          "policy": "margin_low_or_no_bm25_agreement",
+          "threshold": 0.1,
+          "train_recall": 0.664,
+          "train_expansion_rate": 0.984,
+          "within_budget": false
+        }
+      ]
+    }
+  ],
+  "aggregate": {
+    "n_seeds": 8,
+    "test_recall_mean": 0.6915,
+    "dense_test_recall_mean": 0.6815,
+    "test_delta_vs_dense_mean": 0.009999999999999995,
+    "test_expansion_rate_mean": 0.2985
+  }
+}

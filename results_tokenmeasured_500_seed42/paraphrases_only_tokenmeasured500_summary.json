@@ -1,0 +1,22 @@
+{
+  "method": "Paraphrases-Only (paraphrases_only_tokenmeasured500)",
+  "recall@1": 0.474,
+  "recall@10": 0.746,
+  "expansion_trigger_rate": 1.0,
+  "n_expanded": 500,
+  "n_queries": 500,
+  "avg_latency_seconds_per_query": 1.0187324356571772,
+  "avg_estimated_llm_calls_per_query": 1.0,
+  "avg_actual_llm_calls_per_query": 0.998,
+  "avg_prompt_tokens_per_query": 88.458,
+  "avg_completion_tokens_per_query": 43.182,
+  "avg_total_tokens_per_query": 131.64,
+  "config": {
+    "confidence_threshold": 0.65,
+    "n_hypothetical_traces": 2,
+    "n_paraphrases": 2,
+    "mode": "paraphrases_only",
+    "random_expand_rate": 0.0,
+    "seed": 42
+  }
+}

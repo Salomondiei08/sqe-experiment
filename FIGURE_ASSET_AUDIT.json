@@ -1,0 +1,77 @@
+{
+  "paper": "/home/nlp-07/sqe_experiment/paper/main.tex",
+  "n_active_figures": 4,
+  "figures": [
+    {
+      "figure": "gate_diagnostic.png",
+      "png": "/home/nlp-07/sqe_experiment/paper/figures/gate_diagnostic.png",
+      "svg": "/home/nlp-07/sqe_experiment/paper/figures/gate_diagnostic.svg",
+      "png_present": true,
+      "svg_present": true,
+      "text_element_count": 19,
+      "metrics": {
+        "width": 1879,
+        "height": 985,
+        "mode": "RGB",
+        "mean_luminance": 248.22,
+        "dark_pixel_pct": 0.504,
+        "nonwhite_pixel_pct": 9.155
+      },
+      "failures": []
+    },
+    {
+      "figure": "method_overview.png",
+      "png": "/home/nlp-07/sqe_experiment/paper/figures/method_overview.png",
+      "svg": "/home/nlp-07/sqe_experiment/paper/figures/method_overview.svg",
+      "png_present": true,
+      "svg_present": true,
+      "text_element_count": 19,
+      "metrics": {
+        "width": 2520,
+        "height": 985,
+        "mode": "RGB",
+        "mean_luminance": 244.05,
+        "dark_pixel_pct": 1.076,
+        "nonwhite_pixel_pct": 16.846
+      },
+      "failures": []
+    },
+    {
+      "figure": "recall_at_5.png",
+      "png": "/home/nlp-07/sqe_experiment/paper/figures/recall_at_5.png",
+      "svg": "/home/nlp-07/sqe_experiment/paper/figures/recall_at_5.svg",
+      "png_present": true,
+      "svg_present": true,
+      "text_element_count": 25,
+      "metrics": {
+        "width": 1879,
+        "height": 1145,
+        "mode": "RGB",
+        "mean_luminance": 236.94,
+        "dark_pixel_pct": 0.825,
+        "nonwhite_pixel_pct": 25.868
+      },
+      "failures": []
+    },
+    {
+      "figure": "threshold_sensitivity.png",
+      "png": "/home/nlp-07/sqe_experiment/paper/figures/threshold_sensitivity.png",
+      "svg": "/home/nlp-07/sqe_experiment/paper/figures/threshold_sensitivity.svg",
+      "png_present": true,
+      "svg_present": true,
+      "text_element_count": 16,
+      "metrics": {
+        "width": 1879,
+        "height": 985,
+        "mode": "RGB",
+        "mean_luminance": 249.35,
+        "dark_pixel_pct": 0.382,
+        "nonwhite_pixel_pct": 8.755
+      },
+      "failures": []
+    }
+  ],
+  "warnings": [],
+  "failures": [],
+  "clean": true
+}

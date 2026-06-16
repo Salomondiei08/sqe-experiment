@@ -1,0 +1,2816 @@
+{
+  "aggregate": {
+    "always_recall": 0.69225,
+    "bootstrap_seed": 20260514,
+    "ci_high": 0.01325,
+    "ci_low": -0.00075,
+    "delta_vs_dense": 0.00625,
+    "dense_recall": 0.685,
+    "expansion_rate": 0.36875,
+    "gate_recall": 0.69125,
+    "n_bootstrap": 10000,
+    "n_queries": 4000,
+    "n_randomizations": 10000,
+    "sign_flip_p": 0.09159084091590841
+  },
+  "artifact_type": "cross_seed_top1_gate",
+  "is_pass1_result": false,
+  "max_expansion_rate": 0.55,
+  "metric": "Recall@5",
+  "procedure": "Leave one independent memory-index seed out. Select a top-1-score expansion threshold on the other seeds under an expansion-rate budget, then evaluate by recombining executed Dense-Only and Always-Expand rows on the held-out seed.",
+  "seed_family": "independent_memory",
+  "seed_reports": [
+    {
+      "always_recall": 0.68,
+      "candidate_grid": [
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.45,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6831428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.46,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6831428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.47,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6831428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.48,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.001142857142857143,
+          "train_recall": 0.6831428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.49,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.001142857142857143,
+          "train_recall": 0.6831428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.5,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.0034285714285714284,
+          "train_recall": 0.6837142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.51,
+          "train_delta_vs_dense": 0.00028571428571428574,
+          "train_expansion_rate": 0.0074285714285714285,
+          "train_recall": 0.6834285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.52,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.010857142857142857,
+          "train_recall": 0.6837142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.53,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.017714285714285714,
+          "train_recall": 0.6837142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.54,
+          "train_delta_vs_dense": 0.001142857142857143,
+          "train_expansion_rate": 0.025714285714285714,
+          "train_recall": 0.6842857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.55,
+          "train_delta_vs_dense": 0.0014285714285714286,
+          "train_expansion_rate": 0.04228571428571429,
+          "train_recall": 0.6845714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.56,
+          "train_delta_vs_dense": 0.002285714285714286,
+          "train_expansion_rate": 0.05714285714285714,
+          "train_recall": 0.6854285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.57,
+          "train_delta_vs_dense": 0.0014285714285714286,
+          "train_expansion_rate": 0.07771428571428571,
+          "train_recall": 0.6845714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.58,
+          "train_delta_vs_dense": 0.003142857142857143,
+          "train_expansion_rate": 0.10485714285714286,
+          "train_recall": 0.6862857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.59,
+          "train_delta_vs_dense": 0.006,
+          "train_expansion_rate": 0.13742857142857143,
+          "train_recall": 0.6891428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.6,
+          "train_delta_vs_dense": 0.007714285714285714,
+          "train_expansion_rate": 0.1722857142857143,
+          "train_recall": 0.6908571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.61,
+          "train_delta_vs_dense": 0.0074285714285714285,
+          "train_expansion_rate": 0.224,
+          "train_recall": 0.6905714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.62,
+          "train_delta_vs_dense": 0.009714285714285713,
+          "train_expansion_rate": 0.2857142857142857,
+          "train_recall": 0.6928571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.63,
+          "train_delta_vs_dense": 0.010285714285714285,
+          "train_expansion_rate": 0.344,
+          "train_recall": 0.6934285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.64,
+          "train_delta_vs_dense": 0.010571428571428572,
+          "train_expansion_rate": 0.4157142857142857,
+          "train_recall": 0.6937142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.65,
+          "train_delta_vs_dense": 0.010571428571428572,
+          "train_expansion_rate": 0.48542857142857143,
+          "train_recall": 0.6937142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.66,
+          "train_delta_vs_dense": 0.010857142857142857,
+          "train_expansion_rate": 0.5525714285714286,
+          "train_recall": 0.694,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.67,
+          "train_delta_vs_dense": 0.012,
+          "train_expansion_rate": 0.6205714285714286,
+          "train_recall": 0.6951428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.68,
+          "train_delta_vs_dense": 0.010857142857142857,
+          "train_expansion_rate": 0.6857142857142857,
+          "train_recall": 0.694,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.69,
+          "train_delta_vs_dense": 0.01,
+          "train_expansion_rate": 0.7491428571428571,
+          "train_recall": 0.6931428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.7,
+          "train_delta_vs_dense": 0.012285714285714285,
+          "train_expansion_rate": 0.8031428571428572,
+          "train_recall": 0.6954285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.71,
+          "train_delta_vs_dense": 0.013142857142857144,
+          "train_expansion_rate": 0.8525714285714285,
+          "train_recall": 0.6962857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.72,
+          "train_delta_vs_dense": 0.013428571428571429,
+          "train_expansion_rate": 0.8931428571428571,
+          "train_recall": 0.6965714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.73,
+          "train_delta_vs_dense": 0.011714285714285714,
+          "train_expansion_rate": 0.9217142857142857,
+          "train_recall": 0.6948571428571428,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.74,
+          "train_delta_vs_dense": 0.011714285714285714,
+          "train_expansion_rate": 0.9448571428571428,
+          "train_recall": 0.6948571428571428,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.75,
+          "train_delta_vs_dense": 0.011428571428571429,
+          "train_expansion_rate": 0.9648571428571429,
+          "train_recall": 0.6945714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.76,
+          "train_delta_vs_dense": 0.011142857142857144,
+          "train_expansion_rate": 0.9794285714285714,
+          "train_recall": 0.6942857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.77,
+          "train_delta_vs_dense": 0.010857142857142857,
+          "train_expansion_rate": 0.9885714285714285,
+          "train_recall": 0.694,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.78,
+          "train_delta_vs_dense": 0.010857142857142857,
+          "train_expansion_rate": 0.9942857142857143,
+          "train_recall": 0.694,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.79,
+          "train_delta_vs_dense": 0.010857142857142857,
+          "train_expansion_rate": 0.9971428571428571,
+          "train_recall": 0.694,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6831428571428572,
+          "threshold": 0.8,
+          "train_delta_vs_dense": 0.010857142857142857,
+          "train_expansion_rate": 0.9985714285714286,
+          "train_recall": 0.694,
+          "within_budget": false
+        }
+      ],
+      "delta_vs_dense": -0.002,
+      "dense_recall": 0.698,
+      "expansion_rate": 0.382,
+      "gate_recall": 0.696,
+      "n_test": 500,
+      "n_train": 3500,
+      "test_seed": 42,
+      "threshold": 0.64,
+      "train_delta_vs_dense": 0.010571428571428572,
+      "train_expansion_rate": 0.4157142857142857,
+      "train_recall": 0.6937142857142857,
+      "train_seeds": [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    {
+      "always_recall": 0.666,
+      "candidate_grid": [
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.45,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.0,
+          "train_recall": 0.688,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.46,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.0,
+          "train_recall": 0.688,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.47,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.0,
+          "train_recall": 0.688,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.48,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.0008571428571428571,
+          "train_recall": 0.688,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.49,
+          "train_delta_vs_dense": 0.00028571428571428574,
+          "train_expansion_rate": 0.001142857142857143,
+          "train_recall": 0.6882857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.5,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.002857142857142857,
+          "train_recall": 0.6888571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.51,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.006,
+          "train_recall": 0.6885714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.52,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.009142857142857144,
+          "train_recall": 0.6888571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.53,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.015714285714285715,
+          "train_recall": 0.6888571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.54,
+          "train_delta_vs_dense": 0.0014285714285714286,
+          "train_expansion_rate": 0.023714285714285716,
+          "train_recall": 0.6894285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.55,
+          "train_delta_vs_dense": 0.002,
+          "train_expansion_rate": 0.040857142857142856,
+          "train_recall": 0.69,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.56,
+          "train_delta_vs_dense": 0.002857142857142857,
+          "train_expansion_rate": 0.055714285714285716,
+          "train_recall": 0.6908571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.57,
+          "train_delta_vs_dense": 0.002,
+          "train_expansion_rate": 0.07571428571428572,
+          "train_recall": 0.69,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.58,
+          "train_delta_vs_dense": 0.0037142857142857142,
+          "train_expansion_rate": 0.10542857142857143,
+          "train_recall": 0.6917142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.59,
+          "train_delta_vs_dense": 0.0054285714285714284,
+          "train_expansion_rate": 0.13685714285714284,
+          "train_recall": 0.6934285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.6,
+          "train_delta_vs_dense": 0.007142857142857143,
+          "train_expansion_rate": 0.16857142857142857,
+          "train_recall": 0.6951428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.61,
+          "train_delta_vs_dense": 0.0074285714285714285,
+          "train_expansion_rate": 0.22171428571428572,
+          "train_recall": 0.6954285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.62,
+          "train_delta_vs_dense": 0.01,
+          "train_expansion_rate": 0.2834285714285714,
+          "train_recall": 0.698,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.63,
+          "train_delta_vs_dense": 0.009428571428571429,
+          "train_expansion_rate": 0.3405714285714286,
+          "train_recall": 0.6974285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.64,
+          "train_delta_vs_dense": 0.01,
+          "train_expansion_rate": 0.41114285714285714,
+          "train_recall": 0.698,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.65,
+          "train_delta_vs_dense": 0.01,
+          "train_expansion_rate": 0.48028571428571426,
+          "train_recall": 0.698,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.66,
+          "train_delta_vs_dense": 0.011142857142857144,
+          "train_expansion_rate": 0.5517142857142857,
+          "train_recall": 0.6991428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.67,
+          "train_delta_vs_dense": 0.011428571428571429,
+          "train_expansion_rate": 0.6202857142857143,
+          "train_recall": 0.6994285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.68,
+          "train_delta_vs_dense": 0.009714285714285713,
+          "train_expansion_rate": 0.6831428571428572,
+          "train_recall": 0.6977142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.69,
+          "train_delta_vs_dense": 0.009428571428571429,
+          "train_expansion_rate": 0.7442857142857143,
+          "train_recall": 0.6974285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.7,
+          "train_delta_vs_dense": 0.011714285714285714,
+          "train_expansion_rate": 0.7994285714285714,
+          "train_recall": 0.6997142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.71,
+          "train_delta_vs_dense": 0.012,
+          "train_expansion_rate": 0.8508571428571429,
+          "train_recall": 0.7,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.72,
+          "train_delta_vs_dense": 0.011714285714285714,
+          "train_expansion_rate": 0.8914285714285715,
+          "train_recall": 0.6997142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.73,
+          "train_delta_vs_dense": 0.009428571428571429,
+          "train_expansion_rate": 0.9208571428571428,
+          "train_recall": 0.6974285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.74,
+          "train_delta_vs_dense": 0.008857142857142857,
+          "train_expansion_rate": 0.9451428571428572,
+          "train_recall": 0.6968571428571428,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.75,
+          "train_delta_vs_dense": 0.008571428571428572,
+          "train_expansion_rate": 0.9634285714285714,
+          "train_recall": 0.6965714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.76,
+          "train_delta_vs_dense": 0.008285714285714285,
+          "train_expansion_rate": 0.9777142857142858,
+          "train_recall": 0.6962857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.77,
+          "train_delta_vs_dense": 0.008,
+          "train_expansion_rate": 0.9882857142857143,
+          "train_recall": 0.696,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.78,
+          "train_delta_vs_dense": 0.008,
+          "train_expansion_rate": 0.9948571428571429,
+          "train_recall": 0.696,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.79,
+          "train_delta_vs_dense": 0.008,
+          "train_expansion_rate": 0.998,
+          "train_recall": 0.696,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.696,
+          "dense_train_recall": 0.688,
+          "threshold": 0.8,
+          "train_delta_vs_dense": 0.008,
+          "train_expansion_rate": 0.9991428571428571,
+          "train_recall": 0.696,
+          "within_budget": false
+        }
+      ],
+      "delta_vs_dense": 0.002,
+      "dense_recall": 0.664,
+      "expansion_rate": 0.276,
+      "gate_recall": 0.666,
+      "n_test": 500,
+      "n_train": 3500,
+      "test_seed": 43,
+      "threshold": 0.62,
+      "train_delta_vs_dense": 0.01,
+      "train_expansion_rate": 0.2834285714285714,
+      "train_recall": 0.698,
+      "train_seeds": [
+        42,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    {
+      "always_recall": 0.742,
+      "candidate_grid": [
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.45,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.68,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.46,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.68,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.47,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.68,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.48,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.0008571428571428571,
+          "train_recall": 0.68,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.49,
+          "train_delta_vs_dense": 0.00028571428571428574,
+          "train_expansion_rate": 0.001142857142857143,
+          "train_recall": 0.6802857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.5,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.0034285714285714284,
+          "train_recall": 0.6808571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.51,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.007142857142857143,
+          "train_recall": 0.6805714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.52,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.008857142857142857,
+          "train_recall": 0.6808571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.53,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.014857142857142857,
+          "train_recall": 0.6808571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.54,
+          "train_delta_vs_dense": 0.0014285714285714286,
+          "train_expansion_rate": 0.023428571428571427,
+          "train_recall": 0.6814285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.55,
+          "train_delta_vs_dense": 0.0017142857142857142,
+          "train_expansion_rate": 0.04228571428571429,
+          "train_recall": 0.6817142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.56,
+          "train_delta_vs_dense": 0.002285714285714286,
+          "train_expansion_rate": 0.05714285714285714,
+          "train_recall": 0.6822857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.57,
+          "train_delta_vs_dense": 0.002285714285714286,
+          "train_expansion_rate": 0.076,
+          "train_recall": 0.6822857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.58,
+          "train_delta_vs_dense": 0.002857142857142857,
+          "train_expansion_rate": 0.10285714285714286,
+          "train_recall": 0.6828571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.59,
+          "train_delta_vs_dense": 0.005142857142857143,
+          "train_expansion_rate": 0.13742857142857143,
+          "train_recall": 0.6851428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.6,
+          "train_delta_vs_dense": 0.006857142857142857,
+          "train_expansion_rate": 0.17085714285714285,
+          "train_recall": 0.6868571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.61,
+          "train_delta_vs_dense": 0.006571428571428572,
+          "train_expansion_rate": 0.22257142857142856,
+          "train_recall": 0.6865714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.62,
+          "train_delta_vs_dense": 0.009428571428571429,
+          "train_expansion_rate": 0.2817142857142857,
+          "train_recall": 0.6894285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.63,
+          "train_delta_vs_dense": 0.009142857142857144,
+          "train_expansion_rate": 0.34085714285714286,
+          "train_recall": 0.6891428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.64,
+          "train_delta_vs_dense": 0.009428571428571429,
+          "train_expansion_rate": 0.4137142857142857,
+          "train_recall": 0.6894285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.65,
+          "train_delta_vs_dense": 0.008857142857142857,
+          "train_expansion_rate": 0.48742857142857143,
+          "train_recall": 0.6888571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.66,
+          "train_delta_vs_dense": 0.01,
+          "train_expansion_rate": 0.5585714285714286,
+          "train_recall": 0.69,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.67,
+          "train_delta_vs_dense": 0.01,
+          "train_expansion_rate": 0.6251428571428571,
+          "train_recall": 0.69,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.68,
+          "train_delta_vs_dense": 0.0074285714285714285,
+          "train_expansion_rate": 0.6897142857142857,
+          "train_recall": 0.6874285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.69,
+          "train_delta_vs_dense": 0.006285714285714286,
+          "train_expansion_rate": 0.7511428571428571,
+          "train_recall": 0.6862857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.7,
+          "train_delta_vs_dense": 0.008285714285714285,
+          "train_expansion_rate": 0.8054285714285714,
+          "train_recall": 0.6882857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.71,
+          "train_delta_vs_dense": 0.008857142857142857,
+          "train_expansion_rate": 0.8531428571428571,
+          "train_recall": 0.6888571428571428,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.72,
+          "train_delta_vs_dense": 0.008571428571428572,
+          "train_expansion_rate": 0.8937142857142857,
+          "train_recall": 0.6885714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.73,
+          "train_delta_vs_dense": 0.006285714285714286,
+          "train_expansion_rate": 0.9211428571428572,
+          "train_recall": 0.6862857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.74,
+          "train_delta_vs_dense": 0.005714285714285714,
+          "train_expansion_rate": 0.9457142857142857,
+          "train_recall": 0.6857142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.75,
+          "train_delta_vs_dense": 0.0054285714285714284,
+          "train_expansion_rate": 0.964,
+          "train_recall": 0.6854285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.76,
+          "train_delta_vs_dense": 0.005142857142857143,
+          "train_expansion_rate": 0.9777142857142858,
+          "train_recall": 0.6851428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.77,
+          "train_delta_vs_dense": 0.005142857142857143,
+          "train_expansion_rate": 0.9874285714285714,
+          "train_recall": 0.6851428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.78,
+          "train_delta_vs_dense": 0.005142857142857143,
+          "train_expansion_rate": 0.9942857142857143,
+          "train_recall": 0.6851428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.79,
+          "train_delta_vs_dense": 0.005142857142857143,
+          "train_expansion_rate": 0.9971428571428571,
+          "train_recall": 0.6851428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6851428571428572,
+          "dense_train_recall": 0.68,
+          "threshold": 0.8,
+          "train_delta_vs_dense": 0.005142857142857143,
+          "train_expansion_rate": 0.9988571428571429,
+          "train_recall": 0.6851428571428572,
+          "within_budget": false
+        }
+      ],
+      "delta_vs_dense": 0.006,
+      "dense_recall": 0.72,
+      "expansion_rate": 0.288,
+      "gate_recall": 0.726,
+      "n_test": 500,
+      "n_train": 3500,
+      "test_seed": 44,
+      "threshold": 0.62,
+      "train_delta_vs_dense": 0.009428571428571429,
+      "train_expansion_rate": 0.2817142857142857,
+      "train_recall": 0.6894285714285714,
+      "train_seeds": [
+        42,
+        43,
+        45,
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    {
+      "always_recall": 0.724,
+      "candidate_grid": [
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.45,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6842857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.46,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6842857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.47,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6842857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.48,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.001142857142857143,
+          "train_recall": 0.6842857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.49,
+          "train_delta_vs_dense": 0.00028571428571428574,
+          "train_expansion_rate": 0.0014285714285714286,
+          "train_recall": 0.6845714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.5,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.0037142857142857142,
+          "train_recall": 0.6851428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.51,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.0074285714285714285,
+          "train_recall": 0.6848571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.52,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.010571428571428572,
+          "train_recall": 0.6851428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.53,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.01742857142857143,
+          "train_recall": 0.6851428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.54,
+          "train_delta_vs_dense": 0.0014285714285714286,
+          "train_expansion_rate": 0.026285714285714287,
+          "train_recall": 0.6857142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.55,
+          "train_delta_vs_dense": 0.002285714285714286,
+          "train_expansion_rate": 0.042,
+          "train_recall": 0.6865714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.56,
+          "train_delta_vs_dense": 0.0034285714285714284,
+          "train_expansion_rate": 0.056,
+          "train_recall": 0.6877142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.57,
+          "train_delta_vs_dense": 0.0025714285714285713,
+          "train_expansion_rate": 0.07485714285714286,
+          "train_recall": 0.6868571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.58,
+          "train_delta_vs_dense": 0.004285714285714286,
+          "train_expansion_rate": 0.10257142857142858,
+          "train_recall": 0.6885714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.59,
+          "train_delta_vs_dense": 0.006571428571428572,
+          "train_expansion_rate": 0.1337142857142857,
+          "train_recall": 0.6908571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.6,
+          "train_delta_vs_dense": 0.008,
+          "train_expansion_rate": 0.1697142857142857,
+          "train_recall": 0.6922857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.61,
+          "train_delta_vs_dense": 0.007714285714285714,
+          "train_expansion_rate": 0.22285714285714286,
+          "train_recall": 0.692,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.62,
+          "train_delta_vs_dense": 0.009142857142857144,
+          "train_expansion_rate": 0.2817142857142857,
+          "train_recall": 0.6934285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.63,
+          "train_delta_vs_dense": 0.008571428571428572,
+          "train_expansion_rate": 0.34,
+          "train_recall": 0.6928571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.64,
+          "train_delta_vs_dense": 0.008571428571428572,
+          "train_expansion_rate": 0.4117142857142857,
+          "train_recall": 0.6928571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.65,
+          "train_delta_vs_dense": 0.007714285714285714,
+          "train_expansion_rate": 0.4828571428571429,
+          "train_recall": 0.692,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.66,
+          "train_delta_vs_dense": 0.007714285714285714,
+          "train_expansion_rate": 0.5517142857142857,
+          "train_recall": 0.692,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.67,
+          "train_delta_vs_dense": 0.007714285714285714,
+          "train_expansion_rate": 0.6222857142857143,
+          "train_recall": 0.692,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.68,
+          "train_delta_vs_dense": 0.006285714285714286,
+          "train_expansion_rate": 0.6857142857142857,
+          "train_recall": 0.6905714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.69,
+          "train_delta_vs_dense": 0.004857142857142857,
+          "train_expansion_rate": 0.748,
+          "train_recall": 0.6891428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.7,
+          "train_delta_vs_dense": 0.006857142857142857,
+          "train_expansion_rate": 0.8034285714285714,
+          "train_recall": 0.6911428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.71,
+          "train_delta_vs_dense": 0.006857142857142857,
+          "train_expansion_rate": 0.8508571428571429,
+          "train_recall": 0.6911428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.72,
+          "train_delta_vs_dense": 0.006285714285714286,
+          "train_expansion_rate": 0.8908571428571429,
+          "train_recall": 0.6905714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.73,
+          "train_delta_vs_dense": 0.004857142857142857,
+          "train_expansion_rate": 0.9205714285714286,
+          "train_recall": 0.6891428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.74,
+          "train_delta_vs_dense": 0.004,
+          "train_expansion_rate": 0.9451428571428572,
+          "train_recall": 0.6882857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.75,
+          "train_delta_vs_dense": 0.004,
+          "train_expansion_rate": 0.964,
+          "train_recall": 0.6882857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.76,
+          "train_delta_vs_dense": 0.0037142857142857142,
+          "train_expansion_rate": 0.9788571428571429,
+          "train_recall": 0.688,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.77,
+          "train_delta_vs_dense": 0.0034285714285714284,
+          "train_expansion_rate": 0.988,
+          "train_recall": 0.6877142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.78,
+          "train_delta_vs_dense": 0.0034285714285714284,
+          "train_expansion_rate": 0.994,
+          "train_recall": 0.6877142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.79,
+          "train_delta_vs_dense": 0.0034285714285714284,
+          "train_expansion_rate": 0.9971428571428571,
+          "train_recall": 0.6877142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6877142857142857,
+          "dense_train_recall": 0.6842857142857143,
+          "threshold": 0.8,
+          "train_delta_vs_dense": 0.0034285714285714284,
+          "train_expansion_rate": 0.9985714285714286,
+          "train_recall": 0.6877142857142857,
+          "within_budget": false
+        }
+      ],
+      "delta_vs_dense": 0.008,
+      "dense_recall": 0.69,
+      "expansion_rate": 0.288,
+      "gate_recall": 0.698,
+      "n_test": 500,
+      "n_train": 3500,
+      "test_seed": 45,
+      "threshold": 0.62,
+      "train_delta_vs_dense": 0.009142857142857144,
+      "train_expansion_rate": 0.2817142857142857,
+      "train_recall": 0.6934285714285714,
+      "train_seeds": [
+        42,
+        43,
+        44,
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    {
+      "always_recall": 0.728,
+      "candidate_grid": [
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.45,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6797142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.46,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6797142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.47,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6797142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.48,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.001142857142857143,
+          "train_recall": 0.6797142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.49,
+          "train_delta_vs_dense": 0.00028571428571428574,
+          "train_expansion_rate": 0.0014285714285714286,
+          "train_recall": 0.68,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.5,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.003142857142857143,
+          "train_recall": 0.6802857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.51,
+          "train_delta_vs_dense": 0.00028571428571428574,
+          "train_expansion_rate": 0.006857142857142857,
+          "train_recall": 0.68,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.52,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.010285714285714285,
+          "train_recall": 0.6802857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.53,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.015714285714285715,
+          "train_recall": 0.6802857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.54,
+          "train_delta_vs_dense": 0.001142857142857143,
+          "train_expansion_rate": 0.023714285714285716,
+          "train_recall": 0.6808571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.55,
+          "train_delta_vs_dense": 0.0017142857142857142,
+          "train_expansion_rate": 0.04057142857142857,
+          "train_recall": 0.6814285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.56,
+          "train_delta_vs_dense": 0.002857142857142857,
+          "train_expansion_rate": 0.054857142857142854,
+          "train_recall": 0.6825714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.57,
+          "train_delta_vs_dense": 0.002,
+          "train_expansion_rate": 0.07371428571428572,
+          "train_recall": 0.6817142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.58,
+          "train_delta_vs_dense": 0.0034285714285714284,
+          "train_expansion_rate": 0.10314285714285715,
+          "train_recall": 0.6831428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.59,
+          "train_delta_vs_dense": 0.006285714285714286,
+          "train_expansion_rate": 0.1362857142857143,
+          "train_recall": 0.686,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.6,
+          "train_delta_vs_dense": 0.008,
+          "train_expansion_rate": 0.17,
+          "train_recall": 0.6877142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.61,
+          "train_delta_vs_dense": 0.008,
+          "train_expansion_rate": 0.22057142857142858,
+          "train_recall": 0.6877142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.62,
+          "train_delta_vs_dense": 0.010571428571428572,
+          "train_expansion_rate": 0.2814285714285714,
+          "train_recall": 0.6902857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.63,
+          "train_delta_vs_dense": 0.009714285714285713,
+          "train_expansion_rate": 0.3374285714285714,
+          "train_recall": 0.6894285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.64,
+          "train_delta_vs_dense": 0.009428571428571429,
+          "train_expansion_rate": 0.40885714285714286,
+          "train_recall": 0.6891428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.65,
+          "train_delta_vs_dense": 0.008571428571428572,
+          "train_expansion_rate": 0.4805714285714286,
+          "train_recall": 0.6882857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.66,
+          "train_delta_vs_dense": 0.009428571428571429,
+          "train_expansion_rate": 0.5514285714285714,
+          "train_recall": 0.6891428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.67,
+          "train_delta_vs_dense": 0.01,
+          "train_expansion_rate": 0.6214285714285714,
+          "train_recall": 0.6897142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.68,
+          "train_delta_vs_dense": 0.008857142857142857,
+          "train_expansion_rate": 0.6842857142857143,
+          "train_recall": 0.6885714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.69,
+          "train_delta_vs_dense": 0.008285714285714285,
+          "train_expansion_rate": 0.7462857142857143,
+          "train_recall": 0.688,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.7,
+          "train_delta_vs_dense": 0.010857142857142857,
+          "train_expansion_rate": 0.8002857142857143,
+          "train_recall": 0.6905714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.71,
+          "train_delta_vs_dense": 0.011142857142857144,
+          "train_expansion_rate": 0.8514285714285714,
+          "train_recall": 0.6908571428571428,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.72,
+          "train_delta_vs_dense": 0.010571428571428572,
+          "train_expansion_rate": 0.892,
+          "train_recall": 0.6902857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.73,
+          "train_delta_vs_dense": 0.008857142857142857,
+          "train_expansion_rate": 0.92,
+          "train_recall": 0.6885714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.74,
+          "train_delta_vs_dense": 0.008285714285714285,
+          "train_expansion_rate": 0.9454285714285714,
+          "train_recall": 0.688,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.75,
+          "train_delta_vs_dense": 0.008,
+          "train_expansion_rate": 0.9637142857142857,
+          "train_recall": 0.6877142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.76,
+          "train_delta_vs_dense": 0.007714285714285714,
+          "train_expansion_rate": 0.978,
+          "train_recall": 0.6874285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.77,
+          "train_delta_vs_dense": 0.0074285714285714285,
+          "train_expansion_rate": 0.9882857142857143,
+          "train_recall": 0.6871428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.78,
+          "train_delta_vs_dense": 0.0074285714285714285,
+          "train_expansion_rate": 0.9942857142857143,
+          "train_recall": 0.6871428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.79,
+          "train_delta_vs_dense": 0.0074285714285714285,
+          "train_expansion_rate": 0.9974285714285714,
+          "train_recall": 0.6871428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6871428571428572,
+          "dense_train_recall": 0.6797142857142857,
+          "threshold": 0.8,
+          "train_delta_vs_dense": 0.0074285714285714285,
+          "train_expansion_rate": 0.9988571428571429,
+          "train_recall": 0.6871428571428572,
+          "within_budget": false
+        }
+      ],
+      "delta_vs_dense": -0.002,
+      "dense_recall": 0.722,
+      "expansion_rate": 0.29,
+      "gate_recall": 0.72,
+      "n_test": 500,
+      "n_train": 3500,
+      "test_seed": 46,
+      "threshold": 0.62,
+      "train_delta_vs_dense": 0.010571428571428572,
+      "train_expansion_rate": 0.2814285714285714,
+      "train_recall": 0.6902857142857143,
+      "train_seeds": [
+        42,
+        43,
+        44,
+        45,
+        47,
+        48,
+        49
+      ]
+    },
+    {
+      "always_recall": 0.656,
+      "candidate_grid": [
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.45,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6871428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.46,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6871428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.47,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6871428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.48,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.001142857142857143,
+          "train_recall": 0.6871428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.49,
+          "train_delta_vs_dense": 0.00028571428571428574,
+          "train_expansion_rate": 0.0014285714285714286,
+          "train_recall": 0.6874285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.5,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.0034285714285714284,
+          "train_recall": 0.688,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.51,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.007714285714285714,
+          "train_recall": 0.6877142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.52,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.011142857142857144,
+          "train_recall": 0.688,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.53,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.018,
+          "train_recall": 0.688,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.54,
+          "train_delta_vs_dense": 0.0014285714285714286,
+          "train_expansion_rate": 0.025714285714285714,
+          "train_recall": 0.6885714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.55,
+          "train_delta_vs_dense": 0.001142857142857143,
+          "train_expansion_rate": 0.04342857142857143,
+          "train_recall": 0.6882857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.56,
+          "train_delta_vs_dense": 0.002,
+          "train_expansion_rate": 0.055714285714285716,
+          "train_recall": 0.6891428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.57,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.07485714285714286,
+          "train_recall": 0.688,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.58,
+          "train_delta_vs_dense": 0.002285714285714286,
+          "train_expansion_rate": 0.10485714285714286,
+          "train_recall": 0.6894285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.59,
+          "train_delta_vs_dense": 0.0054285714285714284,
+          "train_expansion_rate": 0.13714285714285715,
+          "train_recall": 0.6925714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.6,
+          "train_delta_vs_dense": 0.006857142857142857,
+          "train_expansion_rate": 0.1717142857142857,
+          "train_recall": 0.694,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.61,
+          "train_delta_vs_dense": 0.006285714285714286,
+          "train_expansion_rate": 0.222,
+          "train_recall": 0.6934285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.62,
+          "train_delta_vs_dense": 0.008857142857142857,
+          "train_expansion_rate": 0.2837142857142857,
+          "train_recall": 0.696,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.63,
+          "train_delta_vs_dense": 0.008857142857142857,
+          "train_expansion_rate": 0.3405714285714286,
+          "train_recall": 0.696,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.64,
+          "train_delta_vs_dense": 0.009714285714285713,
+          "train_expansion_rate": 0.4094285714285714,
+          "train_recall": 0.6968571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.65,
+          "train_delta_vs_dense": 0.009428571428571429,
+          "train_expansion_rate": 0.48142857142857143,
+          "train_recall": 0.6965714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.66,
+          "train_delta_vs_dense": 0.010285714285714285,
+          "train_expansion_rate": 0.5534285714285714,
+          "train_recall": 0.6974285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.67,
+          "train_delta_vs_dense": 0.011142857142857144,
+          "train_expansion_rate": 0.6202857142857143,
+          "train_recall": 0.6982857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.68,
+          "train_delta_vs_dense": 0.010285714285714285,
+          "train_expansion_rate": 0.6842857142857143,
+          "train_recall": 0.6974285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.69,
+          "train_delta_vs_dense": 0.01,
+          "train_expansion_rate": 0.7448571428571429,
+          "train_recall": 0.6971428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.7,
+          "train_delta_vs_dense": 0.012,
+          "train_expansion_rate": 0.7971428571428572,
+          "train_recall": 0.6991428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.71,
+          "train_delta_vs_dense": 0.012857142857142857,
+          "train_expansion_rate": 0.8477142857142858,
+          "train_recall": 0.7,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.72,
+          "train_delta_vs_dense": 0.012571428571428572,
+          "train_expansion_rate": 0.8917142857142857,
+          "train_recall": 0.6997142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.73,
+          "train_delta_vs_dense": 0.011142857142857144,
+          "train_expansion_rate": 0.9191428571428572,
+          "train_recall": 0.6982857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.74,
+          "train_delta_vs_dense": 0.010857142857142857,
+          "train_expansion_rate": 0.9445714285714286,
+          "train_recall": 0.698,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.75,
+          "train_delta_vs_dense": 0.010571428571428572,
+          "train_expansion_rate": 0.9642857142857143,
+          "train_recall": 0.6977142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.76,
+          "train_delta_vs_dense": 0.010571428571428572,
+          "train_expansion_rate": 0.9777142857142858,
+          "train_recall": 0.6977142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.77,
+          "train_delta_vs_dense": 0.010285714285714285,
+          "train_expansion_rate": 0.988,
+          "train_recall": 0.6974285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.78,
+          "train_delta_vs_dense": 0.010285714285714285,
+          "train_expansion_rate": 0.9945714285714286,
+          "train_recall": 0.6974285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.79,
+          "train_delta_vs_dense": 0.010285714285714285,
+          "train_expansion_rate": 0.9974285714285714,
+          "train_recall": 0.6974285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6974285714285714,
+          "dense_train_recall": 0.6871428571428572,
+          "threshold": 0.8,
+          "train_delta_vs_dense": 0.010285714285714285,
+          "train_expansion_rate": 0.9988571428571429,
+          "train_recall": 0.6974285714285714,
+          "within_budget": false
+        }
+      ],
+      "delta_vs_dense": 0.004,
+      "dense_recall": 0.67,
+      "expansion_rate": 0.426,
+      "gate_recall": 0.674,
+      "n_test": 500,
+      "n_train": 3500,
+      "test_seed": 47,
+      "threshold": 0.64,
+      "train_delta_vs_dense": 0.009714285714285713,
+      "train_expansion_rate": 0.4094285714285714,
+      "train_recall": 0.6968571428571428,
+      "train_seeds": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        48,
+        49
+      ]
+    },
+    {
+      "always_recall": 0.68,
+      "candidate_grid": [
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.45,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6877142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.46,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6877142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.47,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.6877142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.48,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.0008571428571428571,
+          "train_recall": 0.6877142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.49,
+          "train_delta_vs_dense": 0.00028571428571428574,
+          "train_expansion_rate": 0.001142857142857143,
+          "train_recall": 0.688,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.5,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.0034285714285714284,
+          "train_recall": 0.6885714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.51,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.0074285714285714285,
+          "train_recall": 0.6882857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.52,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.01,
+          "train_recall": 0.6885714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.53,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.015428571428571429,
+          "train_recall": 0.6885714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.54,
+          "train_delta_vs_dense": 0.001142857142857143,
+          "train_expansion_rate": 0.023428571428571427,
+          "train_recall": 0.6888571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.55,
+          "train_delta_vs_dense": 0.0014285714285714286,
+          "train_expansion_rate": 0.04057142857142857,
+          "train_recall": 0.6891428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.56,
+          "train_delta_vs_dense": 0.0014285714285714286,
+          "train_expansion_rate": 0.054,
+          "train_recall": 0.6891428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.57,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.074,
+          "train_recall": 0.6885714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.58,
+          "train_delta_vs_dense": 0.0025714285714285713,
+          "train_expansion_rate": 0.10342857142857143,
+          "train_recall": 0.6902857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.59,
+          "train_delta_vs_dense": 0.004571428571428572,
+          "train_expansion_rate": 0.1357142857142857,
+          "train_recall": 0.6922857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.6,
+          "train_delta_vs_dense": 0.0054285714285714284,
+          "train_expansion_rate": 0.16885714285714284,
+          "train_recall": 0.6931428571428572,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.61,
+          "train_delta_vs_dense": 0.004571428571428572,
+          "train_expansion_rate": 0.22114285714285714,
+          "train_recall": 0.6922857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.62,
+          "train_delta_vs_dense": 0.006571428571428572,
+          "train_expansion_rate": 0.28285714285714286,
+          "train_recall": 0.6942857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.63,
+          "train_delta_vs_dense": 0.006571428571428572,
+          "train_expansion_rate": 0.33885714285714286,
+          "train_recall": 0.6942857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.64,
+          "train_delta_vs_dense": 0.006,
+          "train_expansion_rate": 0.41,
+          "train_recall": 0.6937142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.65,
+          "train_delta_vs_dense": 0.006857142857142857,
+          "train_expansion_rate": 0.478,
+          "train_recall": 0.6945714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.66,
+          "train_delta_vs_dense": 0.008,
+          "train_expansion_rate": 0.5471428571428572,
+          "train_recall": 0.6957142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.67,
+          "train_delta_vs_dense": 0.008571428571428572,
+          "train_expansion_rate": 0.6177142857142857,
+          "train_recall": 0.6962857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.68,
+          "train_delta_vs_dense": 0.006857142857142857,
+          "train_expansion_rate": 0.6822857142857143,
+          "train_recall": 0.6945714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.69,
+          "train_delta_vs_dense": 0.006,
+          "train_expansion_rate": 0.7451428571428571,
+          "train_recall": 0.6937142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.7,
+          "train_delta_vs_dense": 0.008571428571428572,
+          "train_expansion_rate": 0.7985714285714286,
+          "train_recall": 0.6962857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.71,
+          "train_delta_vs_dense": 0.009142857142857144,
+          "train_expansion_rate": 0.8494285714285714,
+          "train_recall": 0.6968571428571428,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.72,
+          "train_delta_vs_dense": 0.009142857142857144,
+          "train_expansion_rate": 0.8917142857142857,
+          "train_recall": 0.6968571428571428,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.73,
+          "train_delta_vs_dense": 0.007714285714285714,
+          "train_expansion_rate": 0.9188571428571428,
+          "train_recall": 0.6954285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.74,
+          "train_delta_vs_dense": 0.007142857142857143,
+          "train_expansion_rate": 0.9442857142857143,
+          "train_recall": 0.6948571428571428,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.75,
+          "train_delta_vs_dense": 0.006857142857142857,
+          "train_expansion_rate": 0.9628571428571429,
+          "train_recall": 0.6945714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.76,
+          "train_delta_vs_dense": 0.006571428571428572,
+          "train_expansion_rate": 0.9774285714285714,
+          "train_recall": 0.6942857142857143,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.77,
+          "train_delta_vs_dense": 0.006285714285714286,
+          "train_expansion_rate": 0.9871428571428571,
+          "train_recall": 0.694,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.78,
+          "train_delta_vs_dense": 0.006285714285714286,
+          "train_expansion_rate": 0.9934285714285714,
+          "train_recall": 0.694,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.79,
+          "train_delta_vs_dense": 0.006285714285714286,
+          "train_expansion_rate": 0.9968571428571429,
+          "train_recall": 0.694,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.694,
+          "dense_train_recall": 0.6877142857142857,
+          "threshold": 0.8,
+          "train_delta_vs_dense": 0.006285714285714286,
+          "train_expansion_rate": 0.9985714285714286,
+          "train_recall": 0.694,
+          "within_budget": false
+        }
+      ],
+      "delta_vs_dense": 0.02,
+      "dense_recall": 0.666,
+      "expansion_rate": 0.588,
+      "gate_recall": 0.686,
+      "n_test": 500,
+      "n_train": 3500,
+      "test_seed": 48,
+      "threshold": 0.66,
+      "train_delta_vs_dense": 0.008,
+      "train_expansion_rate": 0.5471428571428572,
+      "train_recall": 0.6957142857142857,
+      "train_seeds": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        49
+      ]
+    },
+    {
+      "always_recall": 0.662,
+      "candidate_grid": [
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.45,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.69,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.46,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.69,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.47,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.00028571428571428574,
+          "train_recall": 0.69,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.48,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.0008571428571428571,
+          "train_recall": 0.69,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.49,
+          "train_delta_vs_dense": 0.00028571428571428574,
+          "train_expansion_rate": 0.001142857142857143,
+          "train_recall": 0.6902857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.5,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.0025714285714285713,
+          "train_recall": 0.6905714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.51,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.006,
+          "train_recall": 0.6905714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.52,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.009142857142857144,
+          "train_recall": 0.6905714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.53,
+          "train_delta_vs_dense": 0.0005714285714285715,
+          "train_expansion_rate": 0.015142857142857144,
+          "train_recall": 0.6905714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.54,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.022,
+          "train_recall": 0.6908571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.55,
+          "train_delta_vs_dense": 0.00028571428571428574,
+          "train_expansion_rate": 0.038,
+          "train_recall": 0.6902857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.56,
+          "train_delta_vs_dense": 0.0008571428571428571,
+          "train_expansion_rate": 0.05142857142857143,
+          "train_recall": 0.6908571428571428,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.57,
+          "train_delta_vs_dense": 0.0,
+          "train_expansion_rate": 0.07114285714285715,
+          "train_recall": 0.69,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.58,
+          "train_delta_vs_dense": 0.0017142857142857142,
+          "train_expansion_rate": 0.09885714285714285,
+          "train_recall": 0.6917142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.59,
+          "train_delta_vs_dense": 0.004571428571428572,
+          "train_expansion_rate": 0.13142857142857142,
+          "train_recall": 0.6945714285714286,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.6,
+          "train_delta_vs_dense": 0.006,
+          "train_expansion_rate": 0.166,
+          "train_recall": 0.696,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.61,
+          "train_delta_vs_dense": 0.006,
+          "train_expansion_rate": 0.21714285714285714,
+          "train_recall": 0.696,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.62,
+          "train_delta_vs_dense": 0.007714285714285714,
+          "train_expansion_rate": 0.2794285714285714,
+          "train_recall": 0.6977142857142857,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.63,
+          "train_delta_vs_dense": 0.0074285714285714285,
+          "train_expansion_rate": 0.3377142857142857,
+          "train_recall": 0.6974285714285714,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.64,
+          "train_delta_vs_dense": 0.008285714285714285,
+          "train_expansion_rate": 0.4114285714285714,
+          "train_recall": 0.6982857142857143,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.65,
+          "train_delta_vs_dense": 0.008,
+          "train_expansion_rate": 0.482,
+          "train_recall": 0.698,
+          "within_budget": true
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.66,
+          "train_delta_vs_dense": 0.008571428571428572,
+          "train_expansion_rate": 0.5514285714285714,
+          "train_recall": 0.6985714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.67,
+          "train_delta_vs_dense": 0.009142857142857144,
+          "train_expansion_rate": 0.6202857142857143,
+          "train_recall": 0.6991428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.68,
+          "train_delta_vs_dense": 0.007714285714285714,
+          "train_expansion_rate": 0.6848571428571428,
+          "train_recall": 0.6977142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.69,
+          "train_delta_vs_dense": 0.007142857142857143,
+          "train_expansion_rate": 0.7471428571428571,
+          "train_recall": 0.6971428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.7,
+          "train_delta_vs_dense": 0.009428571428571429,
+          "train_expansion_rate": 0.8005714285714286,
+          "train_recall": 0.6994285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.71,
+          "train_delta_vs_dense": 0.01,
+          "train_expansion_rate": 0.85,
+          "train_recall": 0.7,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.72,
+          "train_delta_vs_dense": 0.009714285714285713,
+          "train_expansion_rate": 0.8914285714285715,
+          "train_recall": 0.6997142857142857,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.73,
+          "train_delta_vs_dense": 0.008,
+          "train_expansion_rate": 0.9217142857142857,
+          "train_recall": 0.698,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.74,
+          "train_delta_vs_dense": 0.0074285714285714285,
+          "train_expansion_rate": 0.9448571428571428,
+          "train_recall": 0.6974285714285714,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.75,
+          "train_delta_vs_dense": 0.007142857142857143,
+          "train_expansion_rate": 0.9628571428571429,
+          "train_recall": 0.6971428571428572,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.76,
+          "train_delta_vs_dense": 0.006857142857142857,
+          "train_expansion_rate": 0.9771428571428571,
+          "train_recall": 0.6968571428571428,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.77,
+          "train_delta_vs_dense": 0.006571428571428572,
+          "train_expansion_rate": 0.9882857142857143,
+          "train_recall": 0.6965714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.78,
+          "train_delta_vs_dense": 0.006571428571428572,
+          "train_expansion_rate": 0.9942857142857143,
+          "train_recall": 0.6965714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.79,
+          "train_delta_vs_dense": 0.006571428571428572,
+          "train_expansion_rate": 0.9968571428571429,
+          "train_recall": 0.6965714285714286,
+          "within_budget": false
+        },
+        {
+          "always_train_recall": 0.6965714285714286,
+          "dense_train_recall": 0.69,
+          "threshold": 0.8,
+          "train_delta_vs_dense": 0.006571428571428572,
+          "train_expansion_rate": 0.9985714285714286,
+          "train_recall": 0.6965714285714286,
+          "within_budget": false
+        }
+      ],
+      "delta_vs_dense": 0.014,
+      "dense_recall": 0.65,
+      "expansion_rate": 0.412,
+      "gate_recall": 0.664,
+      "n_test": 500,
+      "n_train": 3500,
+      "test_seed": 49,
+      "threshold": 0.64,
+      "train_delta_vs_dense": 0.008285714285714285,
+      "train_expansion_rate": 0.4114285714285714,
+      "train_recall": 0.6982857142857143,
+      "train_seeds": [
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+parquet_file: /home/nlp-07/evermemos/EverOS/benchmarks/EvoAgentBench/data/swebench/test-00000-of-00001.parquet
+tar_dir: /home/nlp-07/evermemos/EverOS/benchmarks/EvoAgentBench/data/swebench/images
+split_file: /home/nlp-07/evermemos/EverOS/benchmarks/EvoAgentBench/data/swebench/task_split.json
+split: test
+agent_timeout: 1800
+verify_timeout: 1800
+retrieval_context_file: /home/nlp-07/sqe_experiment/pass1_contexts/selective_qe_contexts.jsonl
+retrieval_context_method: Selective-QE
+

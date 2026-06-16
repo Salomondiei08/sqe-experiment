@@ -1,0 +1,869 @@
+{
+  "strong_submission_ready": false,
+  "blocking_count": 2,
+  "checks": [
+    {
+      "name": "Active multiseed retrieval runs",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "path": "/home/nlp-07/sqe_experiment/results_multiseed/multiseed_report.json",
+        "n_complete_seeds": 8,
+        "seed_family": "independent_memory"
+      }
+    },
+    {
+      "name": "Independent memory-index seeds",
+      "status": "pass",
+      "required_for_strong_submission": true,
+      "evidence": {
+        "complete_count": 8,
+        "seed_dirs": [
+          {
+            "seed": 42,
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed42",
+            "status": "complete"
+          },
+          {
+            "seed": 43,
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed43",
+            "status": "complete"
+          },
+          {
+            "seed": 44,
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed44",
+            "status": "complete"
+          },
+          {
+            "seed": 45,
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed45",
+            "status": "complete"
+          },
+          {
+            "seed": 46,
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed46",
+            "status": "complete"
+          },
+          {
+            "seed": 47,
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed47",
+            "status": "complete"
+          },
+          {
+            "seed": 48,
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed48",
+            "status": "complete"
+          },
+          {
+            "seed": 49,
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed49",
+            "status": "complete"
+          }
+        ],
+        "note": "Fixed-memory query seeds do not satisfy this criterion."
+      }
+    },
+    {
+      "name": "Small multi-seed Recall@5 improvement over dense retrieval",
+      "status": "pass",
+      "required_for_strong_submission": true,
+      "evidence": {
+        "present": true,
+        "dense_row_present": true,
+        "delta": 0.00875,
+        "ci_low": 0.001,
+        "ci_high": 0.0165,
+        "excludes_zero": true
+      }
+    },
+    {
+      "name": "Held-out gate diagnostic paired improvement",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "path": "/home/nlp-07/sqe_experiment/results_gate_calibration/gate_validation_paired_tests.json",
+        "present": true,
+        "is_pass1_result": false,
+        "metric": "Recall@5",
+        "n_queries": 2000,
+        "delta": 0.011,
+        "ci_low": 0.001,
+        "ci_high": 0.021,
+        "sign_flip_p": 0.0365963403659634,
+        "excludes_zero": true
+      }
+    },
+    {
+      "name": "Cross-seed top-1 gate diagnostic",
+      "status": "weak",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "path": "/home/nlp-07/sqe_experiment/results_gate_calibration/cross_seed_top1_gate.json",
+        "table": "/home/nlp-07/sqe_experiment/paper/tables/cross_seed_top1_gate.tex",
+        "script": "/home/nlp-07/sqe_experiment/scripts/29_cross_seed_top1_gate.py",
+        "present": true,
+        "table_present": true,
+        "script_present": true,
+        "is_pass1_result": false,
+        "metric": "Recall@5",
+        "n_queries": 4000,
+        "gate_recall": 0.69125,
+        "dense_recall": 0.685,
+        "delta_vs_dense": 0.00625,
+        "ci_low": -0.00075,
+        "ci_high": 0.01325,
+        "sign_flip_p": 0.09159084091590841,
+        "expansion_rate": 0.36875,
+        "excludes_zero": false
+      }
+    },
+    {
+      "name": "Downstream Pass@1 or task-success evaluation",
+      "status": "missing",
+      "required_for_strong_submission": true,
+      "evidence": {
+        "present_paths": [],
+        "has_pass1_results": false,
+        "schema_documentation": "/home/nlp-07/sqe_experiment/PASS1_RESULTS_SCHEMA.md",
+        "schema_documentation_present": true,
+        "schema_is_evidence": false,
+        "evoagentbench_importer": "/home/nlp-07/sqe_experiment/scripts/23_import_evoagentbench_pass1.py",
+        "evoagentbench_importer_present": true,
+        "importer_is_evidence": false,
+        "harness_audit": "/home/nlp-07/sqe_experiment/PASS1_HARNESS_AUDIT.md",
+        "harness_audit_present": true
+      }
+    },
+    {
+      "name": "Pass@1 retrieval context packets",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "context_dir": "/home/nlp-07/sqe_experiment/pass1_contexts",
+        "exporter": "/home/nlp-07/sqe_experiment/scripts/24_export_pass1_retrieval_contexts.py",
+        "exporter_present": true,
+        "verifier": "/home/nlp-07/sqe_experiment/scripts/25_verify_pass1_contexts.py",
+        "verifier_present": true,
+        "is_pass1_result": false,
+        "has_valid_contexts": true,
+        "verification_report": {
+          "context_dir": "/home/nlp-07/sqe_experiment/pass1_contexts",
+          "expected_methods": [
+            "Dense-Only",
+            "Always-Expand",
+            "Random-Gated-Expansion",
+            "Selective-QE"
+          ],
+          "reports": [
+            {
+              "manifest_path": "/home/nlp-07/sqe_experiment/pass1_contexts/always_expand_manifest.json",
+              "output_path": "/home/nlp-07/sqe_experiment/pass1_contexts/always_expand_contexts.jsonl",
+              "method": "Always-Expand",
+              "n_rows": 500,
+              "failures": []
+            },
+            {
+              "manifest_path": "/home/nlp-07/sqe_experiment/pass1_contexts/dense_only_manifest.json",
+              "output_path": "/home/nlp-07/sqe_experiment/pass1_contexts/dense_only_contexts.jsonl",
+              "method": "Dense-Only",
+              "n_rows": 500,
+              "failures": []
+            },
+            {
+              "manifest_path": "/home/nlp-07/sqe_experiment/pass1_contexts/random_gated_expansion_manifest.json",
+              "output_path": "/home/nlp-07/sqe_experiment/pass1_contexts/random_gated_expansion_contexts.jsonl",
+              "method": "Random-Gated-Expansion",
+              "n_rows": 500,
+              "failures": []
+            },
+            {
+              "manifest_path": "/home/nlp-07/sqe_experiment/pass1_contexts/selective_qe_manifest.json",
+              "output_path": "/home/nlp-07/sqe_experiment/pass1_contexts/selective_qe_contexts.jsonl",
+              "method": "Selective-QE",
+              "n_rows": 500,
+              "failures": []
+            }
+          ],
+          "warnings": [],
+          "failures": []
+        },
+        "expected_methods": [
+          "Dense-Only",
+          "Always-Expand",
+          "Random-Gated-Expansion",
+          "Selective-QE"
+        ],
+        "problems": []
+      }
+    },
+    {
+      "name": "Pass@1 harness execution preflight",
+      "status": "blocked",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "preflight_report": "/home/nlp-07/sqe_experiment/pass1_harness_preflight.json",
+        "preflight_report_present": true,
+        "checker": "/home/nlp-07/sqe_experiment/scripts/26_check_pass1_harness_readiness.py",
+        "checker_present": true,
+        "guarded_runner": "/home/nlp-07/sqe_experiment/scripts/42_run_pass1_after_preflight.sh",
+        "guarded_runner_present": true,
+        "guarded_runner_is_evidence": false,
+        "guarded_runner_requires_ready_preflight": true,
+        "guarded_runner_default_no_overwrite": true,
+        "guarded_runner_smoke_output_separate": true,
+        "guarded_runner_full_min_task_count": true,
+        "guarded_runner_smoke_min_task_count_explicit": true,
+        "execution_quickstart": "/home/nlp-07/sqe_experiment/pass1_evoagentbench_configs/EXECUTION_QUICKSTART.md",
+        "execution_quickstart_present": true,
+        "execution_quickstart_is_evidence": false,
+        "is_pass1_result": false,
+        "checked_at_utc": "2026-05-15T07:41:49+00:00",
+        "ready_to_run_pass1": false,
+        "blockers": [
+          "current user cannot access Docker daemon"
+        ],
+        "python_missing": [],
+        "docker_can_run": false,
+        "docker_socket_group": "docker",
+        "docker_socket_group_members": [
+          "cv-00",
+          "cv-01",
+          "cv-02",
+          "cv-03",
+          "cv-04",
+          "cv-05",
+          "cv-06",
+          "cv-07",
+          "cv-08",
+          "cv-09",
+          "cv-10",
+          "dice"
+        ],
+        "docker_user_group_names": [
+          "nlp-07"
+        ],
+        "docker_user_in_socket_group": false,
+        "docker_user_listed_in_socket_group": false,
+        "alternate_container_runtime_note": "Diagnostic only. EvoAgentBench SWE-bench uses Docker SDK and Docker socket APIs, so alternate runtimes are not Pass@1 readiness unless the harness is ported and verified.",
+        "alternate_container_runtimes": {
+          "apptainer": {
+            "present": false,
+            "can_list_containers": false,
+            "is_drop_in_for_evoagentbench_swebench": false
+          },
+          "nerdctl": {
+            "present": true,
+            "can_list_containers": false,
+            "is_drop_in_for_evoagentbench_swebench": false
+          },
+          "podman": {
+            "present": false,
+            "can_list_containers": false,
+            "is_drop_in_for_evoagentbench_swebench": false
+          },
+          "singularity": {
+            "present": false,
+            "can_list_containers": false,
+            "is_drop_in_for_evoagentbench_swebench": false
+          }
+        },
+        "parquet_exists": true,
+        "split_file_exists": true,
+        "context_packets_valid": true,
+        "run_configs_valid": true,
+        "codex_cli": "/home/nlp-07/.local/bin/codex"
+      }
+    },
+    {
+      "name": "Human-audited query quality labels",
+      "status": "missing",
+      "required_for_strong_submission": true,
+      "evidence": {
+        "source_rows": 100,
+        "labeled_rows": 0,
+        "complete_label_rows": 0,
+        "invalid_label_count": 0,
+        "missing_files": [
+          "/home/nlp-07/sqe_experiment/human_audit/labeled_human_audit_queries.csv",
+          "/home/nlp-07/sqe_experiment/human_audit/human_audit_labeling_manifest.json",
+          "/home/nlp-07/sqe_experiment/human_audit/human_audit_summary.json"
+        ],
+        "documentation_only_templates": [
+          "/home/nlp-07/sqe_experiment/human_audit/human_audit_labeling_manifest.template.json",
+          "/home/nlp-07/sqe_experiment/human_audit/labeling_form.html",
+          "/home/nlp-07/sqe_experiment/human_audit/labeling_form_manifest.json",
+          "/home/nlp-07/sqe_experiment/human_audit/LABELING_PROTOCOL.md",
+          "/home/nlp-07/sqe_experiment/human_audit/REVIEWER_QUICKSTART.md",
+          "/home/nlp-07/sqe_experiment/human_audit/reviewer_packets/assignment_manifest.json"
+        ],
+        "source_packet_paths": [
+          "/home/nlp-07/sqe_experiment/human_audit/human_audit_queries.csv",
+          "/home/nlp-07/sqe_experiment/human_audit/human_audit_queries.jsonl",
+          "/home/nlp-07/sqe_experiment/human_audit/human_audit_manifest.json",
+          "/home/nlp-07/sqe_experiment/human_audit/README.md",
+          "/home/nlp-07/sqe_experiment/human_audit/LABELING_PROTOCOL.md",
+          "/home/nlp-07/sqe_experiment/human_audit/REVIEWER_QUICKSTART.md"
+        ],
+        "source_packet_is_evidence": false,
+        "labeling_template_is_evidence": false,
+        "labeling_form_is_evidence": false,
+        "labeling_protocol_present": true,
+        "labeling_protocol_is_evidence": false,
+        "reviewer_quickstart_present": true,
+        "reviewer_quickstart_is_evidence": false,
+        "reviewer_packet_manifest_present": true,
+        "reviewer_packet_manifest_is_evidence": false,
+        "reviewer_packet_verification_present": true,
+        "reviewer_packet_verification_failures": [],
+        "reviewer_packet_verification_is_evidence": false,
+        "labeling_manifest_reviewer_count": 0,
+        "labeling_manifest_has_two_reviewers": false,
+        "labeling_manifest_has_adjudication_notes": false,
+        "labeling_manifest_guard_valid": false,
+        "summary_provenance_valid": false,
+        "verification_report": "/home/nlp-07/sqe_experiment/human_audit/verification_report.json",
+        "verification_report_present": true,
+        "verification_report_failures": [
+          "missing labeled CSV: /home/nlp-07/sqe_experiment/human_audit/labeled_human_audit_queries.csv",
+          "missing labeling manifest: /home/nlp-07/sqe_experiment/human_audit/human_audit_labeling_manifest.json",
+          "missing human-audit summary: /home/nlp-07/sqe_experiment/human_audit/human_audit_summary.json",
+          "source audit rows missing from labeled CSV: ['q_0004', 'q_0006', 'q_0007', 'q_0011', 'q_0021', 'q_0026', 'q_0037', 'q_0041', 'q_0045', 'q_0050']",
+          "human_audit_labeling_manifest.json missing required fields: ['reviewers', 'label_set', 'labeling_date', 'n_labeled_rows', 'source_csv', 'labeled_csv', 'protocol_notes', 'adjudication_notes']",
+          "human_audit_labeling_manifest.json must list reviewers",
+          "human_audit_labeling_manifest.json must document label_set",
+          "human_audit_labeling_manifest.json must record labeling_date",
+          "human_audit_labeling_manifest.json source_csv must be human_audit_queries.csv",
+          "human_audit_labeling_manifest.json labeled_csv must be labeled_human_audit_queries.csv",
+          "human_audit_labeling_manifest.json must document protocol_notes",
+          "human_audit_labeling_manifest.json must document adjudication_notes",
+          "human_audit_labeling_manifest.json n_labeled_rows does not match CSV rows: None vs 0"
+        ],
+        "valid": false
+      }
+    },
+    {
+      "name": "Documented unblock steps",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "path": "/home/nlp-07/sqe_experiment/BLOCKED_NEXT_ACTIONS.md",
+        "present": true,
+        "is_evidence": false,
+        "required_phrases": [
+          "It is not experiment evidence.",
+          "current user cannot access Docker daemon",
+          "sudo usermod -aG docker nlp-07",
+          "Dense-Only",
+          "Always-Expand",
+          "Random-Gated-Expansion",
+          "Selective-QE",
+          "labeled_human_audit_queries.csv",
+          "human_audit_labeling_manifest.json",
+          "human_audit_summary.json",
+          "Do not create placeholder Pass@1 rows",
+          "Missing evidence must remain marked as missing"
+        ],
+        "missing_required_phrases": [],
+        "valid": true
+      }
+    },
+    {
+      "name": "External evidence resume helper",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "script": "/home/nlp-07/sqe_experiment/scripts/44_resume_after_external_evidence.sh",
+        "present": true,
+        "is_experiment_evidence": false,
+        "creates_labels_or_task_outcomes": false,
+        "missing_required_snippets": [],
+        "forbidden_snippets_present": [],
+        "valid": true
+      }
+    },
+    {
+      "name": "Non-destructive release helpers",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "checked_scripts": [
+          "/home/nlp-07/sqe_experiment/scripts/33_prepare_hf_dataset_release.py",
+          "/home/nlp-07/sqe_experiment/scripts/34_prepare_github_code_release.py"
+        ],
+        "destructive_patterns": [],
+        "missing_noop_clean_guard": [],
+        "deprecated_clean_is_noop": true,
+        "valid": true
+      }
+    },
+    {
+      "name": "Project script deletion safety",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "checked_scripts": [
+          "/home/nlp-07/sqe_experiment/scripts/01_prepare_dataset.py",
+          "/home/nlp-07/sqe_experiment/scripts/02_build_index.py",
+          "/home/nlp-07/sqe_experiment/scripts/03_run_baselines.py",
+          "/home/nlp-07/sqe_experiment/scripts/04_run_proposed_method.py",
+          "/home/nlp-07/sqe_experiment/scripts/05_evaluate_and_report.py",
+          "/home/nlp-07/sqe_experiment/scripts/06_make_paper_artifacts.py",
+          "/home/nlp-07/sqe_experiment/scripts/08_prepare_human_audit.py",
+          "/home/nlp-07/sqe_experiment/scripts/09_make_multiseed_report.py",
+          "/home/nlp-07/sqe_experiment/scripts/10_prepare_eval_from_memory.py",
+          "/home/nlp-07/sqe_experiment/scripts/11_make_multiseed_paired_tests.py",
+          "/home/nlp-07/sqe_experiment/scripts/12_make_multiseed_gate_validation.py",
+          "/home/nlp-07/sqe_experiment/scripts/13_make_artifact_manifest.py",
+          "/home/nlp-07/sqe_experiment/scripts/15_gate_variant_diagnostics.py",
+          "/home/nlp-07/sqe_experiment/scripts/16_gate_headroom_diagnostics.py",
+          "/home/nlp-07/sqe_experiment/scripts/17_verify_pass1_results.py",
+          "/home/nlp-07/sqe_experiment/scripts/18_verify_human_audit_labels.py",
+          "/home/nlp-07/sqe_experiment/scripts/19_win_loss_analysis.py",
+          "/home/nlp-07/sqe_experiment/scripts/20_summarize_human_audit_labels.py",
+          "/home/nlp-07/sqe_experiment/scripts/21_summarize_pass1_results.py",
+          "/home/nlp-07/sqe_experiment/scripts/22_gate_feature_diagnostics.py",
+          "/home/nlp-07/sqe_experiment/scripts/23_import_evoagentbench_pass1.py",
+          "/home/nlp-07/sqe_experiment/scripts/24_export_pass1_retrieval_contexts.py",
+          "/home/nlp-07/sqe_experiment/scripts/25_verify_pass1_contexts.py",
+          "/home/nlp-07/sqe_experiment/scripts/26_check_pass1_harness_readiness.py",
+          "/home/nlp-07/sqe_experiment/scripts/27_make_human_audit_labeling_form.py",
+          "/home/nlp-07/sqe_experiment/scripts/28_gate_validation_paired_tests.py",
+          "/home/nlp-07/sqe_experiment/scripts/29_cross_seed_top1_gate.py",
+          "/home/nlp-07/sqe_experiment/scripts/31_verify_latex_clean_build.py",
+          "/home/nlp-07/sqe_experiment/scripts/32_cross_seed_gate_variant.py",
+          "/home/nlp-07/sqe_experiment/scripts/33_prepare_hf_dataset_release.py",
+          "/home/nlp-07/sqe_experiment/scripts/34_prepare_github_code_release.py",
+          "/home/nlp-07/sqe_experiment/scripts/35_write_missing_evidence_blockers.py",
+          "/home/nlp-07/sqe_experiment/scripts/36_make_conference_preview.py",
+          "/home/nlp-07/sqe_experiment/scripts/37_audit_paper_style.py",
+          "/home/nlp-07/sqe_experiment/scripts/38_capture_compute_environment.py",
+          "/home/nlp-07/sqe_experiment/scripts/39_audit_figure_assets.py",
+          "/home/nlp-07/sqe_experiment/scripts/40_make_human_audit_reviewer_packets.py",
+          "/home/nlp-07/sqe_experiment/scripts/41_verify_human_audit_reviewer_packets.py",
+          "/home/nlp-07/sqe_experiment/scripts/42_run_pass1_after_preflight.sh",
+          "/home/nlp-07/sqe_experiment/scripts/43_audit_paper_evidence_claims.py",
+          "/home/nlp-07/sqe_experiment/scripts/44_resume_after_external_evidence.sh",
+          "/home/nlp-07/sqe_experiment/scripts/45_make_conference_slides.py",
+          "/home/nlp-07/sqe_experiment/scripts/retrieval_engine.py",
+          "/home/nlp-07/sqe_experiment/scripts/run_ablation_suite.sh",
+          "/home/nlp-07/sqe_experiment/scripts/run_fixed_memory_eval_seed.sh",
+          "/home/nlp-07/sqe_experiment/scripts/run_multiseed_artifacts.sh",
+          "/home/nlp-07/sqe_experiment/scripts/run_paper_pipeline.sh",
+          "/home/nlp-07/sqe_experiment/scripts/run_single_seed_suite.sh"
+        ],
+        "destructive_patterns": [],
+        "audit_scripts_excluded": [
+          "07_verify_experiment.py",
+          "14_submission_readiness_check.py"
+        ],
+        "valid": true
+      }
+    },
+    {
+      "name": "No hallucinated or simulated evidence in active paper package",
+      "status": "pass",
+      "required_for_strong_submission": true,
+      "evidence": {
+        "policy": "/home/nlp-07/sqe_experiment/NO_HALLUCINATED_DATA.md",
+        "required_phrases": [
+          "invented, placeholder, or simulated",
+          "executed random-gating budget control",
+          "is not evidence"
+        ],
+        "verification_reports_checked": [
+          {
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed42/verification_report.json",
+            "failures": [],
+            "forbidden_synthetic_evidence_references": [],
+            "invalid_or_deprecated_artifact_references": [],
+            "unsupported_claim_references": [],
+            "legacy_random_budget_doc_references": [],
+            "stale_seed_provenance_doc_references": [],
+            "stale_gate_variant_ci_doc_references": [],
+            "checklist_missing_quarantine_phrases": [],
+            "checklist_forbidden_placeholder_claims": [],
+            "no_hallucinated_data_missing_required_phrases": []
+          },
+          {
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed43/verification_report.json",
+            "failures": [],
+            "forbidden_synthetic_evidence_references": [],
+            "invalid_or_deprecated_artifact_references": [],
+            "unsupported_claim_references": [],
+            "legacy_random_budget_doc_references": [],
+            "stale_seed_provenance_doc_references": [],
+            "stale_gate_variant_ci_doc_references": [],
+            "checklist_missing_quarantine_phrases": [],
+            "checklist_forbidden_placeholder_claims": [],
+            "no_hallucinated_data_missing_required_phrases": []
+          },
+          {
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed44/verification_report.json",
+            "failures": [],
+            "forbidden_synthetic_evidence_references": [],
+            "invalid_or_deprecated_artifact_references": [],
+            "unsupported_claim_references": [],
+            "legacy_random_budget_doc_references": [],
+            "stale_seed_provenance_doc_references": [],
+            "stale_gate_variant_ci_doc_references": [],
+            "checklist_missing_quarantine_phrases": [],
+            "checklist_forbidden_placeholder_claims": [],
+            "no_hallucinated_data_missing_required_phrases": []
+          },
+          {
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed45/verification_report.json",
+            "failures": [],
+            "forbidden_synthetic_evidence_references": [],
+            "invalid_or_deprecated_artifact_references": [],
+            "unsupported_claim_references": [],
+            "legacy_random_budget_doc_references": [],
+            "stale_seed_provenance_doc_references": [],
+            "stale_gate_variant_ci_doc_references": [],
+            "checklist_missing_quarantine_phrases": [],
+            "checklist_forbidden_placeholder_claims": [],
+            "no_hallucinated_data_missing_required_phrases": []
+          },
+          {
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed46/verification_report.json",
+            "failures": [],
+            "forbidden_synthetic_evidence_references": [],
+            "invalid_or_deprecated_artifact_references": [],
+            "unsupported_claim_references": [],
+            "legacy_random_budget_doc_references": [],
+            "stale_seed_provenance_doc_references": [],
+            "stale_gate_variant_ci_doc_references": [],
+            "checklist_missing_quarantine_phrases": [],
+            "checklist_forbidden_placeholder_claims": [],
+            "no_hallucinated_data_missing_required_phrases": []
+          },
+          {
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed47/verification_report.json",
+            "failures": [],
+            "forbidden_synthetic_evidence_references": [],
+            "invalid_or_deprecated_artifact_references": [],
+            "unsupported_claim_references": [],
+            "legacy_random_budget_doc_references": [],
+            "stale_seed_provenance_doc_references": [],
+            "stale_gate_variant_ci_doc_references": [],
+            "checklist_missing_quarantine_phrases": [],
+            "checklist_forbidden_placeholder_claims": [],
+            "no_hallucinated_data_missing_required_phrases": []
+          },
+          {
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed48/verification_report.json",
+            "failures": [],
+            "forbidden_synthetic_evidence_references": [],
+            "invalid_or_deprecated_artifact_references": [],
+            "unsupported_claim_references": [],
+            "legacy_random_budget_doc_references": [],
+            "stale_seed_provenance_doc_references": [],
+            "stale_gate_variant_ci_doc_references": [],
+            "checklist_missing_quarantine_phrases": [],
+            "checklist_forbidden_placeholder_claims": [],
+            "no_hallucinated_data_missing_required_phrases": []
+          },
+          {
+            "path": "/home/nlp-07/sqe_experiment/results_500_memory_seed49/verification_report.json",
+            "failures": [],
+            "forbidden_synthetic_evidence_references": [],
+            "invalid_or_deprecated_artifact_references": [],
+            "unsupported_claim_references": [],
+            "legacy_random_budget_doc_references": [],
+            "stale_seed_provenance_doc_references": [],
+            "stale_gate_variant_ci_doc_references": [],
+            "checklist_missing_quarantine_phrases": [],
+            "checklist_forbidden_placeholder_claims": [],
+            "no_hallucinated_data_missing_required_phrases": []
+          }
+        ],
+        "valid": true,
+        "problems": []
+      }
+    },
+    {
+      "name": "Measured token costs for all expansion ablations",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "selective_measured": true,
+        "other_measured_expansion_methods": [
+          "always_expand",
+          "traces_only",
+          "paraphrases_only",
+          "random_budget"
+        ]
+      }
+    },
+    {
+      "name": "Verified LaTeX paper package",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "audit": "/home/nlp-07/sqe_experiment/LATEX_BUILD_AUDIT.json",
+        "audit_present": true,
+        "script": "/home/nlp-07/sqe_experiment/scripts/31_verify_latex_clean_build.py",
+        "script_present": true,
+        "pdf": "/home/nlp-07/sqe_experiment/paper/main.pdf",
+        "pdf_present": true,
+        "clean_build": true,
+        "returncode": 0,
+        "warnings": [],
+        "failures": [],
+        "pdf_bytes": 473040,
+        "pdf_pages": 11,
+        "tectonic": "/home/nlp-07/.local/bin/tectonic-musl",
+        "problems": [],
+        "verification_report": "/home/nlp-07/sqe_experiment/results_500_memory_seed42/verification_report.json"
+      }
+    },
+    {
+      "name": "Conference-style paper preview",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "audit": "/home/nlp-07/sqe_experiment/CONFERENCE_PREVIEW_AUDIT.json",
+        "audit_present": true,
+        "script": "/home/nlp-07/sqe_experiment/scripts/36_make_conference_preview.py",
+        "script_present": true,
+        "tex": "/home/nlp-07/sqe_experiment/paper/main_conference_preview.tex",
+        "tex_present": true,
+        "pdf": "/home/nlp-07/sqe_experiment/paper/main_conference_preview.pdf",
+        "pdf_present": true,
+        "is_experiment_evidence": false,
+        "is_official_venue_template": false,
+        "clean_for_preview": true,
+        "problems": [],
+        "warnings": [
+          "warning: main_conference_preview.tex:115: Underfull \\hbox (badness 1394) in paragraph at lines 111--115",
+          "warning: main_conference_preview.bbl:31: Underfull \\hbox (badness 1708) in paragraph at lines 25--31",
+          "warning: main_conference_preview.bbl:31: Underfull \\hbox (badness 1708) in paragraph at lines 25--31",
+          "warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details."
+        ],
+        "failures": [],
+        "pdf_bytes": 471142,
+        "pdf_pages": 11,
+        "valid": true
+      }
+    },
+    {
+      "name": "Paper style and float-reference audit",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "audit": "/home/nlp-07/sqe_experiment/PAPER_STYLE_AUDIT.json",
+        "audit_present": true,
+        "script": "/home/nlp-07/sqe_experiment/scripts/37_audit_paper_style.py",
+        "script_present": true,
+        "clean": true,
+        "is_experiment_evidence": false,
+        "problems": [],
+        "n_figures": 4,
+        "n_tables": 17,
+        "manual_bold_count": 0,
+        "em_dash_count": 0,
+        "forbidden_unicode_punctuation_counts": {},
+        "guarded_phrases": [
+          "groundbreaking",
+          "revolutionary",
+          "game-changing",
+          "state-of-the-art",
+          "cutting-edge",
+          "significant improvement",
+          "robust",
+          "in this work",
+          "seamless",
+          "delve",
+          "intricate",
+          "realm",
+          "tapestry",
+          "landscape",
+          "unlock",
+          "unleash",
+          "pivotal",
+          "underscore",
+          "utilize",
+          "leverage",
+          "moreover",
+          "furthermore",
+          "notably",
+          "it is worth noting",
+          "comprehensive",
+          "extense",
+          "extensive",
+          "extensively",
+          "novel"
+        ],
+        "hype_or_vague_phrase_hits": [],
+        "required_layout_controls": [
+          "\\captionsetup{font=small,labelfont=bf,skip=6pt}",
+          "\\captionsetup[table]{position=top,aboveskip=7pt,belowskip=9pt}",
+          "\\captionsetup[figure]{position=bottom,aboveskip=7pt,belowskip=9pt}",
+          "\\setlength{\\textfloatsep}{20pt plus 3pt minus 2pt}",
+          "\\setlength{\\floatsep}{18pt plus 3pt minus 2pt}",
+          "\\setlength{\\intextsep}{18pt plus 3pt minus 2pt}",
+          "\\setlength{\\tabcolsep}{5pt}",
+          "\\renewcommand{\\arraystretch}{1.08}",
+          "\\emergencystretch=1em"
+        ],
+        "missing_layout_controls": [],
+        "warnings": [],
+        "failures": [],
+        "missing_required_guarded_phrases": [],
+        "missing_required_layout_controls": [],
+        "valid": true
+      }
+    },
+    {
+      "name": "Figure asset readability audit",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "audit": "/home/nlp-07/sqe_experiment/FIGURE_ASSET_AUDIT.json",
+        "audit_present": true,
+        "script": "/home/nlp-07/sqe_experiment/scripts/39_audit_figure_assets.py",
+        "script_present": true,
+        "clean": true,
+        "is_experiment_evidence": false,
+        "problems": [],
+        "n_active_figures": 4,
+        "warnings": [],
+        "failures": [],
+        "figures": [
+          {
+            "figure": "gate_diagnostic.png",
+            "png": "/home/nlp-07/sqe_experiment/paper/figures/gate_diagnostic.png",
+            "svg": "/home/nlp-07/sqe_experiment/paper/figures/gate_diagnostic.svg",
+            "png_present": true,
+            "svg_present": true,
+            "text_element_count": 19,
+            "metrics": {
+              "width": 1879,
+              "height": 985,
+              "mode": "RGB",
+              "mean_luminance": 248.22,
+              "dark_pixel_pct": 0.504,
+              "nonwhite_pixel_pct": 9.155
+            },
+            "failures": []
+          },
+          {
+            "figure": "method_overview.png",
+            "png": "/home/nlp-07/sqe_experiment/paper/figures/method_overview.png",
+            "svg": "/home/nlp-07/sqe_experiment/paper/figures/method_overview.svg",
+            "png_present": true,
+            "svg_present": true,
+            "text_element_count": 19,
+            "metrics": {
+              "width": 2520,
+              "height": 985,
+              "mode": "RGB",
+              "mean_luminance": 244.05,
+              "dark_pixel_pct": 1.076,
+              "nonwhite_pixel_pct": 16.846
+            },
+            "failures": []
+          },
+          {
+            "figure": "recall_at_5.png",
+            "png": "/home/nlp-07/sqe_experiment/paper/figures/recall_at_5.png",
+            "svg": "/home/nlp-07/sqe_experiment/paper/figures/recall_at_5.svg",
+            "png_present": true,
+            "svg_present": true,
+            "text_element_count": 25,
+            "metrics": {
+              "width": 1879,
+              "height": 1145,
+              "mode": "RGB",
+              "mean_luminance": 236.94,
+              "dark_pixel_pct": 0.825,
+              "nonwhite_pixel_pct": 25.868
+            },
+            "failures": []
+          },
+          {
+            "figure": "threshold_sensitivity.png",
+            "png": "/home/nlp-07/sqe_experiment/paper/figures/threshold_sensitivity.png",
+            "svg": "/home/nlp-07/sqe_experiment/paper/figures/threshold_sensitivity.svg",
+            "png_present": true,
+            "svg_present": true,
+            "text_element_count": 16,
+            "metrics": {
+              "width": 1879,
+              "height": 985,
+              "mode": "RGB",
+              "mean_luminance": 249.35,
+              "dark_pixel_pct": 0.382,
+              "nonwhite_pixel_pct": 8.755
+            },
+            "failures": []
+          }
+        ],
+        "valid": true
+      }
+    },
+    {
+      "name": "Paper evidence-claim audit",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "audit": "/home/nlp-07/sqe_experiment/PAPER_EVIDENCE_CLAIM_AUDIT.json",
+        "audit_present": true,
+        "script": "/home/nlp-07/sqe_experiment/scripts/43_audit_paper_evidence_claims.py",
+        "script_present": true,
+        "clean": true,
+        "is_experiment_evidence": false,
+        "problems": [],
+        "matches": [],
+        "missing_required_limitations": [],
+        "warnings": [],
+        "failures": [],
+        "strong_submission_ready": false,
+        "blocking_count": 2,
+        "valid": true
+      }
+    },
+    {
+      "name": "Compute environment disclosure",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "path": "/home/nlp-07/sqe_experiment/COMPUTE_ENVIRONMENT.json",
+        "present": true,
+        "script": "/home/nlp-07/sqe_experiment/scripts/38_capture_compute_environment.py",
+        "script_present": true,
+        "is_experiment_metric": false,
+        "runtime_measurements_available": false,
+        "problems": [],
+        "checked_at_utc": "2026-05-15T06:48:18+00:00",
+        "cpu_model": "AMD EPYC 7352 24-Core Processor",
+        "cpu_threads": 96,
+        "memory_total": "251Gi",
+        "gpu_count": 8,
+        "gpu_names": [
+          "NVIDIA RTX A6000"
+        ],
+        "valid": true
+      }
+    },
+    {
+      "name": "LLM usage disclosure draft",
+      "status": "pass",
+      "required_for_strong_submission": false,
+      "evidence": {
+        "path": "/home/nlp-07/sqe_experiment/LLM_USAGE_DISCLOSURE.md",
+        "present": true,
+        "is_experiment_evidence": false,
+        "required_phrases": [
+          "documentation only",
+          "not experiment evidence",
+          "author remains responsible",
+          "not used as a source of experiment evidence",
+          "Missing evidence must remain marked as missing"
+        ],
+        "missing_required_phrases": [],
+        "valid": true
+      }
+    }
+  ],
+  "note": "A false value means the current package may still be useful as a retrieval paper draft, but should not be presented as a complete top-conference empirical submission."
+}
