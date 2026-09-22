@@ -1,0 +1,661 @@
+{
+  "requested_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "seed_family": "independent_memory",
+  "n_complete_seeds": 8,
+  "seed_reports": [
+    {
+      "seed": 42,
+      "status": "complete",
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed42",
+      "methods": {
+        "Dense-Only": {
+          "n_queries": 500,
+          "recall@1": 0.49,
+          "recall@5": 0.698,
+          "recall@10": 0.754,
+          "mrr": 0.574109523809524
+        },
+        "BM25-Only": {
+          "n_queries": 500,
+          "recall@1": 0.176,
+          "recall@5": 0.314,
+          "recall@10": 0.358,
+          "mrr": 0.23262301587301587
+        },
+        "Hybrid-RRF": {
+          "n_queries": 500,
+          "recall@1": 0.354,
+          "recall@5": 0.64,
+          "recall@10": 0.732,
+          "mrr": 0.4737007936507937
+        },
+        "Paraphrases-Only": {
+          "n_queries": 500,
+          "recall@1": 0.47,
+          "recall@5": 0.682,
+          "recall@10": 0.75,
+          "mrr": 0.5597595238095238,
+          "expansion_rate": 1.0
+        },
+        "HyDE-Traces-Only": {
+          "n_queries": 500,
+          "recall@1": 0.362,
+          "recall@5": 0.64,
+          "recall@10": 0.704,
+          "mrr": 0.4790468253968252,
+          "expansion_rate": 1.0
+        },
+        "Always-Expand": {
+          "n_queries": 500,
+          "recall@1": 0.422,
+          "recall@5": 0.68,
+          "recall@10": 0.756,
+          "mrr": 0.5316214285714285,
+          "expansion_rate": 1.0
+        },
+        "Random-Gated-Expansion": {
+          "n_queries": 500,
+          "recall@1": 0.46,
+          "recall@5": 0.69,
+          "recall@10": 0.758,
+          "mrr": 0.553377777777778,
+          "expansion_rate": 0.47
+        },
+        "Selective-QE": {
+          "n_queries": 500,
+          "recall@1": 0.472,
+          "recall@5": 0.694,
+          "recall@10": 0.754,
+          "mrr": 0.5642880952380951,
+          "expansion_rate": 0.46
+        }
+      }
+    },
+    {
+      "seed": 43,
+      "status": "complete",
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed43",
+      "methods": {
+        "Dense-Only": {
+          "n_queries": 500,
+          "recall@1": 0.446,
+          "recall@5": 0.664,
+          "recall@10": 0.726,
+          "mrr": 0.5392428571428571
+        },
+        "BM25-Only": {
+          "n_queries": 500,
+          "recall@1": 0.164,
+          "recall@5": 0.302,
+          "recall@10": 0.35,
+          "mrr": 0.22222380952380955
+        },
+        "Hybrid-RRF": {
+          "n_queries": 500,
+          "recall@1": 0.326,
+          "recall@5": 0.608,
+          "recall@10": 0.694,
+          "mrr": 0.44033095238095216
+        },
+        "Paraphrases-Only": {
+          "n_queries": 500,
+          "recall@1": 0.422,
+          "recall@5": 0.668,
+          "recall@10": 0.73,
+          "mrr": 0.5279166666666666,
+          "expansion_rate": 1.0
+        },
+        "HyDE-Traces-Only": {
+          "n_queries": 500,
+          "recall@1": 0.326,
+          "recall@5": 0.614,
+          "recall@10": 0.682,
+          "mrr": 0.4406944444444445,
+          "expansion_rate": 1.0
+        },
+        "Always-Expand": {
+          "n_queries": 500,
+          "recall@1": 0.386,
+          "recall@5": 0.666,
+          "recall@10": 0.742,
+          "mrr": 0.5038261904761904,
+          "expansion_rate": 1.0
+        },
+        "Random-Gated-Expansion": {
+          "n_queries": 500,
+          "recall@1": 0.422,
+          "recall@5": 0.662,
+          "recall@10": 0.732,
+          "mrr": 0.5232865079365079,
+          "expansion_rate": 0.474
+        },
+        "Selective-QE": {
+          "n_queries": 500,
+          "recall@1": 0.438,
+          "recall@5": 0.664,
+          "recall@10": 0.738,
+          "mrr": 0.5353571428571425,
+          "expansion_rate": 0.496
+        }
+      }
+    },
+    {
+      "seed": 44,
+      "status": "complete",
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed44",
+      "methods": {
+        "Dense-Only": {
+          "n_queries": 500,
+          "recall@1": 0.48,
+          "recall@5": 0.72,
+          "recall@10": 0.774,
+          "mrr": 0.5860349206349207
+        },
+        "BM25-Only": {
+          "n_queries": 500,
+          "recall@1": 0.172,
+          "recall@5": 0.286,
+          "recall@10": 0.34,
+          "mrr": 0.22023888888888885
+        },
+        "Hybrid-RRF": {
+          "n_queries": 500,
+          "recall@1": 0.34,
+          "recall@5": 0.672,
+          "recall@10": 0.752,
+          "mrr": 0.47401746031746017
+        },
+        "Paraphrases-Only": {
+          "n_queries": 500,
+          "recall@1": 0.474,
+          "recall@5": 0.718,
+          "recall@10": 0.768,
+          "mrr": 0.5789896825396825,
+          "expansion_rate": 1.0
+        },
+        "HyDE-Traces-Only": {
+          "n_queries": 500,
+          "recall@1": 0.39,
+          "recall@5": 0.678,
+          "recall@10": 0.748,
+          "mrr": 0.5119944444444445,
+          "expansion_rate": 1.0
+        },
+        "Always-Expand": {
+          "n_queries": 500,
+          "recall@1": 0.442,
+          "recall@5": 0.742,
+          "recall@10": 0.794,
+          "mrr": 0.5726301587301583,
+          "expansion_rate": 1.0
+        },
+        "Random-Gated-Expansion": {
+          "n_queries": 500,
+          "recall@1": 0.446,
+          "recall@5": 0.722,
+          "recall@10": 0.784,
+          "mrr": 0.5660436507936507,
+          "expansion_rate": 0.504
+        },
+        "Selective-QE": {
+          "n_queries": 500,
+          "recall@1": 0.484,
+          "recall@5": 0.728,
+          "recall@10": 0.786,
+          "mrr": 0.5928920634920634,
+          "expansion_rate": 0.446
+        }
+      }
+    },
+    {
+      "seed": 45,
+      "status": "complete",
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed45",
+      "methods": {
+        "Dense-Only": {
+          "n_queries": 500,
+          "recall@1": 0.464,
+          "recall@5": 0.69,
+          "recall@10": 0.756,
+          "mrr": 0.5605357142857144
+        },
+        "BM25-Only": {
+          "n_queries": 500,
+          "recall@1": 0.172,
+          "recall@5": 0.298,
+          "recall@10": 0.346,
+          "mrr": 0.22734841269841263
+        },
+        "Hybrid-RRF": {
+          "n_queries": 500,
+          "recall@1": 0.306,
+          "recall@5": 0.65,
+          "recall@10": 0.73,
+          "mrr": 0.4444619047619048
+        },
+        "Paraphrases-Only": {
+          "n_queries": 500,
+          "recall@1": 0.46,
+          "recall@5": 0.696,
+          "recall@10": 0.76,
+          "mrr": 0.5579071428571427,
+          "expansion_rate": 1.0
+        },
+        "HyDE-Traces-Only": {
+          "n_queries": 500,
+          "recall@1": 0.356,
+          "recall@5": 0.656,
+          "recall@10": 0.722,
+          "mrr": 0.47892777777777773,
+          "expansion_rate": 1.0
+        },
+        "Always-Expand": {
+          "n_queries": 500,
+          "recall@1": 0.402,
+          "recall@5": 0.724,
+          "recall@10": 0.778,
+          "mrr": 0.5334531746031749,
+          "expansion_rate": 1.0
+        },
+        "Random-Gated-Expansion": {
+          "n_queries": 500,
+          "recall@1": 0.442,
+          "recall@5": 0.71,
+          "recall@10": 0.766,
+          "mrr": 0.5538079365079367,
+          "expansion_rate": 0.43
+        },
+        "Selective-QE": {
+          "n_queries": 500,
+          "recall@1": 0.438,
+          "recall@5": 0.706,
+          "recall@10": 0.77,
+          "mrr": 0.5525920634920636,
+          "expansion_rate": 0.478
+        }
+      }
+    },
+    {
+      "seed": 46,
+      "status": "complete",
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed46",
+      "methods": {
+        "Dense-Only": {
+          "n_queries": 500,
+          "recall@1": 0.492,
+          "recall@5": 0.722,
+          "recall@10": 0.758,
+          "mrr": 0.5858690476190473
+        },
+        "BM25-Only": {
+          "n_queries": 500,
+          "recall@1": 0.168,
+          "recall@5": 0.308,
+          "recall@10": 0.34,
+          "mrr": 0.22604285714285702
+        },
+        "Hybrid-RRF": {
+          "n_queries": 500,
+          "recall@1": 0.32,
+          "recall@5": 0.658,
+          "recall@10": 0.746,
+          "mrr": 0.4641476190476192
+        },
+        "Paraphrases-Only": {
+          "n_queries": 500,
+          "recall@1": 0.492,
+          "recall@5": 0.714,
+          "recall@10": 0.758,
+          "mrr": 0.5850468253968253,
+          "expansion_rate": 1.0
+        },
+        "HyDE-Traces-Only": {
+          "n_queries": 500,
+          "recall@1": 0.338,
+          "recall@5": 0.666,
+          "recall@10": 0.724,
+          "mrr": 0.4789357142857142,
+          "expansion_rate": 1.0
+        },
+        "Always-Expand": {
+          "n_queries": 500,
+          "recall@1": 0.416,
+          "recall@5": 0.728,
+          "recall@10": 0.77,
+          "mrr": 0.5517444444444444,
+          "expansion_rate": 1.0
+        },
+        "Random-Gated-Expansion": {
+          "n_queries": 500,
+          "recall@1": 0.452,
+          "recall@5": 0.734,
+          "recall@10": 0.772,
+          "mrr": 0.5700873015873016,
+          "expansion_rate": 0.45
+        },
+        "Selective-QE": {
+          "n_queries": 500,
+          "recall@1": 0.486,
+          "recall@5": 0.732,
+          "recall@10": 0.774,
+          "mrr": 0.5917674603174604,
+          "expansion_rate": 0.494
+        }
+      }
+    },
+    {
+      "seed": 47,
+      "status": "complete",
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed47",
+      "methods": {
+        "Dense-Only": {
+          "n_queries": 500,
+          "recall@1": 0.412,
+          "recall@5": 0.67,
+          "recall@10": 0.732,
+          "mrr": 0.5210452380952382
+        },
+        "BM25-Only": {
+          "n_queries": 500,
+          "recall@1": 0.158,
+          "recall@5": 0.306,
+          "recall@10": 0.354,
+          "mrr": 0.2235952380952381
+        },
+        "Hybrid-RRF": {
+          "n_queries": 500,
+          "recall@1": 0.314,
+          "recall@5": 0.628,
+          "recall@10": 0.702,
+          "mrr": 0.43369761904761883
+        },
+        "Paraphrases-Only": {
+          "n_queries": 500,
+          "recall@1": 0.392,
+          "recall@5": 0.668,
+          "recall@10": 0.728,
+          "mrr": 0.5051214285714287,
+          "expansion_rate": 1.0
+        },
+        "HyDE-Traces-Only": {
+          "n_queries": 500,
+          "recall@1": 0.294,
+          "recall@5": 0.59,
+          "recall@10": 0.702,
+          "mrr": 0.42114444444444443,
+          "expansion_rate": 1.0
+        },
+        "Always-Expand": {
+          "n_queries": 500,
+          "recall@1": 0.34,
+          "recall@5": 0.656,
+          "recall@10": 0.762,
+          "mrr": 0.4762492063492063,
+          "expansion_rate": 1.0
+        },
+        "Random-Gated-Expansion": {
+          "n_queries": 500,
+          "recall@1": 0.384,
+          "recall@5": 0.668,
+          "recall@10": 0.744,
+          "mrr": 0.5028880952380953,
+          "expansion_rate": 0.432
+        },
+        "Selective-QE": {
+          "n_queries": 500,
+          "recall@1": 0.386,
+          "recall@5": 0.674,
+          "recall@10": 0.744,
+          "mrr": 0.5069412698412699,
+          "expansion_rate": 0.488
+        }
+      }
+    },
+    {
+      "seed": 48,
+      "status": "complete",
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed48",
+      "methods": {
+        "Dense-Only": {
+          "n_queries": 500,
+          "recall@1": 0.432,
+          "recall@5": 0.666,
+          "recall@10": 0.74,
+          "mrr": 0.5313801587301584
+        },
+        "BM25-Only": {
+          "n_queries": 500,
+          "recall@1": 0.178,
+          "recall@5": 0.32,
+          "recall@10": 0.358,
+          "mrr": 0.23376269841269837
+        },
+        "Hybrid-RRF": {
+          "n_queries": 500,
+          "recall@1": 0.322,
+          "recall@5": 0.626,
+          "recall@10": 0.706,
+          "mrr": 0.4496484126984126
+        },
+        "Paraphrases-Only": {
+          "n_queries": 500,
+          "recall@1": 0.424,
+          "recall@5": 0.674,
+          "recall@10": 0.738,
+          "mrr": 0.5269063492063489,
+          "expansion_rate": 1.0
+        },
+        "HyDE-Traces-Only": {
+          "n_queries": 500,
+          "recall@1": 0.342,
+          "recall@5": 0.634,
+          "recall@10": 0.708,
+          "mrr": 0.4643873015873014,
+          "expansion_rate": 1.0
+        },
+        "Always-Expand": {
+          "n_queries": 500,
+          "recall@1": 0.39,
+          "recall@5": 0.68,
+          "recall@10": 0.75,
+          "mrr": 0.5086341269841269,
+          "expansion_rate": 1.0
+        },
+        "Random-Gated-Expansion": {
+          "n_queries": 500,
+          "recall@1": 0.412,
+          "recall@5": 0.668,
+          "recall@10": 0.744,
+          "mrr": 0.5211460317460316,
+          "expansion_rate": 0.424
+        },
+        "Selective-QE": {
+          "n_queries": 500,
+          "recall@1": 0.428,
+          "recall@5": 0.688,
+          "recall@10": 0.742,
+          "mrr": 0.5351674603174602,
+          "expansion_rate": 0.512
+        }
+      }
+    },
+    {
+      "seed": 49,
+      "status": "complete",
+      "results_dir": "/home/nlp-07/sqe_experiment/results_500_memory_seed49",
+      "methods": {
+        "Dense-Only": {
+          "n_queries": 500,
+          "recall@1": 0.424,
+          "recall@5": 0.65,
+          "recall@10": 0.694,
+          "mrr": 0.519779365079365
+        },
+        "BM25-Only": {
+          "n_queries": 500,
+          "recall@1": 0.164,
+          "recall@5": 0.278,
+          "recall@10": 0.314,
+          "mrr": 0.21152222222222222
+        },
+        "Hybrid-RRF": {
+          "n_queries": 500,
+          "recall@1": 0.316,
+          "recall@5": 0.6,
+          "recall@10": 0.68,
+          "mrr": 0.43134920634920604
+        },
+        "Paraphrases-Only": {
+          "n_queries": 500,
+          "recall@1": 0.43,
+          "recall@5": 0.64,
+          "recall@10": 0.694,
+          "mrr": 0.5221976190476191,
+          "expansion_rate": 1.0
+        },
+        "HyDE-Traces-Only": {
+          "n_queries": 500,
+          "recall@1": 0.342,
+          "recall@5": 0.622,
+          "recall@10": 0.704,
+          "mrr": 0.4581015873015872,
+          "expansion_rate": 1.0
+        },
+        "Always-Expand": {
+          "n_queries": 500,
+          "recall@1": 0.388,
+          "recall@5": 0.662,
+          "recall@10": 0.718,
+          "mrr": 0.5013523809523809,
+          "expansion_rate": 1.0
+        },
+        "Random-Gated-Expansion": {
+          "n_queries": 500,
+          "recall@1": 0.39,
+          "recall@5": 0.658,
+          "recall@10": 0.702,
+          "mrr": 0.5006833333333333,
+          "expansion_rate": 0.488
+        },
+        "Selective-QE": {
+          "n_queries": 500,
+          "recall@1": 0.432,
+          "recall@5": 0.664,
+          "recall@10": 0.718,
+          "mrr": 0.5266666666666665,
+          "expansion_rate": 0.484
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "Dense-Only": {
+      "n_seeds": 8,
+      "recall@1_mean": 0.455,
+      "recall@1_std": 0.03098386676965934,
+      "recall@5_mean": 0.685,
+      "recall@5_std": 0.026832815729997447,
+      "recall@10_mean": 0.74175,
+      "recall@10_std": 0.024737190047145058,
+      "mrr_mean": 0.5522496031746031,
+      "mrr_std": 0.0279053717406321
+    },
+    "BM25-Only": {
+      "n_seeds": 8,
+      "recall@1_mean": 0.16899999999999998,
+      "recall@1_std": 0.006761234037828125,
+      "recall@5_mean": 0.3015,
+      "recall@5_std": 0.013969354213522439,
+      "recall@10_mean": 0.345,
+      "recall@10_std": 0.014422205101855948,
+      "mrr_mean": 0.22466964285714283,
+      "mrr_std": 0.0071176242361439416
+    },
+    "Hybrid-RRF": {
+      "n_seeds": 8,
+      "recall@1_mean": 0.32475,
+      "recall@1_std": 0.015415669208401466,
+      "recall@5_mean": 0.63525,
+      "recall@5_std": 0.024586581706288517,
+      "recall@10_mean": 0.71775,
+      "recall@10_std": 0.025910560450463877,
+      "mrr_mean": 0.45141924603174594,
+      "mrr_std": 0.017156886967808684
+    },
+    "Paraphrases-Only": {
+      "n_seeds": 8,
+      "recall@1_mean": 0.4455,
+      "recall@1_std": 0.033598469352890806,
+      "recall@5_mean": 0.6825,
+      "recall@5_std": 0.026005493925048088,
+      "recall@10_mean": 0.74075,
+      "recall@10_std": 0.02380726179731124,
+      "mrr_mean": 0.5454806547619047,
+      "mrr_std": 0.02896082552205208,
+      "expansion_rate_mean": 1.0,
+      "expansion_rate_std": 0.0
+    },
+    "HyDE-Traces-Only": {
+      "n_seeds": 8,
+      "recall@1_mean": 0.34375,
+      "recall@1_std": 0.02790673241864254,
+      "recall@5_mean": 0.6375,
+      "recall@5_std": 0.028938358132910253,
+      "recall@10_mean": 0.71175,
+      "recall@10_std": 0.019579508238389,
+      "mrr_mean": 0.4666540674603174,
+      "mrr_std": 0.027604668359324427,
+      "expansion_rate_mean": 1.0,
+      "expansion_rate_std": 0.0
+    },
+    "Always-Expand": {
+      "n_seeds": 8,
+      "recall@1_mean": 0.39825,
+      "recall@1_std": 0.03052750516220693,
+      "recall@5_mean": 0.69225,
+      "recall@5_std": 0.03376282824984556,
+      "recall@10_mean": 0.75875,
+      "recall@10_std": 0.023224063874721493,
+      "mrr_mean": 0.5224388888888888,
+      "mrr_std": 0.030934826105028616,
+      "expansion_rate_mean": 1.0,
+      "expansion_rate_std": 0.0
+    },
+    "Random-Gated-Expansion": {
+      "n_seeds": 8,
+      "recall@1_mean": 0.426,
+      "recall@1_std": 0.028685486624025452,
+      "recall@5_mean": 0.6890000000000001,
+      "recall@5_std": 0.0295876422079991,
+      "recall@10_mean": 0.75025,
+      "recall@10_std": 0.02580005537092621,
+      "mrr_mean": 0.5364150793650794,
+      "mrr_std": 0.027795772940165817,
+      "expansion_rate_mean": 0.45899999999999996,
+      "expansion_rate_std": 0.029490918699055232
+    },
+    "Selective-QE": {
+      "n_seeds": 8,
+      "recall@1_mean": 0.4455,
+      "recall@1_std": 0.03373425558686599,
+      "recall@5_mean": 0.69375,
+      "recall@5_std": 0.026671279362961604,
+      "recall@10_mean": 0.75325,
+      "recall@10_std": 0.02226945377481388,
+      "mrr_mean": 0.5507090277777777,
+      "mrr_std": 0.030761786901486683,
+      "expansion_rate_mean": 0.48225,
+      "expansion_rate_std": 0.020960847856352154
+    }
+  },
+  "warning": ""
+}

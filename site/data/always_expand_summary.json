@@ -1,0 +1,18 @@
+{
+  "method": "Always-Expand",
+  "recall@1": 0.422,
+  "recall@10": 0.756,
+  "expansion_trigger_rate": 1.0,
+  "n_expanded": 500,
+  "n_queries": 500,
+  "avg_latency_seconds_per_query": 5.8029215983450415,
+  "avg_estimated_llm_calls_per_query": 3.0,
+  "config": {
+    "confidence_threshold": 0.65,
+    "n_hypothetical_traces": 2,
+    "n_paraphrases": 2,
+    "mode": "always_expand",
+    "random_expand_rate": 0.0,
+    "seed": 42
+  }
+}

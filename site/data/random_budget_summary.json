@@ -1,0 +1,18 @@
+{
+  "method": "Random-Gated-Expansion",
+  "recall@1": 0.46,
+  "recall@10": 0.758,
+  "expansion_trigger_rate": 0.47,
+  "n_expanded": 235,
+  "n_queries": 500,
+  "avg_latency_seconds_per_query": 1.0718041639169678,
+  "avg_estimated_llm_calls_per_query": 1.41,
+  "config": {
+    "confidence_threshold": 0.65,
+    "n_hypothetical_traces": 2,
+    "n_paraphrases": 2,
+    "mode": "random_budget",
+    "random_expand_rate": 0.46,
+    "seed": 42
+  }
+}
