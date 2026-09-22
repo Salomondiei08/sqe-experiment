@@ -93,7 +93,7 @@ Pass@1 outcomes are not bundled into this public code release.
 
 ```bibtex
 @article{diei2026sqe,
-  title  = {Selective Query-Side Expansion for Long-Horizon Agent Memory Retrieval},
+  title  = {Selective Query-Side Expansion for Agent Memory Retrieval: A Multi-Seed Study of Cost and Gate Reliability},
   author = {DIEI, Salomon},
   year   = {2026},
   url    = {https://github.com/Salomondiei08/sqe-experiment}

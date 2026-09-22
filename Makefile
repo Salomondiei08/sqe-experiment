@@ -1,7 +1,7 @@
 PY ?= python3
 VERIFY_REPORT ?= /tmp/sqe_verify_make_verify.json
 
-.PHONY: help paper verify readiness release manifest external-evidence-resume
+.PHONY: help paper verify readiness release manifest arxiv external-evidence-resume
 
 help:
 	@printf '%s\n' \
@@ -11,6 +11,7 @@ help:
 		'  make readiness                Refresh docs/audits/SUBMISSION_READINESS.json and missing-evidence blockers.' \
 		'  make release                  Refresh local Hugging Face and GitHub release directories.' \
 		'  make manifest                 Refresh docs/manifests/ARTIFACT_MANIFEST.json.' \
+		'  make arxiv                    Build a minimal, compile-checked arXiv source archive.' \
 		'  make external-evidence-resume Run guarded resume after real Pass@1 rows and human labels exist.'
 
 paper:
@@ -26,26 +27,29 @@ verify:
 
 readiness:
 	$(PY) scripts/14_submission_readiness_check.py \
-		--root /home/nlp-07/sqe_experiment \
+		--root . \
 		--output docs/audits/SUBMISSION_READINESS.json
 	$(PY) scripts/35_write_missing_evidence_blockers.py \
-		--root /home/nlp-07/sqe_experiment \
+		--root . \
 		--output MISSING_EVIDENCE_BLOCKERS.json
 
 release:
 	$(PY) scripts/33_prepare_hf_dataset_release.py \
-		--root /home/nlp-07/sqe_experiment \
-		--output_dir /home/nlp-07/sqe_experiment/hf_dataset_release \
+		--root . \
+		--output_dir /tmp/sqe_hf_dataset_release \
 		--include_detailed_results
 	$(PY) scripts/34_prepare_github_code_release.py \
-		--root /home/nlp-07/sqe_experiment \
-		--output_dir /home/nlp-07/sqe_experiment/github_code_release \
+		--root . \
+		--output_dir /tmp/sqe_github_code_release \
 		--include_result_summaries
 
 manifest:
 	$(PY) scripts/13_make_artifact_manifest.py \
-		--root /home/nlp-07/sqe_experiment \
+		--root . \
 		--output docs/manifests/ARTIFACT_MANIFEST.json
+
+arxiv:
+	$(PY) scripts/46_prepare_arxiv_submission.py
 
 external-evidence-resume:
 	scripts/44_resume_after_external_evidence.sh verify-only

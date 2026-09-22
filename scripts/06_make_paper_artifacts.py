@@ -637,8 +637,8 @@ def write_manifest_table(summaries, data_dir):
         r"Generator model & Qwen3.6-35B-A3B via vLLM \\",
         r"Index & FAISS dense + BM25 sparse \\",
         r"Fusion & Reciprocal Rank Fusion \\",
-        r"GitHub URL & TODO: add public repository URL \\",
-        r"Hugging Face dataset & TODO: add Hugging Face dataset URL \\",
+        r"GitHub URL & \href{https://github.com/Salomondiei08/sqe-experiment}{source repository} \\",
+        r"Hugging Face dataset & \href{https://huggingface.co/datasets/TheReinventGuy/sqe-experiment}{released artifacts} \\",
         r"\bottomrule",
         r"\end{tabular}",
         "",
@@ -942,6 +942,58 @@ def write_references():
   year={2009},
   doi={10.1561/1500000019}
 }
+
+@article{yang2025swesmith,
+  title={{SWE-smith}: Scaling Data for Software Engineering Agents},
+  author={Yang, John and Leret, Kilian and Jimenez, Carlos E. and Wettig, Alexander and Khandpur, Kabir and Zhang, Yanzhe and Hui, Binyuan and Press, Ofir and Schmidt, Ludwig and Yang, Diyi},
+  journal={arXiv preprint arXiv:2504.21798},
+  year={2025},
+  url={https://arxiv.org/abs/2504.21798}
+}
+
+@inproceedings{chuang2023ear,
+  title={Expand, Rerank, and Retrieve: Query Reranking for Open-Domain Question Answering},
+  author={Chuang, Yung-Sung and Dangovski, Rumen and Luo, Hongyin and Zhang, Yang and Chang, Shiyu and Soljacic, Marin and Li, Shang-Wen and Yih, Wen-tau and Kim, Yoon and Glass, James},
+  booktitle={Findings of the Association for Computational Linguistics: ACL 2023},
+  pages={12131--12147},
+  year={2023},
+  doi={10.18653/v1/2023.findings-acl.768},
+  url={https://aclanthology.org/2023.findings-acl.768/}
+}
+
+@inproceedings{zhou2024hyqe,
+  title={{HyQE}: Ranking Contexts with Hypothetical Query Embeddings},
+  author={Zhou, Yujia and Dou, Zhicheng and Liu, Yutao and Liu, Wenqiang and Wen, Jirong},
+  booktitle={Findings of the Association for Computational Linguistics: EMNLP 2024},
+  year={2024},
+  url={https://aclanthology.org/2024.findings-emnlp.761/}
+}
+
+@inproceedings{yoon2025hypothetical,
+  title={Hypothetical Documents or Knowledge Leakage? Rethinking {LLM}-based Query Expansion},
+  author={Yoon, Chanwoong and Ham, Yerim and Kim, Yeon Seok and Choi, Seung-won and Kim, Jaehyeon and Park, Seong-Bae and Lee, Daekeun},
+  booktitle={Findings of the Association for Computational Linguistics: ACL 2025},
+  pages={19170--19187},
+  year={2025},
+  doi={10.18653/v1/2025.findings-acl.980},
+  url={https://aclanthology.org/2025.findings-acl.980/}
+}
+
+@inproceedings{zhao2026amabench,
+  title={{AMA-Bench}: Evaluating Long-Horizon Memory for Agentic Applications},
+  author={Zhao, Yujie and Yuan, Boqin and Huang, Junbo and Yuan, Haocheng and Yu, Zhongming and Xu, Haozhou and Hu, Lanxiang and Shankaramapeta, Abhilash and Huang, Zimeng and Ni, Wentao and Tian, Yuandong and Zhao, Jishen},
+  booktitle={International Conference on Learning Representations},
+  year={2026},
+  url={https://openreview.net/pdf/69cb7b00c144feb67b7fe9a7c1fe5969d961e1f7.pdf}
+}
+
+@inproceedings{hu2025memae,
+  title={Evaluating Memory in {LLM} Agents via Incremental Multi-Turn Interactions},
+  author={Hu, Yuanzhe and Wang, Yu and McAuley, Julian},
+  booktitle={Proceedings of the 2nd Workshop on Long-Context Foundation Models},
+  year={2025},
+  url={https://openreview.net/forum?id=ZgQ0t3zYTQ}
+}
 """
     (PAPER / "references.bib").write_text(refs)
 
@@ -1104,7 +1156,7 @@ def write_main_tex(summaries, error_analysis, measured_token_runs):
 \renewcommand{{\arraystretch}}{{1.08}}
 \emergencystretch=1em
 
-\title{{Selective Query-Side Expansion for Long-Horizon Agent Memory Retrieval}}
+\title{{Selective Query-Side Expansion for Agent Memory Retrieval:\\A Multi-Seed Study of Cost and Gate Reliability}}
 \author{{Salomon DIEI\\School of Computer Science and Engineering, KOREATECH\\\texttt{{salomon@koreatech.ac.kr}}}}
 \date{{}}
 
@@ -1112,21 +1164,19 @@ def write_main_tex(summaries, error_analysis, measured_token_runs):
 \maketitle
 
 \begin{{abstract}}
-Long-horizon software-engineering agents store prior experience as execution traces,
-tool calls, terminal outputs, and error messages, while later retrieval requests are
-often phrased as natural-language questions. This representational mismatch can
-prevent relevant memories from appearing in the retrieved context. We study
-Selective Query-Side Expansion (SQE), a retrieval-time method that expands only
-low-confidence queries into hypothetical execution traces and paraphrases, retrieves
-each variant against the unchanged memory index, and combines ranked lists with
-Reciprocal Rank Fusion. On a 5,000-episode SWE-smith memory store with {n_queries}
-query-memory pairs, SQE obtains {pct(selective.get('recall@5'))}\% Recall@5,
-compared with {pct(dense.get('recall@5'))}\% for dense retrieval and
-{pct(hybrid.get('recall@5'))}\% for hybrid RRF.{multiseed_sentence} The current evidence supports SQE as a
-cost-aware retrieval variant and shows higher Recall@5 than hybrid RRF, but it
-does not establish a practically meaningful advantage over dense retrieval or a
-clear advantage over the executed random-gating budget control. Downstream Pass@1 evaluation and human-audited query labels remain
-necessary before making end-to-end agent-performance claims.
+Long-horizon agents must retrieve execution traces using later natural-language
+questions, creating a mismatch between query and memory representations. We ask
+whether generation should be spent selectively on low-confidence queries. Selective
+Query-Side Expansion (SQE) generates hypothetical traces and paraphrases, retrieves
+each variant against an unchanged index, and fuses the rankings. Across
+{multiseed_phrase} ({paired_query_count:,} query-memory pairs), SQE produces only a
+small Recall@5 difference relative to dense retrieval; {paired_dense_sentence}. It
+expands {expansion_pct}\% of seed-42 queries, but does not clearly outperform a random
+gate at a comparable budget. The main result is therefore negative: query expansion
+can alter the candidate set, but the current top-1-score gate is not a reliable
+selector. This is a reproducible retrieval diagnostic, not evidence of improved
+end-to-end agent success; human-audited queries and downstream Pass@1 evaluation
+remain necessary.
 \end{{abstract}}
 
 \section{{Introduction}}
@@ -1150,7 +1200,7 @@ applied selectively to bound generation cost.
 First, we formulate the trace-query mismatch problem for long-horizon software
 agent memory. Second, we implement a selective expansion pipeline that combines
 hypothetical traces, paraphrases, dense retrieval, sparse retrieval, and RRF.
-Third, we provide a verified retrieval study on SWE-smith trajectories with
+Third, we provide a verified retrieval study on SWE-smith trajectories~\cite{{yang2025swesmith}} with
 {multiseed_phrase}. Fourth, we identify the current
 limitations: the confidence gate is weakly calibrated, the evaluation uses
 generated retrieval queries, and downstream Pass@1 has not yet been measured.
@@ -1173,6 +1223,23 @@ claims that those executions actually occurred. Reciprocal Rank Fusion provides
 a simple way to combine ranked lists from
 the original query, generated traces, paraphrases, and sparse retrieval without
 training a ranker~\cite{{cormack2009rrf}}.
+
+Recent work also studies generated and hypothetical queries as retrieval
+signals. EAR expands and reranks candidate queries before retrieval
+~\cite{{chuang2023ear}}, while HyQE ranks contexts using hypothetical query
+embeddings~\cite{{zhou2024hyqe}}. Subsequent analysis shows that hypothetical
+document gains can partly depend on knowledge leakage and generation quality
+~\cite{{yoon2025hypothetical}}. SQE differs in its execution-trace expansion unit
+and explicit generation gate; our experiments show that this gate remains the
+weakest component rather than an established advantage.
+
+Agent-memory benchmarks increasingly evaluate memory over extended interaction.
+AMA-Bench and MemAE emphasize long-horizon and incremental multi-turn
+settings~\cite{{zhao2026amabench,hu2025memae}}. Our benchmark is narrower:
+it measures retrieval of a known target episode from SWE-smith trajectories,
+whose public release was produced with SWE-agent and Claude 3.7 Sonnet
+~\cite{{yang2025swesmith}}. It should not be read as a substitute for those broader
+memory evaluations.
 
 For software-engineering agents, retrieval quality is only an intermediate
 signal. SWE-bench-style evaluation measures whether an agent can produce a
@@ -1215,8 +1282,10 @@ to RRF.
 \end{{table}}
 
 Table~\ref{{tab:setup}} summarizes the current retrieval benchmark. The
-experiment uses generated natural-language queries paired with
-target memories. This setup isolates retrieval, but it does not yet establish
+experiment uses generated natural-language queries paired with target memories
+sampled from the same corpus. The generator sees the target trace and is
+instructed to produce a uniquely identifying question. This setup isolates
+retrieval, but can make relevance easier and does not yet establish
 downstream task success. A complete evaluation requires verified human-audit
 labels and agent Pass@1 evaluation on SWE-bench-style tasks~\cite{{jimenez2024swebench}}.
 Random-Gated-Expansion is an executed control: it runs the same
@@ -1278,6 +1347,12 @@ same test shows larger gains over hybrid RRF and trace-only expansion, but not
 a clear advantage over the executed random-gating budget control.
 {win_loss_sentence} Table~\ref{{tab:win-loss}} reports the corresponding
 win/loss counts.
+
+These intervals pool query rows and do not cluster the resampling by memory seed
+or source task. We report them as descriptive uncertainty rather than confirmatory
+hypothesis tests. The analysis also evaluates several methods and gate variants
+without a family-wise multiple-comparison correction. Values printed as
+$p=0.000$ reflect three-decimal rounding and should be read as $p<0.001$.
 
 \begin{{table}}[!tbp]
 \caption{{Query-level top-5 wins and losses for SQE against Dense-Only.}}
@@ -1423,8 +1498,8 @@ Table~\ref{{tab:gate-paired}} reports the paired test.
 \input{{tables/cross_seed_top1_gate}}
 \end{{table}}
 
-Table~\ref{{tab:cross-seed-gate}} selects a top-1-score threshold on two independent memory-index
-seeds and evaluates it on the held-out seed. It recombines only executed
+Table~\ref{{tab:cross-seed-gate}} selects a top-1-score threshold on the seven
+held-in memory-index seeds and evaluates it on the remaining seed. It recombines only executed
 dense-only and always-expand rows. {cross_seed_gate_sentence}. The interval
 still crosses zero, so this result is useful as a calibration diagnostic rather
 than a strong effectiveness claim.
@@ -1495,7 +1570,8 @@ human query-quality labels are required before claiming agent-level gains.
 
 \paragraph{{Data validity.}}
 The evaluation queries are generated from the same memory corpus used to define
-target memories. This gives a controlled retrieval benchmark, but it may not
+target memories, and the query generator sees each target trace. This gives a
+controlled retrieval benchmark, but it may overstate discriminability and may not
 match how users or agents phrase future memory requests. The human-audit packet
 is prepared, but no reviewer labels have been collected yet.
 
@@ -1505,6 +1581,12 @@ current experiments. Several held-out diagnostics test alternative gates, but
 their intervals still cross zero. The current results should be read as a
 cost-controlled retrieval study rather than evidence that the gate is solved.
 
+\paragraph{{Statistical validity.}}
+The query-level bootstrap treats pooled rows as exchangeable even though queries
+are nested within memory-index seeds and may share source tasks. Multiple method
+and gate comparisons are not multiplicity-corrected. A confirmatory evaluation
+should pre-register its primary contrast and use seed- or task-clustered inference.
+
 \paragraph{{External validity.}}
 The experiments use SWE-smith software-engineering traces, BAAI/bge-m3
 embeddings, and Qwen3.6-35B-A3B for expansion. Results may change with other
@@ -1512,9 +1594,10 @@ agent logs, embedding models, generators, memory-writing policies, or task
 domains.
 
 \section{{Reproducibility}}
-The intended public repository URL is: \texttt{{TODO: add GitHub URL}}.
-The intended Hugging Face dataset URL is:
-\texttt{{TODO: add Hugging Face dataset URL}}.
+The public repository is
+\href{{https://github.com/Salomondiei08/sqe-experiment}}{{github.com/Salomondiei08/sqe-experiment}}.
+The released dataset and result artifacts are at
+\href{{https://huggingface.co/datasets/TheReinventGuy/sqe-experiment}}{{huggingface.co/datasets/TheReinventGuy/sqe-experiment}}.
 All scripts used for the current retrieval experiment are in the project
 directory. Raw seed-42 results are stored under \nolinkurl{{{RESULTS.name}/}},
 and generated paper artifacts are stored under \texttt{{paper/}}. Independent
@@ -1537,6 +1620,11 @@ task-outcome rows, or human labels.
 The table inventory \nolinkurl{{paper/table_inventory.json}} records the source
 files for each active table; deprecated diagnostic tables are excluded from the
 paper claims.
+The completed runs did not record the exact upstream Hugging Face dataset
+revision. The released sampled memory stores and evaluation pairs therefore form
+the fixed evidence for this paper; fresh data preparation supports an explicit
+revision argument and should pin it. Generator sampling temperatures are recorded
+in source, but no explicit inference random seed was stored.
 
 \section{{Conclusion}}
 SQE is a retrieval-time query-expansion method for long-horizon software-agent
@@ -1548,6 +1636,12 @@ verified retrieval study and a negative calibration result for the
 current top-1-score gate. A stronger paper requires human-audited query labels
 and downstream Pass@1 task-success measurements before making agent-level
 performance claims.
+
+\section*{{Acknowledgments and Disclosure}}
+An earlier version of this work was presented at NAFSIK 2026. The author used
+LLM-based coding and writing assistance to organize the experiment package,
+edit manuscript text, generate audit scripts, and improve documentation clarity.
+The author reviewed the resulting claims and remains responsible for the work.
 
 \bibliographystyle{{plain}}
 \bibliography{{references}}

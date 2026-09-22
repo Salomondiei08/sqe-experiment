@@ -20,29 +20,27 @@
 \renewcommand{\arraystretch}{1.08}
 \emergencystretch=1em
 
-\title{\vspace{-1.5em}Selective Query-Side Expansion for Long-Horizon Agent Memory Retrieval}
-\author{Salomon DIEI\\School of Computer Science and Engineering, KOREATECH\\Presented at \href{https://sites.google.com/view/nafsik?pli=1\&authuser=0}{NAFSIK 2026}\\\texttt{salomon@koreatech.ac.kr}}
+\title{\vspace{-1.5em}Selective Query-Side Expansion for Agent Memory Retrieval:\\A Multi-Seed Study of Cost and Gate Reliability}
+\author{Salomon DIEI\\School of Computer Science and Engineering, KOREATECH\\\texttt{salomon@koreatech.ac.kr}}
 \date{}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Long-horizon software-engineering agents store prior experience as execution traces,
-tool calls, terminal outputs, and error messages, while later retrieval requests are
-often phrased as natural-language questions. This representational mismatch can
-prevent relevant memories from appearing in the retrieved context. We study
-Selective Query-Side Expansion (SQE), a retrieval-time method that expands only
-low-confidence queries into hypothetical execution traces and paraphrases, retrieves
-each variant against the unchanged memory index, and combines ranked lists with
-Reciprocal Rank Fusion. On a 5,000-episode SWE-smith memory store with 500
-query-memory pairs, SQE obtains 69.4\% Recall@5,
-compared with 69.8\% for dense retrieval and
-64.0\% for hybrid RRF. Across 8 independently rebuilt memory-index seeds, SQE averages 69.4\% Recall@5, compared with 68.5\% for dense retrieval, 69.2\% for always-on expansion, and 68.9\% for the executed random-gating budget control. The current evidence supports SQE as a
-cost-aware retrieval variant and shows higher Recall@5 than hybrid RRF, but it
-does not establish a practically meaningful advantage over dense retrieval or a
-clear advantage over the executed random-gating budget control. Downstream Pass@1 evaluation and human-audited query labels remain
-necessary before making end-to-end agent-performance claims.
+Long-horizon agents must retrieve execution traces using later natural-language
+questions, creating a mismatch between query and memory representations. We ask
+whether generation should be spent selectively on low-confidence queries. Selective
+Query-Side Expansion (SQE) generates hypothetical traces and paraphrases, retrieves
+each variant against an unchanged index, and fuses the rankings. Across
+8 independently rebuilt memory-index seeds (4,000 query-memory pairs), SQE produces only a
+small Recall@5 difference relative to dense retrieval; the Recall@5 difference against dense retrieval is 0.9 points with a 95\% interval of [0.1, 1.7]. It
+expands 46.0\% of seed-42 queries, but does not clearly outperform a random
+gate at a comparable budget. The main result is therefore negative: query expansion
+can alter the candidate set, but the current top-1-score gate is not a reliable
+selector. This is a reproducible retrieval diagnostic, not evidence of improved
+end-to-end agent success; human-audited queries and downstream Pass@1 evaluation
+remain necessary.
 \end{abstract}
 
 \section{Introduction}
@@ -66,7 +64,7 @@ applied selectively to bound generation cost.
 First, we formulate the trace-query mismatch problem for long-horizon software
 agent memory. Second, we implement a selective expansion pipeline that combines
 hypothetical traces, paraphrases, dense retrieval, sparse retrieval, and RRF.
-Third, we provide a verified retrieval study on SWE-smith trajectories with
+Third, we provide a verified retrieval study on SWE-smith trajectories~\cite{yang2025swesmith} with
 8 independently rebuilt memory-index seeds. Fourth, we identify the current
 limitations: the confidence gate is weakly calibrated, the evaluation uses
 generated retrieval queries, and downstream Pass@1 has not yet been measured.
@@ -89,6 +87,23 @@ claims that those executions actually occurred. Reciprocal Rank Fusion provides
 a simple way to combine ranked lists from
 the original query, generated traces, paraphrases, and sparse retrieval without
 training a ranker~\cite{cormack2009rrf}.
+
+Recent work also studies generated and hypothetical queries as retrieval
+signals. EAR expands and reranks candidate queries before retrieval
+~\cite{chuang2023ear}, while HyQE ranks contexts using hypothetical query
+embeddings~\cite{zhou2024hyqe}. Subsequent analysis shows that hypothetical
+document gains can partly depend on knowledge leakage and generation quality
+~\cite{yoon2025hypothetical}. SQE differs in its execution-trace expansion unit
+and explicit generation gate; our experiments show that this gate remains the
+weakest component rather than an established advantage.
+
+Agent-memory benchmarks increasingly evaluate memory over extended interaction.
+AMA-Bench and MemAE emphasize long-horizon and incremental multi-turn
+settings~\cite{zhao2026amabench,hu2025memae}. Our benchmark is narrower:
+it measures retrieval of a known target episode from SWE-smith trajectories,
+whose public release was produced with SWE-agent and Claude 3.7 Sonnet
+~\cite{yang2025swesmith}. It should not be read as a substitute for those broader
+memory evaluations.
 
 For software-engineering agents, retrieval quality is only an intermediate
 signal. SWE-bench-style evaluation measures whether an agent can produce a
@@ -123,7 +138,7 @@ to RRF.
 
 \section{Experimental Setup}
 \begin{table*}[!tbp]
-\caption{Experiment configuration and public release links.}
+\caption{Experiment configuration and release placeholders.}
 \label{tab:setup}
 \centering
 \scriptsize
@@ -131,8 +146,10 @@ to RRF.
 \end{table*}
 
 Table~\ref{tab:setup} summarizes the current retrieval benchmark. The
-experiment uses generated natural-language queries paired with
-target memories. This setup isolates retrieval, but it does not yet establish
+experiment uses generated natural-language queries paired with target memories
+sampled from the same corpus. The generator sees the target trace and is
+instructed to produce a uniquely identifying question. This setup isolates
+retrieval, but can make relevance easier and does not yet establish
 downstream task success. A complete evaluation requires verified human-audit
 labels and agent Pass@1 evaluation on SWE-bench-style tasks~\cite{jimenez2024swebench}.
 Random-Gated-Expansion is an executed control: it runs the same
@@ -154,8 +171,8 @@ all regenerated by the artifact pipeline.
 \input{tables/main_results}
 \end{table*}
 
-In the seed-42 run, SQE changes Recall@5 by -0.4 percentage points relative to dense-only
-retrieval and +5.4 percentage points relative to hybrid RRF
+In the seed-42 run, SQE changes Recall@5 by 0.0 percentage points relative to dense-only
+retrieval and +0.0 percentage points relative to hybrid RRF
 in the current run. Recall@1 is lower than dense retrieval. This indicates that
 the current SQE configuration has higher Recall@5 than hybrid RRF,
 but does not improve the strongest dense baseline. The always-on ablation shows
@@ -194,6 +211,12 @@ same test shows larger gains over hybrid RRF and trace-only expansion, but not
 a clear advantage over the executed random-gating budget control.
 At the query level, SQE recovers 140 top-5 targets missed by Dense-Only, but loses 105 targets that Dense-Only retrieved, for a net change of 35 over 4,000 paired queries. Table~\ref{tab:win-loss} reports the corresponding
 win/loss counts.
+
+These intervals pool query rows and do not cluster the resampling by memory seed
+or source task. We report them as descriptive uncertainty rather than confirmatory
+hypothesis tests. The analysis also evaluates several methods and gate variants
+without a family-wise multiple-comparison correction. Values printed as
+$p=0.000$ reflect three-decimal rounding and should be read as $p<0.001$.
 
 \begin{table*}[!tbp]
 \caption{Query-level top-5 wins and losses for SQE against Dense-Only.}
@@ -339,8 +362,8 @@ Table~\ref{tab:gate-paired} reports the paired test.
 \input{tables/cross_seed_top1_gate}
 \end{table*}
 
-Table~\ref{tab:cross-seed-gate} selects a top-1-score threshold on two independent memory-index
-seeds and evaluates it on the held-out seed. It recombines only executed
+Table~\ref{tab:cross-seed-gate} selects a top-1-score threshold on the seven
+held-in memory-index seeds and evaluates it on the remaining seed. It recombines only executed
 dense-only and always-expand rows. Leave-one-seed-out top-1 threshold selection obtains 69.1\% Recall@5 versus 68.5\% for dense retrieval while expanding 36.9\% of queries. The paired difference is 0.6 points with a 95\% interval of [-0.1, 1.3]. The interval
 still crosses zero, so this result is useful as a calibration diagnostic rather
 than a strong effectiveness claim.
@@ -411,7 +434,8 @@ human query-quality labels are required before claiming agent-level gains.
 
 \paragraph{Data validity.}
 The evaluation queries are generated from the same memory corpus used to define
-target memories. This gives a controlled retrieval benchmark, but it may not
+target memories, and the query generator sees each target trace. This gives a
+controlled retrieval benchmark, but it may overstate discriminability and may not
 match how users or agents phrase future memory requests. The human-audit packet
 is prepared, but no reviewer labels have been collected yet.
 
@@ -421,6 +445,12 @@ current experiments. Several held-out diagnostics test alternative gates, but
 their intervals still cross zero. The current results should be read as a
 cost-controlled retrieval study rather than evidence that the gate is solved.
 
+\paragraph{Statistical validity.}
+The query-level bootstrap treats pooled rows as exchangeable even though queries
+are nested within memory-index seeds and may share source tasks. Multiple method
+and gate comparisons are not multiplicity-corrected. A confirmatory evaluation
+should pre-register its primary contrast and use seed- or task-clustered inference.
+
 \paragraph{External validity.}
 The experiments use SWE-smith software-engineering traces, BAAI/bge-m3
 embeddings, and Qwen3.6-35B-A3B for expansion. Results may change with other
@@ -428,12 +458,12 @@ agent logs, embedding models, generators, memory-writing policies, or task
 domains.
 
 \section{Reproducibility}
-The public code repository is available at
-\href{https://github.com/Salomondiei08/sqe-experiment}{github.com/Salomondiei08/sqe-experiment}
-and the companion dataset is available at
+The public repository is
+\href{https://github.com/Salomondiei08/sqe-experiment}{github.com/Salomondiei08/sqe-experiment}.
+The released dataset and result artifacts are at
 \href{https://huggingface.co/datasets/TheReinventGuy/sqe-experiment}{huggingface.co/datasets/TheReinventGuy/sqe-experiment}.
 All scripts used for the current retrieval experiment are in the project
-directory. Raw seed-42 results are stored under \nolinkurl{results/seed42/},
+directory. Raw seed-42 results are stored under \nolinkurl{seed42/},
 and generated paper artifacts are stored under \texttt{paper/}. Independent
 memory-index seed results are stored under the
 \nolinkurl{results/seed42/} through
@@ -454,6 +484,11 @@ task-outcome rows, or human labels.
 The table inventory \nolinkurl{paper/table_inventory.json} records the source
 files for each active table; deprecated diagnostic tables are excluded from the
 paper claims.
+The completed runs did not record the exact upstream Hugging Face dataset
+revision. The released sampled memory stores and evaluation pairs therefore form
+the fixed evidence for this paper; fresh data preparation supports an explicit
+revision argument and should pin it. Generator sampling temperatures are recorded
+in source, but no explicit inference random seed was stored.
 
 \section{Conclusion}
 SQE is a retrieval-time query-expansion method for long-horizon software-agent
@@ -465,6 +500,12 @@ verified retrieval study and a negative calibration result for the
 current top-1-score gate. A stronger paper requires human-audited query labels
 and downstream Pass@1 task-success measurements before making agent-level
 performance claims.
+
+\section*{Acknowledgments and Disclosure}
+An earlier version of this work was presented at NAFSIK 2026. The author used
+LLM-based coding and writing assistance to organize the experiment package,
+edit manuscript text, generate audit scripts, and improve documentation clarity.
+The author reviewed the resulting claims and remains responsible for the work.
 
 \bibliographystyle{plain}
 \bibliography{references}

@@ -204,6 +204,7 @@ def main(args):
             "SWE-bench/SWE-smith-trajectories",
             split=args.dataset_split,
             streaming=True,
+            revision=args.dataset_revision,
         )
 
         # Collect all episodes from trajectories
@@ -301,6 +302,7 @@ def main(args):
         "seed": args.seed,
         "dataset": "SWE-bench/SWE-smith-trajectories",
         "dataset_split": args.dataset_split,
+        "dataset_revision": args.dataset_revision,
         "eval_source": args.eval_source,
         "llm_base_url": args.llm_base_url,
         "llm_model": args.llm_model,
@@ -337,6 +339,12 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=42,
                         help="Random seed for memory/eval sampling")
     parser.add_argument("--dataset_split", type=str, default="tool")
+    parser.add_argument(
+        "--dataset_revision",
+        type=str,
+        default=None,
+        help="Hugging Face commit hash or tag. Pin this for reproducible new runs.",
+    )
     parser.add_argument("--eval_source", choices=["memory", "heldout"], default="memory",
                         help="Sample eval targets from indexed memory or held-out episodes")
     parser.add_argument("--collection_multiplier", type=float, default=3.0,

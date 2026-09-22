@@ -9,8 +9,8 @@
 
 Presented at [NAFSIK 2026](https://sites.google.com/view/nafsik?pli=1&authuser=0).
 
-This dataset accompanies **Selective Query-Side Expansion for Long-Horizon
-Agent Memory Retrieval**, a retrieval-time study of confidence-gated query
+This dataset accompanies **Selective Query-Side Expansion for Agent Memory
+Retrieval: A Multi-Seed Study of Cost and Gate Reliability**, a retrieval-time study of confidence-gated query
 expansion for software-agent memory.
 
 The release supports reproducible retrieval analysis over eight independently
@@ -43,7 +43,7 @@ full evidence boundary.
 
 ```bibtex
 @article{diei2026sqe,
-  title  = {Selective Query-Side Expansion for Long-Horizon Agent Memory Retrieval},
+  title  = {Selective Query-Side Expansion for Agent Memory Retrieval: A Multi-Seed Study of Cost and Gate Reliability},
   author = {DIEI, Salomon},
   year   = {2026},
   url    = {https://github.com/Salomondiei08/sqe-experiment}

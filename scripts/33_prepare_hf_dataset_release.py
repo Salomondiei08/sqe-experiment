@@ -78,7 +78,7 @@ pretty_name: SQE Retrieval Benchmark Package
 # SQE Retrieval Benchmark Package
 
 This dataset package supports the paper draft *Selective Query-Side Expansion
-for Improving Retrieval in Long-Horizon Agent Memory Systems*.
+for Agent Memory Retrieval: A Multi-Seed Study of Cost and Gate Reliability*.
 
 ## Contents
 

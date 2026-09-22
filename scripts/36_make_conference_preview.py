@@ -41,10 +41,7 @@ def make_preview_tex(source):
     tex = tex.replace(r"\begin{table}[!tbp]", r"\begin{table*}[!tbp]")
     tex = tex.replace(r"\end{table}", r"\end{table*}")
     tex = tex.replace("\n\\small\n\\input", "\n\\scriptsize\n\\input")
-    tex = tex.replace(
-        r"\title{Selective Query-Side Expansion for Long-Horizon Agent Memory Retrieval}",
-        r"\title{\vspace{-1.5em}Selective Query-Side Expansion for Long-Horizon Agent Memory Retrieval}",
-    )
+    tex = tex.replace(r"\title{", r"\title{\vspace{-1.5em}", 1)
     return tex
 
 
@@ -75,8 +72,17 @@ def main():
     audit_path = ROOT / args.audit
     output_path.write_text(make_preview_tex(source_path.read_text()))
 
+    command = [args.tectonic, output_path.name]
+    if Path(args.tectonic).name == "latexmk":
+        command = [
+            args.tectonic,
+            "-pdf",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            output_path.name,
+        ]
     proc = subprocess.run(
-        [args.tectonic, output_path.name],
+        command,
         cwd=output_path.parent,
         text=True,
         stdout=subprocess.PIPE,
