@@ -6,8 +6,11 @@
   <a href="https://salomondiei08.github.io/sqe-experiment/">🌐 Interactive results</a> ·
   <a href="https://huggingface.co/datasets/TheReinventGuy/sqe-experiment">🤗 Dataset</a> ·
   <a href="paper/main.pdf">📄 Paper</a> ·
+  <a href="https://sites.google.com/view/nafsik?pli=1&authuser=0">🎤 NAFSIK 2026</a> ·
   <a href="mailto:salomon@koreatech.ac.kr">✉️ Contact</a>
 </p>
+
+Presented at [NAFSIK 2026](https://sites.google.com/view/nafsik?pli=1&authuser=0).
 
 SQE studies when a memory-retrieval query should be expanded rather than
 expanded unconditionally. The method keeps the memory store and indexes fixed,

@@ -3,8 +3,11 @@
 <p>
   <a href="https://salomondiei08.github.io/sqe-experiment/">🌐 Interactive results</a> ·
   <a href="https://github.com/Salomondiei08/sqe-experiment">💻 Code</a> ·
+  <a href="https://sites.google.com/view/nafsik?pli=1&authuser=0">🎤 NAFSIK 2026</a> ·
   <a href="mailto:salomon@koreatech.ac.kr">✉️ Contact</a>
 </p>
+
+Presented at [NAFSIK 2026](https://sites.google.com/view/nafsik?pli=1&authuser=0).
 
 This dataset accompanies **Selective Query-Side Expansion for Long-Horizon
 Agent Memory Retrieval**, a retrieval-time study of confidence-gated query
