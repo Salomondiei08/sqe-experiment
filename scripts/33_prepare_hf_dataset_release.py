@@ -150,14 +150,14 @@ def prepare_release(args):
         required_file(data_dir / "dataset_manifest.json", missing)
 
     required_paths = [
-        root / "results_multiseed" / "multiseed_report.json",
-        root / "results_multiseed" / "multiseed_paired_tests.json",
-        root / "results_multiseed" / "multiseed_gate_validation.json",
-        root / "results_multiseed" / "win_loss_analysis.json",
-        root / "results_gate_calibration" / "cross_seed_top1_gate.json",
-        root / "results_gate_calibration" / "gate_variant_diagnostics.json",
-        root / "results_gate_calibration" / "gate_headroom_diagnostics.json",
-        root / "results_gate_calibration" / "gate_feature_diagnostics.json",
+        root / "results/multiseed" / "multiseed_report.json",
+        root / "results/multiseed" / "multiseed_paired_tests.json",
+        root / "results/multiseed" / "multiseed_gate_validation.json",
+        root / "results/multiseed" / "win_loss_analysis.json",
+        root / "results/gate_calibration" / "cross_seed_top1_gate.json",
+        root / "results/gate_calibration" / "gate_variant_diagnostics.json",
+        root / "results/gate_calibration" / "gate_headroom_diagnostics.json",
+        root / "results/gate_calibration" / "gate_feature_diagnostics.json",
         root / "human_audit" / "README.md",
         root / "human_audit" / "LABELING_PROTOCOL.md",
         root / "human_audit" / "REVIEWER_QUICKSTART.md",
@@ -168,9 +168,9 @@ def prepare_release(args):
         root / "human_audit" / "reviewer_packets" / "README.md",
         root / "human_audit" / "reviewer_packets" / "assignment_manifest.json",
         root / "human_audit" / "reviewer_packets_verification.json",
-        root / "SUBMISSION_READINESS.json",
-        root / "DATA_PROVENANCE.md",
-        root / "NO_HALLUCINATED_DATA.md",
+        root / "docs/audits/SUBMISSION_READINESS.json",
+        root / "docs/audits/DATA_PROVENANCE.md",
+        root / "docs/audits/NO_HALLUCINATED_DATA.md",
     ]
     for path in required_paths:
         required_file(path, missing)
@@ -189,7 +189,7 @@ def prepare_release(args):
 
     for src in required_paths:
         rel_parts = src.relative_to(root).parts
-        if rel_parts[0] in {"results_multiseed", "results_gate_calibration"}:
+        if rel_parts[0] in {"results/multiseed", "results/gate_calibration"}:
             dst = output / "results" / Path(*rel_parts)
         elif rel_parts[0] == "human_audit":
             dst = output / "human_audit" / Path(*rel_parts[1:])
@@ -203,11 +203,11 @@ def prepare_release(args):
 
     if args.include_detailed_results:
         for seed in seeds:
-            results_dir = root / f"results_500_memory_seed{seed}"
+            results_dir = root / "results" / f"seed{seed}"
             if not results_dir.exists():
                 missing.append(str(results_dir))
                 continue
-            dst_dir = output / "results" / f"results_500_memory_seed{seed}"
+            dst_dir = output / "results" / f"seed{seed}"
             for path in sorted(results_dir.glob("*_summary.json")):
                 copy_file(path, dst_dir / path.name, files)
             for path in sorted(results_dir.glob("*_detailed.jsonl")):
@@ -220,7 +220,7 @@ def prepare_release(args):
     if missing:
         raise SystemExit("Missing required release artifacts:\n" + "\n".join(missing))
 
-    readiness = read_json(root / "SUBMISSION_READINESS.json")
+    readiness = read_json(root / "docs/audits/SUBMISSION_READINESS.json")
     human_report = read_json(root / "human_audit" / "verification_report.json")
     readme_path = output / "README.md"
     readme_path.write_text(dataset_card(seeds, args.include_detailed_results))

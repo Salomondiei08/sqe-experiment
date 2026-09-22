@@ -7,7 +7,7 @@ library so it can run even when plotting libraries are unavailable. It writes:
   - paper/figures/*.svg
   - paper/references.bib
   - paper/main.tex
-  - results_500_memory_seed42/full_report_v2.json by default, or the selected
+  - results/seed42/full_report_v2.json by default, or the selected
     --results_dir/full_report_v2.json
 
 It does not overwrite raw experiment data or detailed result files.
@@ -23,7 +23,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RESULTS = ROOT / "results_500_memory_seed42"
+RESULTS = ROOT / "results/seed42"
 PAPER = ROOT / "paper"
 TABLES = PAPER / "tables"
 FIGURES = PAPER / "figures"
@@ -346,7 +346,7 @@ def write_cost_table(summaries):
 
 
 def load_measured_token_runs():
-    result_dir = ROOT / "results_tokenmeasured_500_seed42"
+    result_dir = ROOT / "results/tokenmeasured_seed42"
     runs = []
     if result_dir.exists():
         for path in sorted(result_dir.glob("*_tokenmeasured500_summary.json")):
@@ -954,14 +954,14 @@ def write_main_tex(summaries, error_analysis, measured_token_runs):
     random_budget = next(
         (s for s in summaries if s["method"] == "Random-Gated-Expansion"), {}
     )
-    multiseed_path = ROOT / "results_multiseed" / "multiseed_report.json"
+    multiseed_path = ROOT / "results/multiseed" / "multiseed_report.json"
     multiseed = read_json(multiseed_path) if multiseed_path.exists() else {}
     multiseed_aggregate = multiseed.get("aggregate", {})
     multiseed_selective = multiseed_aggregate.get("Selective-QE", {})
     multiseed_dense = multiseed_aggregate.get("Dense-Only", {})
     multiseed_always = multiseed_aggregate.get("Always-Expand", {})
     multiseed_random = multiseed_aggregate.get("Random-Gated-Expansion", {})
-    paired_path = ROOT / "results_multiseed" / "multiseed_paired_tests.json"
+    paired_path = ROOT / "results/multiseed" / "multiseed_paired_tests.json"
     paired_report = read_json(paired_path) if paired_path.exists() else {}
     paired_dense = next(
         (
@@ -974,16 +974,16 @@ def write_main_tex(summaries, error_analysis, measured_token_runs):
     paired_query_count = paired_dense.get("n_queries") or (
         500 * multiseed_count if multiseed_count else 0
     )
-    gate_path = ROOT / "results_multiseed" / "multiseed_gate_validation.json"
+    gate_path = ROOT / "results/multiseed" / "multiseed_gate_validation.json"
     gate_report = read_json(gate_path) if gate_path.exists() else {}
     gate_aggregate = gate_report.get("aggregate", {})
-    gate_paired_path = ROOT / "results_gate_calibration" / "gate_validation_paired_tests.json"
+    gate_paired_path = ROOT / "results/gate_calibration" / "gate_validation_paired_tests.json"
     gate_paired_report = read_json(gate_paired_path) if gate_paired_path.exists() else {}
     gate_paired_aggregate = gate_paired_report.get("aggregate", {})
-    cross_seed_gate_path = ROOT / "results_gate_calibration" / "cross_seed_top1_gate.json"
+    cross_seed_gate_path = ROOT / "results/gate_calibration" / "cross_seed_top1_gate.json"
     cross_seed_gate_report = read_json(cross_seed_gate_path) if cross_seed_gate_path.exists() else {}
     cross_seed_gate_aggregate = cross_seed_gate_report.get("aggregate", {})
-    win_loss_path = ROOT / "results_multiseed" / "win_loss_analysis.json"
+    win_loss_path = ROOT / "results/multiseed" / "win_loss_analysis.json"
     win_loss_report = read_json(win_loss_path) if win_loss_path.exists() else {}
     win_loss_aggregate = win_loss_report.get("aggregate", {})
     multiseed_count = len(multiseed.get("requested_seeds", [])) or multiseed_selective.get("n_seeds")
@@ -1519,8 +1519,8 @@ All scripts used for the current retrieval experiment are in the project
 directory. Raw seed-42 results are stored under \nolinkurl{{{RESULTS.name}/}},
 and generated paper artifacts are stored under \texttt{{paper/}}. Independent
 memory-index seed results are stored under the
-\nolinkurl{{results_500_memory_seed42/}} through
-\nolinkurl{{results_500_memory_seed49/}} directories.
+\nolinkurl{{results/seed42/}} through
+\nolinkurl{{results/seed49/}} directories.
 The verifier \nolinkurl{{scripts/07_verify_experiment.py}} checks that evaluation
 targets are present in both the memory store and the index, recomputes retrieval
 metrics from detailed JSONL files, and verifies required paper artifacts.
@@ -1563,79 +1563,79 @@ performance claims.
     all_tables = sorted(path.stem for path in TABLES.glob("*.tex"))
     active_table_sources = {
         "cost_summary": [
-            "results_500_memory_seed42/dense_only_detailed.jsonl",
-            "results_500_memory_seed42/always_expand_detailed.jsonl",
-            "results_500_memory_seed42/proposed_detailed.jsonl",
-            "results_500_memory_seed42/random_budget_detailed.jsonl",
+            "results/seed42/dense_only_detailed.jsonl",
+            "results/seed42/always_expand_detailed.jsonl",
+            "results/seed42/proposed_detailed.jsonl",
+            "results/seed42/random_budget_detailed.jsonl",
         ],
         "case_analysis": [
             "data_500_memory_seed42/eval_pairs.jsonl",
-            "results_500_memory_seed42/dense_only_detailed.jsonl",
-            "results_500_memory_seed42/proposed_detailed.jsonl",
+            "results/seed42/dense_only_detailed.jsonl",
+            "results/seed42/proposed_detailed.jsonl",
         ],
         "experiment_manifest": [
             "data_500_memory_seed42/dataset_manifest.json",
         ],
         "gate_diagnostics": [
-            "results_500_memory_seed42/proposed_detailed.jsonl",
-            "results_500_memory_seed42/full_report_v2.json",
+            "results/seed42/proposed_detailed.jsonl",
+            "results/seed42/full_report_v2.json",
         ],
         "gate_headroom_diagnostics": [
-            "results_gate_calibration/gate_headroom_diagnostics.json",
+            "results/gate_calibration/gate_headroom_diagnostics.json",
         ],
         "gate_variant_diagnostics": [
-            "results_gate_calibration/gate_variant_diagnostics.json",
+            "results/gate_calibration/gate_variant_diagnostics.json",
         ],
         "main_results": [
-            "results_500_memory_seed42/baselines_summary.json",
-            "results_500_memory_seed42/dense_only_detailed.jsonl",
-            "results_500_memory_seed42/bm25_only_detailed.jsonl",
-            "results_500_memory_seed42/hybrid_rrf_detailed.jsonl",
-            "results_500_memory_seed42/paraphrases_only_detailed.jsonl",
-            "results_500_memory_seed42/traces_only_detailed.jsonl",
-            "results_500_memory_seed42/always_expand_detailed.jsonl",
-            "results_500_memory_seed42/random_budget_detailed.jsonl",
-            "results_500_memory_seed42/proposed_detailed.jsonl",
+            "results/seed42/baselines_summary.json",
+            "results/seed42/dense_only_detailed.jsonl",
+            "results/seed42/bm25_only_detailed.jsonl",
+            "results/seed42/hybrid_rrf_detailed.jsonl",
+            "results/seed42/paraphrases_only_detailed.jsonl",
+            "results/seed42/traces_only_detailed.jsonl",
+            "results/seed42/always_expand_detailed.jsonl",
+            "results/seed42/random_budget_detailed.jsonl",
+            "results/seed42/proposed_detailed.jsonl",
         ],
         "measured_token_cost": [
-            "results_tokenmeasured_500_seed42/always_expand_tokenmeasured500_summary.json",
-            "results_tokenmeasured_500_seed42/paraphrases_only_tokenmeasured500_summary.json",
-            "results_tokenmeasured_500_seed42/random_budget_tokenmeasured500_summary.json",
-            "results_tokenmeasured_500_seed42/selective_tokenmeasured500_summary.json",
-            "results_tokenmeasured_500_seed42/traces_only_tokenmeasured500_summary.json",
+            "results/tokenmeasured_seed42/always_expand_tokenmeasured500_summary.json",
+            "results/tokenmeasured_seed42/paraphrases_only_tokenmeasured500_summary.json",
+            "results/tokenmeasured_seed42/random_budget_tokenmeasured500_summary.json",
+            "results/tokenmeasured_seed42/selective_tokenmeasured500_summary.json",
+            "results/tokenmeasured_seed42/traces_only_tokenmeasured500_summary.json",
         ],
         "multiseed_gate_validation": [
-            "results_multiseed/multiseed_gate_validation.json",
+            "results/multiseed/multiseed_gate_validation.json",
         ],
         "gate_validation_paired_tests": [
-            "results_gate_calibration/gate_validation_paired_tests.json",
+            "results/gate_calibration/gate_validation_paired_tests.json",
         ],
         "cross_seed_top1_gate": [
-            "results_gate_calibration/cross_seed_top1_gate.json",
+            "results/gate_calibration/cross_seed_top1_gate.json",
         ],
         "multiseed_paired_tests": [
-            "results_multiseed/multiseed_paired_tests.json",
+            "results/multiseed/multiseed_paired_tests.json",
         ],
         "multiseed_summary": [
-            "results_multiseed/multiseed_report.json",
+            "results/multiseed/multiseed_report.json",
         ],
         "paired_tests": [
-            "results_500_memory_seed42/dense_only_detailed.jsonl",
-            "results_500_memory_seed42/hybrid_rrf_detailed.jsonl",
-            "results_500_memory_seed42/always_expand_detailed.jsonl",
-            "results_500_memory_seed42/random_budget_detailed.jsonl",
-            "results_500_memory_seed42/proposed_detailed.jsonl",
+            "results/seed42/dense_only_detailed.jsonl",
+            "results/seed42/hybrid_rrf_detailed.jsonl",
+            "results/seed42/always_expand_detailed.jsonl",
+            "results/seed42/random_budget_detailed.jsonl",
+            "results/seed42/proposed_detailed.jsonl",
         ],
         "threshold_sweep": [
-            "results_500_memory_seed42/dense_only_detailed.jsonl",
-            "results_500_memory_seed42/always_expand_detailed.jsonl",
+            "results/seed42/dense_only_detailed.jsonl",
+            "results/seed42/always_expand_detailed.jsonl",
         ],
         "validation_threshold": [
-            "results_500_memory_seed42/dense_only_detailed.jsonl",
-            "results_500_memory_seed42/always_expand_detailed.jsonl",
+            "results/seed42/dense_only_detailed.jsonl",
+            "results/seed42/always_expand_detailed.jsonl",
         ],
         "win_loss_analysis": [
-            "results_multiseed/win_loss_analysis.json",
+            "results/multiseed/win_loss_analysis.json",
         ],
     }
     inventory = {

@@ -3,7 +3,7 @@ Audit active paper text for unsupported evidence claims.
 
 This guard is intentionally narrow. It does not judge scientific quality. It
 only blocks positive Pass@1, task-success, and human-validation claims while
-the corresponding evidence gates remain missing in SUBMISSION_READINESS.json.
+the corresponding evidence gates remain missing in docs/audits/SUBMISSION_READINESS.json.
 """
 
 import argparse
@@ -83,8 +83,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default=str(ROOT))
     parser.add_argument("--paper", default="paper/main.tex")
-    parser.add_argument("--readiness", default="SUBMISSION_READINESS.json")
-    parser.add_argument("--output", default="PAPER_EVIDENCE_CLAIM_AUDIT.json")
+    parser.add_argument("--readiness", default="docs/audits/SUBMISSION_READINESS.json")
+    parser.add_argument("--output", default="docs/audits/PAPER_EVIDENCE_CLAIM_AUDIT.json")
     args = parser.parse_args()
 
     root = Path(args.root).resolve()

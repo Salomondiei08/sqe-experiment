@@ -50,8 +50,8 @@ def read_csv(path):
 
 def independent_memory_seed_dirs(root):
     out = []
-    for path in sorted(root.glob("results_500_memory_seed*")):
-        seed_text = path.name.replace("results_500_memory_seed", "")
+    for path in sorted((root / "results").glob("seed*")):
+        seed_text = path.name.replace("seed", "")
         if not seed_text.isdigit():
             continue
         verifier = path / "verification_report.json"
@@ -210,7 +210,7 @@ def human_audit_status(root):
 
 
 def paired_dense_status(root):
-    path = root / "results_multiseed" / "multiseed_paired_tests.json"
+    path = root / "results/multiseed" / "multiseed_paired_tests.json"
     if not path.exists():
         return {"present": False}
     report = read_json(path)
@@ -232,7 +232,7 @@ def paired_dense_status(root):
 
 
 def gate_validation_paired_status(root):
-    path = root / "results_gate_calibration" / "gate_validation_paired_tests.json"
+    path = root / "results/gate_calibration" / "gate_validation_paired_tests.json"
     evidence = {
         "path": str(path),
         "present": path.exists(),
@@ -259,7 +259,7 @@ def gate_validation_paired_status(root):
 
 
 def cross_seed_top1_gate_status(root):
-    path = root / "results_gate_calibration" / "cross_seed_top1_gate.json"
+    path = root / "results/gate_calibration" / "cross_seed_top1_gate.json"
     table_path = root / "paper" / "tables" / "cross_seed_top1_gate.tex"
     script_path = root / "scripts" / "29_cross_seed_top1_gate.py"
     evidence = {
@@ -301,9 +301,9 @@ def pass1_status(root):
         root / "results_swebench_pass1",
     ]
     present = [path for path in candidates if path.exists()]
-    schema_path = root / "PASS1_RESULTS_SCHEMA.md"
+    schema_path = root / "docs/audits/PASS1_RESULTS_SCHEMA.md"
     importer_path = root / "scripts" / "23_import_evoagentbench_pass1.py"
-    harness_audit_path = root / "PASS1_HARNESS_AUDIT.md"
+    harness_audit_path = root / "docs/audits/PASS1_HARNESS_AUDIT.md"
     schema_note = {
         "schema_documentation": str(schema_path),
         "schema_documentation_present": schema_path.exists(),
@@ -605,7 +605,7 @@ def external_evidence_resume_helper_status(root):
 def measured_token_status(root):
     token_summary = (
         root
-        / "results_tokenmeasured_500_seed42"
+        / "results/tokenmeasured_seed42"
         / "selective_tokenmeasured500_summary.json"
     )
     expansion_methods = [
@@ -616,7 +616,7 @@ def measured_token_status(root):
     ]
     measured_expansion = []
     for method in expansion_methods:
-        candidates = list((root / "results_tokenmeasured_500_seed42").glob(f"*{method}*summary.json"))
+        candidates = list((root / "results/tokenmeasured_seed42").glob(f"*{method}*summary.json"))
         if candidates:
             measured_expansion.append(method)
     return {
@@ -626,7 +626,7 @@ def measured_token_status(root):
 
 
 def no_hallucinated_data_status(root):
-    policy_path = root / "NO_HALLUCINATED_DATA.md"
+    policy_path = root / "docs/audits/NO_HALLUCINATED_DATA.md"
     required_phrases = [
         "invented, placeholder, or simulated",
         "executed random-gating budget control",
@@ -634,7 +634,7 @@ def no_hallucinated_data_status(root):
     ]
     problems = []
     if not policy_path.exists():
-        problems.append("missing NO_HALLUCINATED_DATA.md")
+        problems.append("missing docs/audits/NO_HALLUCINATED_DATA.md")
         policy_text = ""
     else:
         policy_text = policy_path.read_text(errors="replace")
@@ -642,7 +642,7 @@ def no_hallucinated_data_status(root):
             if phrase not in policy_text:
                 problems.append(f"policy missing required phrase: {phrase}")
 
-    verifier_reports = sorted(root.glob("results_500_memory_seed*/verification_report.json"))
+    verifier_reports = sorted(root.glob("results/seed*/verification_report.json"))
     report_checks = []
     for path in verifier_reports:
         report = read_json(path)
@@ -684,7 +684,7 @@ def no_hallucinated_data_status(root):
                 problems.append(f"{path}: {key}={value}")
 
     if not verifier_reports:
-        problems.append("missing results_500_memory_seed*/verification_report.json")
+        problems.append("missing results/seed*/verification_report.json")
 
     return {
         "policy": str(policy_path),
@@ -696,7 +696,7 @@ def no_hallucinated_data_status(root):
 
 
 def latex_build_status(root):
-    audit_path = root / "LATEX_BUILD_AUDIT.json"
+    audit_path = root / "docs/audits/LATEX_BUILD_AUDIT.json"
     script_path = root / "scripts" / "31_verify_latex_clean_build.py"
     pdf_path = root / "paper" / "main.pdf"
     evidence = {
@@ -728,7 +728,7 @@ def latex_build_status(root):
 
 
 def conference_preview_status(root):
-    audit_path = root / "CONFERENCE_PREVIEW_AUDIT.json"
+    audit_path = root / "docs/audits/CONFERENCE_PREVIEW_AUDIT.json"
     script_path = root / "scripts" / "36_make_conference_preview.py"
     tex_path = root / "paper" / "main_conference_preview.tex"
     pdf_path = root / "paper" / "main_conference_preview.pdf"
@@ -771,7 +771,7 @@ def conference_preview_status(root):
         )
         problems.extend(audit.get("failures", []))
         if audit.get("clean_for_preview") is not True:
-            problems.append("CONFERENCE_PREVIEW_AUDIT.json is not clean_for_preview")
+            problems.append("docs/audits/CONFERENCE_PREVIEW_AUDIT.json is not clean_for_preview")
         if audit.get("is_experiment_evidence") is not False:
             problems.append("conference preview must be marked as non-evidence")
         if audit.get("is_official_venue_template") is not False:
@@ -785,7 +785,7 @@ def conference_preview_status(root):
 
 
 def paper_style_status(root):
-    audit_path = root / "PAPER_STYLE_AUDIT.json"
+    audit_path = root / "docs/audits/PAPER_STYLE_AUDIT.json"
     script_path = root / "scripts" / "37_audit_paper_style.py"
     evidence = {
         "audit": str(audit_path),
@@ -860,7 +860,7 @@ def paper_style_status(root):
             )
         problems.extend(audit.get("failures", []))
         if audit.get("clean") is not True:
-            problems.append("PAPER_STYLE_AUDIT.json is not clean")
+            problems.append("docs/audits/PAPER_STYLE_AUDIT.json is not clean")
         if audit.get("em_dash_count") != 0:
             problems.append("paper style audit reports em dash characters")
         if audit.get("forbidden_unicode_punctuation_counts"):
@@ -879,7 +879,7 @@ def paper_style_status(root):
 
 
 def figure_asset_status(root):
-    audit_path = root / "FIGURE_ASSET_AUDIT.json"
+    audit_path = root / "docs/audits/FIGURE_ASSET_AUDIT.json"
     script_path = root / "scripts" / "39_audit_figure_assets.py"
     evidence = {
         "audit": str(audit_path),
@@ -908,7 +908,7 @@ def figure_asset_status(root):
         )
         problems.extend(audit.get("failures", []))
         if audit.get("clean") is not True:
-            problems.append("FIGURE_ASSET_AUDIT.json is not clean")
+            problems.append("docs/audits/FIGURE_ASSET_AUDIT.json is not clean")
         if audit.get("n_active_figures", 0) < 4:
             problems.append("figure asset audit reports fewer than 4 active figures")
     evidence["problems"] = problems
@@ -917,7 +917,7 @@ def figure_asset_status(root):
 
 
 def paper_evidence_claim_status(root):
-    audit_path = root / "PAPER_EVIDENCE_CLAIM_AUDIT.json"
+    audit_path = root / "docs/audits/PAPER_EVIDENCE_CLAIM_AUDIT.json"
     script_path = root / "scripts" / "43_audit_paper_evidence_claims.py"
     evidence = {
         "audit": str(audit_path),
@@ -950,7 +950,7 @@ def paper_evidence_claim_status(root):
         )
         problems.extend(audit.get("failures", []))
         if audit.get("clean") is not True:
-            problems.append("PAPER_EVIDENCE_CLAIM_AUDIT.json is not clean")
+            problems.append("docs/audits/PAPER_EVIDENCE_CLAIM_AUDIT.json is not clean")
         if audit.get("matches"):
             problems.append(
                 "paper evidence-claim audit reports unsupported positive claims: "
@@ -967,7 +967,7 @@ def paper_evidence_claim_status(root):
 
 
 def compute_environment_status(root):
-    path = root / "COMPUTE_ENVIRONMENT.json"
+    path = root / "docs/audits/COMPUTE_ENVIRONMENT.json"
     script_path = root / "scripts" / "38_capture_compute_environment.py"
     evidence = {
         "path": str(path),
@@ -1014,7 +1014,7 @@ def compute_environment_status(root):
 
 
 def llm_usage_disclosure_status(root):
-    path = root / "LLM_USAGE_DISCLOSURE.md"
+    path = root / "docs/audits/LLM_USAGE_DISCLOSURE.md"
     required_phrases = [
         "documentation only",
         "not experiment evidence",
@@ -1039,7 +1039,7 @@ def llm_usage_disclosure_status(root):
 
 
 def blocked_next_actions_status(root):
-    path = root / "BLOCKED_NEXT_ACTIONS.md"
+    path = root / "docs/audits/BLOCKED_NEXT_ACTIONS.md"
     required_phrases = [
         "It is not experiment evidence.",
         "current user cannot access Docker daemon",
@@ -1164,7 +1164,7 @@ def main(args):
     root = Path(args.root).resolve()
     checks = []
 
-    multiseed_report = root / "results_multiseed" / "multiseed_report.json"
+    multiseed_report = root / "results/multiseed" / "multiseed_report.json"
     multiseed = read_json(multiseed_report) if multiseed_report.exists() else {}
     n_multiseed_runs = multiseed.get("n_complete_seeds", 0)
     seed_family = multiseed.get("seed_family")
@@ -1321,7 +1321,7 @@ def main(args):
         )
     )
 
-    verification = root / "results_500_memory_seed42" / "verification_report.json"
+    verification = root / "results/seed42" / "verification_report.json"
     latex_build = latex_build_status(root)
     checks.append(
         item(
@@ -1419,5 +1419,5 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default=str(ROOT))
-    parser.add_argument("--output", default="SUBMISSION_READINESS.json")
+    parser.add_argument("--output", default="docs/audits/SUBMISSION_READINESS.json")
     raise SystemExit(main(parser.parse_args()))

@@ -85,16 +85,16 @@ def pct_pm(mean_value, std_value):
 
 def discover_seed_dir(root, seed, seed_family):
     if seed_family == "independent_memory":
-        candidates = [root / f"results_500_memory_seed{seed}"]
+        candidates = [root / "results" / f"seed{seed}"]
     elif seed_family == "fixed_memory_query":
         candidates = (
-            [root / "results_500_memory_seed42"]
+            [root / "results/seed42"]
             if seed == 42
             else [root / f"results_500_query_seed{seed}_memory_seed42"]
         )
     elif seed_family == "auto":
         candidates = [
-            root / f"results_500_memory_seed{seed}",
+            root / "results" / f"seed{seed}",
             root / f"results_500_query_seed{seed}_memory_seed42",
         ]
     else:
@@ -215,11 +215,11 @@ if __name__ == "__main__":
         default="fixed_memory_query",
         help=(
             "fixed_memory_query keeps seed42 memory fixed and varies query samples; "
-            "independent_memory requires results_500_memory_seed* directories; "
+            "independent_memory requires results/seed* directories; "
             "auto preserves the historical discovery order and should be avoided "
             "for paper claims."
         ),
     )
-    parser.add_argument("--output", default="results_multiseed/multiseed_report.json")
+    parser.add_argument("--output", default="results/multiseed/multiseed_report.json")
     parser.add_argument("--table_output", default="paper/tables/multiseed_summary.tex")
     main(parser.parse_args())

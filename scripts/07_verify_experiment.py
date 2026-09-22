@@ -161,7 +161,7 @@ def verify_human_audit(root, eval_rows, failures, warnings, report):
 
 
 def verify_multiseed_artifacts(root, failures, report):
-    results_dir = root / "results_multiseed"
+    results_dir = root / "results/multiseed"
     summary_path = results_dir / "multiseed_report.json"
     paired_path = results_dir / "multiseed_paired_tests.json"
     gate_path = results_dir / "multiseed_gate_validation.json"
@@ -212,7 +212,7 @@ def verify_multiseed_artifacts(root, failures, report):
         failures.append(f"multiseed_report.json has {len(seed_reports)} seed reports")
     for seed_report in seed_reports:
         seed = seed_report.get("seed")
-        expected_dir = root / f"results_500_memory_seed{seed}"
+        expected_dir = root / "results" / f"seed{seed}"
         if seed not in EXPECTED_MULTI_SEEDS:
             failures.append(f"Unexpected seed in multiseed_report.json: {seed}")
         if seed in EXPECTED_MULTI_SEEDS and seed_report.get("results_dir") != str(expected_dir):
@@ -264,7 +264,7 @@ def verify_multiseed_artifacts(root, failures, report):
         failures.append(f"multiseed_gate_validation.json has {len(gate_rows)} seed reports")
     for row in gate_rows:
         seed = row.get("seed")
-        expected_dir = root / f"results_500_memory_seed{seed}"
+        expected_dir = root / "results" / f"seed{seed}"
         if seed not in EXPECTED_MULTI_SEEDS:
             failures.append(f"Unexpected seed in multiseed_gate_validation.json: {seed}")
         if seed in EXPECTED_MULTI_SEEDS and row.get("results_dir") != str(expected_dir):
@@ -285,7 +285,7 @@ def verify_random_gated_execution(root, failures, report):
     """Verify that the random-gated baseline is backed by executed row files."""
     checks = {}
     for seed in EXPECTED_MULTI_SEEDS:
-        results_dir = root / f"results_500_memory_seed{seed}"
+        results_dir = root / "results" / f"seed{seed}"
         detail_path = results_dir / "random_budget_detailed.jsonl"
         summary_path = results_dir / "random_budget_summary.json"
         seed_check = {
@@ -552,7 +552,7 @@ def verify_main_tex_headline_metrics(paper_dir, method_metrics, n_eval, failures
 
 
 def verify_multiseed_summary_table(root, paper_dir, failures, report):
-    report_path = root / "results_multiseed" / "multiseed_report.json"
+    report_path = root / "results/multiseed" / "multiseed_report.json"
     table_path = paper_dir / "tables" / "multiseed_summary.tex"
     if not report_path.exists() or not table_path.exists():
         return
@@ -594,7 +594,7 @@ def fmt_signed_pct(value):
 
 
 def verify_multiseed_paired_table(root, paper_dir, failures, report):
-    report_path = root / "results_multiseed" / "multiseed_paired_tests.json"
+    report_path = root / "results/multiseed" / "multiseed_paired_tests.json"
     table_path = paper_dir / "tables" / "multiseed_paired_tests.tex"
     if not report_path.exists() or not table_path.exists():
         return
@@ -619,7 +619,7 @@ def verify_multiseed_paired_table(root, paper_dir, failures, report):
 
 
 def verify_multiseed_gate_table(root, paper_dir, failures, report):
-    report_path = root / "results_multiseed" / "multiseed_gate_validation.json"
+    report_path = root / "results/multiseed" / "multiseed_gate_validation.json"
     table_path = paper_dir / "tables" / "multiseed_gate_validation.tex"
     if not report_path.exists() or not table_path.exists():
         return
@@ -656,7 +656,7 @@ def verify_multiseed_gate_table(root, paper_dir, failures, report):
 
 
 def verify_gate_variant_table(root, paper_dir, failures, report):
-    report_path = root / "results_gate_calibration" / "gate_variant_diagnostics.json"
+    report_path = root / "results/gate_calibration" / "gate_variant_diagnostics.json"
     table_path = paper_dir / "tables" / "gate_variant_diagnostics.tex"
     if not report_path.exists() or not table_path.exists():
         return
@@ -691,7 +691,7 @@ def verify_gate_variant_table(root, paper_dir, failures, report):
 
 
 def verify_gate_headroom_table(root, paper_dir, failures, report):
-    report_path = root / "results_gate_calibration" / "gate_headroom_diagnostics.json"
+    report_path = root / "results/gate_calibration" / "gate_headroom_diagnostics.json"
     table_path = paper_dir / "tables" / "gate_headroom_diagnostics.tex"
     if not report_path.exists() or not table_path.exists():
         return
@@ -730,7 +730,7 @@ def verify_gate_headroom_table(root, paper_dir, failures, report):
 
 
 def verify_gate_feature_table(root, paper_dir, failures, report):
-    report_path = root / "results_gate_calibration" / "gate_feature_diagnostics.json"
+    report_path = root / "results/gate_calibration" / "gate_feature_diagnostics.json"
     table_path = paper_dir / "tables" / "gate_feature_diagnostics.tex"
     if not report_path.exists() or not table_path.exists():
         return
@@ -765,7 +765,7 @@ def verify_gate_feature_table(root, paper_dir, failures, report):
 
 
 def verify_cross_seed_top1_gate_table(root, paper_dir, failures, report):
-    report_path = root / "results_gate_calibration" / "cross_seed_top1_gate.json"
+    report_path = root / "results/gate_calibration" / "cross_seed_top1_gate.json"
     table_path = paper_dir / "tables" / "cross_seed_top1_gate.tex"
     if not report_path.exists() or not table_path.exists():
         return
@@ -803,7 +803,7 @@ def verify_cross_seed_top1_gate_table(root, paper_dir, failures, report):
 
 
 def verify_win_loss_table(root, paper_dir, failures, report):
-    report_path = root / "results_multiseed" / "win_loss_analysis.json"
+    report_path = root / "results/multiseed" / "win_loss_analysis.json"
     table_path = paper_dir / "tables" / "win_loss_analysis.tex"
     if not report_path.exists() or not table_path.exists():
         return
@@ -836,7 +836,7 @@ def verify_win_loss_table(root, paper_dir, failures, report):
 
 
 def verify_measured_token_table(root, paper_dir, failures, report):
-    measured_dir = root / "results_tokenmeasured_500_seed42"
+    measured_dir = root / "results/tokenmeasured_seed42"
     table_path = paper_dir / "tables" / "measured_token_cost.tex"
     summary_paths = sorted(measured_dir.glob("*_tokenmeasured500_summary.json"))
     if not summary_paths:
@@ -1038,7 +1038,7 @@ def main(args):
             if summary["n_expanded"] != expanded:
                 failures.append(f"{method} n_expanded summary={summary['n_expanded']} detailed={expanded}")
 
-    if results_dir.name == "results_500_memory_seed42":
+    if results_dir.name == "seed42":
         verify_main_results_table(paper_dir, report["checks"]["methods"], failures, report)
         verify_main_tex_headline_metrics(
             paper_dir,
@@ -1116,7 +1116,7 @@ def main(args):
             failures.append(f"Figure appears too small or empty: {path} {figure_checks[name]}")
     report["checks"]["figure_pngs"] = figure_checks
 
-    conference_preview_audit_path = root / "CONFERENCE_PREVIEW_AUDIT.json"
+    conference_preview_audit_path = root / "docs/audits/CONFERENCE_PREVIEW_AUDIT.json"
     conference_preview_checks = {
         "present": conference_preview_audit_path.exists(),
         "clean_for_preview": False,
@@ -1145,7 +1145,7 @@ def main(args):
             failures.append("paper/main_conference_preview.pdf is missing")
         elif preview_pdf.stat().st_size != conference_preview.get("pdf_bytes"):
             failures.append(
-                "CONFERENCE_PREVIEW_AUDIT.json pdf_bytes does not match "
+                "docs/audits/CONFERENCE_PREVIEW_AUDIT.json pdf_bytes does not match "
                 "paper/main_conference_preview.pdf"
             )
         if conference_preview.get("clean_for_preview") is not True:
@@ -1160,10 +1160,10 @@ def main(args):
                 f"{conference_preview.get('failures')}"
             )
     else:
-        failures.append("Missing CONFERENCE_PREVIEW_AUDIT.json")
+        failures.append("Missing docs/audits/CONFERENCE_PREVIEW_AUDIT.json")
     report["checks"]["conference_preview"] = conference_preview_checks
 
-    paper_style_audit_path = root / "PAPER_STYLE_AUDIT.json"
+    paper_style_audit_path = root / "docs/audits/PAPER_STYLE_AUDIT.json"
     paper_style_checks = {
         "present": paper_style_audit_path.exists(),
         "clean": False,
@@ -1211,7 +1211,7 @@ def main(args):
         )
         if missing_guarded_phrases:
             failures.append(
-                "PAPER_STYLE_AUDIT.json missing required guarded phrases: "
+                "docs/audits/PAPER_STYLE_AUDIT.json missing required guarded phrases: "
                 f"{missing_guarded_phrases}"
             )
         required_layout_controls = {
@@ -1234,39 +1234,39 @@ def main(args):
         )
         if missing_required_layout_controls:
             failures.append(
-                "PAPER_STYLE_AUDIT.json missing required layout controls: "
+                "docs/audits/PAPER_STYLE_AUDIT.json missing required layout controls: "
                 f"{missing_required_layout_controls}"
             )
         if paper_style.get("missing_layout_controls"):
             failures.append(
-                "PAPER_STYLE_AUDIT.json reports missing layout controls: "
+                "docs/audits/PAPER_STYLE_AUDIT.json reports missing layout controls: "
                 f"{paper_style.get('missing_layout_controls')}"
             )
         if paper_style.get("clean") is not True:
-            failures.append("PAPER_STYLE_AUDIT.json is not clean")
+            failures.append("docs/audits/PAPER_STYLE_AUDIT.json is not clean")
         if paper_style.get("failures"):
             failures.append(
-                "PAPER_STYLE_AUDIT.json contains failures: "
+                "docs/audits/PAPER_STYLE_AUDIT.json contains failures: "
                 f"{paper_style.get('failures')}"
             )
         if paper_style.get("em_dash_count") != 0:
-            failures.append("PAPER_STYLE_AUDIT.json reports em dash characters")
+            failures.append("docs/audits/PAPER_STYLE_AUDIT.json reports em dash characters")
         if paper_style.get("forbidden_unicode_punctuation_counts"):
             failures.append(
-                "PAPER_STYLE_AUDIT.json reports forbidden unicode punctuation: "
+                "docs/audits/PAPER_STYLE_AUDIT.json reports forbidden unicode punctuation: "
                 f"{paper_style.get('forbidden_unicode_punctuation_counts')}"
             )
         if paper_style.get("hype_or_vague_phrase_hits"):
             failures.append(
-                "PAPER_STYLE_AUDIT.json reports hype or vague wording: "
+                "docs/audits/PAPER_STYLE_AUDIT.json reports hype or vague wording: "
                 f"{paper_style.get('hype_or_vague_phrase_hits')}"
             )
         if paper_style.get("n_figures", 0) < 4:
-            failures.append("PAPER_STYLE_AUDIT.json reports fewer than 4 figures")
+            failures.append("docs/audits/PAPER_STYLE_AUDIT.json reports fewer than 4 figures")
         if paper_style.get("n_tables", 0) < 10:
-            failures.append("PAPER_STYLE_AUDIT.json reports too few active tables")
+            failures.append("docs/audits/PAPER_STYLE_AUDIT.json reports too few active tables")
     else:
-        failures.append("Missing PAPER_STYLE_AUDIT.json")
+        failures.append("Missing docs/audits/PAPER_STYLE_AUDIT.json")
     report["checks"]["paper_style"] = paper_style_checks
 
     paper_generator_path = root / "scripts" / "06_make_paper_artifacts.py"
@@ -1325,7 +1325,7 @@ def main(args):
         paper_generator_checks
     )
 
-    figure_asset_audit_path = root / "FIGURE_ASSET_AUDIT.json"
+    figure_asset_audit_path = root / "docs/audits/FIGURE_ASSET_AUDIT.json"
     figure_asset_checks = {
         "present": figure_asset_audit_path.exists(),
         "clean": False,
@@ -1346,19 +1346,19 @@ def main(args):
             }
         )
         if figure_asset.get("clean") is not True:
-            failures.append("FIGURE_ASSET_AUDIT.json is not clean")
+            failures.append("docs/audits/FIGURE_ASSET_AUDIT.json is not clean")
         if figure_asset.get("failures"):
             failures.append(
-                "FIGURE_ASSET_AUDIT.json contains failures: "
+                "docs/audits/FIGURE_ASSET_AUDIT.json contains failures: "
                 f"{figure_asset.get('failures')}"
             )
         if figure_asset.get("n_active_figures", 0) < 4:
-            failures.append("FIGURE_ASSET_AUDIT.json reports fewer than 4 active figures")
+            failures.append("docs/audits/FIGURE_ASSET_AUDIT.json reports fewer than 4 active figures")
     else:
-        failures.append("Missing FIGURE_ASSET_AUDIT.json")
+        failures.append("Missing docs/audits/FIGURE_ASSET_AUDIT.json")
     report["checks"]["figure_assets"] = figure_asset_checks
 
-    evidence_claim_audit_path = root / "PAPER_EVIDENCE_CLAIM_AUDIT.json"
+    evidence_claim_audit_path = root / "docs/audits/PAPER_EVIDENCE_CLAIM_AUDIT.json"
     evidence_claim_checks = {
         "present": evidence_claim_audit_path.exists(),
         "clean": False,
@@ -1381,22 +1381,22 @@ def main(args):
             }
         )
         if evidence_claim_audit.get("clean") is not True:
-            failures.append("PAPER_EVIDENCE_CLAIM_AUDIT.json is not clean")
+            failures.append("docs/audits/PAPER_EVIDENCE_CLAIM_AUDIT.json is not clean")
         if evidence_claim_audit.get("matches"):
             failures.append(
-                "PAPER_EVIDENCE_CLAIM_AUDIT.json contains unsupported claim matches: "
+                "docs/audits/PAPER_EVIDENCE_CLAIM_AUDIT.json contains unsupported claim matches: "
                 f"{evidence_claim_audit.get('matches')}"
             )
         if evidence_claim_audit.get("missing_required_limitations"):
             failures.append(
-                "PAPER_EVIDENCE_CLAIM_AUDIT.json is missing limitation phrases: "
+                "docs/audits/PAPER_EVIDENCE_CLAIM_AUDIT.json is missing limitation phrases: "
                 f"{evidence_claim_audit.get('missing_required_limitations')}"
             )
     else:
-        failures.append("Missing PAPER_EVIDENCE_CLAIM_AUDIT.json")
+        failures.append("Missing docs/audits/PAPER_EVIDENCE_CLAIM_AUDIT.json")
     report["checks"]["paper_evidence_claim_audit"] = evidence_claim_checks
 
-    compute_env_path = root / "COMPUTE_ENVIRONMENT.json"
+    compute_env_path = root / "docs/audits/COMPUTE_ENVIRONMENT.json"
     compute_env_checks = {
         "present": compute_env_path.exists(),
         "is_experiment_metric": None,
@@ -1422,25 +1422,25 @@ def main(args):
             }
         )
         if compute_env.get("is_experiment_metric") is not False:
-            failures.append("COMPUTE_ENVIRONMENT.json must be marked as non-metric metadata")
+            failures.append("docs/audits/COMPUTE_ENVIRONMENT.json must be marked as non-metric metadata")
         if not cpu.get("cpu_threads") or not memory.get("total"):
-            failures.append("COMPUTE_ENVIRONMENT.json is missing CPU or memory metadata")
+            failures.append("docs/audits/COMPUTE_ENVIRONMENT.json is missing CPU or memory metadata")
     else:
-        failures.append("Missing COMPUTE_ENVIRONMENT.json")
+        failures.append("Missing docs/audits/COMPUTE_ENVIRONMENT.json")
     report["checks"]["compute_environment"] = compute_env_checks
 
-    artifact_manifest_path = root / "ARTIFACT_MANIFEST.json"
+    artifact_manifest_path = root / "docs/manifests/ARTIFACT_MANIFEST.json"
     report["checks"]["artifact_manifest"] = str(artifact_manifest_path) if artifact_manifest_path.exists() else ""
     report["checks"]["artifact_manifest_freshness_skipped"] = bool(args.skip_manifest_freshness)
     if args.skip_manifest_freshness:
         report["checks"]["artifact_manifest_stale_entries"] = []
     elif not artifact_manifest_path.exists():
-        failures.append("Missing ARTIFACT_MANIFEST.json")
+        failures.append("Missing docs/manifests/ARTIFACT_MANIFEST.json")
     else:
         artifact_manifest = read_json(artifact_manifest_path)
         if artifact_manifest.get("n_files", 0) < 60:
             failures.append(
-                "ARTIFACT_MANIFEST.json contains too few files: "
+                "docs/manifests/ARTIFACT_MANIFEST.json contains too few files: "
                 f"{artifact_manifest.get('n_files')}"
             )
         manifest_paths = {item.get("path") for item in artifact_manifest.get("files", [])}
@@ -1449,21 +1449,21 @@ def main(args):
             "paper/main.pdf",
             "paper/main_conference_preview.tex",
             "paper/main_conference_preview.pdf",
-            "LATEX_BUILD_AUDIT.json",
-            "CONFERENCE_PREVIEW_AUDIT.json",
-            "PAPER_STYLE_AUDIT.json",
-            "FIGURE_ASSET_AUDIT.json",
-            "PAPER_EVIDENCE_CLAIM_AUDIT.json",
-            "COMPUTE_ENVIRONMENT.json",
-            "results_multiseed/multiseed_report.json",
-            "results_multiseed/multiseed_paired_tests.json",
-            "results_multiseed/multiseed_gate_validation.json",
-            "results_multiseed/win_loss_analysis.json",
-            "results_gate_calibration/gate_variant_diagnostics.json",
-            "results_gate_calibration/gate_headroom_diagnostics.json",
-            "results_gate_calibration/cross_seed_top1_gate.json",
-            "results_500_memory_seed43/verification_report.json",
-            "results_500_memory_seed44/verification_report.json",
+            "docs/audits/LATEX_BUILD_AUDIT.json",
+            "docs/audits/CONFERENCE_PREVIEW_AUDIT.json",
+            "docs/audits/PAPER_STYLE_AUDIT.json",
+            "docs/audits/FIGURE_ASSET_AUDIT.json",
+            "docs/audits/PAPER_EVIDENCE_CLAIM_AUDIT.json",
+            "docs/audits/COMPUTE_ENVIRONMENT.json",
+            "results/multiseed/multiseed_report.json",
+            "results/multiseed/multiseed_paired_tests.json",
+            "results/multiseed/multiseed_gate_validation.json",
+            "results/multiseed/win_loss_analysis.json",
+            "results/gate_calibration/gate_variant_diagnostics.json",
+            "results/gate_calibration/gate_headroom_diagnostics.json",
+            "results/gate_calibration/cross_seed_top1_gate.json",
+            "results/seed43/verification_report.json",
+            "results/seed44/verification_report.json",
             "human_audit/README.md",
             "human_audit/REVIEWER_QUICKSTART.md",
             "pass1_evoagentbench_configs/EXECUTION_QUICKSTART.md",
@@ -1479,20 +1479,20 @@ def main(args):
             "scripts/18_verify_human_audit_labels.py",
             "scripts/19_win_loss_analysis.py",
             "scripts/29_cross_seed_top1_gate.py",
-            "DATA_PROVENANCE.md",
-            "EXPERIMENT_STATUS.md",
-            "OBJECTIVE_AUDIT.md",
-            "OBJECTIVE_COMPLETION_AUDIT.md",
-            "CLAIM_AUDIT.md",
-            "NO_HALLUCINATED_DATA.md",
-            "LLM_USAGE_DISCLOSURE.md",
-            "BLOCKED_NEXT_ACTIONS.md",
-            "HANDOFF_STATUS.md",
-            "PASS1_HARNESS_AUDIT.md",
+            "docs/audits/DATA_PROVENANCE.md",
+            "docs/audits/EXPERIMENT_STATUS.md",
+            "docs/audits/OBJECTIVE_AUDIT.md",
+            "docs/audits/OBJECTIVE_COMPLETION_AUDIT.md",
+            "docs/audits/CLAIM_AUDIT.md",
+            "docs/audits/NO_HALLUCINATED_DATA.md",
+            "docs/audits/LLM_USAGE_DISCLOSURE.md",
+            "docs/audits/BLOCKED_NEXT_ACTIONS.md",
+            "docs/audits/HANDOFF_STATUS.md",
+            "docs/audits/PASS1_HARNESS_AUDIT.md",
             "PAPER_CHECKLIST.md",
         ]:
             if required not in manifest_paths:
-                failures.append(f"ARTIFACT_MANIFEST.json missing required path: {required}")
+                failures.append(f"docs/manifests/ARTIFACT_MANIFEST.json missing required path: {required}")
         stale = []
         for item in artifact_manifest.get("files", []):
             rel_path = item.get("path")
@@ -1507,14 +1507,14 @@ def main(args):
         report["checks"]["artifact_manifest_stale_entries"] = stale[:20]
         if stale:
             failures.append(
-                "ARTIFACT_MANIFEST.json is stale; regenerate it with "
+                "docs/manifests/ARTIFACT_MANIFEST.json is stale; regenerate it with "
                 f"scripts/13_make_artifact_manifest.py. First mismatches: {stale[:5]}"
             )
 
-    readiness_path = root / "SUBMISSION_READINESS.json"
+    readiness_path = root / "docs/audits/SUBMISSION_READINESS.json"
     report["checks"]["submission_readiness"] = str(readiness_path) if readiness_path.exists() else ""
     if not readiness_path.exists():
-        failures.append("Missing SUBMISSION_READINESS.json")
+        failures.append("Missing docs/audits/SUBMISSION_READINESS.json")
     else:
         readiness = read_json(readiness_path)
         report["checks"]["strong_submission_ready"] = readiness.get("strong_submission_ready")
@@ -1524,7 +1524,7 @@ def main(args):
         report["checks"]["readiness_check_names"] = readiness_check_names
         if "Clear multi-seed improvement over dense retrieval" in readiness_check_names:
             failures.append(
-                "SUBMISSION_READINESS.json uses overstrong dense-comparison wording; "
+                "docs/audits/SUBMISSION_READINESS.json uses overstrong dense-comparison wording; "
                 "use 'Small multi-seed Recall@5 improvement over dense retrieval'"
             )
         if (
@@ -1532,27 +1532,27 @@ def main(args):
             not in readiness_check_names
         ):
             failures.append(
-                "SUBMISSION_READINESS.json is missing the scoped dense-comparison "
+                "docs/audits/SUBMISSION_READINESS.json is missing the scoped dense-comparison "
                 "readiness check name"
             )
         if "Non-destructive release helpers" not in readiness_check_names:
             failures.append(
-                "SUBMISSION_READINESS.json is missing the non-destructive release "
+                "docs/audits/SUBMISSION_READINESS.json is missing the non-destructive release "
                 "helper readiness check"
             )
         if "Project script deletion safety" not in readiness_check_names:
             failures.append(
-                "SUBMISSION_READINESS.json is missing the project script deletion "
+                "docs/audits/SUBMISSION_READINESS.json is missing the project script deletion "
                 "safety readiness check"
             )
         if "Paper evidence-claim audit" not in readiness_check_names:
             failures.append(
-                "SUBMISSION_READINESS.json is missing the paper evidence-claim "
+                "docs/audits/SUBMISSION_READINESS.json is missing the paper evidence-claim "
                 "audit readiness check"
             )
         if "External evidence resume helper" not in readiness_check_names:
             failures.append(
-                "SUBMISSION_READINESS.json is missing the external-evidence "
+                "docs/audits/SUBMISSION_READINESS.json is missing the external-evidence "
                 "resume-helper readiness check"
             )
         pass1_check = next(
@@ -1960,71 +1960,71 @@ def main(args):
         )
         if readiness.get("strong_submission_ready") is True:
             failures.append(
-                "SUBMISSION_READINESS.json unexpectedly marks the package as "
+                "docs/audits/SUBMISSION_READINESS.json unexpectedly marks the package as "
                 "strong-submission ready; verify dense-retrieval comparison, "
                 "Pass@1, and human labels before setting this true."
             )
         if readiness.get("blocking_count", 0) < 1:
-            failures.append("SUBMISSION_READINESS.json does not report any blocking gaps")
+            failures.append("docs/audits/SUBMISSION_READINESS.json does not report any blocking gaps")
         if not pass1_check:
-            failures.append("SUBMISSION_READINESS.json is missing the Pass@1 readiness check")
+            failures.append("docs/audits/SUBMISSION_READINESS.json is missing the Pass@1 readiness check")
         else:
             if pass1_evidence.get("schema_is_evidence") is not False:
-                failures.append("SUBMISSION_READINESS.json must mark Pass@1 schema as non-evidence")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must mark Pass@1 schema as non-evidence")
             if pass1_evidence.get("importer_is_evidence") is not False:
-                failures.append("SUBMISSION_READINESS.json must mark Pass@1 importer as non-evidence")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must mark Pass@1 importer as non-evidence")
             if pass1_evidence.get("evoagentbench_importer_present") is not True:
-                failures.append("SUBMISSION_READINESS.json does not record the Pass@1 importer")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not record the Pass@1 importer")
             if pass1_check.get("status") == "missing" and pass1_evidence.get("has_pass1_results"):
-                failures.append("SUBMISSION_READINESS.json marks Pass@1 missing but has results")
+                failures.append("docs/audits/SUBMISSION_READINESS.json marks Pass@1 missing but has results")
             if pass1_check.get("status") != "missing" and not pass1_evidence.get("has_pass1_results"):
-                failures.append("SUBMISSION_READINESS.json Pass@1 status is inconsistent with evidence")
+                failures.append("docs/audits/SUBMISSION_READINESS.json Pass@1 status is inconsistent with evidence")
         if not pass1_context_check:
-            failures.append("SUBMISSION_READINESS.json is missing the Pass@1 context-packet check")
+            failures.append("docs/audits/SUBMISSION_READINESS.json is missing the Pass@1 context-packet check")
         else:
             if pass1_context_check.get("required_for_strong_submission") is not False:
                 failures.append("Pass@1 context packets must not be required evidence")
             if pass1_context_evidence.get("is_pass1_result") is not False:
                 failures.append("Pass@1 context packets must be marked as non-result data")
             if pass1_context_evidence.get("exporter_present") is not True:
-                failures.append("SUBMISSION_READINESS.json does not record the context exporter")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not record the context exporter")
             if pass1_context_evidence.get("verifier_present") is not True:
-                failures.append("SUBMISSION_READINESS.json does not record the context verifier")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not record the context verifier")
             if (
                 pass1_context_check.get("status") == "missing"
                 and pass1_context_evidence.get("has_valid_contexts")
             ):
-                failures.append("SUBMISSION_READINESS.json marks contexts missing but valid")
+                failures.append("docs/audits/SUBMISSION_READINESS.json marks contexts missing but valid")
             if (
                 pass1_context_check.get("status") != "missing"
                 and not pass1_context_evidence.get("has_valid_contexts")
             ):
-                failures.append("SUBMISSION_READINESS.json context status is inconsistent with evidence")
+                failures.append("docs/audits/SUBMISSION_READINESS.json context status is inconsistent with evidence")
         if not human_label_check:
-            failures.append("SUBMISSION_READINESS.json is missing the human-label readiness check")
+            failures.append("docs/audits/SUBMISSION_READINESS.json is missing the human-label readiness check")
         else:
             if human_label_evidence.get("source_packet_is_evidence") is not False:
-                failures.append("SUBMISSION_READINESS.json must mark human-audit source packet as non-evidence")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must mark human-audit source packet as non-evidence")
             if human_label_evidence.get("labeling_template_is_evidence") is not False:
-                failures.append("SUBMISSION_READINESS.json must mark human-label template as non-evidence")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must mark human-label template as non-evidence")
             if human_label_evidence.get("labeling_protocol_present") is not True:
-                failures.append("SUBMISSION_READINESS.json must record the human-label protocol")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must record the human-label protocol")
             if human_label_evidence.get("labeling_protocol_is_evidence") is not False:
-                failures.append("SUBMISSION_READINESS.json must mark human-label protocol as non-evidence")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must mark human-label protocol as non-evidence")
             if human_label_evidence.get("reviewer_quickstart_present") is not True:
-                failures.append("SUBMISSION_READINESS.json must record the human-audit reviewer quickstart")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must record the human-audit reviewer quickstart")
             if human_label_evidence.get("reviewer_quickstart_is_evidence") is not False:
-                failures.append("SUBMISSION_READINESS.json must mark the human-audit reviewer quickstart as non-evidence")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must mark the human-audit reviewer quickstart as non-evidence")
             if human_label_evidence.get("reviewer_packet_manifest_present") is not True:
-                failures.append("SUBMISSION_READINESS.json must record the human-audit reviewer packet manifest")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must record the human-audit reviewer packet manifest")
             if human_label_evidence.get("reviewer_packet_manifest_is_evidence") is not False:
-                failures.append("SUBMISSION_READINESS.json must mark human-audit reviewer packets as non-evidence")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must mark human-audit reviewer packets as non-evidence")
             if human_label_evidence.get("reviewer_packet_verification_present") is not True:
-                failures.append("SUBMISSION_READINESS.json must record reviewer packet verification")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must record reviewer packet verification")
             if human_label_evidence.get("reviewer_packet_verification_failures"):
                 failures.append("human-audit reviewer packet verification must have no failures")
             if human_label_evidence.get("reviewer_packet_verification_is_evidence") is not False:
-                failures.append("SUBMISSION_READINESS.json must mark reviewer packet verification as non-evidence")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must mark reviewer packet verification as non-evidence")
             if human_label_check.get("status") != "missing":
                 if human_label_evidence.get("labeling_manifest_has_two_reviewers") is not True:
                     failures.append("Accepted human-audit evidence must list at least two reviewers")
@@ -2035,12 +2035,12 @@ def main(args):
                 if human_label_evidence.get("summary_provenance_valid") is not True:
                     failures.append("Accepted human-audit summary must carry provenance fields")
             if human_label_check.get("status") == "missing" and human_label_evidence.get("valid"):
-                failures.append("SUBMISSION_READINESS.json marks human labels missing but valid")
+                failures.append("docs/audits/SUBMISSION_READINESS.json marks human labels missing but valid")
             if human_label_check.get("status") != "missing" and not human_label_evidence.get("valid"):
-                failures.append("SUBMISSION_READINESS.json human-label status is inconsistent with evidence")
+                failures.append("docs/audits/SUBMISSION_READINESS.json human-label status is inconsistent with evidence")
         if not blocked_next_actions_check:
             failures.append(
-                "SUBMISSION_READINESS.json is missing the documented-unblock-steps check"
+                "docs/audits/SUBMISSION_READINESS.json is missing the documented-unblock-steps check"
             )
         else:
             if blocked_next_actions_check.get("required_for_strong_submission") is not False:
@@ -2049,16 +2049,16 @@ def main(args):
                 failures.append("Documented unblock steps must be marked as non-evidence")
             if blocked_next_actions_evidence.get("valid") is not True:
                 failures.append(
-                    "SUBMISSION_READINESS.json does not record valid unblock-step documentation"
+                    "docs/audits/SUBMISSION_READINESS.json does not record valid unblock-step documentation"
                 )
             if blocked_next_actions_evidence.get("missing_required_phrases"):
                 failures.append(
-                    "SUBMISSION_READINESS.json records missing unblock-step phrases: "
+                    "docs/audits/SUBMISSION_READINESS.json records missing unblock-step phrases: "
                     f"{blocked_next_actions_evidence.get('missing_required_phrases')}"
                 )
         if not resume_helper_check:
             failures.append(
-                "SUBMISSION_READINESS.json is missing the external-evidence "
+                "docs/audits/SUBMISSION_READINESS.json is missing the external-evidence "
                 "resume-helper check"
             )
         else:
@@ -2068,7 +2068,7 @@ def main(args):
                 failures.append("External evidence resume helper must be marked as non-evidence")
             if resume_helper_evidence.get("valid") is not True:
                 failures.append(
-                    "SUBMISSION_READINESS.json does not record a valid external-evidence "
+                    "docs/audits/SUBMISSION_READINESS.json does not record a valid external-evidence "
                     "resume helper"
                 )
             if resume_helper_evidence.get("missing_required_snippets"):
@@ -2082,18 +2082,18 @@ def main(args):
                     f"{resume_helper_evidence.get('forbidden_snippets_present')}"
                 )
         if not pass1_preflight_check:
-            failures.append("SUBMISSION_READINESS.json is missing the Pass@1 preflight check")
+            failures.append("docs/audits/SUBMISSION_READINESS.json is missing the Pass@1 preflight check")
         else:
             if pass1_preflight_check.get("required_for_strong_submission") is not False:
                 failures.append("Pass@1 preflight must not be required evidence")
             if pass1_preflight_evidence.get("is_pass1_result") is not False:
                 failures.append("Pass@1 preflight must be marked as non-result data")
             if pass1_preflight_evidence.get("execution_quickstart_present") is not True:
-                failures.append("SUBMISSION_READINESS.json must record the Pass@1 execution quickstart")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must record the Pass@1 execution quickstart")
             if pass1_preflight_evidence.get("execution_quickstart_is_evidence") is not False:
-                failures.append("SUBMISSION_READINESS.json must mark the Pass@1 execution quickstart as non-evidence")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must mark the Pass@1 execution quickstart as non-evidence")
             if pass1_preflight_evidence.get("guarded_runner_present") is not True:
-                failures.append("SUBMISSION_READINESS.json must record the guarded Pass@1 runner")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must record the guarded Pass@1 runner")
             if pass1_preflight_evidence.get("guarded_runner_is_evidence") is not False:
                 failures.append("Guarded Pass@1 runner must be marked as non-evidence")
             if pass1_preflight_evidence.get("guarded_runner_requires_ready_preflight") is not True:
@@ -2107,16 +2107,16 @@ def main(args):
             if pass1_preflight_evidence.get("guarded_runner_smoke_min_task_count_explicit") is not True:
                 failures.append("Guarded Pass@1 runner must lower the smoke threshold explicitly")
             if not pass1_preflight_evidence.get("alternate_container_runtime_note"):
-                failures.append("SUBMISSION_READINESS.json must record alternate container runtime diagnostics")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must record alternate container runtime diagnostics")
             alternate_runtimes = pass1_preflight_evidence.get("alternate_container_runtimes")
             if not isinstance(alternate_runtimes, dict):
-                failures.append("SUBMISSION_READINESS.json alternate container runtime diagnostics must be a dict")
+                failures.append("docs/audits/SUBMISSION_READINESS.json alternate container runtime diagnostics must be a dict")
             else:
                 for runtime_name in ["nerdctl", "podman", "apptainer", "singularity"]:
                     row = alternate_runtimes.get(runtime_name)
                     if not isinstance(row, dict):
                         failures.append(
-                            f"SUBMISSION_READINESS.json is missing alternate runtime row: {runtime_name}"
+                            f"docs/audits/SUBMISSION_READINESS.json is missing alternate runtime row: {runtime_name}"
                         )
                         continue
                     if row.get("is_drop_in_for_evoagentbench_swebench") is not False:
@@ -2124,21 +2124,21 @@ def main(args):
                             f"{runtime_name} must not be marked as a drop-in EvoAgentBench SWE-bench runtime"
                         )
             if not pass1_preflight_evidence.get("checked_at_utc"):
-                failures.append("SUBMISSION_READINESS.json Pass@1 preflight is missing checked_at_utc")
+                failures.append("docs/audits/SUBMISSION_READINESS.json Pass@1 preflight is missing checked_at_utc")
             if (
                 pass1_preflight_evidence.get("ready_to_run_pass1") is False
                 and not pass1_preflight_evidence.get("blockers")
             ):
-                failures.append("SUBMISSION_READINESS.json Pass@1 preflight is blocked without blockers")
+                failures.append("docs/audits/SUBMISSION_READINESS.json Pass@1 preflight is blocked without blockers")
             if (
                 pass1_preflight_check.get("status") == "blocked"
                 and pass1_preflight_evidence.get("ready_to_run_pass1") is not False
             ):
-                failures.append("SUBMISSION_READINESS.json Pass@1 preflight status is inconsistent")
+                failures.append("docs/audits/SUBMISSION_READINESS.json Pass@1 preflight status is inconsistent")
             if pass1_preflight_evidence.get("docker_socket_group") != "docker":
-                failures.append("SUBMISSION_READINESS.json must record the Docker socket group")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must record the Docker socket group")
             if not isinstance(pass1_preflight_evidence.get("docker_user_group_names"), list):
-                failures.append("SUBMISSION_READINESS.json must record current user group names")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must record current user group names")
             if pass1_preflight_evidence.get("ready_to_run_pass1") is False:
                 if pass1_preflight_evidence.get("docker_user_in_socket_group") is not False:
                     failures.append("Blocked Pass@1 preflight must record that the current user is not in the Docker socket group")
@@ -2146,40 +2146,40 @@ def main(args):
                     failures.append("Blocked Pass@1 preflight must record that the current user is not listed in the Docker socket group")
         if not no_hallucinated_check:
             failures.append(
-                "SUBMISSION_READINESS.json is missing the no-hallucinated-evidence check"
+                "docs/audits/SUBMISSION_READINESS.json is missing the no-hallucinated-evidence check"
             )
         else:
             if no_hallucinated_check.get("status") != "pass":
                 failures.append(
-                    "SUBMISSION_READINESS.json does not mark the no-hallucinated-evidence check as pass"
+                    "docs/audits/SUBMISSION_READINESS.json does not mark the no-hallucinated-evidence check as pass"
                 )
             if no_hallucinated_evidence.get("valid") is not True:
                 failures.append(
-                    "SUBMISSION_READINESS.json does not record valid anti-hallucination evidence"
+                    "docs/audits/SUBMISSION_READINESS.json does not record valid anti-hallucination evidence"
                 )
             if readiness_missing_guard_fields:
                 failures.append(
-                    "SUBMISSION_READINESS.json anti-hallucination report summaries "
+                    "docs/audits/SUBMISSION_READINESS.json anti-hallucination report summaries "
                     "are missing stale-provenance guard fields: "
                     f"{readiness_missing_guard_fields}"
                 )
             if readiness_nonempty_guard_fields:
                 failures.append(
-                    "SUBMISSION_READINESS.json anti-hallucination report summaries "
+                    "docs/audits/SUBMISSION_READINESS.json anti-hallucination report summaries "
                     "contain nonempty stale-provenance guard fields: "
                     f"{readiness_nonempty_guard_fields}"
                 )
         if not paper_claim_check:
-            failures.append("SUBMISSION_READINESS.json is missing the paper evidence-claim audit")
+            failures.append("docs/audits/SUBMISSION_READINESS.json is missing the paper evidence-claim audit")
         else:
             if paper_claim_check.get("required_for_strong_submission") is not False:
                 failures.append("Paper evidence-claim audit must not be required evidence")
             if paper_claim_evidence.get("is_experiment_evidence") is not False:
                 failures.append("Paper evidence-claim audit must be marked as non-evidence")
             if paper_claim_evidence.get("script_present") is not True:
-                failures.append("SUBMISSION_READINESS.json must record the evidence-claim audit script")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must record the evidence-claim audit script")
             if paper_claim_evidence.get("audit_present") is not True:
-                failures.append("SUBMISSION_READINESS.json must record the evidence-claim audit file")
+                failures.append("docs/audits/SUBMISSION_READINESS.json must record the evidence-claim audit file")
             if paper_claim_check.get("status") != "pass":
                 failures.append("Paper evidence-claim audit readiness status must pass")
             if paper_claim_evidence.get("clean") is not True:
@@ -2195,76 +2195,76 @@ def main(args):
                     f"{paper_claim_evidence.get('missing_required_limitations')}"
                 )
         if not latex_check:
-            failures.append("SUBMISSION_READINESS.json is missing the LaTeX package readiness check")
+            failures.append("docs/audits/SUBMISSION_READINESS.json is missing the LaTeX package readiness check")
         else:
             if latex_check.get("status") != "pass":
-                failures.append("SUBMISSION_READINESS.json does not mark the LaTeX package verified")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not mark the LaTeX package verified")
             if latex_evidence.get("clean_build") is not True:
-                failures.append("SUBMISSION_READINESS.json does not record a clean LaTeX build")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not record a clean LaTeX build")
             if latex_evidence.get("warnings"):
                 failures.append(
-                    "SUBMISSION_READINESS.json records LaTeX build warnings: "
+                    "docs/audits/SUBMISSION_READINESS.json records LaTeX build warnings: "
                     f"{latex_evidence.get('warnings')}"
                 )
             if latex_evidence.get("failures"):
                 failures.append(
-                    "SUBMISSION_READINESS.json records LaTeX build failures: "
+                    "docs/audits/SUBMISSION_READINESS.json records LaTeX build failures: "
                     f"{latex_evidence.get('failures')}"
                 )
         if not style_check:
-            failures.append("SUBMISSION_READINESS.json is missing the paper style readiness check")
+            failures.append("docs/audits/SUBMISSION_READINESS.json is missing the paper style readiness check")
         else:
             if style_check.get("status") != "pass":
-                failures.append("SUBMISSION_READINESS.json does not mark the paper style audit as pass")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not mark the paper style audit as pass")
             if style_evidence.get("clean") is not True:
-                failures.append("SUBMISSION_READINESS.json does not record a clean paper style audit")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not record a clean paper style audit")
             if style_evidence.get("failures"):
                 failures.append(
-                    "SUBMISSION_READINESS.json records paper style failures: "
+                    "docs/audits/SUBMISSION_READINESS.json records paper style failures: "
                     f"{style_evidence.get('failures')}"
                 )
         if not compute_check:
-            failures.append("SUBMISSION_READINESS.json is missing the compute readiness check")
+            failures.append("docs/audits/SUBMISSION_READINESS.json is missing the compute readiness check")
         else:
             if compute_check.get("status") != "pass":
-                failures.append("SUBMISSION_READINESS.json does not mark compute disclosure as pass")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not mark compute disclosure as pass")
             if compute_evidence.get("valid") is not True:
-                failures.append("SUBMISSION_READINESS.json does not record valid compute metadata")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not record valid compute metadata")
             if compute_evidence.get("is_experiment_metric") is not False:
-                failures.append("SUBMISSION_READINESS.json marks compute metadata as experiment metric")
+                failures.append("docs/audits/SUBMISSION_READINESS.json marks compute metadata as experiment metric")
         if not llm_usage_check:
-            failures.append("SUBMISSION_READINESS.json is missing the LLM usage disclosure check")
+            failures.append("docs/audits/SUBMISSION_READINESS.json is missing the LLM usage disclosure check")
         else:
             if llm_usage_check.get("status") != "pass":
-                failures.append("SUBMISSION_READINESS.json does not mark LLM usage disclosure as pass")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not mark LLM usage disclosure as pass")
             if llm_usage_evidence.get("valid") is not True:
-                failures.append("SUBMISSION_READINESS.json does not record valid LLM usage disclosure")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not record valid LLM usage disclosure")
             if llm_usage_evidence.get("is_experiment_evidence") is not False:
-                failures.append("SUBMISSION_READINESS.json marks LLM disclosure as experiment evidence")
+                failures.append("docs/audits/SUBMISSION_READINESS.json marks LLM disclosure as experiment evidence")
         if not release_helper_check:
-            failures.append("SUBMISSION_READINESS.json is missing the release helper safety check")
+            failures.append("docs/audits/SUBMISSION_READINESS.json is missing the release helper safety check")
         else:
             if release_helper_check.get("status") != "pass":
-                failures.append("SUBMISSION_READINESS.json does not mark release helper safety as pass")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not mark release helper safety as pass")
             if release_helper_evidence.get("valid") is not True:
-                failures.append("SUBMISSION_READINESS.json does not record valid release helper safety")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not record valid release helper safety")
             if release_helper_evidence.get("destructive_patterns"):
                 failures.append(
-                    "SUBMISSION_READINESS.json reports destructive release helper patterns: "
+                    "docs/audits/SUBMISSION_READINESS.json reports destructive release helper patterns: "
                     f"{release_helper_evidence.get('destructive_patterns')}"
                 )
             if release_helper_evidence.get("missing_noop_clean_guard"):
                 failures.append(
-                    "SUBMISSION_READINESS.json reports missing no-op --clean guards: "
+                    "docs/audits/SUBMISSION_READINESS.json reports missing no-op --clean guards: "
                     f"{release_helper_evidence.get('missing_noop_clean_guard')}"
                 )
             if project_deletion_check.get("status") != "pass":
-                failures.append("SUBMISSION_READINESS.json does not mark project deletion safety as pass")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not mark project deletion safety as pass")
             if project_deletion_evidence.get("valid") is not True:
-                failures.append("SUBMISSION_READINESS.json does not record valid project deletion safety")
+                failures.append("docs/audits/SUBMISSION_READINESS.json does not record valid project deletion safety")
             if project_deletion_evidence.get("destructive_patterns"):
                 failures.append(
-                    "SUBMISSION_READINESS.json reports destructive project script patterns: "
+                    "docs/audits/SUBMISSION_READINESS.json reports destructive project script patterns: "
                     f"{project_deletion_evidence.get('destructive_patterns')}"
                 )
 
@@ -2333,7 +2333,7 @@ def main(args):
         results_dir / "full_report_v2.json",
     ]
     text_targets.extend(sorted((paper_dir / "tables").glob("*.tex")))
-    text_targets.extend(sorted((root / "results_multiseed").glob("*.json")))
+    text_targets.extend(sorted((root / "results/multiseed").glob("*.json")))
     forbidden_hits = []
     main_text = (paper_dir / "main.tex").read_text(errors="replace") if (paper_dir / "main.tex").exists() else ""
     for path in text_targets:
@@ -2389,18 +2389,18 @@ def main(args):
     doc_guard_paths = [
         root / "README.md",
         root / "PAPER_CHECKLIST.md",
-        root / "DATA_PROVENANCE.md",
-        root / "CLAIM_AUDIT.md",
-        root / "NO_HALLUCINATED_DATA.md",
-        root / "BLOCKED_NEXT_ACTIONS.md",
-        root / "HANDOFF_STATUS.md",
-        root / "EXPERIMENT_STATUS.md",
-        root / "NEXT_EXPERIMENTS.md",
-        root / "OBJECTIVE_AUDIT.md",
-        root / "OBJECTIVE_COMPLETION_AUDIT.md",
-        root / "PASS1_HARNESS_AUDIT.md",
-        root / "PASS1_RESULTS_SCHEMA.md",
-        root / "SUBMISSION_READINESS.json",
+        root / "docs/audits/DATA_PROVENANCE.md",
+        root / "docs/audits/CLAIM_AUDIT.md",
+        root / "docs/audits/NO_HALLUCINATED_DATA.md",
+        root / "docs/audits/BLOCKED_NEXT_ACTIONS.md",
+        root / "docs/audits/HANDOFF_STATUS.md",
+        root / "docs/audits/EXPERIMENT_STATUS.md",
+        root / "docs/audits/NEXT_EXPERIMENTS.md",
+        root / "docs/audits/OBJECTIVE_AUDIT.md",
+        root / "docs/audits/OBJECTIVE_COMPLETION_AUDIT.md",
+        root / "docs/audits/PASS1_HARNESS_AUDIT.md",
+        root / "docs/audits/PASS1_RESULTS_SCHEMA.md",
+        root / "docs/audits/SUBMISSION_READINESS.json",
     ]
     legacy_gated_artifact = "_".join(["random", "budget", "simulation"])
     legacy_budget_phrase = " ".join(["random", "budget", "simulation"])
@@ -2535,7 +2535,7 @@ def main(args):
             f"{checklist_claim_hits}"
         )
 
-    claim_audit_path = root / "CLAIM_AUDIT.md"
+    claim_audit_path = root / "docs/audits/CLAIM_AUDIT.md"
     claim_audit_required_phrases = [
         "SQE has only a small retrieval-only Recall@5 improvement over Dense-Only",
         "SQE is not clearly better than Random-Gated-Expansion",
@@ -2564,18 +2564,18 @@ def main(args):
     report["checks"]["claim_audit_missing_required_phrases"] = claim_audit_missing_phrases
     if claim_audit_missing_phrases:
         failures.append(
-            "CLAIM_AUDIT.md is missing required supported/unsupported claim "
+            "docs/audits/CLAIM_AUDIT.md is missing required supported/unsupported claim "
             f"guardrails: {claim_audit_missing_phrases}"
         )
 
-    no_hallucinated_data_path = root / "NO_HALLUCINATED_DATA.md"
+    no_hallucinated_data_path = root / "docs/audits/NO_HALLUCINATED_DATA.md"
     no_hallucinated_data_required_phrases = [
         "invented, placeholder, or simulated",
         "executed random-gating budget control",
         "is not evidence",
         "active_table_sources",
         "cost measurements",
-        "PASS1_RESULTS_SCHEMA.md",
+        "docs/audits/PASS1_RESULTS_SCHEMA.md",
         "template only",
         "unlabeled packets",
         "generated hypothetical traces are method",
@@ -2597,11 +2597,11 @@ def main(args):
     )
     if no_hallucinated_data_missing_phrases:
         failures.append(
-            "NO_HALLUCINATED_DATA.md is missing required anti-hallucination "
+            "docs/audits/NO_HALLUCINATED_DATA.md is missing required anti-hallucination "
             f"guardrails: {no_hallucinated_data_missing_phrases}"
         )
 
-    llm_usage_path = root / "LLM_USAGE_DISCLOSURE.md"
+    llm_usage_path = root / "docs/audits/LLM_USAGE_DISCLOSURE.md"
     llm_usage_required_phrases = [
         "documentation only",
         "not experiment evidence",
@@ -2620,11 +2620,11 @@ def main(args):
     report["checks"]["llm_usage_missing_required_phrases"] = llm_usage_missing_phrases
     if llm_usage_missing_phrases:
         failures.append(
-            "LLM_USAGE_DISCLOSURE.md is missing required disclosure guardrails: "
+            "docs/audits/LLM_USAGE_DISCLOSURE.md is missing required disclosure guardrails: "
             f"{llm_usage_missing_phrases}"
         )
 
-    blocked_next_actions_path = root / "BLOCKED_NEXT_ACTIONS.md"
+    blocked_next_actions_path = root / "docs/audits/BLOCKED_NEXT_ACTIONS.md"
     blocked_next_actions_required_phrases = [
         "It is not experiment evidence.",
         "current user cannot access Docker daemon",
@@ -2655,7 +2655,7 @@ def main(args):
     )
     if blocked_next_actions_missing_phrases:
         failures.append(
-            "BLOCKED_NEXT_ACTIONS.md is missing required unblock/evidence "
+            "docs/audits/BLOCKED_NEXT_ACTIONS.md is missing required unblock/evidence "
             f"guardrails: {blocked_next_actions_missing_phrases}"
         )
 
@@ -2720,7 +2720,7 @@ def main(args):
             f"{missing_evidence_checks}"
         )
 
-    handoff_status_path = root / "HANDOFF_STATUS.md"
+    handoff_status_path = root / "docs/audits/HANDOFF_STATUS.md"
     handoff_status_required_phrases = [
         "This file is documentation only. It is not experiment evidence.",
         "paper/main.pdf",
@@ -2750,7 +2750,7 @@ def main(args):
     )
     if handoff_status_missing_phrases:
         failures.append(
-            "HANDOFF_STATUS.md is missing required current-state/blocker "
+            "docs/audits/HANDOFF_STATUS.md is missing required current-state/blocker "
             f"phrases: {handoff_status_missing_phrases}"
         )
 
@@ -2889,7 +2889,7 @@ def main(args):
             "Release helper scripts are missing the deprecated no-op --clean guard: "
             f"{release_helper_checks['missing_noop_clean_guard']}"
         )
-    github_release_manifest = root / "github_code_release" / "RELEASE_MANIFEST.json"
+    github_release_manifest = root / "github_code_release" / "docs/manifests/RELEASE_MANIFEST.json"
     github_release_checks = {
         "present": github_release_manifest.exists(),
         "forbidden_paths": [],
@@ -2927,7 +2927,7 @@ def main(args):
     latex_pdf_pages = report["checks"].get("readiness_latex_pdf_pages")
     if latex_pdf_pages is not None and main_pdf_pages != latex_pdf_pages:
         failures.append(
-            "LATEX_BUILD_AUDIT.json pdf_pages does not match current paper/main.pdf: "
+            "docs/audits/LATEX_BUILD_AUDIT.json pdf_pages does not match current paper/main.pdf: "
             f"audit={latex_pdf_pages}, current={main_pdf_pages}"
         )
     if "Salomon DIEI" not in main_text:
@@ -2957,7 +2957,7 @@ def main(args):
     report["checks"]["main_pdf_text_checked"] = bool(pdf_text)
     if pdf_text:
         gate_pdf_phrase = ""
-        gate_json_path = root / "results_multiseed" / "multiseed_gate_validation.json"
+        gate_json_path = root / "results/multiseed" / "multiseed_gate_validation.json"
         if gate_json_path.exists():
             gate_json = read_json(gate_json_path)
             expansion_rate = gate_json.get("aggregate", {}).get("test_expansion_rate_mean")
@@ -3073,7 +3073,7 @@ def main(args):
             )
 
     measured_token_path = (
-        root / "results_tokenmeasured_500_seed42" / "selective_tokenmeasured500_summary.json"
+        root / "results/tokenmeasured_seed42" / "selective_tokenmeasured500_summary.json"
     )
     measured_token_summary = read_json(measured_token_path) if measured_token_path.exists() else {}
     report["checks"]["measured_token_summary"] = str(measured_token_path) if measured_token_summary else ""
@@ -3098,7 +3098,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_dir", default="data_500_memory_seed42")
     parser.add_argument("--index_dir", default="index_500_seed42")
-    parser.add_argument("--results_dir", default="results_500_memory_seed42")
+    parser.add_argument("--results_dir", default="results/seed42")
     parser.add_argument("--paper_dir", default="paper")
     parser.add_argument("--report_path", default="")
     parser.add_argument(

@@ -14,21 +14,21 @@ SEED_FAMILY="${SEED_FAMILY:-independent_memory}"
   --root "${ROOT}" \
   --seeds "${SEEDS}" \
   --seed_family "${SEED_FAMILY}" \
-  --output "results_multiseed/multiseed_report.json" \
+  --output "results/multiseed/multiseed_report.json" \
   --table_output "paper/tables/multiseed_summary.tex"
 
 "${PY}" "${ROOT}/scripts/11_make_multiseed_paired_tests.py" \
   --root "${ROOT}" \
   --seeds "${SEEDS}" \
   --seed_family "${SEED_FAMILY}" \
-  --output "results_multiseed/multiseed_paired_tests.json" \
+  --output "results/multiseed/multiseed_paired_tests.json" \
   --table_output "paper/tables/multiseed_paired_tests.tex"
 
 "${PY}" "${ROOT}/scripts/12_make_multiseed_gate_validation.py" \
   --root "${ROOT}" \
   --seeds "${SEEDS}" \
   --seed_family "${SEED_FAMILY}" \
-  --output "results_multiseed/multiseed_gate_validation.json" \
+  --output "results/multiseed/multiseed_gate_validation.json" \
   --table_output "paper/tables/multiseed_gate_validation.tex"
 
 echo "Regenerated deterministic multi-seed artifacts for ${SEED_FAMILY} seeds ${SEEDS}"

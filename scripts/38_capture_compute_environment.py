@@ -123,5 +123,5 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default=str(ROOT))
-    parser.add_argument("--output", default="COMPUTE_ENVIRONMENT.json")
+    parser.add_argument("--output", default="docs/audits/COMPUTE_ENVIRONMENT.json")
     raise SystemExit(main(parser.parse_args()))

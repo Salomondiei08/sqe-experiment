@@ -13,7 +13,7 @@ N_EVAL="${N_EVAL:-500}"
 N_MEMORY="${N_MEMORY:-5000}"
 DATA_DIR="${ROOT}/data_500_memory_seed${SEED}"
 INDEX_DIR="${ROOT}/index_500_seed${SEED}"
-RESULTS="${ROOT}/results_500_memory_seed${SEED}"
+RESULTS="${ROOT}/results/seed${SEED}"
 CACHE="${RESULTS}/expansion_cache.json"
 DEVICE="${DEVICE:-cpu}"
 

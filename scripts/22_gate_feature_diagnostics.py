@@ -207,7 +207,7 @@ def main(args):
     ]
     seed_reports = []
     for seed in seeds:
-        results_dir = root / f"results_500_memory_seed{seed}"
+        results_dir = root / "results" / f"seed{seed}"
         index_dir = root / f"index_500_seed{seed}"
         if not results_dir.exists() or not index_dir.exists():
             continue
@@ -289,6 +289,6 @@ if __name__ == "__main__":
     parser.add_argument("--max_expansion_rate", type=float, default=0.55)
     parser.add_argument("--embedding_model", default="BAAI/bge-m3")
     parser.add_argument("--device", default="cpu")
-    parser.add_argument("--output", default="results_gate_calibration/gate_feature_diagnostics.json")
+    parser.add_argument("--output", default="results/gate_calibration/gate_feature_diagnostics.json")
     parser.add_argument("--table_output", default="paper/tables/gate_feature_diagnostics.tex")
     main(parser.parse_args())

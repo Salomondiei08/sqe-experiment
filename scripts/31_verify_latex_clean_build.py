@@ -113,5 +113,5 @@ if __name__ == "__main__":
     parser.add_argument("--paper_dir", default="paper")
     parser.add_argument("--tex", default="main.tex")
     parser.add_argument("--tectonic", default="/home/nlp-07/.local/bin/tectonic-musl")
-    parser.add_argument("--output", default="LATEX_BUILD_AUDIT.json")
+    parser.add_argument("--output", default="docs/audits/LATEX_BUILD_AUDIT.json")
     raise SystemExit(main(parser.parse_args()))

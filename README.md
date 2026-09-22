@@ -28,11 +28,18 @@ turns the released JSON summaries into a browsable evidence view: method
 comparison, per-seed inspection, cost/quality plot, pipeline explanation, and
 artifact links.
 
+## Repository map
+
+The root contains only the entry points. Supporting material is grouped in
+[`docs/`](docs/), result artifacts in [`results/`](results/), executable
+pipelines in [`scripts/`](scripts/), and paper assets in [`paper/`](paper/).
+The [documentation map](docs/README.md) explains the audit and release folders.
+
 | Resource | What it contains |
 | --- | --- |
 | [Paper](paper/main.pdf) | LaTeX source, PDF, figures, tables, and references |
 | [Dataset 🤗](https://huggingface.co/datasets/TheReinventGuy/sqe-experiment) | Companion Hugging Face dataset |
-| [`results_multiseed/`](results_multiseed) | Independent seeds 42–49, paired tests, and win/loss analysis |
+| [`results/`](results) | Independent seeds 42–49, paired tests, gate diagnostics, and token measurements |
 | [`scripts/`](scripts) | Dataset preparation, retrieval, verification, and report generation |
 | [`paper/`](paper) | Main paper, figures, tables, and source inventory |
 | [`human_audit/`](human_audit) | Query audit packet and labeling protocol; labels remain separate |

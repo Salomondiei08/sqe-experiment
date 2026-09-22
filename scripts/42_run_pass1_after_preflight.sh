@@ -95,6 +95,6 @@ cd "$SQE_ROOT"
   --min_task_count "$MIN_TASK_COUNT"
 "$PY" scripts/14_submission_readiness_check.py \
   --root "$SQE_ROOT" \
-  --output "$SQE_ROOT/SUBMISSION_READINESS.json"
+  --output "$SQE_ROOT/docs/audits/SUBMISSION_READINESS.json"
 
 echo "Pass@1 ${MODE} run imported, summarized, and verified under $RESULTS_DIR"

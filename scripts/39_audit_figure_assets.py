@@ -163,5 +163,5 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default=str(ROOT))
-    parser.add_argument("--output", default="FIGURE_ASSET_AUDIT.json")
+    parser.add_argument("--output", default="docs/audits/FIGURE_ASSET_AUDIT.json")
     raise SystemExit(main(parser.parse_args()))

@@ -48,7 +48,7 @@ fi
 
 "$PY" scripts/14_submission_readiness_check.py \
   --root "$SQE_ROOT" \
-  --output "$SQE_ROOT/SUBMISSION_READINESS.json"
+  --output "$SQE_ROOT/docs/audits/SUBMISSION_READINESS.json"
 "$PY" scripts/35_write_missing_evidence_blockers.py \
   --root "$SQE_ROOT" \
   --output "$SQE_ROOT/MISSING_EVIDENCE_BLOCKERS.json"
@@ -67,11 +67,11 @@ fi
   --include_result_summaries
 "$PY" scripts/13_make_artifact_manifest.py \
   --root "$SQE_ROOT" \
-  --output "$SQE_ROOT/ARTIFACT_MANIFEST.json"
+  --output "$SQE_ROOT/docs/manifests/ARTIFACT_MANIFEST.json"
 "$PY" scripts/07_verify_experiment.py \
   --data_dir data_500_memory_seed42 \
   --index_dir index_500_seed42 \
-  --results_dir results_500_memory_seed42 \
+  --results_dir results/seed42 \
   --paper_dir paper \
   --report_path "$VERIFY_REPORT"
 

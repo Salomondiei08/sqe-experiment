@@ -35,7 +35,7 @@ Active tables are the files imported by `main.tex`: `experiment_manifest`,
 `gate_headroom_diagnostics`, and `case_analysis`. Other files under `tables/` may be retained
 historical/generated artifacts and should not be cited as active paper evidence
 unless they are imported by `main.tex` or documented in
-`/home/nlp-07/sqe_experiment/DATA_PROVENANCE.md`.
+`/home/nlp-07/sqe_experiment/docs/audits/DATA_PROVENANCE.md`.
 
 Active figures are the files imported by `main.tex`: `method_overview.png`,
 `recall_at_5.png`, `gate_diagnostic.png`, and
@@ -59,7 +59,7 @@ is `/home/nlp-07/sqe_experiment/scripts/33_prepare_hf_dataset_release.py`.
 
 Only executed result artifacts may be used as paper evidence. In particular,
 `Random-Gated-Expansion` refers to the executed random-gating budget baseline
-stored in `results_500_memory_seed*/random_budget_detailed.jsonl` and matching
+stored in `results/seed*/random_budget_detailed.jsonl` and matching
 summary files. It is backed by executed JSONL rows.
 
 Deprecated or diagnostic-only files must not be cited as active paper evidence.
@@ -69,9 +69,9 @@ documentation or preparation artifacts only; they are not result evidence.
 The current package is a rigorous retrieval-paper draft, not a complete
 top-conference empirical submission. See:
 
-- `/home/nlp-07/sqe_experiment/SUBMISSION_READINESS.json`
-- `/home/nlp-07/sqe_experiment/ARTIFACT_MANIFEST.json`
-- `/home/nlp-07/sqe_experiment/results_500_memory_seed42/verification_report.json`
+- `/home/nlp-07/sqe_experiment/docs/audits/SUBMISSION_READINESS.json`
+- `/home/nlp-07/sqe_experiment/docs/manifests/ARTIFACT_MANIFEST.json`
+- `/home/nlp-07/sqe_experiment/results/seed42/verification_report.json`
 
 The active verifier checks that paper tables match result JSON/JSONL files, the
 compiled PDF contains the expected paper sections, excluded non-evidence tables

@@ -22,78 +22,78 @@
   "active_table_sources": {
     "case_analysis": [
       "data_500_memory_seed42/eval_pairs.jsonl",
-      "results_500_memory_seed42/dense_only_detailed.jsonl",
-      "results_500_memory_seed42/proposed_detailed.jsonl"
+      "results/seed42/dense_only_detailed.jsonl",
+      "results/seed42/proposed_detailed.jsonl"
     ],
     "cost_summary": [
-      "results_500_memory_seed42/dense_only_detailed.jsonl",
-      "results_500_memory_seed42/always_expand_detailed.jsonl",
-      "results_500_memory_seed42/proposed_detailed.jsonl",
-      "results_500_memory_seed42/random_budget_detailed.jsonl"
+      "results/seed42/dense_only_detailed.jsonl",
+      "results/seed42/always_expand_detailed.jsonl",
+      "results/seed42/proposed_detailed.jsonl",
+      "results/seed42/random_budget_detailed.jsonl"
     ],
     "cross_seed_top1_gate": [
-      "results_gate_calibration/cross_seed_top1_gate.json"
+      "results/gate_calibration/cross_seed_top1_gate.json"
     ],
     "experiment_manifest": [
       "data_500_memory_seed42/dataset_manifest.json"
     ],
     "gate_diagnostics": [
-      "results_500_memory_seed42/proposed_detailed.jsonl",
-      "results_500_memory_seed42/full_report_v2.json"
+      "results/seed42/proposed_detailed.jsonl",
+      "results/seed42/full_report_v2.json"
     ],
     "gate_headroom_diagnostics": [
-      "results_gate_calibration/gate_headroom_diagnostics.json"
+      "results/gate_calibration/gate_headroom_diagnostics.json"
     ],
     "gate_validation_paired_tests": [
-      "results_gate_calibration/gate_validation_paired_tests.json"
+      "results/gate_calibration/gate_validation_paired_tests.json"
     ],
     "gate_variant_diagnostics": [
-      "results_gate_calibration/gate_variant_diagnostics.json"
+      "results/gate_calibration/gate_variant_diagnostics.json"
     ],
     "main_results": [
-      "results_500_memory_seed42/baselines_summary.json",
-      "results_500_memory_seed42/dense_only_detailed.jsonl",
-      "results_500_memory_seed42/bm25_only_detailed.jsonl",
-      "results_500_memory_seed42/hybrid_rrf_detailed.jsonl",
-      "results_500_memory_seed42/paraphrases_only_detailed.jsonl",
-      "results_500_memory_seed42/traces_only_detailed.jsonl",
-      "results_500_memory_seed42/always_expand_detailed.jsonl",
-      "results_500_memory_seed42/random_budget_detailed.jsonl",
-      "results_500_memory_seed42/proposed_detailed.jsonl"
+      "results/seed42/baselines_summary.json",
+      "results/seed42/dense_only_detailed.jsonl",
+      "results/seed42/bm25_only_detailed.jsonl",
+      "results/seed42/hybrid_rrf_detailed.jsonl",
+      "results/seed42/paraphrases_only_detailed.jsonl",
+      "results/seed42/traces_only_detailed.jsonl",
+      "results/seed42/always_expand_detailed.jsonl",
+      "results/seed42/random_budget_detailed.jsonl",
+      "results/seed42/proposed_detailed.jsonl"
     ],
     "measured_token_cost": [
-      "results_tokenmeasured_500_seed42/always_expand_tokenmeasured500_summary.json",
-      "results_tokenmeasured_500_seed42/paraphrases_only_tokenmeasured500_summary.json",
-      "results_tokenmeasured_500_seed42/random_budget_tokenmeasured500_summary.json",
-      "results_tokenmeasured_500_seed42/selective_tokenmeasured500_summary.json",
-      "results_tokenmeasured_500_seed42/traces_only_tokenmeasured500_summary.json"
+      "results/tokenmeasured_seed42/always_expand_tokenmeasured500_summary.json",
+      "results/tokenmeasured_seed42/paraphrases_only_tokenmeasured500_summary.json",
+      "results/tokenmeasured_seed42/random_budget_tokenmeasured500_summary.json",
+      "results/tokenmeasured_seed42/selective_tokenmeasured500_summary.json",
+      "results/tokenmeasured_seed42/traces_only_tokenmeasured500_summary.json"
     ],
     "multiseed_gate_validation": [
-      "results_multiseed/multiseed_gate_validation.json"
+      "results/multiseed/multiseed_gate_validation.json"
     ],
     "multiseed_paired_tests": [
-      "results_multiseed/multiseed_paired_tests.json"
+      "results/multiseed/multiseed_paired_tests.json"
     ],
     "multiseed_summary": [
-      "results_multiseed/multiseed_report.json"
+      "results/multiseed/multiseed_report.json"
     ],
     "paired_tests": [
-      "results_500_memory_seed42/dense_only_detailed.jsonl",
-      "results_500_memory_seed42/hybrid_rrf_detailed.jsonl",
-      "results_500_memory_seed42/always_expand_detailed.jsonl",
-      "results_500_memory_seed42/random_budget_detailed.jsonl",
-      "results_500_memory_seed42/proposed_detailed.jsonl"
+      "results/seed42/dense_only_detailed.jsonl",
+      "results/seed42/hybrid_rrf_detailed.jsonl",
+      "results/seed42/always_expand_detailed.jsonl",
+      "results/seed42/random_budget_detailed.jsonl",
+      "results/seed42/proposed_detailed.jsonl"
     ],
     "threshold_sweep": [
-      "results_500_memory_seed42/dense_only_detailed.jsonl",
-      "results_500_memory_seed42/always_expand_detailed.jsonl"
+      "results/seed42/dense_only_detailed.jsonl",
+      "results/seed42/always_expand_detailed.jsonl"
     ],
     "validation_threshold": [
-      "results_500_memory_seed42/dense_only_detailed.jsonl",
-      "results_500_memory_seed42/always_expand_detailed.jsonl"
+      "results/seed42/dense_only_detailed.jsonl",
+      "results/seed42/always_expand_detailed.jsonl"
     ],
     "win_loss_analysis": [
-      "results_multiseed/win_loss_analysis.json"
+      "results/multiseed/win_loss_analysis.json"
     ]
   },
   "retained_tables": [

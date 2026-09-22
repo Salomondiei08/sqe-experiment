@@ -47,7 +47,7 @@ python3 scripts/20_summarize_human_audit_labels.py --audit_dir human_audit
 python3 scripts/18_verify_human_audit_labels.py \
   --audit_dir human_audit \
   --output human_audit/verification_report.json
-python3 scripts/14_submission_readiness_check.py --root . --output SUBMISSION_READINESS.json
+python3 scripts/14_submission_readiness_check.py --root . --output docs/audits/SUBMISSION_READINESS.json
 ```
 
 Human-audit numbers can be used in the paper only after the verifier reports

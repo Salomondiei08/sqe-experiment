@@ -8,9 +8,9 @@ help:
 		'Targets:' \
 		'  make paper                    Rebuild and verify the current paper package from existing evidence.' \
 		'  make verify                   Run the final seed-42 package verifier.' \
-		'  make readiness                Refresh SUBMISSION_READINESS.json and missing-evidence blockers.' \
+		'  make readiness                Refresh docs/audits/SUBMISSION_READINESS.json and missing-evidence blockers.' \
 		'  make release                  Refresh local Hugging Face and GitHub release directories.' \
-		'  make manifest                 Refresh ARTIFACT_MANIFEST.json.' \
+		'  make manifest                 Refresh docs/manifests/ARTIFACT_MANIFEST.json.' \
 		'  make external-evidence-resume Run guarded resume after real Pass@1 rows and human labels exist.'
 
 paper:
@@ -20,14 +20,14 @@ verify:
 	$(PY) scripts/07_verify_experiment.py \
 		--data_dir data_500_memory_seed42 \
 		--index_dir index_500_seed42 \
-		--results_dir results_500_memory_seed42 \
+		--results_dir results/seed42 \
 		--paper_dir paper \
 		--report_path $(VERIFY_REPORT)
 
 readiness:
 	$(PY) scripts/14_submission_readiness_check.py \
 		--root /home/nlp-07/sqe_experiment \
-		--output SUBMISSION_READINESS.json
+		--output docs/audits/SUBMISSION_READINESS.json
 	$(PY) scripts/35_write_missing_evidence_blockers.py \
 		--root /home/nlp-07/sqe_experiment \
 		--output MISSING_EVIDENCE_BLOCKERS.json
@@ -45,7 +45,7 @@ release:
 manifest:
 	$(PY) scripts/13_make_artifact_manifest.py \
 		--root /home/nlp-07/sqe_experiment \
-		--output ARTIFACT_MANIFEST.json
+		--output docs/manifests/ARTIFACT_MANIFEST.json
 
 external-evidence-resume:
 	scripts/44_resume_after_external_evidence.sh verify-only

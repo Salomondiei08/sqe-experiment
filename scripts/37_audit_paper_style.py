@@ -208,5 +208,5 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default=str(ROOT))
-    parser.add_argument("--output", default="PAPER_STYLE_AUDIT.json")
+    parser.add_argument("--output", default="docs/audits/PAPER_STYLE_AUDIT.json")
     raise SystemExit(main(parser.parse_args()))

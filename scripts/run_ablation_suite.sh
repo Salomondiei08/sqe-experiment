@@ -16,7 +16,7 @@ DATA_DIR="${ROOT}/data_500_memory_seed42"
 INDEX_DIR="${ROOT}/index_500_seed42"
 RESULTS="${ROOT}/results_ablation_500_$(date +%Y%m%d_%H%M%S)"
 CACHE="${RESULTS}/expansion_cache.json"
-TOKEN_RESULTS="${ROOT}/results_tokenmeasured_500_seed42"
+TOKEN_RESULTS="${ROOT}/results/tokenmeasured_seed42"
 
 mkdir -p "${RESULTS}"
 

@@ -129,7 +129,7 @@ def main(args):
     rows = []
     failures = []
     for seed in seeds:
-        results_dir = root / f"results_500_memory_seed{seed}"
+        results_dir = root / "results" / f"seed{seed}"
         if not results_dir.exists():
             failures.append(f"missing results directory for seed {seed}: {results_dir}")
             continue
@@ -170,6 +170,6 @@ if __name__ == "__main__":
     parser.add_argument("--root", default="/home/nlp-07/sqe_experiment")
     parser.add_argument("--seeds", default="42,43,44,45")
     parser.add_argument("--k", type=int, default=5)
-    parser.add_argument("--output", default="results_multiseed/win_loss_analysis.json")
+    parser.add_argument("--output", default="results/multiseed/win_loss_analysis.json")
     parser.add_argument("--table_output", default="paper/tables/win_loss_analysis.tex")
     raise SystemExit(main(parser.parse_args()))

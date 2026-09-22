@@ -51,7 +51,7 @@ def load_pairs(results_dir):
 
 
 def discover_seed_dir(root, seed):
-    path = root / f"results_500_memory_seed{seed}"
+    path = root / "results" / f"seed{seed}"
     return path if path.exists() else None
 
 
@@ -230,6 +230,6 @@ if __name__ == "__main__":
     parser.add_argument("--seeds", default="42,43,44,45")
     parser.add_argument("--k", type=int, default=5)
     parser.add_argument("--bm25_k", type=int, default=10)
-    parser.add_argument("--output", default="results_gate_calibration/gate_variant_diagnostics.json")
+    parser.add_argument("--output", default="results/gate_calibration/gate_variant_diagnostics.json")
     parser.add_argument("--table_output", default="paper/tables/gate_variant_diagnostics.tex")
     main(parser.parse_args())

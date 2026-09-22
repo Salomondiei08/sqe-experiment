@@ -42,7 +42,7 @@ def top1_score(row):
 
 
 def load_seed_rows(root, seed):
-    results_dir = root / f"results_500_memory_seed{seed}"
+    results_dir = root / "results" / f"seed{seed}"
     dense = read_jsonl(results_dir / "dense_only_detailed.jsonl")
     expanded = read_jsonl(results_dir / "always_expand_detailed.jsonl")
     bm25 = read_jsonl(results_dir / "bm25_only_detailed.jsonl")
@@ -298,7 +298,7 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=20260514)
     parser.add_argument(
         "--output",
-        default="results_gate_calibration/cross_seed_gate_variant.json",
+        default="results/gate_calibration/cross_seed_gate_variant.json",
     )
     parser.add_argument(
         "--table_output",

@@ -20,7 +20,7 @@ from xml.sax.saxutils import escape
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "presentation"
 FIGURES = ROOT / "paper" / "figures"
-RESULTS = ROOT / "results_500_memory_seed42"
+RESULTS = ROOT / "results/seed42"
 MULTISEED = ROOT / "paper" / "tables" / "multiseed_summary.tex"
 PAIRED = ROOT / "paper" / "tables" / "multiseed_paired_tests.tex"
 

@@ -130,7 +130,7 @@ def main(args):
     rows = []
     all_deltas = []
     for seed in sorted(seed_thresholds):
-        results_dir = root / f"results_500_memory_seed{seed}"
+        results_dir = root / "results" / f"seed{seed}"
         threshold = seed_thresholds[seed]
         pairs = load_pairs(results_dir)
         test_pairs = pairs[len(pairs) // 2 :]
@@ -200,11 +200,11 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default="/home/nlp-07/sqe_experiment")
-    parser.add_argument("--gate_validation", default="results_multiseed/multiseed_gate_validation.json")
+    parser.add_argument("--gate_validation", default="results/multiseed/multiseed_gate_validation.json")
     parser.add_argument("--k", type=int, default=5)
     parser.add_argument("--n_bootstrap", type=int, default=10000)
     parser.add_argument("--n_randomizations", type=int, default=10000)
     parser.add_argument("--seed", type=int, default=20260514)
-    parser.add_argument("--output", default="results_gate_calibration/gate_validation_paired_tests.json")
+    parser.add_argument("--output", default="results/gate_calibration/gate_validation_paired_tests.json")
     parser.add_argument("--table_output", default="paper/tables/gate_validation_paired_tests.tex")
     raise SystemExit(main(parser.parse_args()))

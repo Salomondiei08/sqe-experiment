@@ -67,7 +67,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--tectonic", default=str(Path.home() / ".local/bin/tectonic-musl"))
     parser.add_argument("--output", default="paper/main_conference_preview.tex")
-    parser.add_argument("--audit", default="CONFERENCE_PREVIEW_AUDIT.json")
+    parser.add_argument("--audit", default="docs/audits/CONFERENCE_PREVIEW_AUDIT.json")
     args = parser.parse_args()
 
     source_path = PAPER / "main.tex"

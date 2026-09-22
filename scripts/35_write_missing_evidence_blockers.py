@@ -34,7 +34,7 @@ def main():
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    readiness_path = root / "SUBMISSION_READINESS.json"
+    readiness_path = root / "docs/audits/SUBMISSION_READINESS.json"
     preflight_path = root / "pass1_harness_preflight.json"
     human_report_path = root / "human_audit" / "verification_report.json"
 
@@ -86,11 +86,11 @@ def main():
                 "verification_commands": [
                     "python3 scripts/21_summarize_pass1_results.py --results_dir results_pass1",
                     "python3 scripts/17_verify_pass1_results.py --results_dir results_pass1",
-                    "python3 scripts/14_submission_readiness_check.py --output SUBMISSION_READINESS.json",
+                    "python3 scripts/14_submission_readiness_check.py --output docs/audits/SUBMISSION_READINESS.json",
                 ],
                 "do_not_use_as_evidence": [
                     "pass1_harness_preflight.json",
-                    "PASS1_RESULTS_SCHEMA.md",
+                    "docs/audits/PASS1_RESULTS_SCHEMA.md",
                     "pass1_contexts/*.jsonl",
                     "pass1_evoagentbench_configs/*.yaml",
                 ],
@@ -112,7 +112,7 @@ def main():
                 "verification_commands": [
                     "python3 scripts/20_summarize_human_audit_labels.py --audit_dir human_audit",
                     "python3 scripts/18_verify_human_audit_labels.py --audit_dir human_audit --output human_audit/verification_report.json",
-                    "python3 scripts/14_submission_readiness_check.py --output SUBMISSION_READINESS.json",
+                    "python3 scripts/14_submission_readiness_check.py --output docs/audits/SUBMISSION_READINESS.json",
                 ],
                 "do_not_use_as_evidence": [
                     "human_audit/human_audit_queries.csv",

@@ -109,7 +109,7 @@ $PY scripts/23_import_evoagentbench_pass1.py \
 
 $PY scripts/21_summarize_pass1_results.py --results_dir results_pass1
 $PY scripts/17_verify_pass1_results.py --results_dir results_pass1
-$PY scripts/14_submission_readiness_check.py --root . --output SUBMISSION_READINESS.json
+$PY scripts/14_submission_readiness_check.py --root . --output docs/audits/SUBMISSION_READINESS.json
 ```
 
 Pass@1 numbers can be used in the paper only after
