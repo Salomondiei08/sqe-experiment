@@ -3,25 +3,177 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Selective Query-Side Expansion for long-horizon agent memory retrieval.">
-<title>Selective Query-Side Expansion for Agent Memory</title>
+<title>When Does Query Expansion Help Agent Memory? | SQE</title>
+<meta name="description" content="A multi-seed study of selective query-side expansion (SQE) for long-horizon software-agent memory: expanding only low-confidence queries halves the cost of expansion, but the confidence gate is no better than random.">
+<meta name="author" content="Salomon Diei">
+<link rel="canonical" href="https://salomondiei08.github.io/sqe-experiment/">
+<!-- Google Scholar -->
+<meta name="citation_title" content="When Does Query Expansion Help Agent Memory? A Multi-Seed Study of Selective Expansion and Gate Reliability">
+<meta name="citation_author" content="Diei, Salomon">
+<meta name="citation_publication_date" content="2026">
+<meta name="citation_pdf_url" content="https://salomondiei08.github.io/sqe-experiment/assets/sqe-paper.pdf">
+<!-- Social previews -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="When Does Query Expansion Help Agent Memory?">
+<meta property="og:description" content="Selective query expansion halves the cost of always-on expansion for agent memory retrieval, but its confidence gate is no better than random. 8 seeds, 4,000 queries, all artifacts released.">
+<meta property="og:url" content="https://salomondiei08.github.io/sqe-experiment/">
+<meta property="og:image" content="https://salomondiei08.github.io/sqe-experiment/assets/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<header class="site-header"><a class="site-name" href="#top">SQE</a><nav aria-label="Page navigation"><a href="#abstract">Abstract</a><a href="#results">Results</a><a href="#method">Method</a><a href="#citation-section">Citation</a></nav></header>
+<a class="skip-link" href="#abstract">Skip to content</a>
+<header class="site-header-wrap"><div class="site-header"><a class="site-name" href="#top">SQE</a><nav aria-label="Page navigation"><a href="#abstract">Abstract</a><a href="#results">Results</a><a href="#gate">Gate</a><a href="#method">Method</a><a href="#bibtex">BibTeX</a></nav></div></header>
+
 <main id="top" class="page">
-<section class="paper-header"><p class="venue">RESEARCH ARTIFACT · 2026</p><h1>Selective Query-Side Expansion for Long-Horizon Agent Memory Retrieval</h1><p class="authors">Salomon Diei<sup>1</sup></p><p class="affiliation"><sup>1</sup>Korea University of Technology and Education (KOREATECH)</p><p class="presentation"><a href="https://sites.google.com/view/nafsik?pli=1&amp;authuser=0" target="_blank" rel="noreferrer">Presented at NAFSIK 2026 ↗</a></p><div class="paper-links" aria-label="Research links"><a class="link-button primary" href="./assets/sqe-paper.pdf" target="_blank">Paper <span aria-hidden="true">↗</span></a><a class="link-button" href="https://github.com/Salomondiei08/sqe-experiment" target="_blank" rel="noreferrer">Code <span aria-hidden="true">↗</span></a><a class="link-button" href="https://huggingface.co/datasets/TheReinventGuy/sqe-experiment" target="_blank" rel="noreferrer">Dataset <span aria-hidden="true">↗</span></a></div></section>
-<figure class="teaser"><img src="./assets/method_overview.png" alt="Overview of selective query-side expansion"><figcaption>Figure 1. SQE keeps the memory index fixed and expands the retrieval query only when a confidence gate indicates that expansion may help.</figcaption></figure>
-<section id="abstract" class="paper-section"><h2>Abstract</h2><p>Long-horizon agents often retrieve memories written in a different language from the current query. Query expansion can improve recall, but expanding every query increases cost and can reduce precision. We study Selective Query-Side Expansion (SQE), a retrieval-time intervention that first runs dense retrieval, estimates whether the result is reliable, and expands only uncertain queries using trace-style probes and paraphrases.</p><p>Across eight independently rebuilt memory-index seeds and 4,000 paired queries, Selective-QE reaches 69.4% mean Recall@5 while expanding 46% of queries. The result is a cost-aware retrieval variant: it remains close to dense retrieval, improves over Hybrid-RRF in this evaluation, and is statistically tied with the executed random-budget control.</p></section>
-<section class="paper-section contributions"><h2>Contributions</h2><ol><li>A selective query-expansion method for long-horizon agent memory retrieval.</li><li>An evaluation across eight independent memory-index seeds with paired query comparisons.</li><li>A release containing the paper, scripts, summaries, audits, and reproducibility artifacts.</li></ol></section>
-<section id="results" class="paper-section"><h2>Results</h2><p class="section-intro">The released multiseed report is loaded below. Use the controls to inspect another metric or a single memory-index seed.</p><div class="headline-results"><div><strong>69.4%</strong><span>Selective-QE Recall@5</span></div><div><strong>46%</strong><span>Queries expanded</span></div><div><strong>8</strong><span>Independent seeds</span></div><div><strong>4,000</strong><span>Paired queries</span></div></div><div class="results-toolbar"><label for="metric-select">Metric <select id="metric-select"><option value="recall@5">Recall@5</option><option value="recall@1">Recall@1</option><option value="recall@10">Recall@10</option><option value="mrr">MRR</option></select></label><label for="seed-select">Seed <select id="seed-select"><option value="all">All seeds</option><option>42</option><option>43</option><option>44</option><option>45</option><option>46</option><option>47</option><option>48</option><option>49</option></select></label></div><div class="result-columns"><div><h3>Method comparison</h3><div id="method-chart" class="method-chart" role="img" aria-label="Method comparison chart"></div></div><div><h3>Per-seed results</h3><div id="seed-table" class="seed-table"></div></div></div><div class="cost-section"><h3>Expansion cost and recall</h3><p>Lower expansion is better. Selective-QE stays close to dense retrieval while using roughly half the expansion budget of Always-Expand.</p><div class="cost-visual"><div class="cost-axis-y"><span>higher recall</span><span>lower recall</span></div><div id="cost-plot" class="cost-plot"></div><div class="cost-axis-x"><span>0%</span><span>50%</span><span>100%</span><span>expansion rate</span></div></div></div></section>
-<section id="method" class="paper-section"><h2>Method</h2><p class="section-intro">SQE changes the query at retrieval time. The underlying memory-writing policy and memory index remain unchanged.</p><ol class="method-steps"><li><strong>Retrieve.</strong> Run dense retrieval over the existing trace store.</li><li><strong>Gate.</strong> Estimate whether the first retrieval pass is sufficient.</li><li><strong>Expand.</strong> Generate trace probes and paraphrases for uncertain queries.</li><li><strong>Fuse.</strong> Retrieve each variant and combine ranked lists with reciprocal-rank fusion.</li></ol><p class="note"><strong>Interpretation.</strong> Expansion is useful when query language and stored execution traces use different registers. It is not free: selective gating is intended to preserve much of the benefit without expanding every query.</p></section>
-<section class="paper-section artifacts"><h2>Reproducibility</h2><p class="section-intro">All release materials are organized in the repository rather than hidden behind the visualization.</p><ul><li><a href="https://github.com/Salomondiei08/sqe-experiment/tree/main/scripts" target="_blank" rel="noreferrer">Experiment scripts</a><span>Dataset preparation, retrieval, evaluation, and audit tooling.</span></li><li><a href="https://github.com/Salomondiei08/sqe-experiment/tree/main/results/multiseed" target="_blank" rel="noreferrer">Multiseed evidence</a><span>Independent seed summaries, paired tests, and win/loss analysis.</span></li><li><a href="https://github.com/Salomondiei08/sqe-experiment/tree/main/paper" target="_blank" rel="noreferrer">Paper source and figures</a><span>LaTeX source, PDF, references, and evidence inventories.</span></li><li><a href="https://huggingface.co/datasets/TheReinventGuy/sqe-experiment" target="_blank" rel="noreferrer">Hugging Face dataset</a><span>Companion evaluation materials and dataset card.</span></li></ul></section>
-<section id="citation-section" class="paper-section citation-section"><h2>Citation</h2><div class="citation-box"><code id="citation">DIEI, S. Selective Query-Side Expansion for Long-Horizon Agent Memory Retrieval. 2026.</code><button id="copy-citation" type="button">Copy</button></div><span class="copy-status" id="copy-status" role="status"></span></section>
+
+<section class="paper-header">
+  <p class="venue">Preprint · 2026</p>
+  <h1>When Does Query Expansion Help Agent Memory?</h1>
+  <p class="subtitle">A Multi-Seed Study of Selective Expansion and Gate Reliability</p>
+  <p class="authors"><a href="https://salomon.reinvent-labs.com" target="_blank" rel="noreferrer">Salomon Diei</a></p>
+  <p class="affiliation">School of Computer Science and Engineering, KOREATECH, Cheonan, Republic of Korea</p>
+  <p class="presentation">An earlier version was presented at <a href="https://sites.google.com/view/nafsik?pli=1&amp;authuser=0" target="_blank" rel="noreferrer">NAFSIK 2026</a></p>
+  <div class="paper-links" aria-label="Research links">
+    <a class="link-button primary" href="./assets/sqe-paper.pdf" target="_blank"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>Paper</a>
+    <a class="link-button" href="https://github.com/Salomondiei08/sqe-experiment" target="_blank" rel="noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 16-4-4 4-4M16 8l4 4-4 4M14 4l-4 16"/></svg>Code</a>
+    <a class="link-button" href="https://huggingface.co/datasets/TheReinventGuy/sqe-experiment" target="_blank" rel="noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>Dataset</a>
+    <a class="link-button" href="./talk/" target="_blank"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M12 16v4M8 20h8"/></svg>Talk slides</a>
+    <a class="link-button" href="#bibtex"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 7h4v4H7zM7 11c0 3-1 5-3 6M15 7h4v4h-4zM15 11c0 3-1 5-3 6"/></svg>BibTeX</a>
+  </div>
+  <p class="tldr"><strong>TL;DR</strong> Expanding only low-confidence queries halves the cost of LLM query expansion for agent memory with no loss in Recall@5, but the confidence gate picks queries no better than chance. Gating, not expansion, is the open problem.</p>
+</section>
+
+<figure class="teaser"><a href="./assets/method_overview.png" target="_blank"><img src="./assets/method_overview.png" width="1726" height="778" alt="SQE retrieval flow: dense retrieval first; queries whose top-1 score is below the threshold are expanded into trace probes and paraphrases, searched against the same index, and fused with reciprocal rank fusion."></a><figcaption><b>Figure 1.</b> SQE retrieval flow. Dense retrieval runs first; confident queries return the dense list unchanged. Queries whose top-1 score falls below τ are expanded into two hypothetical trace probes (searched with dense and BM25) and two paraphrases (searched with dense only), all against the same unchanged index. The original dense list and the five probe lists are fused with RRF.</figcaption></figure>
+
+<section id="abstract" class="paper-section narrow">
+  <h2>Abstract</h2>
+  <p>Long-horizon software agents store execution traces and later retrieve them with natural-language questions, so the query and the memory are written in different “languages”. LLM query expansion can bridge this gap, but it costs generation on every query. We study <em>Selective Query-Side Expansion</em> (SQE), which expands a query with hypothetical execution traces and paraphrases only when the top-1 dense retrieval score is low, then fuses all rankings with Reciprocal Rank Fusion.</p>
+  <p>Across 8 resampled memory stores with rebuilt indices (4,000 queries over SWE-smith agent steps), SQE reaches 69.4% Recall@5 while expanding 48% of queries; in a token-measured rerun it uses 55% fewer LLM tokens than always-on expansion. However, its gain over plain dense retrieval is small (+0.9 points, 95% CI [+0.1, +1.7]), Recall@1 drops, and it is statistically indistinguishable from a <em>random</em> gate at the same budget. An oracle analysis explains why: expansion helps only 5.3% of queries and hurts 4.2%, so even a perfect gate gains at most 5.3 points. We release all memory stores, per-method summaries, and verification scripts, and argue that confidence gating, not expansion itself, is the open problem.</p>
+</section>
+
+<section class="paper-section narrow contributions">
+  <h2>Contributions</h2>
+  <ol>
+    <li>A formulation of the trace–query mismatch in long-horizon software-agent memory, and a selective, query-side-only expansion method that leaves the memory store and indices untouched.</li>
+    <li>A controlled multi-seed study with an <em>executed</em> random-gating baseline at matched expansion rate and provider-measured token costs.</li>
+    <li>Evidence that the top-1-score gate is not better than random, with an oracle-gate analysis that bounds what any gate could achieve in this setting.</li>
+    <li>A release of seeds, summaries, paired tests, and verification scripts so that every number in the paper can be recomputed.</li>
+  </ol>
+</section>
+
+<section id="results" class="paper-section">
+  <h2>Results</h2>
+  <p class="section-intro">Retrieval over 8 resampled memory stores, 500 queries each.</p>
+
+  <div class="headline-results">
+    <div><strong>69.4%</strong><span>SQE Recall@5<br>(Dense-Only 68.5%)</span></div>
+    <div><strong>48%</strong><span>of queries expanded</span></div>
+    <div><strong>−55%</strong><span>LLM tokens vs. Always-Expand</span></div>
+    <div class="neutral"><strong>+0.5</strong><span>points vs. a random gate<br>(not significant)</span></div>
+  </div>
+
+  <div class="finding-cards">
+    <article class="finding"><p class="finding-label">Finding 1</p><h3>Slightly better than dense retrieval at Recall@5, worse at Recall@1</h3><p>The paired difference is +0.9 points (95% CI [+0.1, +1.7]). SQE recovers 140 targets dense retrieval missed but loses 105 it found. Recall@1 falls from 45.5% to 44.5%, and seed-to-seed spread (±2.7 points) is three times the method effect.</p></article>
+    <article class="finding negative"><p class="finding-label">Finding 2</p><h3>The gate does not beat a random gate</h3><p>Against Random-Gated-Expansion at a similar budget, SQE gains +0.5 points (CI [−0.2, +1.1]); against Always-Expand, +0.1. Expanding about half the queries recovers essentially all of the benefit, but <em>which</em> half matters little.</p></article>
+    <article class="finding"><p class="finding-label">Finding 3</p><h3>Selectivity is still a large cost saving</h3><p>SQE uses 405 tokens and 2.8 s per query versus 899 tokens and 5.4 s for Always-Expand, at equal Recall@5. Trace-only expansion is the worst operating point.</p></article>
+  </div>
+
+  <div class="panel interactive">
+    <div class="panel-head"><h3>Explore the released results</h3><div class="results-toolbar"><label for="metric-select">Metric <select id="metric-select"><option value="recall@5">Recall@5</option><option value="recall@1">Recall@1</option><option value="recall@10">Recall@10</option><option value="mrr">MRR</option></select></label><label for="seed-select">Seed <select id="seed-select"><option value="all">All seeds</option><option>42</option><option>43</option><option>44</option><option>45</option><option>46</option><option>47</option><option>48</option><option>49</option></select></label></div></div>
+    <div class="result-columns"><div><h4>Method comparison <span class="hint">(8-seed mean)</span></h4><div id="method-chart" class="method-chart" role="img" aria-label="Method comparison chart"></div></div><div><h4>Per-seed: Dense-Only vs. SQE <span class="hint">(Recall@5)</span></h4><div id="seed-table" class="seed-table"></div></div></div>
+    <p class="data-note">Loaded live from <a href="https://github.com/Salomondiei08/sqe-experiment/tree/main/results/multiseed" target="_blank" rel="noreferrer"><code>results/multiseed/multiseed_report.json</code></a>; no numbers are hard-coded.</p>
+  </div>
+
+  <div class="table-wrap">
+    <h3>Paired bootstrap: SQE minus each baseline</h3>
+    <table>
+      <thead><tr><th scope="col">Baseline</th><th scope="col">ΔRecall@5</th><th scope="col">95% CI</th><th scope="col">p</th></tr></thead>
+      <tbody>
+        <tr><td>Dense-Only</td><td>+0.9</td><td>[+0.1, +1.7]</td><td>0.015</td></tr>
+        <tr><td>Hybrid-RRF</td><td>+5.9</td><td>[+4.8, +7.0]</td><td>&lt;0.001</td></tr>
+        <tr><td>Always-Expand</td><td>+0.1</td><td>[−0.4, +0.7]</td><td>0.315</td></tr>
+        <tr class="key-row"><td>Random-Gated-Expansion</td><td>+0.5</td><td>[−0.2, +1.1]</td><td>0.085</td></tr>
+        <tr><td>Paraphrases-Only</td><td>+1.1</td><td>[+0.3, +1.9]</td><td>0.005</td></tr>
+        <tr><td>HyDE-Traces-Only</td><td>+5.6</td><td>[+4.7, +6.6]</td><td>&lt;0.001</td></tr>
+      </tbody>
+    </table>
+    <p class="table-note">Pooled over 4,000 query rows. Seeds share about 30% of their memories, so these intervals are descriptive and likely too narrow.</p>
+  </div>
+
+  <div class="figure-grid">
+    <figure><a href="./assets/multiseed_recall5.png" target="_blank"><img src="./assets/multiseed_recall5.png" width="1042" height="600" alt="Recall@5 per seed and 8-seed mean for each method" loading="lazy"></a><figcaption><b>Figure 2.</b> Recall@5 per seed (dots) and 8-seed mean (bar). The dashed line is the Dense-Only mean. Seed variance dominates every expansion effect.</figcaption></figure>
+    <figure><a href="./assets/cost_quality.png" target="_blank"><img src="./assets/cost_quality.png" width="874" height="576" alt="Measured LLM tokens per query against 8-seed mean Recall@5" loading="lazy"></a><figcaption><b>Figure 3.</b> Cost against quality: measured LLM tokens per query (seed 42) against 8-seed mean Recall@5. SQE matches Always-Expand at roughly half the tokens, but so does the random gate.</figcaption></figure>
+  </div>
+</section>
+
+<section id="gate" class="paper-section">
+  <h2>Why the gate fails</h2>
+  <p class="section-intro">The top-1 score finds hard queries, but not the ones expansion can fix.</p>
+  <div class="gate-cards">
+    <article><p class="big-number">61.7%<span> vs. 75.9%</span></p><h3>Low confidence marks hard queries, not fixable ones</h3><p>On seed 42, expanded queries reach 61.7% Recall@5 and non-expanded ones 75.9%. Expansion does not reliably repair the hard ones.</p></article>
+    <article><p class="big-number">2.2<span> pts</span></p><h3>The threshold barely matters</h3><p>Recall@5 stays within a 2.2-point band while the expansion rate goes from 0% to 100%. Leave-one-seed-out threshold selection gives +0.6 points over dense (CI [−0.1, +1.3]); BM25-agreement variants do not close the gap.</p></article>
+    <article><p class="big-number">5.3%<span> help · 4.2% hurt</span></p><h3>There is little headroom for any gate</h3><p>An oracle that expands exactly the queries expansion helps reaches 73.5% Recall@5 against 68.2% for dense. The remaining 90% of queries have the same outcome either way.</p></article>
+  </div>
+  <div class="figure-grid">
+    <figure><a href="./assets/threshold_sweep.png" target="_blank"><img src="./assets/threshold_sweep.png" width="1017" height="555" alt="Recall@5 and expansion rate across gate thresholds on seed 42" loading="lazy"></a><figcaption><b>Figure 4.</b> Post-hoc threshold sweep on seed 42. Recall@5 (line) varies by about 2 points while the fraction of expanded queries (shaded) spans 0–100%.</figcaption></figure>
+    <figure><a href="./assets/gate_headroom.png" target="_blank"><img src="./assets/gate_headroom.png" width="913" height="604" alt="Held-out oracle headroom compared with dense retrieval and always expanding" loading="lazy"></a><figcaption><b>Figure 5.</b> Held-out oracle headroom. Even a perfect per-query gate gains about 5 points over dense retrieval; always expanding gains about 1.</figcaption></figure>
+  </div>
+</section>
+
+<section id="method" class="paper-section">
+  <h2>Method</h2>
+  <p class="section-intro">SQE changes only the query at retrieval time. The memory store and both indices stay unchanged.</p>
+  <ol class="method-steps">
+    <li><span class="step">1</span><strong>Retrieve</strong>Run dense retrieval (bge-m3, FAISS) over the trace store and read the top-1 score.</li>
+    <li><span class="step">2</span><strong>Gate</strong>If the top-1 score is at least τ = 0.65, return the dense list unchanged.</li>
+    <li><span class="step">3</span><strong>Expand</strong>Otherwise generate K = 2 hypothetical traces (dense + BM25) and P = 2 paraphrases (dense).</li>
+    <li><span class="step">4</span><strong>Fuse</strong>Combine the original list and the five probe lists with reciprocal rank fusion (k = 60).</li>
+  </ol>
+  <p class="note"><strong>Setup.</strong> Memory stores of 5,000 single agent steps from the SWE-smith <code>tool</code> split. For each seed (42–49) the store is resampled, both indices are rebuilt, and 500 targets are sampled. Expansion uses Qwen3.6-35B-A3B served with vLLM. Generated traces are retrieval probes, not claims that those executions occurred.</p>
+</section>
+
+<section class="paper-section limitations">
+  <h2>Limitations</h2>
+  <ul>
+    <li><strong>Queries.</strong> Evaluation queries are written by an LLM that sees the target trace, which can leak wording. A human-audit packet is prepared but unlabeled.</li>
+    <li><strong>Relevance labels.</strong> Only the exact source step counts as relevant, so Recall@k may understate all methods.</li>
+    <li><strong>No downstream outcome.</strong> Recall@k is an intermediate signal; agent Pass@1 on SWE-bench-style tasks is not measured.</li>
+    <li><strong>Statistics.</strong> Seeds share about 30% of their memories, so pooled intervals are likely too narrow; no multiplicity correction is applied.</li>
+    <li><strong>Scope.</strong> One embedder, one generator, one trace source, and one memory size.</li>
+  </ul>
+</section>
+
+<section class="paper-section artifacts">
+  <h2>Reproducibility</h2>
+  <p class="section-intro"><code>scripts/07_verify_experiment.py</code> recomputes every metric from the result files and checks each table against its declared source.</p>
+  <ul>
+    <li><a href="https://github.com/Salomondiei08/sqe-experiment/tree/main/scripts" target="_blank" rel="noreferrer">Experiment scripts</a><span>Dataset preparation, retrieval, evaluation, verification, and audit tooling.</span></li>
+    <li><a href="https://github.com/Salomondiei08/sqe-experiment/tree/main/results/multiseed" target="_blank" rel="noreferrer">Multi-seed evidence</a><span>Per-seed summaries, paired tests, and win/loss analysis.</span></li>
+    <li><a href="https://github.com/Salomondiei08/sqe-experiment/tree/main/paper" target="_blank" rel="noreferrer">Paper source and figures</a><span>LaTeX source (single-column and two-column preprint), tables, and figures generated from the released JSON.</span></li>
+    <li><a href="https://huggingface.co/datasets/TheReinventGuy/sqe-experiment" target="_blank" rel="noreferrer">Hugging Face dataset</a><span>Memory stores, evaluation pairs, and result artifacts.</span></li>
+  </ul>
+</section>
+
+<section id="bibtex" class="paper-section citation-section">
+  <h2>BibTeX</h2>
+  <div class="citation-box"><pre id="citation">@misc{diei2026sqe,
+  title  = {When Does Query Expansion Help Agent Memory? A Multi-Seed Study of Selective Expansion and Gate Reliability},
+  author = {Diei, Salomon},
+  year   = {2026},
+  note   = {Preprint},
+  url    = {https://github.com/Salomondiei08/sqe-experiment}
+}</pre><button id="copy-citation" type="button">Copy</button></div>
+  <span class="copy-status" id="copy-status" role="status"></span>
+</section>
+
 </main>
-<footer class="site-footer"><span>SQE · Selective Query-Side Expansion</span><span><a href="https://github.com/Salomondiei08/sqe-experiment" target="_blank" rel="noreferrer">GitHub</a> · <a href="https://huggingface.co/datasets/TheReinventGuy/sqe-experiment" target="_blank" rel="noreferrer">Hugging Face</a></span></footer>
+<footer class="site-footer"><span>SQE · Selective Query-Side Expansion · <a href="https://salomon.reinvent-labs.com" target="_blank" rel="noreferrer">Salomon Diei</a></span><span><a href="https://github.com/Salomondiei08/sqe-experiment" target="_blank" rel="noreferrer">GitHub</a> · <a href="https://huggingface.co/datasets/TheReinventGuy/sqe-experiment" target="_blank" rel="noreferrer">Hugging Face</a> · <a href="mailto:salomon@koreatech.ac.kr">Contact</a></span></footer>
 <script src="./app.js"></script>
-</body></html>
+</body>
+</html>
