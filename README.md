@@ -1,107 +1,122 @@
-# Selective Query-Side Expansion (SQE)
+<div align="center">
 
-**Confidence-gated retrieval augmentation for long-horizon agent memory.**
+# When Does Query Expansion Help Agent Memory?
 
-<p>
-  <a href="https://salomondiei08.github.io/sqe-experiment/">🌐 Interactive results</a> ·
-  <a href="https://huggingface.co/datasets/TheReinventGuy/sqe-experiment">🤗 Dataset</a> ·
-  <a href="paper/main.pdf">📄 Paper</a> ·
-  <a href="https://sites.google.com/view/nafsik?pli=1&authuser=0">🎤 NAFSIK 2026</a> ·
-  <a href="mailto:salomon@koreatech.ac.kr">✉️ Contact</a>
-</p>
+**A Multi-Seed Study of Selective Expansion and Gate Reliability**
 
-Presented at [NAFSIK 2026](https://sites.google.com/view/nafsik?pli=1&authuser=0).
+[Salomon Diei](https://salomon.reinvent-labs.com) · School of Computer Science and Engineering, KOREATECH
 
-SQE studies when a memory-retrieval query should be expanded rather than
-expanded unconditionally. The method keeps the memory store and indexes fixed,
-uses an initial retrieval pass as a confidence signal, and selectively adds
-hypothetical execution traces and paraphrases before Reciprocal Rank Fusion.
+[![Project page](https://img.shields.io/badge/Project-page-1b3c5c)](https://salomondiei08.github.io/sqe-experiment/)
+[![Paper](https://img.shields.io/badge/Paper-PDF-2f5d88)](https://salomondiei08.github.io/sqe-experiment/assets/sqe-paper.pdf)
+[![Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-sqe--experiment-ffcc4d)](https://huggingface.co/datasets/TheReinventGuy/sqe-experiment)
+[![Talk](https://img.shields.io/badge/NAFSIK%202026-talk-5d6873)](https://salomondiei08.github.io/sqe-experiment/talk/)
 
-> **Evidence status.** This release supports a retrieval-only, cost-aware
-> result. On eight independently rebuilt memory-index seeds, Selective-QE
-> reaches **69.4% mean Recall@5** at a **46% expansion rate**. It is clearly
-> above Hybrid-RRF, but remains close to Dense-Only and statistically tied with
-> the executed random-gating budget control. We do not claim downstream
-> SWE-bench success or human-validated query quality here.
+</div>
 
-## Explore the release
+> **TL;DR** Expanding only low-confidence queries halves the cost of LLM query
+> expansion for agent memory with no loss in Recall@5, but the confidence gate
+> picks queries no better than chance. Gating, not expansion, is the open problem.
 
-The [interactive research page](https://salomondiei08.github.io/sqe-experiment/)
-turns the released JSON summaries into a browsable evidence view: method
-comparison, per-seed inspection, cost/quality plot, pipeline explanation, and
-artifact links.
+<p align="center"><img src="paper/preprint/figures/method_overview.png" width="860" alt="SQE retrieval flow"></p>
 
-## Repository map
+Long-horizon software agents store execution traces and later retrieve them with
+natural-language questions, so the query and the memory are written in different
+"languages". **Selective Query-Side Expansion (SQE)** expands a query with
+hypothetical execution traces and paraphrases only when the top-1 dense retrieval
+score is low, then fuses all rankings with Reciprocal Rank Fusion. The memory
+store and both indices stay unchanged.
 
-The root contains only the entry points. Supporting material is grouped in
-[`docs/`](docs/), result artifacts in [`results/`](results/), executable
-pipelines in [`scripts/`](scripts/), and paper assets in [`paper/`](paper/).
-The [documentation map](docs/README.md) explains the audit and release folders.
+## Results
 
-| Resource | What it contains |
-| --- | --- |
-| [Paper](paper/main.pdf) | LaTeX source, PDF, figures, tables, and references |
-| [Dataset 🤗](https://huggingface.co/datasets/TheReinventGuy/sqe-experiment) | Companion Hugging Face dataset |
-| [`results/`](results) | Independent seeds 42–49, paired tests, gate diagnostics, and token measurements |
-| [`scripts/`](scripts) | Dataset preparation, retrieval, verification, and report generation |
-| [`paper/`](paper) | Main paper, figures, tables, and source inventory |
-| [`human_audit/`](human_audit) | Query audit packet and labeling protocol; labels remain separate |
+Eight resampled memory stores with rebuilt indices, 500 queries each
+(4,000 queries over SWE-smith agent steps). Mean over seeds, %.
 
-## Headline results
-
-Eight independent memory-index seeds, 500 queries per seed:
-
-| Method | Recall@1 | Recall@5 | Recall@10 | Expansion |
+| Method | Recall@1 | Recall@5 | Recall@10 | Expanded |
 | --- | ---: | ---: | ---: | ---: |
-| Dense-Only | 45.5 | 68.5 | 74.2 | — |
-| Hybrid-RRF | 31.3 | 63.5 | 72.7 | — |
-| Always-Expand | 39.8 | **69.2** | **75.9** | 100% |
-| Random-Gated-Expansion | 42.6 | 68.9 | 75.0 | 47% |
-| **Selective-QE** | **44.6** | **69.4** | 75.3 | **46%** |
+| Dense-Only | **45.5** | 68.5 | 74.2 | 0 |
+| Hybrid-RRF | 32.5 | 63.5 | 71.8 | 0 |
+| Always-Expand | 39.8 | 69.2 | **75.9** | 100 |
+| Random-Gated-Expansion | 42.6 | 68.9 | 75.0 | 45.9 |
+| **SQE (ours)** | 44.5 | **69.4** | 75.3 | 48.2 |
 
-Selective-QE improves Recall@5 over Dense-Only by a small retrieval-only
-margin, improves over Hybrid-RRF by 5.9 points, and uses roughly half the
-expansion budget of Always-Expand. The random-gated control is intentionally
-included because matching cost alone is a demanding baseline for the gate.
+**What this shows**
 
-## Method
+1. **A small gain over dense retrieval at Recall@5, a loss at Recall@1.** The
+   paired difference is +0.9 points (95% CI [+0.1, +1.7]); Recall@1 falls from
+   45.5% to 44.5%. Seed-to-seed spread (±2.7 points) is three times the method effect.
+2. **The gate is no better than random.** Against Random-Gated-Expansion at a
+   similar budget, SQE gains +0.5 points (CI [−0.2, +1.1], p = 0.085).
+3. **Selectivity still saves cost.** SQE uses 405 LLM tokens and 2.8 s per query
+   versus 899 tokens and 5.4 s for Always-Expand (−55% tokens), at equal Recall@5.
+4. **Little headroom for any gate.** An oracle gate reaches 73.5% Recall@5 against
+   68.2% for dense retrieval: expansion helps 5.3% of queries and hurts 4.2%.
 
-1. Run dense retrieval over the unchanged memory index.
-2. Use the top-1 dense score as the released experiment's gate.
-3. For low-confidence queries, generate two hypothetical trace probes and two
-   paraphrases.
-4. Retrieve each variant against the same index and fuse the ranked lists with
-   RRF.
+The [project page](https://salomondiei08.github.io/sqe-experiment/) has the
+interactive per-seed view, paired tests, and all figures.
 
-The newer paper draft studies a pre-decoding Yes/No logit gate. That gate is a
-research direction in the paper and should not be confused with the released
-top-1-score implementation used for the tables above.
+## Reproduce and verify
 
-## Reproduce or audit
+Every number in the paper is recomputed from released result files.
+
+```bash
+make help        # list targets
+make verify      # recompute all metrics and check each table against its source
+make readiness   # report which evidence is present and which is still missing
+make paper       # rebuild and verify the paper package from existing evidence
+```
+
+Equivalent scripts:
 
 ```bash
 python scripts/07_verify_experiment.py
 python scripts/09_make_multiseed_report.py
 python scripts/14_submission_readiness_check.py
+python paper/preprint/make_figures.py   # regenerate figures from the released JSON
 ```
 
-The release is deliberately explicit about what is and is not present. Raw
-memory stores, detailed per-query JSONL rows, human labels, and downstream
-Pass@1 outcomes are not bundled into this public code release.
+The full pipeline (dataset preparation, index building, baselines, SQE, evaluation)
+is `scripts/01_prepare_dataset.py` through `scripts/06_make_paper_artifacts.py`.
+Memory stores and per-query rows are on the
+[Hugging Face dataset](https://huggingface.co/datasets/TheReinventGuy/sqe-experiment).
+
+## Repository map
+
+| Path | Contents |
+| --- | --- |
+| [`paper/`](paper/) | Single-column paper (`main.tex`), two-column preprint (`preprint/`), tables, figures, references |
+| [`results/`](results/) | Per-seed summaries (seeds 42–49), multi-seed report, paired tests, gate calibration, token measurements |
+| [`scripts/`](scripts/) | Numbered pipeline: preparation, retrieval, evaluation, verification, diagnostics |
+| [`site/`](site/) | Source of the project page (static, no dependencies; deployed with GitHub Pages) |
+| [`presentation/`](presentation/) | NAFSIK 2026 slides and speaker notes |
+| [`human_audit/`](human_audit/) | 100-query audit packet and labeling protocol (labels not yet collected) |
+| [`pass1_evoagentbench_configs/`](pass1_evoagentbench_configs/) | Prepared configs for future downstream Pass@1 runs (not yet executed) |
+| [`docs/`](docs/) | Audits, manifests, and release notes |
+
+## Limitations
+
+- Evaluation queries are written by an LLM that sees the target trace; a
+  human-audit packet is prepared but unlabeled.
+- Only the exact source step counts as relevant, so Recall@k may understate all methods.
+- Retrieval metrics only: downstream agent Pass@1 is not measured.
+- Seeds share about 30% of their memories, so pooled intervals are likely too
+  narrow; no multiplicity correction is applied.
+- One embedder (bge-m3), one generator (Qwen3.6-35B-A3B), one trace source, one memory size.
 
 ## Citation
 
 ```bibtex
-@article{diei2026sqe,
-  title  = {Selective Query-Side Expansion for Agent Memory Retrieval: A Multi-Seed Study of Cost and Gate Reliability},
-  author = {DIEI, Salomon},
+@misc{diei2026sqe,
+  title  = {When Does Query Expansion Help Agent Memory? A Multi-Seed Study of Selective Expansion and Gate Reliability},
+  author = {Diei, Salomon},
   year   = {2026},
+  note   = {Preprint},
   url    = {https://github.com/Salomondiei08/sqe-experiment}
 }
 ```
 
-## License and contact
+An earlier version of this work was presented at
+[NAFSIK 2026](https://sites.google.com/view/nafsik?pli=1&authuser=0).
 
-See the repository files and dataset card for the applicable release terms.
-For questions or collaboration, contact
-[Salomon DIEI](mailto:salomon@koreatech.ac.kr).
+## Contact
+
+Questions and collaboration: [salomon@koreatech.ac.kr](mailto:salomon@koreatech.ac.kr)
