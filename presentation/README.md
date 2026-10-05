@@ -1,4 +1,11 @@
-# SQE Conference Slides
+# SQE Slides
+
+- `sqe_preprint_slides.html`: current deck, matching the preprint
+  (*When Does Query Expansion Help Agent Memory?*). Also published on the
+  project page at `site/talk/`.
+- `sqe_conference_slides.html`: the original NAFSIK 2026 talk, kept unchanged
+  as the record of what was presented.
+
 
 Open `sqe_conference_slides.html` in a browser.
 

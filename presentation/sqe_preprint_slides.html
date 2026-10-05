@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slides · When Does Query Expansion Help Agent Memory?</title>
+  <meta name="description" content="Talk slides for the SQE preprint: when does query expansion help agent memory retrieval?">
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5b6472;
+      --blue: #2e6f9e;
+      --blue-soft: #e8f2f8;
+      --orange: #cf7f3f;
+      --orange-soft: #fff3e8;
+      --green: #3f8f67;
+      --green-soft: #eaf7f0;
+      --line: #c9d3de;
+      --gray: #eef2f6;
+      --red: #b42318;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: #dfe5eb;
+    }
+
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      padding: 5.2vh 5.4vw 4.8vh;
+      background: var(--white);
+      position: absolute;
+      inset: 0;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5.4vw, 70px);
+      line-height: 1.02;
+      margin: 0;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: clamp(28px, 3.1vw, 42px);
+      line-height: 1.08;
+      margin: 0 0 2.4vh;
+      letter-spacing: 0;
+      font-weight: 700;
+    }
+
+    h3 {
+      margin: 0 0 1.2vh;
+      font-size: clamp(18px, 1.7vw, 25px);
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: clamp(18px, 1.55vw, 25px);
+      line-height: 1.32;
+      margin: 0;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      max-width: 980px;
+      margin-top: 2.5vh;
+      font-size: clamp(21px, 2vw, 31px);
+      line-height: 1.25;
+    }
+
+    .author {
+      margin-top: auto;
+      padding-bottom: 2vh;
+      color: var(--muted);
+      font-size: clamp(16px, 1.3vw, 22px);
+      line-height: 1.35;
+    }
+
+    .accent-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1.1vw;
+      background: var(--blue);
+    }
+
+    .rule {
+      height: 1px;
+      background: var(--line);
+      margin-bottom: 3.2vh;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2vw;
+      flex: 1;
+      align-items: center;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3vw;
+      flex: 1;
+      align-items: center;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 3vh 2vw;
+      min-height: 28vh;
+      background: var(--white);
+      position: relative;
+    }
+
+    .card.blue { background: var(--blue-soft); border-left: 8px solid var(--blue); }
+    .card.orange { background: var(--orange-soft); border-left: 8px solid var(--orange); }
+    .card.green { background: var(--green-soft); border-left: 8px solid var(--green); }
+    .card.gray { background: var(--gray); border-left: 8px solid var(--blue); }
+
+    .card p, li {
+      color: var(--muted);
+      font-size: clamp(17px, 1.35vw, 22px);
+      line-height: 1.34;
+    }
+
+    ul {
+      margin: 1.3vh 0 0;
+      padding-left: 1.35em;
+    }
+
+    li { margin: 0.65vh 0; }
+
+    .big-number {
+      display: block;
+      font-size: clamp(42px, 5vw, 76px);
+      line-height: 1;
+      color: var(--blue);
+      font-weight: 700;
+      margin-bottom: 1vh;
+    }
+
+    .orange-number { color: var(--orange); }
+    .green-number { color: var(--green); }
+
+    .center {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .statement {
+      max-width: 1050px;
+      font-size: clamp(31px, 3.7vw, 58px);
+      line-height: 1.12;
+      font-weight: 700;
+    }
+
+    .figure {
+      width: 100%;
+      max-height: 67vh;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 1vh;
+    }
+
+    .figure-row {
+      display: grid;
+      grid-template-columns: 1.65fr 1fr;
+      gap: 2.8vw;
+      align-items: center;
+      flex: 1;
+    }
+
+    .caption {
+      color: var(--muted);
+      text-align: center;
+      font-size: clamp(14px, 1.1vw, 18px);
+      margin-top: 1vh;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5vw;
+      margin-top: 3vh;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--gray);
+      padding: 2.2vh 1.2vw;
+      text-align: center;
+      min-height: 15vh;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--blue);
+      font-size: clamp(31px, 3.4vw, 52px);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 1.1vh;
+    }
+
+    .metric p {
+      font-size: clamp(14px, 1.15vw, 19px);
+      color: var(--muted);
+    }
+
+    .claim-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.4vw;
+      flex: 1;
+      align-items: stretch;
+    }
+
+    .steps {
+      display: grid;
+      gap: 2.1vh;
+      margin-top: 2vh;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 1.2vw;
+      align-items: start;
+    }
+
+    .step-num {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      font-weight: 700;
+    }
+
+    .step h3 { margin-bottom: 0.4vh; }
+    .step p { color: var(--muted); font-size: clamp(17px, 1.35vw, 22px); }
+
+    .footer {
+      position: absolute;
+      left: 5.4vw;
+      right: 5.4vw;
+      bottom: 2.2vh;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .nav {
+      position: fixed;
+      right: 18px;
+      bottom: 14px;
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .nav button {
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .progress {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      height: 4px;
+      background: var(--blue);
+      width: 0;
+      z-index: 20;
+    }
+
+    @media print {
+      body { background: white; }
+      .deck { height: auto; overflow: visible; }
+      .slide {
+        display: flex !important;
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        page-break-after: always;
+      }
+      .nav, .progress { display: none; }
+    }
+  
+    .tag { display:inline-block; margin-top:3vh; padding:6px 14px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:clamp(14px,1.1vw,18px); }
+    .figure-pair { display:grid; grid-template-columns:1fr 1fr; gap:2.4vw; flex:1; align-items:center; }
+    .figure-pair .figure { max-height:58vh; }
+    .question { max-width:1100px; font-size:clamp(30px,3.4vw,54px); line-height:1.15; font-weight:700; }
+    .question em { color:var(--blue); font-style:normal; }
+    .note { margin-top:2.4vh; padding:1.6vh 1.4vw; background:var(--gray); border-left:6px solid var(--orange); border-radius:0 8px 8px 0; color:var(--ink); font-size:clamp(16px,1.3vw,21px); }
+    .links p { margin:0.9vh 0; }
+    .vcenter { flex:1; display:flex; flex-direction:column; justify-content:center; }
+    .grid-3 { align-items:stretch; align-content:center; }
+    .vcenter .grid-3 { flex:0 0 auto; }
+    .footer { right:calc(5.4vw + 150px); }
+    .links a { color:var(--blue); text-decoration:none; }
+    @media (max-width: 760px) {
+      .grid-3, .grid-2, .claim-grid, .figure-row, .figure-pair { grid-template-columns:1fr; gap:2vh; align-content:start; overflow-y:auto; }
+      .metric-row { grid-template-columns:1fr 1fr; }
+      .card { min-height:0; }
+      .slide { overflow-y:auto; padding-bottom:9vh; }
+      .footer { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide"><div class="accent-bar"></div>
+<div class="center" style="justify-content:flex-start;text-align:left"><div>
+<h1>When Does Query Expansion<br>Help Agent Memory?</h1>
+<p class="subtitle">A Multi-Seed Study of Selective Expansion and Gate Reliability</p>
+<span class="tag">Preprint 2026 · Earlier version presented at NAFSIK 2026</span>
+</div></div>
+<p class="author">Salomon Diei<br>School of Computer Science and Engineering, KOREATECH</p></section>
+<section class="slide"><h2>The talk in one minute</h2><div class="rule"></div><div class="grid-3">
+<div class="card blue"><h3>Problem</h3><p>Agents store execution traces but later search them with natural-language questions. The memory exists, but the query does not look like it.</p></div>
+<div class="card orange"><h3>Idea</h3><p>Expand the query with hypothetical traces and paraphrases, but only when the first retrieval looks uncertain.</p></div>
+<div class="card green"><h3>Result</h3><p>Selective expansion halves the cost of always expanding with no loss in Recall@5. But the confidence gate is no better than random.</p></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>2</span></div></section>
+<section class="slide"><h2>Why agent memory retrieval fails</h2><div class="rule"></div><div class="grid-2">
+<div class="card gray"><h3>What is stored</h3><ul><li>Terminal outputs and tracebacks</li><li>Test failures</li><li>Patch diffs and commands</li><li>Single agent steps: thought, action, observation</li></ul></div>
+<div class="card gray"><h3>What is asked later</h3><ul><li>Natural-language questions</li><li>"How did I fix the off-by-one line number bug?"</li><li>Short reminders and issue summaries</li></ul></div>
+</div>
+<p class="note">The memory may be present, but the query and the memory are written in different “languages”.</p><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>3</span></div></section>
+<section class="slide"><h2>The question</h2><div class="rule"></div><div class="center"><p class="question">Can a <em>cheap confidence signal</em> decide which agent-memory queries are worth expanding?</p></div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>4</span></div></section>
+<section class="slide"><h2>How SQE works</h2><div class="rule"></div><div class="figure-row" style="grid-template-columns:1fr">
+<div><img class="figure" src="../paper/preprint/figures/method_overview.png" alt="SQE retrieval flow"><p class="caption">Dense retrieval first. If the top-1 score is below τ = 0.65, generate 2 hypothetical traces (dense + BM25) and 2 paraphrases (dense), then fuse all lists with RRF (k = 60). The memory store and indices never change.</p></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>5</span></div></section>
+<section class="slide"><h2>Evaluation design</h2><div class="rule"></div><div class="vcenter"><div class="metric-row">
+<div class="metric"><span>5,000</span><p>agent steps per memory store</p></div>
+<div class="metric"><span>500</span><p>queries per seed</p></div>
+<div class="metric"><span>8</span><p>resampled stores, indices rebuilt</p></div>
+<div class="metric"><span>4,000</span><p>queries in total</p></div>
+</div>
+<div class="grid-2" style="margin-top:3vh">
+<div class="card gray" style="min-height:0"><h3>Data and models</h3><p>SWE-smith agent steps (tool split). bge-m3 + FAISS for dense, BM25 for sparse, Qwen3.6-35B-A3B for expansion.</p></div>
+<div class="card orange" style="min-height:0"><h3>The key control</h3><p>A random gate runs the identical expansion code at a matched rate. It separates <b>expanding some queries</b> from <b>choosing which ones</b>.</p></div>
+</div></div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>6</span></div></section>
+<section class="slide"><h2>Main result: a small Recall@5 gain</h2><div class="rule"></div><div class="vcenter"><div class="metric-row">
+<div class="metric"><span>69.4%</span><p>SQE</p></div>
+<div class="metric"><span style="color:var(--muted)">68.5%</span><p>Dense-Only</p></div>
+<div class="metric"><span style="color:var(--muted)">69.2%</span><p>Always-Expand</p></div>
+<div class="metric"><span class="orange-number">68.9%</span><p>Random gate</p></div>
+</div>
+<p class="note">Mean Recall@5 over 8 seeds. SQE is slightly better than dense retrieval at Recall@5 (+0.9 points), but worse at Recall@1 (44.5% vs 45.5%). It recovers 140 targets dense retrieval missed and loses 105 it found.</p></div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>7</span></div></section>
+<section class="slide"><h2>Seed variance dominates every effect</h2><div class="rule"></div><div class="figure-row" style="grid-template-columns:1.6fr 1fr">
+<img class="figure" src="../paper/preprint/figures/multiseed_recall5.png" alt="Recall@5 per seed and 8-seed mean">
+<div class="card blue" style="min-height:0"><span class="big-number">±2.7</span><p>points of seed-to-seed spread: three times larger than the method effect.</p></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>8</span></div></section>
+<section class="slide"><h2>The gate does not beat a random gate</h2><div class="rule"></div><div class="vcenter"><div class="grid-3">
+<div class="card blue"><span class="big-number">+0.9</span><h3>vs Dense-Only</h3><p>95% CI [+0.1, +1.7]</p></div>
+<div class="card orange"><span class="big-number orange-number">+0.5</span><h3>vs Random gate</h3><p>95% CI [−0.2, +1.1]. Not significant.</p></div>
+<div class="card gray"><span class="big-number" style="color:var(--muted)">+0.1</span><h3>vs Always-Expand</h3><p>95% CI [−0.4, +0.7]</p></div>
+</div>
+<p class="note">Expanding about half the queries recovers essentially all of the benefit of expanding every query, but <b>which</b> half matters little.</p></div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>9</span></div></section>
+<section class="slide"><h2>Selectivity is still a large cost saving</h2><div class="rule"></div><div class="figure-row">
+<img class="figure" src="../paper/preprint/figures/cost_quality.png" alt="Tokens per query against Recall@5">
+<div><div class="card green" style="min-height:0"><span class="big-number green-number">−55%</span><p>LLM tokens vs Always-Expand: 405 vs 899 tokens and 2.8 s vs 5.4 s per query, at equal Recall@5.</p></div>
+<p class="caption" style="text-align:left;margin-top:2vh">But the random gate sits at the same point.</p></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>10</span></div></section>
+<section class="slide"><h2>Why the gate fails</h2><div class="rule"></div><div class="grid-3">
+<div class="card orange"><span class="big-number orange-number">61.7%</span><h3>Hard, not fixable</h3><p>Expanded queries reach 61.7% Recall@5 vs 75.9% for the rest. The gate finds hard queries, but expansion does not repair them.</p></div>
+<div class="card orange"><span class="big-number orange-number">2.2 pts</span><h3>Threshold barely matters</h3><p>Recall@5 moves within a 2.2-point band while the expansion rate goes from 0% to 100%.</p></div>
+<div class="card orange"><span class="big-number orange-number">5.3%</span><h3>Little headroom</h3><p>Expansion helps 5.3% of queries and hurts 4.2%. Even an oracle gate gains only about 5 points.</p></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>11</span></div></section>
+<section class="slide"><h2>The evidence behind the gate result</h2><div class="rule"></div><div class="figure-pair">
+<div><img class="figure" src="../paper/preprint/figures/threshold_sweep.png" alt="Threshold sweep on seed 42"><p class="caption">Threshold sweep (seed 42)</p></div>
+<div><img class="figure" src="../paper/preprint/figures/gate_headroom.png" alt="Oracle gate headroom"><p class="caption">Held-out oracle headroom</p></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>12</span></div></section>
+<section class="slide"><h2>What the evidence supports</h2><div class="rule"></div><div class="claim-grid">
+<div class="card green"><h3>Supported</h3><ul><li>SQE is a retrieval-time method; memory writing is unchanged.</li><li>It matches Always-Expand at about half the tokens.</li><li>It gives a small Recall@5 gain over dense retrieval.</li><li>The top-1-score gate is not better than random.</li></ul></div>
+<div class="card orange"><h3>Not claimed</h3><ul><li>No downstream agent Pass@1 result.</li><li>No human-validated query quality (audit packet prepared, unlabeled).</li><li>Intervals pool overlapping seeds, so they are descriptive.</li><li>One embedder, one generator, one trace source.</li></ul></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>13</span></div></section>
+<section class="slide"><h2>Next steps</h2><div class="rule"></div><div class="steps">
+<div class="step"><div class="step-num">1</div><div><h3>Learned gates against random-budget controls</h3><p>Predicting which queries expansion will fix is the open problem.</p></div></div>
+<div class="step"><div class="step-num">2</div><div><h3>Downstream agent success</h3><p>Measure whether retrieved memories change Pass@1 on SWE-bench-style tasks.</p></div></div>
+<div class="step"><div class="step-num">3</div><div><h3>Human-audited queries</h3><p>Label the prepared 100-query audit packet.</p></div></div>
+<div class="step"><div class="step-num">4</div><div><h3>Confirmatory statistics</h3><p>Pre-register one contrast and use seed- or task-clustered inference.</p></div></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>14</span></div></section>
+<section class="slide"><div class="accent-bar"></div>
+<div class="center" style="justify-content:flex-start;text-align:left"><div>
+<h1>Thank you</h1>
+<p class="subtitle">Confidence gating, not expansion itself, is the open problem.</p>
+<div class="links" style="margin-top:4vh">
+<p>Paper and project page: <a href="https://salomondiei08.github.io/sqe-experiment/">salomondiei08.github.io/sqe-experiment</a></p>
+<p>Code: <a href="https://github.com/Salomondiei08/sqe-experiment">github.com/Salomondiei08/sqe-experiment</a></p>
+<p>Data: <a href="https://huggingface.co/datasets/TheReinventGuy/sqe-experiment">huggingface.co/datasets/TheReinventGuy/sqe-experiment</a></p>
+</div></div></div>
+<p class="author">Salomon Diei · salomon@koreatech.ac.kr</p><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>15</span></div></section>
+  </main>
+  <div class="progress" id="progress"></div>
+  <div class="nav" aria-label="Slide navigation">
+    <button type="button" onclick="prevSlide()">Back</button>
+    <button type="button" onclick="nextSlide()">Next</button>
+  </div>
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let index = 0;
+    function showSlide(i) {
+      index = Math.max(0, Math.min(slides.length - 1, i));
+      slides.forEach((slide, n) => slide.classList.toggle('active', n === index));
+      document.getElementById('progress').style.width = `${((index + 1) / slides.length) * 100}%`;
+      history.replaceState(null, '', '#' + (index + 1));
+    }
+    function nextSlide() { showSlide(index + 1); }
+    function prevSlide() { showSlide(index - 1); }
+    document.addEventListener('keydown', (event) => {
+      if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); nextSlide(); }
+      if (['ArrowLeft', 'PageUp', 'Backspace'].includes(event.key)) { event.preventDefault(); prevSlide(); }
+      if (event.key === 'Home') showSlide(0);
+      if (event.key === 'End') showSlide(slides.length - 1);
+    });
+    // Swipe on touch screens
+    let touchX = null;
+    document.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) (dx < 0 ? nextSlide : prevSlide)();
+      touchX = null;
+    });
+    const start = Number(location.hash.replace('#', ''));
+    showSlide(start >= 1 && start <= slides.length ? start - 1 : 0);
+  </script>
+</body>
+</html>

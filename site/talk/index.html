@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Selective Query-Side Expansion for Agent Memory Retrieval</title>
+  <title>Slides · When Does Query Expansion Help Agent Memory?</title>
+  <meta name="description" content="Talk slides for the SQE preprint: when does query expansion help agent memory retrieval?">
   <style>
     :root {
       --ink: #172033;
@@ -324,177 +325,146 @@
       }
       .nav, .progress { display: none; }
     }
+  
+    .tag { display:inline-block; margin-top:3vh; padding:6px 14px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:clamp(14px,1.1vw,18px); }
+    .figure-pair { display:grid; grid-template-columns:1fr 1fr; gap:2.4vw; flex:1; align-items:center; }
+    .figure-pair .figure { max-height:58vh; }
+    .question { max-width:1100px; font-size:clamp(30px,3.4vw,54px); line-height:1.15; font-weight:700; }
+    .question em { color:var(--blue); font-style:normal; }
+    .note { margin-top:2.4vh; padding:1.6vh 1.4vw; background:var(--gray); border-left:6px solid var(--orange); border-radius:0 8px 8px 0; color:var(--ink); font-size:clamp(16px,1.3vw,21px); }
+    .links p { margin:0.9vh 0; }
+    .vcenter { flex:1; display:flex; flex-direction:column; justify-content:center; }
+    .grid-3 { align-items:stretch; align-content:center; }
+    .vcenter .grid-3 { flex:0 0 auto; }
+    .footer { right:calc(5.4vw + 150px); }
+    .links a { color:var(--blue); text-decoration:none; }
+    @media (max-width: 760px) {
+      .grid-3, .grid-2, .claim-grid, .figure-row, .figure-pair { grid-template-columns:1fr; gap:2vh; align-content:start; overflow-y:auto; }
+      .metric-row { grid-template-columns:1fr 1fr; }
+      .card { min-height:0; }
+      .slide { overflow-y:auto; padding-bottom:9vh; }
+      .footer { display:none; }
+    }
   </style>
 </head>
 <body>
-  <main class="deck" aria-live="polite">
-    <section class="slide active">
-      <div class="accent-bar"></div>
-      <div class="center" style="justify-content:flex-start;text-align:left">
-        <div>
-          <h1>Selective Query-Side Expansion<br>for Agent Memory Retrieval</h1>
-          <p class="subtitle">A practical way to recover useful memories when agent logs and user questions use different language.</p>
-        </div>
-      </div>
-      <p class="author">Salomon DIEI<br>School of Computer Science and Engineering, KOREATECH</p>
-    </section>
-
-    <section class="slide">
-      <h2>The talk in one minute</h2><div class="rule"></div>
-      <div class="grid-3">
-        <div class="card blue"><h3>Problem</h3><p>Useful past memories exist, but retrieval misses them because logs and questions use different words.</p></div>
-        <div class="card orange"><h3>Idea</h3><p>When retrieval is uncertain, ask again using execution-style traces and paraphrased queries.</p></div>
-        <div class="card green"><h3>Result</h3><p>SQE is competitive with dense retrieval and above Hybrid-RRF, but end-to-end Pass@1 is still pending.</p></div>
-      </div>
-      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>2</span></div>
-    </section>
-
-    <section class="slide">
-      <h2>Why agent memory retrieval fails</h2><div class="rule"></div>
-      <div class="grid-2">
-        <div class="card gray"><h3>What is stored</h3><ul><li>Terminal outputs</li><li>Stack traces</li><li>Test failures</li><li>Patch diffs</li></ul></div>
-        <div class="card orange"><h3>What is asked later</h3><ul><li>Natural-language questions</li><li>High-level bug descriptions</li><li>Short reminders</li><li>Issue summaries</li></ul></div>
-      </div>
-      <div class="center" style="flex:0.45"><p class="statement">The memory may be present, but the query does not look like the memory.</p></div>
-      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>3</span></div>
-    </section>
-
-    <section class="slide">
-      <h2>The simple intuition</h2><div class="rule"></div>
-      <div class="center" style="flex:0.45"><p class="statement">Ask the memory index in the language the memory was written in.</p></div>
-      <div class="grid-3">
-        <div class="card blue"><h3>1. Try normal retrieval</h3><p>Use the original question first. If confidence is high, avoid extra compute.</p></div>
-        <div class="card orange"><h3>2. Expand only if needed</h3><p>Generate execution-style traces and paraphrases for low-confidence queries.</p></div>
-        <div class="card green"><h3>3. Fuse the results</h3><p>Retrieve each variant and combine rankings with Reciprocal Rank Fusion.</p></div>
-      </div>
-      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>4</span></div>
-    </section>
-
-    <section class="slide">
-      <h2>How SQE works</h2><div class="rule"></div>
-      <img class="figure" src="./method_overview.png" alt="Flow diagram of SQE retrieval">
-      <p class="caption">The memory store is unchanged. Only the query is expanded when the first retrieval result looks uncertain.</p>
-      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>5</span></div>
-    </section>
-
-    <section class="slide">
-      <h2>Evaluation design</h2><div class="rule"></div>
-      <div class="metric-row">
-        <div class="metric"><span>5,000</span><p>memory episodes per seed</p></div>
-        <div class="metric"><span>500</span><p>query-memory pairs per seed</p></div>
-        <div class="metric"><span>8</span><p>independent memory-index seeds</p></div>
-        <div class="metric"><span>4,000</span><p>paired query rows in aggregate</p></div>
-      </div>
-      <div class="grid-2" style="margin-top:4vh">
-        <div class="card blue"><h3>Metric used today</h3><p>Recall@5: does the target memory appear in the top five retrieved memories?</p></div>
-        <div class="card orange"><h3>Important boundary</h3><p>This is a retrieval study. Agent Pass@1 task success has not been measured yet.</p></div>
-      </div>
-      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>6</span></div>
-    </section>
-
-    <section class="slide">
-      <h2>Main retrieval result</h2><div class="rule"></div>
-      <div class="grid-3">
-        <div class="card blue"><h3>Dense retrieval</h3><span class="big-number">69.8%</span><p>Strong baseline, seed-42 audit run.</p></div>
-        <div class="card orange"><h3>SQE</h3><span class="big-number orange-number">69.4%</span><p>Selective expansion, seed-42 audit run.</p></div>
-        <div class="card green"><h3>Hybrid-RRF</h3><span class="big-number green-number">64.0%</span><p>Sparse+dense fusion baseline, seed-42 audit run.</p></div>
-      </div>
-      <p class="caption">Interpretation: SQE is competitive with dense retrieval and above Hybrid-RRF, but it does not beat the strongest baseline in this seed.</p>
-      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>7</span></div>
-    </section>
-
-    <section class="slide">
-      <h2>Method comparison</h2><div class="rule"></div>
-      <img class="figure" src="./recall_at_5.png" alt="Recall at 5 comparison across methods">
-      <p class="caption">The key comparison is retrieval quality, not final software-task success.</p>
-      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>8</span></div>
-    </section>
-
-    <section class="slide">
-      <h2>Across independent memory seeds</h2><div class="rule"></div>
-      <div class="grid-3">
-        <div class="card green"><h3>Mean Recall@5</h3><ul><li>SQE: 69.4%</li><li>Dense: 68.5%</li><li>Always-expand: 69.2%</li><li>Random-gated: 68.9%</li></ul></div>
-        <div class="card blue"><h3>Paired effect</h3><p>SQE vs Dense: +0.9 points<br>95% interval: [0.1, 1.7]</p></div>
-        <div class="card orange"><h3>Budget control</h3><p>SQE vs Random-gated: +0.5 points<br>The interval crosses zero.</p></div>
-      </div>
-      <div class="center" style="flex:0.35"><p class="statement" style="font-size:clamp(24px,2.7vw,42px)">Current evidence supports a small retrieval-only difference, not a strong end-to-end performance claim.</p></div>
-      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>9</span></div>
-    </section>
-
-    <section class="slide">
-      <h2>What did not work yet: the confidence gate</h2><div class="rule"></div>
-      <div class="figure-row">
-        <div><img class="figure" src="./gate_diagnostic.png" alt="Gate diagnostic chart"></div>
-        <div>
-          <div class="card orange" style="margin-bottom:3vh"><h3>Finding</h3><p>The dense top-1 score does not separate easy and hard retrieval cases cleanly.</p></div>
-          <div class="card gray"><h3>Implication</h3><p>The method idea is plausible, but the gate needs stronger calibration before a top-tier claim.</p></div>
-        </div>
-      </div>
-      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>10</span></div>
-    </section>
-
-    <section class="slide">
-      <h2>What I can claim today</h2><div class="rule"></div>
-      <div class="claim-grid">
-        <div class="card green"><h3>Supported by the current data</h3><ul><li>SQE can be added at retrieval time.</li><li>It leaves memory writing unchanged.</li><li>It reduces expansion calls relative to always-expand.</li><li>It gives a small Recall@5 gain over dense retrieval across seeds.</li></ul></div>
-        <div class="card orange"><h3>Not claimed yet</h3><ul><li>No Pass@1 agent-success result yet.</li><li>No human-audited query-label result yet.</li><li>No clear advantage over the random-gated budget control.</li><li>The gate is not solved.</li></ul></div>
-      </div>
-      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>11</span></div>
-    </section>
-
-    <section class="slide">
-      <h2>Next steps before submission</h2><div class="rule"></div>
-      <div class="steps">
-        <div class="step"><div class="step-num">1</div><div><h3>Run downstream Pass@1</h3><p>Measure whether retrieved memories actually help solve software tasks.</p></div></div>
-        <div class="step"><div class="step-num">2</div><div><h3>Collect human labels</h3><p>Audit whether generated queries match realistic user or agent questions.</p></div></div>
-        <div class="step"><div class="step-num">3</div><div><h3>Improve the gate</h3><p>Validate a selector using score margin, dense-sparse agreement, and query features.</p></div></div>
-        <div class="step"><div class="step-num">4</div><div><h3>Release artifacts</h3><p>Publish code and dataset package with GitHub and Hugging Face links.</p></div></div>
-      </div>
-      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>12</span></div>
-    </section>
-
-    <section class="slide">
-      <div class="center">
-        <div>
-          <h1>Thank you</h1>
-          <p class="subtitle" style="margin-left:auto;margin-right:auto;text-align:center">Salomon DIEI | salomon@koreatech.ac.kr</p>
-          <p class="subtitle" style="margin-left:auto;margin-right:auto;text-align:center;color:var(--blue)">Takeaway: SQE is a practical retrieval-time idea with a modest retrieval signal and clear next experiments.</p>
-        </div>
-      </div>
-      <div class="footer"><span>SQE for Agent Memory Retrieval</span><span>13</span></div>
-    </section>
+  <main class="deck">
+    <section class="slide"><div class="accent-bar"></div>
+<div class="center" style="justify-content:flex-start;text-align:left"><div>
+<h1>When Does Query Expansion<br>Help Agent Memory?</h1>
+<p class="subtitle">A Multi-Seed Study of Selective Expansion and Gate Reliability</p>
+<span class="tag">Preprint 2026 · Earlier version presented at NAFSIK 2026</span>
+</div></div>
+<p class="author">Salomon Diei<br>School of Computer Science and Engineering, KOREATECH</p></section>
+<section class="slide"><h2>The talk in one minute</h2><div class="rule"></div><div class="grid-3">
+<div class="card blue"><h3>Problem</h3><p>Agents store execution traces but later search them with natural-language questions. The memory exists, but the query does not look like it.</p></div>
+<div class="card orange"><h3>Idea</h3><p>Expand the query with hypothetical traces and paraphrases, but only when the first retrieval looks uncertain.</p></div>
+<div class="card green"><h3>Result</h3><p>Selective expansion halves the cost of always expanding with no loss in Recall@5. But the confidence gate is no better than random.</p></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>2</span></div></section>
+<section class="slide"><h2>Why agent memory retrieval fails</h2><div class="rule"></div><div class="grid-2">
+<div class="card gray"><h3>What is stored</h3><ul><li>Terminal outputs and tracebacks</li><li>Test failures</li><li>Patch diffs and commands</li><li>Single agent steps: thought, action, observation</li></ul></div>
+<div class="card gray"><h3>What is asked later</h3><ul><li>Natural-language questions</li><li>"How did I fix the off-by-one line number bug?"</li><li>Short reminders and issue summaries</li></ul></div>
+</div>
+<p class="note">The memory may be present, but the query and the memory are written in different “languages”.</p><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>3</span></div></section>
+<section class="slide"><h2>The question</h2><div class="rule"></div><div class="center"><p class="question">Can a <em>cheap confidence signal</em> decide which agent-memory queries are worth expanding?</p></div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>4</span></div></section>
+<section class="slide"><h2>How SQE works</h2><div class="rule"></div><div class="figure-row" style="grid-template-columns:1fr">
+<div><img class="figure" src="./method_overview.png" alt="SQE retrieval flow"><p class="caption">Dense retrieval first. If the top-1 score is below τ = 0.65, generate 2 hypothetical traces (dense + BM25) and 2 paraphrases (dense), then fuse all lists with RRF (k = 60). The memory store and indices never change.</p></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>5</span></div></section>
+<section class="slide"><h2>Evaluation design</h2><div class="rule"></div><div class="vcenter"><div class="metric-row">
+<div class="metric"><span>5,000</span><p>agent steps per memory store</p></div>
+<div class="metric"><span>500</span><p>queries per seed</p></div>
+<div class="metric"><span>8</span><p>resampled stores, indices rebuilt</p></div>
+<div class="metric"><span>4,000</span><p>queries in total</p></div>
+</div>
+<div class="grid-2" style="margin-top:3vh">
+<div class="card gray" style="min-height:0"><h3>Data and models</h3><p>SWE-smith agent steps (tool split). bge-m3 + FAISS for dense, BM25 for sparse, Qwen3.6-35B-A3B for expansion.</p></div>
+<div class="card orange" style="min-height:0"><h3>The key control</h3><p>A random gate runs the identical expansion code at a matched rate. It separates <b>expanding some queries</b> from <b>choosing which ones</b>.</p></div>
+</div></div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>6</span></div></section>
+<section class="slide"><h2>Main result: a small Recall@5 gain</h2><div class="rule"></div><div class="vcenter"><div class="metric-row">
+<div class="metric"><span>69.4%</span><p>SQE</p></div>
+<div class="metric"><span style="color:var(--muted)">68.5%</span><p>Dense-Only</p></div>
+<div class="metric"><span style="color:var(--muted)">69.2%</span><p>Always-Expand</p></div>
+<div class="metric"><span class="orange-number">68.9%</span><p>Random gate</p></div>
+</div>
+<p class="note">Mean Recall@5 over 8 seeds. SQE is slightly better than dense retrieval at Recall@5 (+0.9 points), but worse at Recall@1 (44.5% vs 45.5%). It recovers 140 targets dense retrieval missed and loses 105 it found.</p></div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>7</span></div></section>
+<section class="slide"><h2>Seed variance dominates every effect</h2><div class="rule"></div><div class="figure-row" style="grid-template-columns:1.6fr 1fr">
+<img class="figure" src="./multiseed_recall5.png" alt="Recall@5 per seed and 8-seed mean">
+<div class="card blue" style="min-height:0"><span class="big-number">±2.7</span><p>points of seed-to-seed spread: three times larger than the method effect.</p></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>8</span></div></section>
+<section class="slide"><h2>The gate does not beat a random gate</h2><div class="rule"></div><div class="vcenter"><div class="grid-3">
+<div class="card blue"><span class="big-number">+0.9</span><h3>vs Dense-Only</h3><p>95% CI [+0.1, +1.7]</p></div>
+<div class="card orange"><span class="big-number orange-number">+0.5</span><h3>vs Random gate</h3><p>95% CI [−0.2, +1.1]. Not significant.</p></div>
+<div class="card gray"><span class="big-number" style="color:var(--muted)">+0.1</span><h3>vs Always-Expand</h3><p>95% CI [−0.4, +0.7]</p></div>
+</div>
+<p class="note">Expanding about half the queries recovers essentially all of the benefit of expanding every query, but <b>which</b> half matters little.</p></div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>9</span></div></section>
+<section class="slide"><h2>Selectivity is still a large cost saving</h2><div class="rule"></div><div class="figure-row">
+<img class="figure" src="./cost_quality.png" alt="Tokens per query against Recall@5">
+<div><div class="card green" style="min-height:0"><span class="big-number green-number">−55%</span><p>LLM tokens vs Always-Expand: 405 vs 899 tokens and 2.8 s vs 5.4 s per query, at equal Recall@5.</p></div>
+<p class="caption" style="text-align:left;margin-top:2vh">But the random gate sits at the same point.</p></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>10</span></div></section>
+<section class="slide"><h2>Why the gate fails</h2><div class="rule"></div><div class="grid-3">
+<div class="card orange"><span class="big-number orange-number">61.7%</span><h3>Hard, not fixable</h3><p>Expanded queries reach 61.7% Recall@5 vs 75.9% for the rest. The gate finds hard queries, but expansion does not repair them.</p></div>
+<div class="card orange"><span class="big-number orange-number">2.2 pts</span><h3>Threshold barely matters</h3><p>Recall@5 moves within a 2.2-point band while the expansion rate goes from 0% to 100%.</p></div>
+<div class="card orange"><span class="big-number orange-number">5.3%</span><h3>Little headroom</h3><p>Expansion helps 5.3% of queries and hurts 4.2%. Even an oracle gate gains only about 5 points.</p></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>11</span></div></section>
+<section class="slide"><h2>The evidence behind the gate result</h2><div class="rule"></div><div class="figure-pair">
+<div><img class="figure" src="./threshold_sweep.png" alt="Threshold sweep on seed 42"><p class="caption">Threshold sweep (seed 42)</p></div>
+<div><img class="figure" src="./gate_headroom.png" alt="Oracle gate headroom"><p class="caption">Held-out oracle headroom</p></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>12</span></div></section>
+<section class="slide"><h2>What the evidence supports</h2><div class="rule"></div><div class="claim-grid">
+<div class="card green"><h3>Supported</h3><ul><li>SQE is a retrieval-time method; memory writing is unchanged.</li><li>It matches Always-Expand at about half the tokens.</li><li>It gives a small Recall@5 gain over dense retrieval.</li><li>The top-1-score gate is not better than random.</li></ul></div>
+<div class="card orange"><h3>Not claimed</h3><ul><li>No downstream agent Pass@1 result.</li><li>No human-validated query quality (audit packet prepared, unlabeled).</li><li>Intervals pool overlapping seeds, so they are descriptive.</li><li>One embedder, one generator, one trace source.</li></ul></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>13</span></div></section>
+<section class="slide"><h2>Next steps</h2><div class="rule"></div><div class="steps">
+<div class="step"><div class="step-num">1</div><div><h3>Learned gates against random-budget controls</h3><p>Predicting which queries expansion will fix is the open problem.</p></div></div>
+<div class="step"><div class="step-num">2</div><div><h3>Downstream agent success</h3><p>Measure whether retrieved memories change Pass@1 on SWE-bench-style tasks.</p></div></div>
+<div class="step"><div class="step-num">3</div><div><h3>Human-audited queries</h3><p>Label the prepared 100-query audit packet.</p></div></div>
+<div class="step"><div class="step-num">4</div><div><h3>Confirmatory statistics</h3><p>Pre-register one contrast and use seed- or task-clustered inference.</p></div></div>
+</div><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>14</span></div></section>
+<section class="slide"><div class="accent-bar"></div>
+<div class="center" style="justify-content:flex-start;text-align:left"><div>
+<h1>Thank you</h1>
+<p class="subtitle">Confidence gating, not expansion itself, is the open problem.</p>
+<div class="links" style="margin-top:4vh">
+<p>Paper and project page: <a href="https://salomondiei08.github.io/sqe-experiment/">salomondiei08.github.io/sqe-experiment</a></p>
+<p>Code: <a href="https://github.com/Salomondiei08/sqe-experiment">github.com/Salomondiei08/sqe-experiment</a></p>
+<p>Data: <a href="https://huggingface.co/datasets/TheReinventGuy/sqe-experiment">huggingface.co/datasets/TheReinventGuy/sqe-experiment</a></p>
+</div></div></div>
+<p class="author">Salomon Diei · salomon@koreatech.ac.kr</p><div class="footer"><span>When Does Query Expansion Help Agent Memory?</span><span>15</span></div></section>
   </main>
-
   <div class="progress" id="progress"></div>
   <div class="nav" aria-label="Slide navigation">
     <button type="button" onclick="prevSlide()">Back</button>
     <button type="button" onclick="nextSlide()">Next</button>
   </div>
-
   <script>
     const slides = Array.from(document.querySelectorAll('.slide'));
     let index = 0;
-
     function showSlide(i) {
       index = Math.max(0, Math.min(slides.length - 1, i));
       slides.forEach((slide, n) => slide.classList.toggle('active', n === index));
       document.getElementById('progress').style.width = `${((index + 1) / slides.length) * 100}%`;
-      location.hash = String(index + 1);
+      history.replaceState(null, '', '#' + (index + 1));
     }
-
     function nextSlide() { showSlide(index + 1); }
     function prevSlide() { showSlide(index - 1); }
-
     document.addEventListener('keydown', (event) => {
-      if (['ArrowRight', 'PageDown', ' '].includes(event.key)) nextSlide();
-      if (['ArrowLeft', 'PageUp', 'Backspace'].includes(event.key)) prevSlide();
+      if (['ArrowRight', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); nextSlide(); }
+      if (['ArrowLeft', 'PageUp', 'Backspace'].includes(event.key)) { event.preventDefault(); prevSlide(); }
       if (event.key === 'Home') showSlide(0);
       if (event.key === 'End') showSlide(slides.length - 1);
     });
-
+    // Swipe on touch screens
+    let touchX = null;
+    document.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) (dx < 0 ? nextSlide : prevSlide)();
+      touchX = null;
+    });
     const start = Number(location.hash.replace('#', ''));
-    if (start >= 1 && start <= slides.length) showSlide(start - 1);
-    else showSlide(0);
+    showSlide(start >= 1 && start <= slides.length ? start - 1 : 0);
   </script>
 </body>
 </html>
